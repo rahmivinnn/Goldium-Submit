@@ -72,14 +72,14 @@ export function BalanceCards() {
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
       {/* SOL Balance */}
-      <Card className="bg-galaxy-card border-galaxy-purple/30 hover:border-galaxy-blue/50 transition-all duration-300 transform hover:scale-105">
+      <Card className="bg-galaxy-card border-galaxy-purple/30 hover:border-galaxy-blue/50 transition-all duration-300 transform hover:scale-105 balance-card stagger-item">
         <CardContent className="p-6">
           <div className="flex items-center justify-between mb-4">
-            <h3 className="text-lg font-semibold text-galaxy-bright">SOL Balance{walletInfo}</h3>
-            <SolanaIcon size={24} className="text-purple-400" />
+            <h3 className="text-lg font-semibold gradient-text">SOL Balance{walletInfo}</h3>
+            <SolanaIcon size={24} className="text-purple-400 float-animation" />
           </div>
           <div className="space-y-2">
-            <p className="text-3xl font-bold text-galaxy-bright">
+            <p className="text-3xl font-bold text-galaxy-bright shimmer">
               {currentBalance.toFixed(6)}
             </p>
 
@@ -91,15 +91,15 @@ export function BalanceCards() {
       </Card>
 
       {/* GOLD Balance */}
-      <Card className="bg-galaxy-card border-galaxy-purple/30 hover:border-gold-primary/50 transition-all duration-300 transform hover:scale-105">
+      <Card className="bg-galaxy-card border-galaxy-purple/30 hover:border-gold-primary/50 transition-all duration-300 transform hover:scale-105 balance-card stagger-item">
         <CardContent className="p-6">
           <div className="flex items-center justify-between mb-4">
-            <h3 className="text-lg font-semibold text-galaxy-bright">GOLD Balance</h3>
+            <h3 className="text-lg font-semibold gradient-text">GOLD Balance</h3>
             <div className="w-8 h-8 flex items-center justify-center">
               <img 
                 src={logoImage} 
                 alt="GOLD Token" 
-                className="w-8 h-8 object-contain"
+                className="w-8 h-8 object-contain logo-spin"
                 onError={(e: React.SyntheticEvent<HTMLImageElement, Event>) => {
                   const target = e.currentTarget;
                   target.style.display = 'none';
@@ -111,42 +111,42 @@ export function BalanceCards() {
             </div>
           </div>
           <div className="space-y-2">
-            <p className="text-3xl font-bold text-galaxy-bright">
+            <p className="text-3xl font-bold text-galaxy-bright shimmer">
               {safeBalances.gold.toFixed(4)}
             </p>
             <p className="text-sm text-galaxy-accent">
               ≈ ${(safeBalances.gold * 20).toFixed(2)} USD
             </p>
             {goldBalance.isLoading && (
-              <p className="text-xs text-galaxy-text animate-pulse">Updating...</p>
+              <p className="text-xs text-galaxy-text loading-dots">Updating</p>
             )}
           </div>
         </CardContent>
       </Card>
 
       {/* Staked GOLD */}
-      <Card className="bg-galaxy-card border-galaxy-purple/30 hover:border-green-500/50 transition-all duration-300 transform hover:scale-105">
+      <Card className="bg-galaxy-card border-galaxy-purple/30 hover:border-green-500/50 transition-all duration-300 transform hover:scale-105 balance-card stagger-item">
         <CardContent className="p-6">
           <div className="flex items-center justify-between mb-4">
-            <h3 className="text-lg font-semibold text-galaxy-bright">Staked GOLD</h3>
+            <h3 className="text-lg font-semibold gradient-text">Staked GOLD</h3>
             <div className="relative">
               <img 
                 src={logoImage} 
                 alt="Staked GOLD" 
-                className="w-8 h-8 object-contain"
+                className="w-8 h-8 object-contain logo-spin"
               />
-              <div className="absolute -top-1 -right-1 text-green-400 text-sm">🔒</div>
+              <div className="absolute -top-1 -right-1 text-green-400 text-sm animate-pulse">🔒</div>
             </div>
           </div>
           <div className="space-y-2">
-            <p className="text-3xl font-bold text-galaxy-bright">
+            <p className="text-3xl font-bold text-galaxy-bright shimmer">
               {safeBalances.stakedGold.toFixed(4)}
             </p>
             <p className="text-sm text-green-400">
               {goldBalance.stakingInfo.apy}% APY • ${(safeBalances.stakedGold * 20).toFixed(2)}
             </p>
             {goldBalance.isLoading && (
-              <p className="text-xs text-galaxy-text animate-pulse">Updating...</p>
+              <p className="text-xs text-galaxy-text loading-dots">Updating</p>
             )}
           </div>
         </CardContent>

@@ -55,11 +55,11 @@ export default function Home() {
                   <img 
                     src={logoImage} 
                     alt="Goldium Logo" 
-                    className="w-10 h-10 object-contain"
+                    className="w-10 h-10 object-contain logo-spin"
                   />
                 </div>
                 <div>
-                  <h1 className="text-xl font-bold text-galaxy-bright">
+                  <h1 className="text-xl font-bold gradient-text">
                     Goldium
                   </h1>
                   <p className="text-xs text-galaxy-accent">DeFi Exchange</p>
@@ -73,7 +73,7 @@ export default function Home() {
                   <Button 
                     variant="ghost" 
                     size="sm"
-                    className="text-galaxy-accent hover:text-galaxy-bright hover:bg-galaxy-purple/20"
+                    className="text-galaxy-accent hover:text-galaxy-bright hover:bg-galaxy-purple/20 interactive-hover"
                   >
                     <Info className="w-4 h-4 mr-2" />
                     About
@@ -90,7 +90,7 @@ export default function Home() {
                 </div>
                 
                 {/* Network Status */}
-                <div className="hidden md:flex items-center space-x-2 px-3 py-1 bg-green-500/20 rounded-full">
+                <div className="hidden md:flex items-center space-x-2 px-3 py-1 bg-green-500/20 rounded-full network-status">
                   <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
                   <span className="text-sm text-green-400">Mainnet</span>
                 </div>
@@ -116,17 +116,21 @@ export default function Home() {
           
           {/* Balance Cards with Price Widget */}
           <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 mb-8">
-            <div className="lg:col-span-3">
+            <div className="lg:col-span-3 stagger-item">
               <BalanceCards />
             </div>
             <div className="space-y-6">
-              <GoldPriceWidget />
-              <SolanaLearnCard />
+              <div className="stagger-item">
+                <GoldPriceWidget />
+              </div>
+              <div className="stagger-item">
+                <SolanaLearnCard />
+              </div>
             </div>
           </div>
 
           {/* Enhanced DeFi Tab Navigation with New Features - Always Visible */}
-          <Card className="bg-galaxy-card border-galaxy-purple/30 mb-8">
+          <Card className="bg-galaxy-card border-galaxy-purple/30 mb-8 stagger-item">
             <Tabs defaultValue="swap" className="w-full">
                   <TabsList className="grid w-full grid-cols-8 bg-galaxy-purple/20 border-b border-galaxy-purple/30">
                     <TabsTrigger
@@ -195,36 +199,36 @@ export default function Home() {
                   </TabsList>
 
                   <div className="p-6">
-                    <TabsContent value="swap" className="mt-0">
+                    <TabsContent value="swap" className="mt-0 animate-tab-enter">
                       <SelfContainedSwapTab />
                     </TabsContent>
-                    <TabsContent value="send" className="mt-0">
+                    <TabsContent value="send" className="mt-0 animate-tab-enter">
                       <RealSendTab />
                     </TabsContent>
-                    <TabsContent value="gold-send" className="mt-0">
+                    <TabsContent value="gold-send" className="mt-0 animate-tab-enter">
                       <GoldSendTab />
                     </TabsContent>
-                    <TabsContent value="staking" className="mt-0">
+                    <TabsContent value="staking" className="mt-0 animate-tab-enter">
                       <RealStakingTab />
                     </TabsContent>
-                    <TabsContent value="gold-staking" className="mt-0">
+                    <TabsContent value="gold-staking" className="mt-0 animate-tab-enter">
                       <GoldStakingTab />
                     </TabsContent>
                     
-                    <TabsContent value="learn" className="mt-0">
+                    <TabsContent value="learn" className="mt-0 animate-tab-enter">
                       <div className="space-y-6">
                         <div className="flex justify-center">
-                          <SolanaTokenAnimation width={600} height={350} className="shadow-2xl" />
+                          <SolanaTokenAnimation width={600} height={350} className="shadow-2xl float-animation" />
                         </div>
                         <BlockchainEducation />
                       </div>
                     </TabsContent>
 
-                    <TabsContent value="games" className="mt-0">
+                    <TabsContent value="games" className="mt-0 animate-tab-enter">
                       <MiniGamesHub />
                     </TabsContent>
 
-                    <TabsContent value="social" className="mt-0">
+                    <TabsContent value="social" className="mt-0 animate-tab-enter">
                       <div className="space-y-6">
                         <TwitterEmbed />
                       </div>
@@ -235,15 +239,21 @@ export default function Home() {
 
           {/* Analytics and Transaction Feed */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
-            <GoldiumSentimentTrends />
-            <RealTransactionFeed />
+            <div className="stagger-item">
+              <GoldiumSentimentTrends />
+            </div>
+            <div className="stagger-item">
+              <RealTransactionFeed />
+            </div>
           </div>
 
           {/* Real Transaction History with Solscan Links */}
-          <RealTransactionHistory />
+          <div className="stagger-item">
+            <RealTransactionHistory />
+          </div>
           
           {/* GOLD Transaction History from Local Tracking */}
-          <div className="mt-8">
+          <div className="mt-8 stagger-item">
             <TransactionHistory />
           </div>
 

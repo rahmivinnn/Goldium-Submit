@@ -343,3 +343,208 @@ body {
 .animate-pulse {
   animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
+
+/* Enhanced Card Animations */
+@keyframes card-float {
+  0%, 100% { transform: translateY(0px) rotateX(0deg); }
+  50% { transform: translateY(-5px) rotateX(2deg); }
+}
+
+@keyframes card-glow {
+  0%, 100% { box-shadow: 0 8px 32px rgba(100, 50, 200, 0.3); }
+  50% { box-shadow: 0 12px 40px rgba(150, 100, 255, 0.5); }
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+@keyframes bounce-in {
+  0% { transform: scale(0.3) rotate(-10deg); opacity: 0; }
+  50% { transform: scale(1.05) rotate(5deg); }
+  70% { transform: scale(0.9) rotate(-2deg); }
+  100% { transform: scale(1) rotate(0deg); opacity: 1; }
+}
+
+@keyframes slide-up {
+  0% { transform: translateY(30px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes fade-in-scale {
+  0% { transform: scale(0.8); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* Enhanced Card Styles with Animations */
+.bg-galaxy-card {
+  background: linear-gradient(135deg,
+    rgba(30, 20, 60, 0.9) 0%,
+    rgba(40, 15, 70, 0.8) 50%,
+    rgba(25, 25, 80, 0.9) 100%);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(100, 80, 200, 0.3);
+  box-shadow: 0 8px 32px rgba(100, 50, 200, 0.3);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.bg-galaxy-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transition: left 0.5s;
+}
+
+.bg-galaxy-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  animation: card-glow 2s ease-in-out infinite;
+  border-color: rgba(150, 100, 255, 0.5);
+}
+
+.bg-galaxy-card:hover::before {
+  left: 100%;
+}
+
+/* Enhanced Button Animations */
+.bg-galaxy-button {
+  background: linear-gradient(135deg,
+    hsl(260, 80%, 50%) 0%,
+    hsl(300, 70%, 55%) 50%,
+    hsl(240, 90%, 60%) 100%);
+  box-shadow: 0 4px 20px rgba(150, 100, 255, 0.4);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.bg-galaxy-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.3s;
+}
+
+.bg-galaxy-button:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 8px 30px rgba(150, 100, 255, 0.6);
+}
+
+.bg-galaxy-button:hover::before {
+  left: 100%;
+}
+
+.bg-galaxy-button:active {
+  transform: translateY(-1px) scale(1.02);
+}
+
+/* Tab Animation */
+.animate-tab-enter {
+  animation: slide-up 0.3s ease-out;
+}
+
+/* Balance Card Animations */
+.balance-card {
+  animation: fade-in-scale 0.5s ease-out;
+  transition: all 0.3s ease;
+}
+
+.balance-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(100, 50, 200, 0.4);
+}
+
+/* Logo Animation */
+.logo-spin {
+  transition: transform 0.3s ease;
+}
+
+.logo-spin:hover {
+  transform: rotate(360deg) scale(1.1);
+}
+
+/* Network Status Animation */
+.network-status {
+  animation: bounce-in 0.6s ease-out;
+}
+
+/* Floating Animation for Special Elements */
+.float-animation {
+  animation: card-float 3s ease-in-out infinite;
+}
+
+/* Gradient Text Animation */
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.gradient-text {
+  background: linear-gradient(45deg, #ff1493, #8a2be2, #ff69b4, #ba55d3);
+  background-size: 300% 300%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradient-shift 3s ease infinite;
+}
+
+/* Enhanced Hover Effects for Interactive Elements */
+.interactive-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+
+.interactive-hover:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.1);
+}
+
+/* Stagger Animation for Lists */
+.stagger-item {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: slide-up 0.5s ease-out forwards;
+}
+
+.stagger-item:nth-child(1) { animation-delay: 0.1s; }
+.stagger-item:nth-child(2) { animation-delay: 0.2s; }
+.stagger-item:nth-child(3) { animation-delay: 0.3s; }
+.stagger-item:nth-child(4) { animation-delay: 0.4s; }
+.stagger-item:nth-child(5) { animation-delay: 0.5s; }
+.stagger-item:nth-child(6) { animation-delay: 0.6s; }
+.stagger-item:nth-child(7) { animation-delay: 0.7s; }
+.stagger-item:nth-child(8) { animation-delay: 0.8s; }
+
+/* Enhanced Loading Animation */
+@keyframes loading-dots {
+  0%, 20% { transform: scale(1); }
+  50% { transform: scale(1.5); }
+  80%, 100% { transform: scale(1); }
+}
+
+.loading-dots {
+  display: inline-flex;
+  gap: 4px;
+}
+
+.loading-dots > div {
+  width: 8px;
+  height: 8px;
+  background: var(--galaxy-accent);
+  border-radius: 50%;
+  animation: loading-dots 1.4s ease-in-out infinite;
+}
+
+.loading-dots > div:nth-child(1) { animation-delay: 0s; }
+.loading-dots > div:nth-child(2) { animation-delay: 0.2s; }
+.loading-dots > div:nth-child(3) { animation-delay: 0.4s; }
