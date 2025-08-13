@@ -408,6 +408,22 @@ body {
   border-color: rgba(150, 100, 255, 0.5);
 }
 
+/* Fix for DeFi tabs - prevent content disappearing on hover */
+.defi-tabs-container {
+  position: relative;
+  z-index: 10;
+}
+
+.defi-tabs-container .bg-galaxy-card:hover {
+  transform: none !important;
+  animation: none !important;
+  border-color: rgba(150, 100, 255, 0.3);
+}
+
+.defi-tabs-container .bg-galaxy-card:hover::before {
+  left: -100% !important;
+}
+
 .bg-galaxy-card:hover::before {
   left: 100%;
 }

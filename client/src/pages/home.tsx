@@ -130,7 +130,7 @@ export default function Home() {
           </div>
 
           {/* Enhanced DeFi Tab Navigation with New Features - Always Visible */}
-          <Card className="bg-galaxy-card border-galaxy-purple/30 mb-8 stagger-item">
+          <Card className="bg-galaxy-card border-galaxy-purple/30 mb-8 stagger-item defi-tabs-container">
             <Tabs defaultValue="swap" className="w-full">
                   <TabsList className="grid w-full grid-cols-8 bg-galaxy-purple/20 border-b border-galaxy-purple/30">
                     <TabsTrigger

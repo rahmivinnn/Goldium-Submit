@@ -182,10 +182,8 @@ export function RealSendTab() {
         amount: sendAmount
       });
       
-      // Show contract address info for GOLD token
-      if (selectedToken === 'GOLD') {
-        solscanTracker.showContractInfo('GOLD');
-      }
+      // Show contract address info 
+      solscanTracker.showContractInfo(selectedToken);
       
       // Wait for confirmation on blockchain
       await connection.confirmTransaction(signature);
