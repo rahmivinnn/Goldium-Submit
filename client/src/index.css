@@ -183,25 +183,56 @@ body {
   text-shadow: 0 2px 8px rgba(150, 100, 255, 0.5);
 }
 
-/* Wallet Button Styles */
+/* Wallet Button Styles - Fixed flickering */
 .wallet-adapter-button {
   background: linear-gradient(135deg, var(--galaxy-purple) 0%, var(--galaxy-blue) 100%);
   border: none;
   border-radius: 0.5rem;
-  color: white;
+  color: white !important;
   font-weight: 600;
   padding: 0.5rem 1.5rem;
-  transition: all 0.3s;
+  transition: all 0.2s ease-out;
   box-shadow: 0 4px 20px rgba(100, 50, 200, 0.4);
+  outline: none !important;
+  will-change: transform, box-shadow;
 }
 
 .wallet-adapter-button:hover {
-  transform: translateY(-2px);
+  transform: translateY(-2px) scale(1.02);
   box-shadow: 0 8px 30px rgba(100, 50, 200, 0.6);
 }
 
-.wallet-adapter-button:hover {
-  transform: scale(1.05);
+.wallet-adapter-button:active {
+  transform: translateY(0px) scale(1.0);
+  transition: all 0.1s ease-out;
+}
+
+.wallet-adapter-button:focus {
+  outline: none !important;
+  box-shadow: 0 4px 20px rgba(100, 50, 200, 0.4);
+}
+
+/* Anti-flickering for all interactive buttons */
+.wallet-adapter-button,
+.wallet-adapter-button-trigger,
+button[role="combobox"],
+button[aria-expanded] {
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+/* Prevent rapid state changes that cause flickering */
+.wallet-adapter-button[disabled] {
+  pointer-events: none;
+  opacity: 0.6;
+  transform: none !important;
+}
+
+/* Smooth transitions only */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .wallet-adapter-modal {
