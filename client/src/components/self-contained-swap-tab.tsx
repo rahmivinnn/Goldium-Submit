@@ -192,12 +192,37 @@ export function SelfContainedSwapTab() {
         });
         setShowSuccessModal(true);
 
+        // Update GOLD balance in transaction history immediately
+        try {
+          const { transactionHistory } = await import('../lib/transaction-history');
+          const walletAddress = externalWallet.connected ? externalWallet.address : walletContext.address;
+          
+          if (walletAddress) {
+            transactionHistory.setCurrentWallet(walletAddress);
+            
+            if (fromToken === 'SOL') {
+              // User swapped SOL to GOLD - add GOLD to their balance
+              const goldReceived = Number(toAmount);
+              transactionHistory.addGoldTransaction('swap_receive', goldReceived, result.signature);
+              console.log(`🪙 Added ${goldReceived} GOLD to user balance from swap`);
+            } else {
+              // User swapped GOLD to SOL - deduct GOLD from their balance
+              const goldSpent = Number(fromAmount);
+              transactionHistory.addGoldTransaction('swap_send', -goldSpent, result.signature);
+              console.log(`🪙 Deducted ${goldSpent} GOLD from user balance for swap`);
+            }
+          }
+        } catch (error) {
+          console.error('Failed to update GOLD balance:', error);
+        }
+
         // Clear form
         setFromAmount('');
         setToAmount('');
         
-        // Refresh balances
-        setTimeout(() => refetch(), 2000);
+        // Refresh balances immediately and again after delay
+        refetch();
+        setTimeout(() => refetch(), 1000);
         
       } else {
         throw new Error(result.error || 'Swap failed');

@@ -238,6 +238,41 @@ class TransactionHistoryManager {
       stakedGold: data.stakedGoldBalance
     };
   }
+
+  // Simplified method to add GOLD transactions (for swap updates)
+  addGoldTransaction(type: 'swap_receive' | 'swap_send' | 'stake' | 'unstake', amount: number, signature: string): void {
+    if (!this.currentWallet) {
+      console.warn('⚠️ No wallet connected - GOLD transaction not saved');
+      return;
+    }
+
+    const walletData = this.getCurrentWalletData();
+    if (!walletData) return;
+
+    // Directly update GOLD balance
+    if (type === 'swap_receive') {
+      walletData.goldBalance += Math.abs(amount);
+      console.log(`🪙 GOLD balance increased: +${Math.abs(amount)} (Total: ${walletData.goldBalance})`);
+    } else if (type === 'swap_send') {
+      walletData.goldBalance -= Math.abs(amount);
+      console.log(`🪙 GOLD balance decreased: -${Math.abs(amount)} (Total: ${walletData.goldBalance})`);
+    } else if (type === 'stake') {
+      walletData.goldBalance -= Math.abs(amount);
+      walletData.stakedGoldBalance += Math.abs(amount);
+      console.log(`🔒 GOLD staked: ${Math.abs(amount)} (Balance: ${walletData.goldBalance}, Staked: ${walletData.stakedGoldBalance})`);
+    } else if (type === 'unstake') {
+      walletData.stakedGoldBalance -= Math.abs(amount);
+      walletData.goldBalance += Math.abs(amount);
+      console.log(`🔓 GOLD unstaked: ${Math.abs(amount)} (Balance: ${walletData.goldBalance}, Staked: ${walletData.stakedGoldBalance})`);
+    }
+
+    // Ensure balances don't go negative
+    walletData.goldBalance = Math.max(0, walletData.goldBalance);
+    walletData.stakedGoldBalance = Math.max(0, walletData.stakedGoldBalance);
+
+    // Save to localStorage
+    this.saveWalletData(this.currentWallet);
+  }
 }
 
 export const transactionHistory = TransactionHistoryManager.getInstance();

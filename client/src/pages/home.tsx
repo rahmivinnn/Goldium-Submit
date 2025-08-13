@@ -162,11 +162,12 @@ export default function Home() {
                     </TabsTrigger>
                     <TabsTrigger
                       value="staking"
-                      className="data-[state=active]:bg-blue-gradient data-[state=active]:text-white"
+                      className="data-[state=active]:bg-gray-600 data-[state=active]:text-gray-400 opacity-50 cursor-not-allowed"
+                      disabled
                     >
                       <div className="flex items-center gap-2">
-                        <SolanaIcon size={16} className="text-purple-400" />
-                        SOL Stake
+                        <SolanaIcon size={16} className="text-gray-500" />
+                        SOL Stake (Disabled)
                       </div>
                     </TabsTrigger>
                     <TabsTrigger
@@ -175,7 +176,7 @@ export default function Home() {
                     >
                       <div className="flex items-center gap-2">
                         <img src={logoImage} alt="GOLD" className="w-4 h-4 object-contain" />
-                        GOLD Stake
+                        Stake GOLD (5% APY)
                       </div>
                     </TabsTrigger>
                     <TabsTrigger
@@ -209,7 +210,10 @@ export default function Home() {
                       <GoldSendTab />
                     </TabsContent>
                     <TabsContent value="staking" className="mt-0 animate-tab-enter">
-                      <RealStakingTab />
+                      <div className="text-center py-8">
+                        <p className="text-gray-500">SOL staking is temporarily disabled.</p>
+                        <p className="text-yellow-400 mt-2">Use GOLD Staking for 5% APY rewards!</p>
+                      </div>
                     </TabsContent>
                     <TabsContent value="gold-staking" className="mt-0 animate-tab-enter">
                       <GoldStakingTab />

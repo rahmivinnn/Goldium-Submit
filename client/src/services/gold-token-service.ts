@@ -28,12 +28,21 @@ export class GoldTokenService {
     this.connection = new Connection('https://solana.publicnode.com', 'confirmed');
   }
 
-  // Get GOLD token balance from wallet
+  // Get GOLD token balance - combines blockchain and local tracking
   async getGoldBalance(walletAddress: string): Promise<number> {
     try {
-      const publicKey = new PublicKey(walletAddress);
+      // First check local transaction history for more accurate balance
+      const { transactionHistory } = await import('../lib/transaction-history');
+      transactionHistory.setCurrentWallet(walletAddress);
       
-      // Get associated token account for GOLD token
+      const localBalance = transactionHistory.getGoldBalance();
+      if (localBalance > 0) {
+        console.log(`✅ GOLD balance from local tracking: ${localBalance} GOLD`);
+        return localBalance;
+      }
+
+      // Fallback to blockchain query
+      const publicKey = new PublicKey(walletAddress);
       const tokenAccount = await getAssociatedTokenAddress(
         GOLD_TOKEN_MINT,
         publicKey
@@ -42,13 +51,14 @@ export class GoldTokenService {
       const tokenAccountInfo = await this.connection.getTokenAccountBalance(tokenAccount);
       
       if (tokenAccountInfo.value) {
-        return parseFloat(tokenAccountInfo.value.amount) / Math.pow(10, GOLD_DECIMALS);
+        const balance = parseFloat(tokenAccountInfo.value.amount) / Math.pow(10, GOLD_DECIMALS);
+        console.log(`✅ GOLD balance from blockchain: ${balance} GOLD`);
+        return balance;
       }
       
       return 0;
     } catch (error) {
       console.log('GOLD balance fetch failed, returning 0 - no fake data');
-      // No mock data - return 0 if user doesn't have GOLD tokens
       return 0;
     }
   }
