@@ -391,41 +391,16 @@ body {
   overflow: hidden;
 }
 
+/* Disable shimmer effect that causes content issues */
 .bg-galaxy-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-  transition: left 0.5s;
+  display: none;
 }
 
+/* Stable hover effects for galaxy cards - no transform/animation */
 .bg-galaxy-card:hover {
-  transform: translateY(-8px) scale(1.02);
-  animation: card-glow 2s ease-in-out infinite;
   border-color: rgba(150, 100, 255, 0.5);
-}
-
-/* Fix for DeFi tabs - prevent content disappearing on hover */
-.defi-tabs-container {
-  position: relative;
-  z-index: 10;
-}
-
-.defi-tabs-container .bg-galaxy-card:hover {
-  transform: none !important;
-  animation: none !important;
-  border-color: rgba(150, 100, 255, 0.3);
-}
-
-.defi-tabs-container .bg-galaxy-card:hover::before {
-  left: -100% !important;
-}
-
-.bg-galaxy-card:hover::before {
-  left: 100%;
+  box-shadow: 0 8px 32px rgba(100, 50, 200, 0.4);
+  /* No transform or animation to prevent content disappearing */
 }
 
 /* Enhanced Button Animations */

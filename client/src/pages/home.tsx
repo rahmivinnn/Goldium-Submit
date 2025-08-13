@@ -130,7 +130,7 @@ export default function Home() {
           </div>
 
           {/* Enhanced DeFi Tab Navigation with New Features - Always Visible */}
-          <Card className="bg-galaxy-card border-galaxy-purple/30 mb-8 stagger-item defi-tabs-container">
+          <div className="bg-galaxy-card border-galaxy-purple/30 mb-8 stagger-item rounded-lg overflow-hidden" style={{ transform: 'none !important' }}>
             <Tabs defaultValue="swap" className="w-full">
                   <TabsList className="grid w-full grid-cols-8 bg-galaxy-purple/20 border-b border-galaxy-purple/30">
                     <TabsTrigger
@@ -235,7 +235,7 @@ export default function Home() {
                     </TabsContent>
                   </div>
             </Tabs>
-          </Card>
+          </div>
 
           {/* Analytics and Transaction Feed */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
