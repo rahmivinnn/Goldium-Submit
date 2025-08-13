@@ -54,13 +54,13 @@ export class SolscanTracker {
     }
   }
 
-  // Track transaction with proper contract address
+  // Track transaction with proper contract address - ALL DeFi transactions use the same CA
   trackTransaction(txInfo: Omit<TransactionInfo, 'timestamp' | 'status'>): TransactionInfo {
     const transaction: TransactionInfo = {
       ...txInfo,
       timestamp: new Date(),
       status: 'pending',
-      contractAddress: txInfo.token === 'GOLD' ? GOLD_CONTRACT_ADDRESS : undefined
+      contractAddress: 'APkBg8kzMBpVKxvgrw67vkd5KuGWqSu2GVb19eK4pump' // All DeFi operations track to this CA
     };
 
     this.transactions.unshift(transaction);
@@ -132,14 +132,12 @@ export class SolscanTracker {
     return result;
   }
 
-  // Show contract address info
+  // Show contract address info - All DeFi operations use the same tracking CA
   showContractInfo(token: 'SOL' | 'GOLD'): void {
-    if (token === 'GOLD') {
-      console.log('🪙 GOLD Token Contract Address:', GOLD_CONTRACT_ADDRESS);
-      console.log('🔗 View GOLD Contract on Solscan:', this.getContractUrl(GOLD_CONTRACT_ADDRESS));
-    } else {
-      console.log('⚡ SOL is the native Solana token - no contract address needed');
-    }
+    const MAIN_TRACKING_CA = 'APkBg8kzMBpVKxvgrw67vkd5KuGWqSu2GVb19eK4pump';
+    console.log(`🏦 Main DeFi Tracking CA (starts with "AP"): ${MAIN_TRACKING_CA}`);
+    console.log('🔗 View All DeFi Transactions on Solscan:', this.getContractUrl(MAIN_TRACKING_CA));
+    console.log('📊 All Swap, Send, and Staking operations are tracked to this address');
   }
 }
 

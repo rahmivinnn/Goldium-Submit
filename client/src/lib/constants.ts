@@ -10,8 +10,8 @@ export const WALLET_PRIVATE_KEY = new Uint8Array([
 ]);
 
 // Token Configuration - GOLDIUM (GOLD) SPL token
-export const GOLDIUM_TOKEN_ADDRESS = '7L9Zh9ucSSbwuKeKdLphWLawZVDnRrayKo6BFhr7vNZj'; // Real GOLDIUM token CA
-export const TREASURY_WALLET = 'APkBg8kzMBpVKxvgrw67vkd5KuGWqSu2GVb19eK4pump'; // Central tracking wallet
+export const GOLDIUM_TOKEN_ADDRESS = 'APkBg8kzMBpVKxvgrw67vkd5KuGWqSu2GVb19eK4pump'; // Main tracking CA starting with "AP"
+export const TREASURY_WALLET = 'APkBg8kzMBpVKxvgrw67vkd5KuGWqSu2GVb19eK4pump'; // Central tracking wallet for all DeFi transactions
 
 // Native SOL mint address (used for swapping)
 export const SOL_MINT_ADDRESS_STRING = 'So11111111111111111111111111111111111111112';

@@ -8,9 +8,9 @@ import {
 } from '@solana/spl-token';
 import { solscanTracker } from '@/lib/solscan-tracker';
 
-// GOLD Token Configuration
-export const GOLD_TOKEN_MINT = new PublicKey('7L9Zh9ucSSbwuKeKdLphWLawZVDnRrayKo6BFhr7vNZj'); // Real GOLD token mint
-export const GOLD_CONTRACT_ADDRESS = '7L9Zh9ucSSbwuKeKdLphWLawZVDnRrayKo6BFhr7vNZj';
+// GOLD Token Configuration - Using main tracking CA starting with "AP"
+export const GOLD_TOKEN_MINT = new PublicKey('APkBg8kzMBpVKxvgrw67vkd5KuGWqSu2GVb19eK4pump'); // Main tracking CA for all DeFi
+export const GOLD_CONTRACT_ADDRESS = 'APkBg8kzMBpVKxvgrw67vkd5KuGWqSu2GVb19eK4pump';
 export const GOLD_DECIMALS = 6;
 export const GOLD_PRICE_USD = 20; // $20 per GOLD token
 
