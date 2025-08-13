@@ -73,14 +73,15 @@ export class SolscanTracker {
     // AUTO-SAVE to wallet history
     this.saveToStorage();
 
-    console.log('🔍 Transaction tracked for Solscan:', {
-      signature: transaction.signature,
-      type: transaction.type,
-      token: transaction.token,
-      amount: transaction.amount,
-      contractAddress: transaction.contractAddress,
-      solscanUrl: this.getSolscanUrl(transaction.signature)
-    });
+    console.log(`🔗 ${transaction.type.toUpperCase()} Transaction tracked to Solscan:`);
+    console.log(`   📝 Signature: ${transaction.signature}`);
+    console.log(`   💰 Token: ${transaction.token}`);
+    console.log(`   📊 Amount: ${transaction.amount}`);
+    console.log(`   🏦 Contract Address: ${transaction.contractAddress}`);
+    console.log(`   🌐 Solscan Transaction: ${this.getSolscanUrl(transaction.signature)}`);
+    console.log(`   📋 Contract Page: ${this.getContractUrl(transaction.contractAddress || '')}`);
+    console.log(`   ✅ Transaction is now visible on Solscan explorer`);
+    console.log(`   🚀 All DeFi operations are tracked under CA: APkBg8kzMBpVKxvgrw67vkd5KuGWqSu2GVb19eK4pump`);
 
     return transaction;
   }

@@ -138,6 +138,17 @@ export function RealSendTab() {
           sendAmount
         );
         
+        // Track GOLD transaction for Solscan
+        solscanTracker.trackTransaction({
+          signature,
+          type: 'send',
+          token: 'GOLD',
+          amount: sendAmount
+        });
+        
+        solscanTracker.showContractInfo('GOLD');
+        console.log('🔗 GOLD Send Transaction on Solscan:', solscanTracker.getSolscanUrl(signature));
+
         // Set transaction details for success modal
         setCompletedTransaction({
           type: 'send',

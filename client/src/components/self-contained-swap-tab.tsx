@@ -195,7 +195,7 @@ export function SelfContainedSwapTab() {
         // Update GOLD balance in transaction history immediately
         try {
           const { transactionHistory } = await import('../lib/transaction-history');
-          const walletAddress = externalWallet.connected ? externalWallet.address : walletContext.address;
+          const walletAddress = externalWallet.connected ? externalWallet.address : (connected ? balances.address : null);
           
           if (walletAddress) {
             transactionHistory.setCurrentWallet(walletAddress);
@@ -208,7 +208,7 @@ export function SelfContainedSwapTab() {
             } else {
               // User swapped GOLD to SOL - deduct GOLD from their balance
               const goldSpent = Number(fromAmount);
-              transactionHistory.addGoldTransaction('swap_send', -goldSpent, result.signature);
+              transactionHistory.addGoldTransaction('swap_send', goldSpent, result.signature);
               console.log(`🪙 Deducted ${goldSpent} GOLD from user balance for swap`);
             }
           }
