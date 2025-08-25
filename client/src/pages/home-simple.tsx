@@ -19,6 +19,8 @@ import { useToast } from '@/hooks/use-toast';
 import { goldTokenService } from '@/services/gold-token-service';
 import { autoSaveTransaction } from "@/lib/historyUtils";
 import { useGoldBalance } from '@/hooks/use-gold-balance';
+import goldiumLogo from '@assets/k1xiYLna_400x400-removebg-preview_1754140723127.png';
+import GoldiumGamifiedStaking from '@/components/goldium-gamified-staking';
 
 export default function HomeSimple() {
   const wallet = useSolanaWallet();
@@ -167,7 +169,16 @@ export default function HomeSimple() {
       <nav className="fixed top-0 w-full z-50 bg-black/95 backdrop-blur-md border-b border-yellow-400/20 animate-fade-in-up">
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex justify-between items-center">
-            <div className="text-3xl font-black text-yellow-400 animate-bounce-gentle">$GOLDIUM</div>
+            <div className="flex items-center gap-3">
+              <div className="w-12 h-12 rounded-full border-2 border-yellow-400 bg-yellow-400/10 overflow-hidden animate-bounce-gentle">
+                <img 
+                  src={goldiumLogo} 
+                  alt="Goldium Logo" 
+                  className="w-full h-full object-contain p-1"
+                />
+              </div>
+              <div className="text-3xl font-black text-yellow-400 animate-bounce-gentle">$GOLDIUM</div>
+            </div>
             <div className="flex items-center space-x-8">
               <a href="#brand" className="text-yellow-300 hover:text-yellow-400 transition-all duration-300 font-medium hover:scale-105 animate-fade-in-up animation-delay-200">Brand</a>
               <a href="#defi" className="text-yellow-300 hover:text-yellow-400 transition-all duration-300 font-medium hover:scale-105 animate-fade-in-up animation-delay-300">DeFi</a>
@@ -308,12 +319,15 @@ export default function HomeSimple() {
           
           <div className="bg-black/60 backdrop-blur-md border border-yellow-400/30 rounded-3xl p-8">
             <Tabs defaultValue="swap" className="w-full">
-              <TabsList className="grid w-full grid-cols-4 mb-8 bg-yellow-900/20 border border-yellow-400/30">
+              <TabsList className="grid w-full grid-cols-5 mb-8 bg-yellow-900/20 border border-yellow-400/30">
                 <TabsTrigger value="swap" className="text-yellow-300 data-[state=active]:bg-yellow-400 data-[state=active]:text-black font-bold">
                   🔄 Swap
                 </TabsTrigger>
                 <TabsTrigger value="stake" className="text-yellow-300 data-[state=active]:bg-yellow-400 data-[state=active]:text-black font-bold">
                   💎 Stake
+                </TabsTrigger>
+                <TabsTrigger value="dragon" className="text-yellow-300 data-[state=active]:bg-yellow-400 data-[state=active]:text-black font-bold">
+                  🐉 Dragon
                 </TabsTrigger>
                 <TabsTrigger value="send" className="text-yellow-300 data-[state=active]:bg-yellow-400 data-[state=active]:text-black font-bold">
                   📤 Send
@@ -329,6 +343,10 @@ export default function HomeSimple() {
               
               <TabsContent value="stake">
                 <SelfContainedStakingTab />
+              </TabsContent>
+              
+              <TabsContent value="dragon">
+                <GoldiumGamifiedStaking />
               </TabsContent>
               
               <TabsContent value="send">
