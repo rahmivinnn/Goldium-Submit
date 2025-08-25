@@ -53,11 +53,21 @@ export function GoldiumTxFeed() {
         const txTypes: ('SWAP' | 'SEND' | 'STAKE')[] = ['SWAP', 'SEND', 'STAKE'];
         const tokens = ['SOL', 'GOLD'];
         
+        const selectedToken = tokens[Math.floor(Math.random() * tokens.length)];
+        const selectedType = txTypes[Math.floor(Math.random() * txTypes.length)];
+        
+        let amount;
+        if (selectedToken === 'SOL') {
+          amount = selectedType === 'SWAP' ? Math.random() * 5 + 0.1 : Math.random() * 2 + 0.05;
+        } else {
+          amount = selectedType === 'SWAP' ? Math.random() * 50000 + 5000 : Math.random() * 25000 + 1000;
+        }
+        
         const newTx: Transaction = {
           id: `tx_${Date.now()}`,
-          type: txTypes[Math.floor(Math.random() * txTypes.length)],
-          amount: tokens[0] === 'SOL' ? Math.random() * 0.1 + 0.001 : Math.random() * 1000 + 100,
-          token: tokens[Math.floor(Math.random() * tokens.length)],
+          type: selectedType,
+          amount: amount,
+          token: selectedToken,
           user: generateRandomAddress(),
           timestamp: new Date(),
           signature: generateRandomTxId()
@@ -65,18 +75,23 @@ export function GoldiumTxFeed() {
 
         setTransactions(prev => [newTx, ...prev.slice(0, 9)]);
       }
-    }, 8000);
+    }, 20000); // Reduced frequency to improve performance
 
     return () => clearInterval(interval);
   }, [isLive]);
 
   const generateRandomAddress = () => {
-    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    let result = '';
-    for (let i = 0; i < 4; i++) {
-      result += chars.charAt(Math.floor(Math.random() * chars.length));
-    }
-    return result + '...' + chars.slice(0, 3);
+    const realAddresses = [
+      'GLD1...x7K9',
+      'GOLD...m3N2', 
+      'SOL1...p8Q4',
+      'DeFi...k5L7',
+      'Mint...w9R6',
+      'Swap...t2Y8',
+      'Stak...v4B1',
+      'User...h6M3'
+    ];
+    return realAddresses[Math.floor(Math.random() * realAddresses.length)];
   };
 
   const generateRandomTxId = () => {

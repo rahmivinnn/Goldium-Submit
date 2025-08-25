@@ -18,7 +18,7 @@ function BlockchainParticles({ containerRef }: { containerRef: React.RefObject<H
     containerRef.current.appendChild(renderer.domElement);
 
     // Create particle system
-    const particleCount = 800; // Optimized count
+    const particleCount = 200; // Further optimized for performance
     const positions = new Float32Array(particleCount * 3);
     const colors = new Float32Array(particleCount * 3);
 
@@ -73,19 +73,24 @@ function BlockchainParticles({ containerRef }: { containerRef: React.RefObject<H
 
     // Animation and cleanup handled directly without refs
 
-    // Animation loop
+    // Optimized animation loop with reduced frequency
     let animationId: number;
+    let frameCount = 0;
     const animate = () => {
       animationId = requestAnimationFrame(animate);
+      frameCount++;
       
-      // Smooth rotation
-      particles.rotation.x += 0.001;
-      particles.rotation.y += 0.002;
-      
-      octa.rotation.x += 0.01;
-      octa.rotation.y += 0.01;
-      ico.rotation.x -= 0.008;
-      ico.rotation.y += 0.012;
+      // Reduce animation frequency to every 2nd frame
+      if (frameCount % 2 === 0) {
+        // Smooth rotation
+        particles.rotation.x += 0.0005;
+        particles.rotation.y += 0.001;
+        
+        octa.rotation.x += 0.005;
+        octa.rotation.y += 0.005;
+        ico.rotation.x -= 0.004;
+        ico.rotation.y += 0.006;
+      }
 
       renderer.render(scene, camera);
     };

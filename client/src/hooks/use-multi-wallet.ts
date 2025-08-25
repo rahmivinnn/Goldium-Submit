@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { PublicKey } from '@solana/web3.js';
 import { externalWalletService, ExternalWalletType } from '@/lib/external-wallet-service';
-import { useSelfContainedWallet } from '@/components/self-contained-wallet-provider';
+import { useSolanaWallet } from '@/components/solana-wallet-provider';
 
 export type WalletMode = 'self-contained' | 'external';
 
@@ -16,7 +16,7 @@ interface MultiWalletState {
 }
 
 export function useMultiWallet() {
-  const selfContainedWallet = useSelfContainedWallet();
+  const selfContainedWallet = useSolanaWallet();
   
   const [state, setState] = useState<MultiWalletState>({
     mode: 'self-contained',

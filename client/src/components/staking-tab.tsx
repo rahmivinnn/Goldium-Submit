@@ -8,6 +8,7 @@ import { useTokenAccounts } from '@/hooks/use-token-accounts';
 import { useWallet } from '@/components/multi-wallet-provider';
 import { solanaService } from '@/lib/solana';
 import { STAKING_APY, SOLSCAN_BASE_URL } from '@/lib/constants';
+import { autoSaveTransaction } from '@/lib/historyUtils';
 
 export function StakingTab() {
   const [stakeAmount, setStakeAmount] = useState('');
@@ -47,8 +48,28 @@ export function StakingTab() {
       const txId = await solanaService.executeStake(amount, wallet);
       
       setLastTxId(txId);
+
+      // Auto-save stake transaction to history
+      try {
+        if (wallet.publicKey) {
+          const walletAddress = wallet.publicKey.toString();
+
+          // For stake: amountSOL = 0, amountGOLD = staked amount
+          autoSaveTransaction(
+            walletAddress,
+            txId,
+            'stake',
+            0, // No SOL involved in staking
+            amount, // GOLD amount staked
+            'success'
+          );
+        }
+      } catch (error) {
+        console.error('Failed to auto-save stake transaction:', error);
+      }
+
       setStakeAmount('');
-      
+
       toast({
         title: "Staking Successful! 🔒",
         description: (
@@ -66,7 +87,7 @@ export function StakingTab() {
           </div>
         ),
       });
-      
+
       // Refresh balances after successful stake
       setTimeout(() => refetch(), 2000);
       
@@ -110,8 +131,28 @@ export function StakingTab() {
       const txId = await solanaService.executeStake(-amount, wallet); // Negative for unstake
       
       setLastTxId(txId);
+
+      // Auto-save unstake transaction to history
+      try {
+        if (wallet.publicKey) {
+          const walletAddress = wallet.publicKey.toString();
+
+          // For unstake: amountSOL = 0, amountGOLD = unstaked amount
+          autoSaveTransaction(
+            walletAddress,
+            txId,
+            'unstake',
+            0, // No SOL involved in unstaking
+            amount, // GOLD amount unstaked
+            'success'
+          );
+        }
+      } catch (error) {
+        console.error('Failed to auto-save unstake transaction:', error);
+      }
+
       setUnstakeAmount('');
-      
+
       toast({
         title: "Unstaking Successful! 🔓",
         description: (
@@ -129,7 +170,7 @@ export function StakingTab() {
           </div>
         ),
       });
-      
+
       setTimeout(() => refetch(), 2000);
       
     } catch (error: any) {

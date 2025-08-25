@@ -3,14 +3,15 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { ExternalLink } from 'lucide-react';
-import { useSelfContainedWallet } from './self-contained-wallet-provider';
+import { useSolanaWallet } from './solana-wallet-provider';
 import { useSelfContainedBalances } from '@/hooks/use-self-contained-balances';
 import { useExternalWallets } from '@/hooks/use-external-wallets';
 import { useToast } from '@/hooks/use-toast';
 import { STAKING_APY, SOLSCAN_BASE_URL } from '@/lib/constants';
+import { autoSaveTransaction } from '@/lib/historyUtils';
 
 export function SelfContainedStakingTab() {
-  const { connected, stakingService } = useSelfContainedWallet();
+  const { connected, stakingService, refreshTransactionHistory } = useSolanaWallet();
   const { balances, refetch } = useSelfContainedBalances();
   const externalWallet = useExternalWallets();
   const { toast } = useToast();
@@ -53,8 +54,31 @@ export function SelfContainedStakingTab() {
       
       if (result.success && result.signature) {
         setLastTxId(result.signature);
+
+        // Auto-save stake transaction to history
+        try {
+          const walletAddress = externalWallet.connected ? externalWallet.address : balances.address;
+
+          if (walletAddress) {
+            // For stake: amountSOL = 0, amountGOLD = staked amount
+            autoSaveTransaction(
+              walletAddress,
+              result.signature,
+              'stake',
+              0, // No SOL involved in staking
+              amount, // GOLD amount staked
+              'success'
+            );
+
+            // Refresh transaction history in wallet provider
+            refreshTransactionHistory();
+          }
+        } catch (error) {
+          console.error('Failed to auto-save stake transaction:', error);
+        }
+
         setStakeAmount('');
-        
+
         toast({
           title: "Staking Successful! 🔒",
           description: (
@@ -72,7 +96,7 @@ export function SelfContainedStakingTab() {
             </div>
           ),
         });
-        
+
         // Refresh balances after successful stake
         setTimeout(() => refetch(), 2000);
         
@@ -122,8 +146,31 @@ export function SelfContainedStakingTab() {
       
       if (result.success && result.signature) {
         setLastTxId(result.signature);
+
+        // Auto-save unstake transaction to history
+        try {
+          const walletAddress = externalWallet.connected ? externalWallet.address : balances.address;
+
+          if (walletAddress) {
+            // For unstake: amountSOL = 0, amountGOLD = unstaked amount
+            autoSaveTransaction(
+              walletAddress,
+              result.signature,
+              'unstake',
+              0, // No SOL involved in unstaking
+              amount, // GOLD amount unstaked
+              'success'
+            );
+
+            // Refresh transaction history in wallet provider
+            refreshTransactionHistory();
+          }
+        } catch (error) {
+          console.error('Failed to auto-save unstake transaction:', error);
+        }
+
         setUnstakeAmount('');
-        
+
         toast({
           title: "Unstaking Successful! 🔓",
           description: (
@@ -141,7 +188,7 @@ export function SelfContainedStakingTab() {
             </div>
           ),
         });
-        
+
         setTimeout(() => refetch(), 2000);
         
       } else {
@@ -221,18 +268,18 @@ export function SelfContainedStakingTab() {
     <div className="max-W-2xl mx-auto space-y-6">
       {/* Wallet Balance Display */}
       {externalWallet.connected && (
-        <Card className="bg-galaxy-card border-galaxy-purple/30 hover:border-galaxy-blue/50 transition-all duration-300">
+        <Card className="bg-black/70 border-yellow-400/40 hover:border-yellow-400/70 transition-all duration-300">
           <CardContent className="p-4">
             <div className="flex items-center justify-between">
               <div>
-                <h3 className="text-lg font-semibold text-galaxy-bright">Wallet Balance</h3>
-                <p className="text-sm text-galaxy-accent">Connected: {externalWallet.selectedWallet}</p>
+                <h3 className="text-lg font-semibold text-yellow-100">Wallet Balance</h3>
+                <p className="text-sm text-yellow-200/70">Connected: {externalWallet.selectedWallet}</p>
               </div>
               <div className="text-right">
-                <p className="text-2xl font-bold text-galaxy-blue">
+                <p className="text-2xl font-bold text-yellow-400">
                   {externalWallet.balance.toFixed(4)} SOL
                 </p>
-                <p className="text-sm text-galaxy-accent">
+                <p className="text-sm text-yellow-200/70">
                   ≈ ${(externalWallet.balance * 195.5).toFixed(2)} USD
                 </p>
               </div>
@@ -243,26 +290,26 @@ export function SelfContainedStakingTab() {
 
       {/* Staking Stats */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-        <Card className="bg-galaxy-card border-galaxy-purple/30 hover:border-green-400/50 transition-all duration-300 transform hover:scale-105">
+        <Card className="bg-black/70 border-yellow-400/40 hover:border-yellow-400/70 transition-all duration-300 transform hover:scale-105">
           <CardContent className="p-4 text-center">
-            <p className="text-2xl font-bold text-green-400">{STAKING_APY}%</p>
-            <p className="text-sm text-galaxy-accent">Annual APY</p>
+            <p className="text-2xl font-bold text-yellow-400">{STAKING_APY}%</p>
+            <p className="text-sm text-yellow-200/70">Annual APY</p>
           </CardContent>
         </Card>
-        <Card className="bg-galaxy-card border-galaxy-purple/30 hover:border-gold-primary/50 transition-all duration-300 transform hover:scale-105">
+        <Card className="bg-black/70 border-yellow-400/40 hover:border-yellow-400/70 transition-all duration-300 transform hover:scale-105">
           <CardContent className="p-4 text-center">
-            <p className="text-2xl font-bold text-gold-primary">
+            <p className="text-2xl font-bold text-yellow-400">
               {balances.stakedGold.toFixed(2)}
             </p>
-            <p className="text-sm text-galaxy-accent">GOLD Staked</p>
+            <p className="text-sm text-yellow-200/70">GOLD Staked</p>
           </CardContent>
         </Card>
-        <Card className="bg-galaxy-card border-galaxy-purple/30 hover:border-galaxy-blue/50 transition-all duration-300 transform hover:scale-105">
+        <Card className="bg-black/70 border-yellow-400/40 hover:border-yellow-400/70 transition-all duration-300 transform hover:scale-105">
           <CardContent className="p-4 text-center">
-            <p className="text-2xl font-bold text-galaxy-blue">
+            <p className="text-2xl font-bold text-yellow-400">
               {balances.claimableRewards.toFixed(4)}
             </p>
-            <p className="text-sm text-galaxy-accent">Claimable Rewards</p>
+            <p className="text-sm text-yellow-200/70">Claimable Rewards</p>
           </CardContent>
         </Card>
       </div>
@@ -270,23 +317,23 @@ export function SelfContainedStakingTab() {
       {/* Staking Actions */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* Stake */}
-        <Card className="bg-galaxy-card border-galaxy-purple/30 hover:border-green-400/50 transition-all duration-300">
+        <Card className="bg-black/70 border-yellow-400/40 hover:border-yellow-400/70 transition-all duration-300">
           <CardContent className="p-6">
-            <h3 className="text-lg font-semibold text-galaxy-bright mb-4 flex items-center">
-              <span className="mr-2 text-green-400">🔒</span>
+            <h3 className="text-lg font-semibold text-yellow-100 mb-4 flex items-center">
+              <span className="mr-2 text-yellow-400">🔒</span>
               Stake GOLD
             </h3>
             <div className="space-y-4">
               <div>
-                <label className="text-sm text-galaxy-bright mb-2 block">Amount to Stake</label>
+                <label className="text-sm text-yellow-100 mb-2 block">Amount to Stake</label>
                 <Input
                   type="number"
                   placeholder="0.0"
                   value={stakeAmount}
                   onChange={(e) => setStakeAmount(e.target.value)}
-                  className="bg-background border-galaxy-purple/30 focus:border-green-400 text-galaxy-bright"
+                  className="bg-background border-yellow-400/40 focus:border-yellow-400 text-yellow-100"
                 />
-                <p className="text-xs text-galaxy-accent mt-1">
+                <p className="text-xs text-yellow-200/70 mt-1">
                   Available: {balances.gold.toFixed(4)} GOLD
                 </p>
               </div>
@@ -308,28 +355,28 @@ export function SelfContainedStakingTab() {
         </Card>
 
         {/* Unstake */}
-        <Card className="bg-galaxy-card border-galaxy-purple/30 hover:border-red-400/50 transition-all duration-300">
+        <Card className="bg-black/70 border-yellow-400/40 hover:border-yellow-400/70 transition-all duration-300">
           <CardContent className="p-6">
-            <h3 className="text-lg font-semibold text-galaxy-bright mb-4 flex items-center">
-              <span className="mr-2 text-red-400">🔓</span>
+            <h3 className="text-lg font-semibold text-yellow-100 mb-4 flex items-center">
+              <span className="mr-2 text-yellow-400">🔓</span>
               Unstake GOLD
             </h3>
             <div className="space-y-4">
               <div>
-                <label className="text-sm text-galaxy-bright mb-2 block">Amount to Unstake</label>
+                <label className="text-sm text-yellow-100 mb-2 block">Amount to Unstake</label>
                 <Input
                   type="number"
                   placeholder="0.0"
                   value={unstakeAmount}
                   onChange={(e) => setUnstakeAmount(e.target.value)}
-                  className="bg-background border-galaxy-purple/30 focus:border-red-400 text-galaxy-bright"
+                  className="bg-background border-yellow-400/40 focus:border-yellow-400 text-yellow-100"
                 />
-                <p className="text-xs text-galaxy-accent mt-1">
+                <p className="text-xs text-yellow-200/70 mt-1">
                   Staked: {balances.stakedGold.toFixed(4)} GOLD
                 </p>
               </div>
               <Button
-                className="w-full bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 py-3 font-medium text-white"
+                className="w-full bg-galaxy-button hover:bg-galaxy-button py-3 font-medium text-white"
                 onClick={handleUnstake}
                 disabled={
                   !connected ||
@@ -347,20 +394,20 @@ export function SelfContainedStakingTab() {
       </div>
 
       {/* Claim Rewards */}
-      <Card className="bg-galaxy-card border-gold-primary/50 hover:border-gold-primary transition-all duration-300">
+      <Card className="bg-black/70 border-yellow-400/40 hover:border-yellow-400/70 transition-all duration-300">
         <CardContent className="p-6">
           <div className="flex justify-between items-center">
             <div>
-              <h3 className="text-lg font-semibold text-galaxy-bright">Claimable Rewards</h3>
-              <p className="text-2xl font-bold text-gold-primary mt-1">
+              <h3 className="text-lg font-semibold text-yellow-100">Claimable Rewards</h3>
+              <p className="text-2xl font-bold text-yellow-400 mt-1">
                 {balances.claimableRewards.toFixed(4)} GOLD
               </p>
-              <p className="text-sm text-galaxy-accent">
+              <p className="text-sm text-yellow-200/70">
                 ≈ ${(balances.claimableRewards * 20).toFixed(2)} USD
               </p>
             </div>
             <Button
-              className="bg-gold-gradient hover:from-gold-secondary hover:to-yellow-600 px-6 py-3 font-semibold text-black transition-all duration-200"
+              className="bg-galaxy-button hover:bg-galaxy-button px-6 py-3 font-semibold text-white transition-all duration-200"
               onClick={handleClaimRewards}
               disabled={!connected || balances.claimableRewards <= 0 || isStaking}
             >

@@ -1,5 +1,6 @@
 import { SwapMetadata } from './swap-service';
 
+// Enhanced transaction record matching user requirements
 export interface TransactionRecord {
   id: string;
   type: 'swap' | 'send' | 'stake' | 'unstake';
@@ -12,6 +13,17 @@ export interface TransactionRecord {
   recipientAddress?: string;
   status: 'pending' | 'confirmed' | 'failed';
   txUrl: string;
+}
+
+// New interface matching user's exact requirements
+export interface GoldiumTransactionHistory {
+  txId: string;
+  type: 'swap' | 'stake' | 'unstake' | 'send';
+  timestamp: Date;
+  amountSOL: number;
+  amountGOLD: number;
+  status: 'success' | 'failed';
+  solscanLink: string;
 }
 
 interface WalletTransactionData {

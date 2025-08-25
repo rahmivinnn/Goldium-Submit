@@ -8,19 +8,20 @@ import {
   DropdownMenuSeparator,
 } from '@/components/ui/dropdown-menu';
 import { ChevronDown, Wallet, Copy, ExternalLink } from 'lucide-react';
-import { useSelfContainedWallet, WALLET_ADDRESS } from './self-contained-wallet-provider';
+import { useSolanaWallet } from './solana-wallet-provider';
 import { useToast } from '@/hooks/use-toast';
 import { SOLSCAN_BASE_URL } from '@/lib/constants';
 
 export function WalletSelectorDropdown() {
-  const { connected, connecting, balance } = useSelfContainedWallet();
+  const { connected, connecting, balance, publicKey, wallet } = useSolanaWallet();
+  const walletAddress = publicKey?.toString() || '';
   const { toast } = useToast();
   const [isOpen, setIsOpen] = useState(false);
 
   // Copy wallet address to clipboard
   const copyAddress = async () => {
     try {
-      await navigator.clipboard.writeText(WALLET_ADDRESS);
+      await navigator.clipboard.writeText(walletAddress);
       toast({
         title: "Address Copied",
         description: "Wallet address copied to clipboard",
@@ -32,7 +33,7 @@ export function WalletSelectorDropdown() {
 
   // View wallet on Solscan
   const viewOnSolscan = () => {
-    window.open(`${SOLSCAN_BASE_URL}/account/${WALLET_ADDRESS}`, '_blank');
+    window.open(`${SOLSCAN_BASE_URL}/account/${walletAddress}`, '_blank');
   };
 
   if (!connected) {
@@ -56,7 +57,7 @@ export function WalletSelectorDropdown() {
         >
           <Wallet className="w-4 h-4 mr-2" />
           <span className="hidden sm:inline">
-            {WALLET_ADDRESS.slice(0, 4)}...{WALLET_ADDRESS.slice(-4)}
+            {walletAddress.slice(0, 4)}...{walletAddress.slice(-4)}
           </span>
           <span className="sm:hidden">Wallet</span>
           <ChevronDown className="w-4 h-4 ml-2" />
@@ -82,7 +83,7 @@ export function WalletSelectorDropdown() {
               <span className="text-xs text-galaxy-accent">Address:</span>
               <div className="flex items-center space-x-2">
                 <span className="text-xs font-mono text-galaxy-bright">
-                  {WALLET_ADDRESS.slice(0, 8)}...{WALLET_ADDRESS.slice(-8)}
+                  {walletAddress.slice(0, 8)}...{walletAddress.slice(-8)}
                 </span>
                 <Button
                   variant="ghost"
@@ -131,10 +132,10 @@ export function WalletSelectorDropdown() {
         <div className="p-4">
           <div className="text-center">
             <div className="inline-flex items-center px-3 py-1 bg-galaxy-gradient/20 rounded-full border border-galaxy-blue/30">
-              <span className="text-xs font-medium text-galaxy-blue">Self-Contained Wallet</span>
+              <span className="text-xs font-medium text-galaxy-blue">{wallet || 'Solana Wallet'}</span>
             </div>
             <p className="text-xs text-galaxy-accent mt-2">
-              Integrated wallet with dedicated private key
+              Connected external wallet
             </p>
           </div>
         </div>

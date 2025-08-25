@@ -32,29 +32,43 @@ export function GoldiumSentimentTrends() {
   const [recentTweets] = useState([
     {
       id: '1',
-      text: 'Just swapped some SOL for GOLD tokens on @goldiumofficial! The DeFi platform is smooth and fast ⚡',
+      text: 'Just swapped 2 SOL for 43,000 GOLD tokens on @GoldiumOfficial! Lightning fast transaction and zero slippage 🚀⚡',
       sentiment: 'positive',
-      engagement: { likes: 23, retweets: 8, replies: 3 },
-      timestamp: '2h ago'
+      engagement: { likes: 89, retweets: 34, replies: 12 },
+      timestamp: '1h ago'
     },
     {
       id: '2',
-      text: 'Staking GOLD tokens with 5% APY on Goldium. Love the transparent rewards system 📈',
+      text: 'Staking 10,000 GOLD tokens with 5% APY on Goldium. Already earned 50 GOLD in rewards! The compound interest is real 📈💰',
       sentiment: 'positive', 
-      engagement: { likes: 41, retweets: 15, replies: 7 },
-      timestamp: '4h ago'
+      engagement: { likes: 156, retweets: 67, replies: 23 },
+      timestamp: '3h ago'
     },
     {
       id: '3',
-      text: 'The Goldium DeFi platform has great UI/UX. Easy wallet connection with Phantom 👌',
+      text: 'Goldium has the best DeFi UX on Solana. Phantom wallet integration is seamless, and the real-time analytics are amazing! 🔥',
       sentiment: 'positive',
-      engagement: { likes: 18, retweets: 5, replies: 2 },
-      timestamp: '6h ago'
+      engagement: { likes: 234, retweets: 89, replies: 45 },
+      timestamp: '5h ago'
+    },
+    {
+      id: '4',
+      text: 'Playing Solana Shard Chase and earning GOLD tokens while having fun! This is the future of GameFi 🎮🏆',
+      sentiment: 'positive',
+      engagement: { likes: 178, retweets: 56, replies: 34 },
+      timestamp: '7h ago'
+    },
+    {
+      id: '5',
+      text: 'GOLD token price is holding strong at 0.00004654 SOL. The tokenomics and staking rewards make this a solid long-term hold 💎',
+      sentiment: 'positive',
+      engagement: { likes: 312, retweets: 123, replies: 67 },
+      timestamp: '9h ago'
     }
   ]);
 
   useEffect(() => {
-    // Simulate sentiment updates every 30 seconds
+    // Simulate sentiment updates every 60 seconds to reduce load
     const interval = setInterval(() => {
       setSentiment(prev => ({
         ...prev,

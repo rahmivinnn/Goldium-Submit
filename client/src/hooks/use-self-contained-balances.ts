@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import { useSelfContainedWallet } from '@/components/self-contained-wallet-provider';
+import { useSolanaWallet } from '@/components/solana-wallet-provider';
 import { stakingService } from '@/lib/staking-service';
 import { splTokenService } from '@/lib/spl-token-service';
 
@@ -11,7 +11,7 @@ export interface BalanceInfo {
 }
 
 export function useSelfContainedBalances() {
-  const { connected, balance, refreshBalance } = useSelfContainedWallet();
+  const { connected, balance, refreshBalance } = useSolanaWallet();
 
   // Query for balance information
   const { data: balances = { sol: 0, gold: 0, stakedGold: 0, claimableRewards: 0 }, isLoading, refetch } = useQuery({

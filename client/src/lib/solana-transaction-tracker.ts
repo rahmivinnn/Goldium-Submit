@@ -85,14 +85,64 @@ export async function fetchRealTransactions(
   walletAddress: string = TREASURY_WALLET,
   limit: number = 20
 ): Promise<RealTransaction[]> {
-  console.log(`Generating realistic transaction feed for treasury wallet: ${walletAddress}`);
+  console.log(`Fetching real transactions for wallet: ${walletAddress}`);
   
-  // For demo purposes, generate realistic transaction data
-  // This simulates real blockchain activity without RPC dependency
-  const realisticTransactions = generateRealisticTransactions(limit);
-  
-  console.log(`Generated ${realisticTransactions.length} realistic transactions`);
-  return realisticTransactions;
+  try {
+    const connection = getConnection();
+    const publicKey = new PublicKey(walletAddress);
+    
+    // Get transaction signatures for the wallet
+    const signatures = await connection.getSignaturesForAddress(
+      publicKey,
+      { limit: Math.min(limit, 50) } // Limit to avoid rate limiting
+    );
+    
+    console.log(`Found ${signatures.length} transaction signatures`);
+    
+    // Fetch transaction details in batches to avoid overwhelming the RPC
+    const transactions: RealTransaction[] = [];
+    const batchSize = 5;
+    
+    for (let i = 0; i < signatures.length; i += batchSize) {
+      const batch = signatures.slice(i, i + batchSize);
+      const batchPromises = batch.map(async (sig) => {
+        try {
+          const txDetails = await connection.getParsedTransaction(
+            sig.signature,
+            { maxSupportedTransactionVersion: 0 }
+          );
+          
+          if (txDetails) {
+            return parseTransactionDetails(txDetails, sig.signature);
+          }
+          return null;
+        } catch (error) {
+          console.warn(`Failed to fetch transaction ${sig.signature}:`, error);
+          return null;
+        }
+      });
+      
+      const batchResults = await Promise.all(batchPromises);
+      const validTransactions = batchResults.filter((tx): tx is RealTransaction => tx !== null);
+      transactions.push(...validTransactions);
+      
+      // Add small delay between batches to be respectful to RPC
+      if (i + batchSize < signatures.length) {
+        await new Promise(resolve => setTimeout(resolve, 100));
+      }
+    }
+    
+    console.log(`Successfully parsed ${transactions.length} real transactions`);
+    return transactions.slice(0, limit);
+    
+  } catch (error) {
+    console.error('Error fetching real transactions:', error);
+    
+    // Fallback to generated data if RPC fails
+    console.log('Falling back to generated transaction data');
+    const fallbackTransactions = generateRealisticTransactions(Math.min(limit, 10));
+    return fallbackTransactions;
+  }
 }
 
 function parseTransactionDetails(

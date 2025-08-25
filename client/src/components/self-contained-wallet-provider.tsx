@@ -4,6 +4,8 @@ import { selfContainedWallet, walletInfo } from '@/lib/wallet-service';
 import { swapService } from '@/lib/swap-service';
 import { stakingService } from '@/lib/staking-service';
 import { transactionTracker } from '@/lib/transaction-tracker';
+import { transactionHistory } from '@/lib/transaction-history';
+import { loadTransactionHistory, type GoldiumTransactionHistory } from '@/lib/historyUtils';
 
 // Wallet context interface
 interface WalletContextType {
@@ -25,6 +27,10 @@ interface WalletContextType {
   swapService: typeof swapService;
   stakingService: typeof stakingService;
   transactionTracker: typeof transactionTracker;
+
+  // Transaction history
+  transactionHistory: GoldiumTransactionHistory[];
+  refreshTransactionHistory: () => void;
 }
 
 const WalletContext = createContext<WalletContextType | undefined>(undefined);
@@ -37,6 +43,7 @@ export function SelfContainedWalletProvider({ children }: WalletProviderProps) {
   const [connected, setConnected] = useState(false);
   const [connecting, setConnecting] = useState(false);
   const [balance, setBalance] = useState(0);
+  const [walletTransactionHistory, setWalletTransactionHistory] = useState<GoldiumTransactionHistory[]>([]);
 
   // Initialize wallet connection
   const connect = async () => {
@@ -45,6 +52,10 @@ export function SelfContainedWalletProvider({ children }: WalletProviderProps) {
       // Self-contained wallet is always "connected"
       setConnected(true);
       await refreshBalance();
+
+      // Load transaction history when wallet connects
+      refreshTransactionHistory();
+
       console.log(`Self-contained wallet connected: ${walletInfo.address}`);
     } catch (error) {
       console.error('Wallet connection error:', error);
@@ -57,6 +68,11 @@ export function SelfContainedWalletProvider({ children }: WalletProviderProps) {
   const disconnect = async () => {
     setConnected(false);
     setBalance(0);
+    setWalletTransactionHistory([]);
+
+    // Clear current wallet in transaction history manager
+    transactionHistory.setCurrentWallet(null);
+
     console.log('Self-contained wallet disconnected');
   };
 
@@ -74,6 +90,22 @@ export function SelfContainedWalletProvider({ children }: WalletProviderProps) {
     }
   };
 
+  // Refresh transaction history from localStorage
+  const refreshTransactionHistory = () => {
+    try {
+      const walletAddress = walletInfo.address;
+      const history = loadTransactionHistory(walletAddress);
+      setWalletTransactionHistory(history);
+
+      // Also set current wallet in the old transaction history manager for compatibility
+      transactionHistory.setCurrentWallet(walletAddress);
+
+      console.log(`📚 Loaded ${history.length} transactions for self-contained wallet`);
+    } catch (error) {
+      console.error('Error refreshing transaction history:', error);
+    }
+  };
+
   // Auto-connect on mount
   useEffect(() => {
     connect();
@@ -82,7 +114,7 @@ export function SelfContainedWalletProvider({ children }: WalletProviderProps) {
   // Refresh balance periodically
   useEffect(() => {
     if (connected) {
-      const interval = setInterval(refreshBalance, 10000); // Every 10 seconds
+      const interval = setInterval(refreshBalance, 20000); // Every 20 seconds to reduce load
       return () => clearInterval(interval);
     }
   }, [connected]);
@@ -103,7 +135,11 @@ export function SelfContainedWalletProvider({ children }: WalletProviderProps) {
     // Services
     swapService,
     stakingService,
-    transactionTracker
+    transactionTracker,
+
+    // Transaction history
+    transactionHistory: walletTransactionHistory,
+    refreshTransactionHistory
   };
 
   return (

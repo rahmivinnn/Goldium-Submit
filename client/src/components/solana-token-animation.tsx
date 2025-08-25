@@ -107,36 +107,41 @@ export function SolanaTokenAnimation({
     pointLight.position.set(0, 0, 3);
     scene.add(pointLight);
 
-    // Animation loop
+    // Optimized animation loop with frame throttling
+    let frameCount = 0;
     const animate = () => {
       animationIdRef.current = requestAnimationFrame(animate);
+      frameCount++;
 
-      // Rotate main token
-      tokenGroup.rotation.y += 0.02;
+      // Reduce animation frequency to every 2nd frame
+      if (frameCount % 2 === 0) {
+        // Rotate main token
+        tokenGroup.rotation.y += 0.01;
+        
+        // Gentle floating motion
+        tokenGroup.position.y = Math.sin(Date.now() * 0.001) * 0.2;
+        
+        // Rotate particles around token
+        particles.rotation.y += 0.015;
+        particles.rotation.x += 0.005;
+        
+        // Animate ring
+        ring.rotation.z += 0.005;
+        
+        // Simplified pulse glow effect
+        const pulse = Math.sin(Date.now() * 0.002) * 0.1 + 0.9;
+        glow.scale.set(pulse, pulse, pulse);
+      }
       
-      // Gentle floating motion
-      tokenGroup.position.y = Math.sin(Date.now() * 0.002) * 0.3;
-      
-      // Rotate particles around token
-      particles.rotation.y += 0.03;
-      particles.rotation.x += 0.01;
-      
-      // Animate ring
-      ring.rotation.z += 0.01;
-      
-      // Pulse glow effect
-      const pulse = Math.sin(Date.now() * 0.003) * 0.2 + 0.8;
-      glow.scale.set(pulse, pulse, pulse);
-      
-      // Animate individual particles
-      particles.children.forEach((particle, index) => {
-        if (particle instanceof THREE.Mesh) {
-          const time = Date.now() * 0.001;
-          particle.position.y = Math.sin(time + index) * 0.3;
-          (particle.material as THREE.MeshBasicMaterial).opacity = 
-            Math.sin(time * 2 + index) * 0.3 + 0.7;
-        }
-      });
+      // Simplified particle animation (every 4th frame)
+      if (frameCount % 4 === 0) {
+        particles.children.forEach((particle, index) => {
+          if (particle instanceof THREE.Mesh && index % 2 === 0) {
+            const time = Date.now() * 0.0005;
+            particle.position.y = Math.sin(time + index) * 0.2;
+          }
+        });
+      }
       
       renderer.render(scene, camera);
     };

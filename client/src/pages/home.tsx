@@ -1,293 +1,179 @@
-import { useExternalWallets } from '@/hooks/use-external-wallets';
-import { ExternalWalletSelector } from '@/components/external-wallet-selector';
-import { Card, CardContent } from '@/components/ui/card';
+import React from 'react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Button } from '@/components/ui/button';
 import { BalanceCards } from '@/components/balance-cards';
 import { SelfContainedSwapTab } from '@/components/self-contained-swap-tab';
+import { SelfContainedStakingTab } from '@/components/self-contained-staking-tab';
 import { RealSendTab } from '@/components/real-send-tab';
-import { RealStakingTab } from '@/components/real-staking-tab';
 import { TransactionHistory } from '@/components/transaction-history';
-import { RealTransactionHistory } from '@/components/real-transaction-history';
-import { GoldSendTab } from '@/components/gold-send-tab';
-import { GoldStakingTab } from '@/components/gold-staking-tab';
-import { WalletConnectionGuide } from '@/components/wallet-connection-guide';
+import { ExternalWalletSelector } from '@/components/external-wallet-selector';
 import { BalanceStatusIndicator } from '@/components/balance-status-indicator';
-import { SolanaLearnCard } from '@/components/solana-learn-card';
-import { GoldPriceWidget } from '@/components/gold-price-widget';
-import { RealTransactionFeed } from '@/components/real-transaction-feed';
-import { GoldiumSentimentTrends } from '@/components/goldium-sentiment-trends';
-import { BalanceDebug } from '@/components/balance-debug';
-import { BlockchainEducation } from '@/components/blockchain-education';
-import { SimpleThreeScene } from '@/components/simple-three-scene';
-import { SolanaTokenAnimation } from '@/components/solana-token-animation';
-import { MiniGamesHub } from '@/components/mini-games-hub';
-import { TwitterEmbed } from '@/components/twitter-embed';
-
-import { Info } from 'lucide-react';
-import { Link } from 'wouter';
-import logoImage from '@assets/k1xiYLna_400x400-removebg-preview_1754140723127.png';
-import { SolanaIcon } from '@/components/solana-icon';
+import { useSolanaWallet } from '@/components/solana-wallet-provider';
 
 
 export default function Home() {
-  const wallet = useExternalWallets();
+  const wallet = useSolanaWallet();
 
   // Self-contained wallet is always connected, no need for wallet selection
 
   return (
-    <div className="min-h-screen">
-      {/* Galaxy Background Pattern */}
-      <div className="fixed inset-0">
-        <div className="absolute inset-0 bg-galaxy-gradient opacity-10" />
-        <div className="absolute inset-0 bg-gradient-to-br from-galaxy-purple/10 via-transparent to-galaxy-pink/10" />
-      </div>
-      
-      {/* Main Container */}
-      <div className="relative min-h-screen">
-        {/* Header */}
-        <header className="border-b border-galaxy-purple/30 bg-galaxy-card backdrop-blur-sm sticky top-0 z-50">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex justify-between items-center h-16">
-              {/* Logo */}
-              <div className="flex items-center space-x-3">
-                <div className="w-10 h-10 flex items-center justify-center">
-                  <img 
-                    src={logoImage} 
-                    alt="Goldium Logo" 
-                    className="w-10 h-10 object-contain logo-spin"
-                  />
-                </div>
-                <div>
-                  <h1 className="text-xl font-bold gradient-text">
-                    Goldium
-                  </h1>
-                  <p className="text-xs text-galaxy-accent">DeFi Exchange</p>
-                </div>
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900">
+      {/* Navigation - Fixed at top like eeeeecoin.com */}
+      <nav className="fixed top-0 w-full z-50 bg-black/20 backdrop-blur-md border-b border-white/10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center h-16">
+            {/* Logo */}
+            <div className="flex items-center space-x-3">
+              <div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
+                <span className="text-white font-bold text-lg">G</span>
               </div>
-              
-              {/* Navigation & Wallet */}
-              <div className="flex items-center space-x-4">
-                {/* About Button */}
-                <Link href="/about">
-                  <Button 
-                    variant="ghost" 
-                    size="sm"
-                    className="text-galaxy-accent hover:text-galaxy-bright hover:bg-galaxy-purple/20 interactive-hover"
-                  >
-                    <Info className="w-4 h-4 mr-2" />
-                    About
-                  </Button>
-                </Link>
-                
-                {/* Balance Status Indicator */}
-                <div className="hidden md:block">
-                  <BalanceStatusIndicator 
-                    connected={wallet.connected}
-                    balance={wallet.balance}
-                    walletType={wallet.selectedWallet || undefined}
-                  />
-                </div>
-                
-                {/* Network Status */}
-                <div className="hidden md:flex items-center space-x-2 px-3 py-1 bg-green-500/20 rounded-full network-status">
-                  <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
-                  <span className="text-sm text-green-400">Mainnet</span>
-                </div>
-                
-                {/* External Wallet Selector */}
-                <ExternalWalletSelector />
+              <div>
+                <span className="text-2xl font-bold text-white">Goldium</span>
+                <p className="text-xs text-gray-400">DeFi Exchange</p>
               </div>
+            </div>
+
+            {/* Navigation Links */}
+            <div className="hidden md:flex items-center space-x-8">
+              <a href="#home" className="text-white hover:text-blue-400 transition-colors font-medium">Home</a>
+              <a href="#defi" className="text-gray-300 hover:text-blue-400 transition-colors">DeFi</a>
+              <a href="#about" className="text-gray-300 hover:text-blue-400 transition-colors">About</a>
+            </div>
+
+            {/* Right side */}
+            <div className="flex items-center space-x-4">
+              <div className="hidden sm:block">
+                <BalanceStatusIndicator
+                  connected={wallet.connected}
+                  balance={wallet.balance}
+                  walletType={wallet.selectedWallet || undefined}
+                />
+              </div>
+              <ExternalWalletSelector />
             </div>
           </div>
-        </header>
+        </div>
+      </nav>
 
-        {/* Main Content */}
-        <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          {/* Wallet Connection Status */}
-          {wallet.connected && wallet.balance === 0 && (
-            <div className="mb-6">
-              <WalletConnectionGuide 
-                walletType={wallet.selectedWallet || undefined} 
-                showFundingInstructions={true} 
-              />
-            </div>
-          )}
-          
-          {/* Balance Cards with Price Widget */}
-          <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 mb-8">
-            <div className="lg:col-span-3 stagger-item">
-              <BalanceCards />
-            </div>
-            <div className="space-y-6">
-              <div className="stagger-item">
-                <GoldPriceWidget />
-              </div>
-              <div className="stagger-item">
-                <SolanaLearnCard />
-              </div>
+      {/* Hero Section - Like eeeeecoin.com */}
+      <section id="home" className="pt-16 pb-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center py-20">
+            {/* Main Title */}
+            <h1 className="text-5xl md:text-7xl font-bold text-white mb-6">
+              <span className="bg-gradient-to-r from-blue-400 via-purple-500 to-blue-600 bg-clip-text text-transparent">
+                GOLDIUM
+              </span>
+            </h1>
+
+            {/* Subtitle */}
+            <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto">
+              The Ultimate Solana DeFi Experience. Swap, Stake, and Earn with GOLD tokens.
+            </p>
+
+            {/* CTA Buttons */}
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
+              <button
+                onClick={() => document.getElementById('defi')?.scrollIntoView({ behavior: 'smooth' })}
+                className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-200 transform hover:scale-105"
+              >
+                Start Trading
+              </button>
+              <button
+                onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
+                className="border border-gray-600 hover:border-gray-400 text-gray-300 hover:text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-200"
+              >
+                Learn More
+              </button>
             </div>
           </div>
+        </div>
+      </section>
 
-          {/* Enhanced DeFi Tab Navigation with New Features - Always Visible */}
-          <div className="bg-galaxy-card border-galaxy-purple/30 mb-8 stagger-item rounded-lg overflow-hidden" style={{ transform: 'none !important' }}>
+      {/* Balance Cards Section */}
+      <section className="py-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center text-white">
+            <p>Balance Cards will be here</p>
+          </div>
+        </div>
+      </section>
+
+      {/* DeFi Section - Main functionality */}
+      <section id="defi" className="py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold text-white mb-4">DeFi Operations</h2>
+            <p className="text-xl text-gray-300">Swap, stake, send, and track your transactions</p>
+          </div>
+
+          {/* Main DeFi Interface */}
+          <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8">
             <Tabs defaultValue="swap" className="w-full">
-                  <TabsList className="grid w-full grid-cols-8 bg-galaxy-purple/20 border-b border-galaxy-purple/30">
-                    <TabsTrigger
-                      value="swap"
-                      className="data-[state=active]:bg-blue-gradient data-[state=active]:text-white"
-                    >
-                      <div className="flex items-center gap-2">
-                        <SolanaIcon size={16} className="text-blue-400" />
-                        Swap
-                      </div>
-                    </TabsTrigger>
-                    <TabsTrigger
-                      value="send"
-                      className="data-[state=active]:bg-blue-gradient data-[state=active]:text-white"
-                    >
-                      <div className="flex items-center gap-2">
-                        <SolanaIcon size={16} className="text-purple-400" />
-                        Send SOL
-                      </div>
-                    </TabsTrigger>
-                    <TabsTrigger
-                      value="gold-send"
-                      className="data-[state=active]:bg-yellow-600 data-[state=active]:text-white"
-                    >
-                      <div className="flex items-center gap-2">
-                        <img src={logoImage} alt="GOLD" className="w-4 h-4 object-contain" />
-                        Send GOLD
-                      </div>
-                    </TabsTrigger>
-                    <TabsTrigger
-                      value="staking"
-                      className="data-[state=active]:bg-gray-600 data-[state=active]:text-gray-400 opacity-50 cursor-not-allowed"
-                      disabled
-                    >
-                      <div className="flex items-center gap-2">
-                        <SolanaIcon size={16} className="text-gray-500" />
-                        SOL Stake (Disabled)
-                      </div>
-                    </TabsTrigger>
-                    <TabsTrigger
-                      value="gold-staking"
-                      className="data-[state=active]:bg-yellow-600 data-[state=active]:text-white"
-                    >
-                      <div className="flex items-center gap-2">
-                        <img src={logoImage} alt="GOLD" className="w-4 h-4 object-contain" />
-                        Stake GOLD (5% APY)
-                      </div>
-                    </TabsTrigger>
-                    <TabsTrigger
-                      value="learn"
-                      className="data-[state=active]:bg-blue-gradient data-[state=active]:text-white"
-                    >
-                      <span className="mr-2">🎓</span>Learn
-                    </TabsTrigger>
-                    <TabsTrigger
-                      value="games"
-                      className="data-[state=active]:bg-blue-gradient data-[state=active]:text-white"
-                    >
-                      <span className="mr-2">🎮</span>Games
-                    </TabsTrigger>
-                    <TabsTrigger
-                      value="social"
-                      className="data-[state=active]:bg-blue-gradient data-[state=active]:text-white"
-                    >
-                      <span className="mr-2">𝕏</span>Social
-                    </TabsTrigger>
-                  </TabsList>
+              <TabsList className="grid w-full grid-cols-4 bg-black/20 border border-white/10 rounded-lg p-1">
+                <TabsTrigger
+                  value="swap"
+                  className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-blue-500 data-[state=active]:to-purple-600 data-[state=active]:text-white text-gray-300"
+                >
+                  Swap
+                </TabsTrigger>
+                <TabsTrigger
+                  value="stake"
+                  className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-blue-500 data-[state=active]:to-purple-600 data-[state=active]:text-white text-gray-300"
+                >
+                  Stake
+                </TabsTrigger>
+                <TabsTrigger
+                  value="send"
+                  className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-blue-500 data-[state=active]:to-purple-600 data-[state=active]:text-white text-gray-300"
+                >
+                  Send
+                </TabsTrigger>
+                <TabsTrigger
+                  value="history"
+                  className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-blue-500 data-[state=active]:to-purple-600 data-[state=active]:text-white text-gray-300"
+                >
+                  History
+                </TabsTrigger>
+              </TabsList>
 
-                  <div className="p-6">
-                    <TabsContent value="swap" className="mt-0 animate-tab-enter">
-                      <SelfContainedSwapTab />
-                    </TabsContent>
-                    <TabsContent value="send" className="mt-0 animate-tab-enter">
-                      <RealSendTab />
-                    </TabsContent>
-                    <TabsContent value="gold-send" className="mt-0 animate-tab-enter">
-                      <GoldSendTab />
-                    </TabsContent>
-                    <TabsContent value="staking" className="mt-0 animate-tab-enter">
-                      <div className="text-center py-8">
-                        <p className="text-gray-500">SOL staking is temporarily disabled.</p>
-                        <p className="text-yellow-400 mt-2">Use GOLD Staking for 5% APY rewards!</p>
-                      </div>
-                    </TabsContent>
-                    <TabsContent value="gold-staking" className="mt-0 animate-tab-enter">
-                      <GoldStakingTab />
-                    </TabsContent>
-                    
-                    <TabsContent value="learn" className="mt-0 animate-tab-enter">
-                      <div className="space-y-6">
-                        <div className="flex justify-center">
-                          <SolanaTokenAnimation width={600} height={350} className="shadow-2xl float-animation" />
-                        </div>
-                        <BlockchainEducation />
-                      </div>
-                    </TabsContent>
+              <div className="mt-8">
+                <TabsContent value="swap">
+                  <SelfContainedSwapTab />
+                </TabsContent>
 
-                    <TabsContent value="games" className="mt-0 animate-tab-enter">
-                      <MiniGamesHub />
-                    </TabsContent>
+                <TabsContent value="stake">
+                  <SelfContainedStakingTab />
+                </TabsContent>
 
-                    <TabsContent value="social" className="mt-0 animate-tab-enter">
-                      <div className="space-y-6">
-                        <TwitterEmbed />
-                      </div>
-                    </TabsContent>
-                  </div>
+                <TabsContent value="send">
+                  <RealSendTab />
+                </TabsContent>
+
+                <TabsContent value="history">
+                  <TransactionHistory />
+                </TabsContent>
+              </div>
             </Tabs>
           </div>
+        </div>
+      </section>
 
-          {/* Analytics and Transaction Feed */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
-            <div className="stagger-item">
-              <GoldiumSentimentTrends />
+      {/* Footer */}
+      <footer className="border-t border-white/10 py-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center">
+            <div className="flex items-center justify-center space-x-3 mb-4">
+              <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
+                <span className="text-white font-bold">G</span>
+              </div>
+              <span className="text-xl font-bold text-white">Goldium</span>
             </div>
-            <div className="stagger-item">
-              <RealTransactionFeed />
-            </div>
+            <p className="text-gray-400 mb-4">The Ultimate Solana DeFi Experience</p>
+            <p className="text-sm text-gray-500">Built with ❤️ for the Solana ecosystem</p>
           </div>
-
-          {/* Real Transaction History with Solscan Links */}
-          <div className="stagger-item">
-            <RealTransactionHistory />
-          </div>
-          
-          {/* GOLD Transaction History from Local Tracking */}
-          <div className="mt-8 stagger-item">
-            <TransactionHistory />
-          </div>
-
-          {/* Wallet Connection Reminder - Only show when not connected */}
-          {!wallet.connected && (
-            <Card className="bg-galaxy-card border-galaxy-purple/30 mt-8">
-              <CardContent className="p-6 text-center">
-                <div className="space-y-4">
-                  <div className="w-16 h-16 bg-galaxy-gradient/20 rounded-full flex items-center justify-center mx-auto">
-                    <span className="text-3xl">💼</span>
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold text-galaxy-bright mb-2">
-                      Connect Wallet for Trading
-                    </h3>
-                    <p className="text-galaxy-accent mb-4">
-                      Connect your wallet to access live trading, real balances, and transaction features.
-                    </p>
-                    <div className="bg-galaxy-purple/20 rounded-lg p-3 mb-4">
-                      <p className="text-xs text-galaxy-bright mb-2">Supported: Phantom • Solflare • Backpack • Trust</p>
-                    </div>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          )}
-        </main>
-        
-
-      </div>
+        </div>
+      </footer>
     </div>
   );
 }

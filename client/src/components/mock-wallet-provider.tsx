@@ -32,7 +32,7 @@ class MockPublicKey {
   private key: string;
   
   constructor(key?: string) {
-    this.key = key || '11111111111111111111111111111112';
+    this.key = key || 'GLD1x7K9m3N2p8Q4k5L7w9R6t2Y8v4B1h6M3';
   }
   
   toString(): string {
@@ -130,7 +130,7 @@ export function WalletProviderWrapper({ children }: MockWalletProviderProps) {
     // Simulate connection delay
     await new Promise(resolve => setTimeout(resolve, 1000));
     setConnected(true);
-    setPublicKey(new MockPublicKey('DemoWallet1234567890123456789012345678901'));
+    setPublicKey(new MockPublicKey('GLD1x7K9m3N2p8Q4k5L7w9R6t2Y8v4B1h6M3'));
     setConnecting(false);
   };
 
@@ -160,10 +160,27 @@ export function WalletProviderWrapper({ children }: MockWalletProviderProps) {
 
   const connectionContextValue: ConnectionContextState = {
     connection: {
-      getBalance: async () => 1000000000, // 1 SOL in lamports
-      getLatestBlockhash: async () => ({ blockhash: 'mock-blockhash' }),
-      sendRawTransaction: async () => 'mock-signature',
+      getBalance: async () => 2500000000, // 2.5 SOL in lamports
+      getLatestBlockhash: async () => ({ blockhash: 'goldium-mock-blockhash' }),
+      sendRawTransaction: async () => 'GLD1x7K9m3N2p8Q4k5L7w9R6t2Y8v4B1h6M3signature',
       confirmTransaction: async () => ({ value: { err: null } }),
+      getTokenAccountsByOwner: async () => ({
+        value: [{
+          account: {
+            data: {
+              parsed: {
+                info: {
+                  tokenAmount: {
+                    amount: '125000000', // 125,000 GOLD tokens
+                    decimals: 3,
+                    uiAmount: 125000
+                  }
+                }
+              }
+            }
+          }
+        }]
+      }),
     },
   };
 

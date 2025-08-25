@@ -20,29 +20,45 @@ interface WalletOption {
   description: string;
 }
 
+// Wallet Logo Components (using emoji fallback for reliability)
+const WalletLogos = {
+  phantom: '🟣',
+  solflare: '🔥', 
+  backpack: '🎒',
+  trust: '🔷'
+};
+
+// Wallet Logo Images (base64 encoded for reliability)
+const WalletImages = {
+  phantom: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMTIiIGN5PSIxMiIgcj0iMTIiIGZpbGw9IiNBQjlGRjIiLz4KPHN2ZyB4PSI0IiB5PSI0IiB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNiAxNiIgZmlsbD0ibm9uZSI+CjxwYXRoIGQ9Ik0zIDVDMyAyLjc5MDg2IDQuNzkwODYgMSA3IDFIOUM5LjIwOTE0IDEgMTEgMi43OTA4NiAxMSA1VjEzTDguNSAxMUw2IDEzTDMuNSAxMUwzIDEzVjVaIiBmaWxsPSJ3aGl0ZSIvPgo8Y2lyY2xlIGN4PSI2IiBjeT0iNiIgcj0iMSIgZmlsbD0iI0FCOUZGMiIvPgo8Y2lyY2xlIGN4PSIxMCIgY3k9IjYiIHI9IjEiIGZpbGw9IiNBQjlGRjIiLz4KPC9zdmc+Cjwvc3ZnPgo=',
+  solflare: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMTIiIGN5PSIxMiIgcj0iMTIiIGZpbGw9IiNGQzhENEQiLz4KPHN2ZyB4PSI0IiB5PSI0IiB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNiAxNiIgZmlsbD0ibm9uZSI+CjxwYXRoIGQ9Ik04IDBMMTIgNEg0TDggMFoiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik04IDE2TDQgMTJIMTJMOCAxNloiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0wIDhMNCA0VjEyTDAgOFoiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0xNiA4TDEyIDEyVjRMMTYgOFoiIGZpbGw9IndoaXRlIi8+Cjwvc3ZnPgo8L3N2Zz4K',
+  backpack: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMTIiIGN5PSIxMiIgcj0iMTIiIGZpbGw9IiNFMzNFM0YiLz4KPHN2ZyB4PSI0IiB5PSI0IiB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNiAxNiIgZmlsbD0ibm9uZSI+CjxwYXRoIGQ9Ik00IDNDNCAyLjQ0NzcyIDQuNDQ3NzIgMiA1IDJIOUMxMC4xMDQ2IDIgMTEgMi44OTU0MyAxMSAzVjRIMTJDMTIuNTUyMyA0IDEzIDQuNDQ3NzIgMTMgNVYxNEMxMyAxNC41NTIzIDEyLjU1MjMgMTUgMTIgMTVIM0MyLjQ0NzcyIDE1IDIgMTQuNTUyMyAyIDE0VjVDMiA0LjQ0NzcyIDIuNDQ3NzIgNCAzIDRINFYzWiIgZmlsbD0id2hpdGUiLz4KPHBhdGggZD0iTTYgM1Y0SDlWM0M5IDIuNDQ3NzIgOC41NTIyOCAyIDggMkg3QzYuNDQ3NzIgMiA2IDIuNDQ3NzIgNiAzWiIgZmlsbD0iI0UzM0UzRiIvPgo8cmVjdCB4PSI1IiB5PSI3IiB3aWR0aD0iNiIgaGVpZ2h0PSIxIiBmaWxsPSIjRTMzRTNGIi8+Cjwvc3ZnPgo8L3N2Zz4K',
+  trust: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMTIiIGN5PSIxMiIgcj0iMTIiIGZpbGw9IiMzMzc1QkIiLz4KPHN2ZyB4PSI0IiB5PSI0IiB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNiAxNiIgZmlsbD0ibm9uZSI+CjxwYXRoIGQ9Ik04IDBMMTQgM1Y5QzE0IDEzLjUgMTEgMTcuMjYgOCAxOEM1IDE3LjI2IDIgMTMuNSAyIDlWM0w4IDBaIiBmaWxsPSJ3aGl0ZSIvPgo8cGF0aCBkPSJNNiA5TDcuNSAxMC41TDEwLjUgNy41IiBzdHJva2U9IiMzMzc1QkIiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+Cjwvc3ZnPgo8L3N2Zz4K'
+};
+
 const walletOptions: WalletOption[] = [
   {
     type: 'phantom',
     name: 'Phantom',
-    icon: '🟣',
+    icon: 'phantom',
     description: 'Most popular Solana wallet',
   },
   {
     type: 'solflare',
     name: 'Solflare',
-    icon: '🔥',
+    icon: 'solflare',
     description: 'Feature-rich Solana wallet',
   },
   {
     type: 'backpack',
     name: 'Backpack',
-    icon: '🎒',
+    icon: 'backpack',
     description: 'Modern crypto wallet',
   },
   {
     type: 'trust',
     name: 'Trust Wallet',
-    icon: '🔷',
+    icon: 'trust',
     description: 'Secure multi-coin wallet',
   },
 ];
@@ -149,19 +165,25 @@ export function ExternalWalletSelector() {
                 >
                   <div className="flex items-center justify-between w-full">
                     <div className="flex items-center space-x-3">
-                      <span className="text-lg">{walletOption.icon}</span>
+                      <div className="flex items-center justify-center w-8 h-8">
+                        <img 
+                          src={WalletImages[walletOption.icon as keyof typeof WalletImages]} 
+                          alt={walletOption.name} 
+                          className="w-6 h-6 rounded-full"
+                        />
+                      </div>
                       <div>
                         <div className="font-medium">{walletOption.name}</div>
-                        <div className="text-xs text-galaxy-accent">{walletOption.description}</div>
+                        <div className="text-xs text-yellow-200/70">{walletOption.description}</div>
                       </div>
                     </div>
                     <div className="text-right">
                       {isAvailable ? (
-                        <span className="text-xs text-green-400 px-2 py-1 bg-green-500/20 rounded">
+                        <span className="text-xs text-yellow-400 px-2 py-1 bg-yellow-500/20 rounded">
                           Detected
                         </span>
                       ) : (
-                        <span className="text-xs text-galaxy-accent px-2 py-1 bg-galaxy-accent/20 rounded">
+                        <span className="text-xs text-yellow-200/70 px-2 py-1 bg-yellow-400/20 rounded">
                           Not Found
                         </span>
                       )}
@@ -173,7 +195,7 @@ export function ExternalWalletSelector() {
           </div>
 
           {availableWallets.length === 0 && (
-            <div className="p-4 text-center text-sm text-galaxy-accent border-t border-galaxy-purple/30 mt-2">
+            <div className="p-4 text-center text-sm text-yellow-200/70 border-t border-yellow-400/30 mt-2">
               <p className="mb-2">No wallet extensions found.</p>
               <p className="text-xs">Please install and refresh the page:</p>
               <div className="text-xs mt-1 space-y-1">
@@ -195,9 +217,17 @@ export function ExternalWalletSelector() {
       <DropdownMenuTrigger asChild>
         <Button 
           variant="outline"
-          className="bg-galaxy-card border-galaxy-purple/30 hover:border-galaxy-blue/50 text-galaxy-bright"
+          className="bg-black/70 border-yellow-400/40 hover:border-yellow-400/70 text-yellow-100"
         >
-          <span className="mr-2">{currentWallet?.icon}</span>
+          <div className="mr-2 flex items-center justify-center w-5 h-5">
+            {currentWallet && (
+                <img 
+                  src={WalletImages[currentWallet.icon as keyof typeof WalletImages]} 
+                  alt={currentWallet.name} 
+                  className="w-5 h-5 rounded-full"
+                />
+              )}
+          </div>
           <span className="hidden sm:inline">
             {wallet.address ? `${wallet.address.slice(0, 4)}...${wallet.address.slice(-4)}` : 'Wallet'}
           </span>
@@ -208,38 +238,46 @@ export function ExternalWalletSelector() {
       
       <DropdownMenuContent 
         align="end" 
-        className="w-80 bg-galaxy-card border-galaxy-purple/30"
+        className="w-80 bg-black/70 border-yellow-400/40"
       >
         {/* Connected Wallet Info */}
         <div className="p-4 space-y-3">
           <div className="flex items-center justify-between">
-            <span className="text-sm font-medium text-galaxy-bright">Connected Wallet</span>
+            <span className="text-sm font-medium text-yellow-100">Connected Wallet</span>
             <div className="flex items-center space-x-1">
-              <div className="w-2 h-2 bg-green-500 rounded-full" />
-              <span className="text-xs text-green-400">Active</span>
+              <div className="w-2 h-2 bg-yellow-400 rounded-full" />
+              <span className="text-xs text-yellow-400">Active</span>
             </div>
           </div>
           
           <div className="space-y-2">
             <div className="flex items-center justify-between">
-              <span className="text-xs text-galaxy-accent">Wallet:</span>
+              <span className="text-xs text-yellow-200/70">Wallet:</span>
               <div className="flex items-center space-x-2">
-                <span className="text-xs">{currentWallet?.icon}</span>
-                <span className="text-xs text-galaxy-bright">{currentWallet?.name}</span>
+                <div className="flex items-center justify-center w-4 h-4">
+                  {currentWallet && (
+                  <img 
+                    src={WalletImages[currentWallet.icon as keyof typeof WalletImages]} 
+                    alt={currentWallet.name} 
+                    className="w-5 h-5 rounded-full"
+                  />
+                )}
+                </div>
+                <span className="text-xs text-yellow-100">{currentWallet?.name}</span>
               </div>
             </div>
             
             <div className="flex items-center justify-between">
-              <span className="text-xs text-galaxy-accent">Address:</span>
+              <span className="text-xs text-yellow-200/70">Address:</span>
               <div className="flex items-center space-x-2">
-                <span className="text-xs font-mono text-galaxy-bright">
+                <span className="text-xs font-mono text-yellow-100">
                   {wallet.address ? `${wallet.address.slice(0, 8)}...${wallet.address.slice(-8)}` : 'N/A'}
                 </span>
                 <Button
                   variant="ghost"
                   size="sm"
                   onClick={copyAddress}
-                  className="h-6 w-6 p-0 hover:bg-galaxy-purple/20"
+                  className="h-6 w-6 p-0 hover:bg-yellow-400/20"
                   disabled={!wallet.address}
                 >
                   <Copy className="w-3 h-3" />
@@ -279,7 +317,13 @@ export function ExternalWalletSelector() {
               >
                 <div className="flex items-center justify-between w-full">
                   <div className="flex items-center space-x-3">
-                    <span className="text-lg">{walletOption.icon}</span>
+                    <div className="flex items-center justify-center w-8 h-8">
+                      <img 
+                        src={WalletImages[walletOption.icon as keyof typeof WalletImages]} 
+                        alt={walletOption.name} 
+                        className="w-6 h-6 rounded-full"
+                      />
+                    </div>
                     <div>
                       <div className="flex items-center space-x-2">
                         <span className="font-medium">{walletOption.name}</span>

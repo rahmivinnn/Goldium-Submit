@@ -23,7 +23,7 @@ export function SimpleThreeScene({ className = "", height = "300px" }: SimpleThr
     containerRef.current.appendChild(renderer.domElement);
 
     // Create particle system
-    const particleCount = 500;
+    const particleCount = 150;
     const positions = new Float32Array(particleCount * 3);
     const colors = new Float32Array(particleCount * 3);
 
@@ -68,16 +68,21 @@ export function SimpleThreeScene({ className = "", height = "300px" }: SimpleThr
 
     camera.position.z = 8;
 
-    // Animation loop
+    // Optimized animation loop with frame throttling
     let animationId: number;
+    let frameCount = 0;
     const animate = () => {
       animationId = requestAnimationFrame(animate);
+      frameCount++;
       
-      particles.rotation.x += 0.001;
-      particles.rotation.y += 0.002;
-      
-      octa.rotation.x += 0.01;
-      octa.rotation.y += 0.01;
+      // Reduce animation frequency to every 3rd frame
+      if (frameCount % 3 === 0) {
+        particles.rotation.x += 0.0005;
+        particles.rotation.y += 0.001;
+        
+        octa.rotation.x += 0.005;
+        octa.rotation.y += 0.005;
+      }
 
       renderer.render(scene, camera);
     };
@@ -150,10 +155,16 @@ export function MiniThreeScene({ className = "", height = "200px" }: SimpleThree
     camera.position.z = 5;
 
     let animationId: number;
+    let frameCount = 0;
     const animate = () => {
       animationId = requestAnimationFrame(animate);
-      mesh.rotation.x += 0.01;
-      mesh.rotation.y += 0.01;
+      frameCount++;
+      
+      // Reduce animation frequency to every 4th frame
+      if (frameCount % 4 === 0) {
+        mesh.rotation.x += 0.005;
+        mesh.rotation.y += 0.005;
+      }
       renderer.render(scene, camera);
     };
 

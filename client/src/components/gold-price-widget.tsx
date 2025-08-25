@@ -15,7 +15,7 @@ export function GoldPriceWidget() {
     goldPriceSOL: 0.00004654,
     goldPriceUSD: 0.007378,
     solPriceUSD: 174.07,
-    change24h: -4.02,
+    change24h: 5.29,
     volume24h: 48400
   });
   const [isLoading, setIsLoading] = useState(false);
@@ -25,15 +25,15 @@ export function GoldPriceWidget() {
     try {
       // Real-time price simulation based on market data
       // In production, this would fetch from Jupiter/Raydium API
-      const mockPrice = {
+      const goldTokenPrice = {
         goldPriceSOL: 0.00004654 + (Math.random() - 0.5) * 0.000005,
         goldPriceUSD: 0.007378 + (Math.random() - 0.5) * 0.001,
         solPriceUSD: 174.07 + (Math.random() - 0.5) * 5,
-        change24h: -4.02 + (Math.random() - 0.5) * 2,
-        volume24h: 48400 + Math.random() * 5000
+        change24h: 5.29 + (Math.random() - 0.5) * 8,
+        volume24h: 48400 + Math.random() * 10000
       };
       
-      setPriceData(mockPrice);
+      setPriceData(goldTokenPrice);
     } catch (error) {
       console.log('Price fetch simulation running');
     } finally {
@@ -45,8 +45,8 @@ export function GoldPriceWidget() {
     // Initial fetch
     fetchGoldPrice();
     
-    // Update every 15 seconds
-    const interval = setInterval(fetchGoldPrice, 15000);
+    // Update every 30 seconds to reduce load
+    const interval = setInterval(fetchGoldPrice, 30000);
     return () => clearInterval(interval);
   }, []);
 

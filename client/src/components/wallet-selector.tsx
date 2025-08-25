@@ -153,21 +153,6 @@ export function WalletSelector({ onConnect, connecting, connected, currentWallet
                         Not Installed
                       </span>
                     )}
-                    <Button
-                      size="sm"
-                      className={`text-xs ${
-                        wallet.installed 
-                          ? 'bg-blue-gradient hover:from-blue-600 hover:to-blue-700' 
-                          : 'bg-gray-600 hover:bg-gray-700'
-                      }`}
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        wallet.connect();
-                      }}
-                      disabled={connecting}
-                    >
-                      {wallet.installed ? 'Connect' : 'Install'}
-                    </Button>
                   </div>
                 </div>
               </CardContent>

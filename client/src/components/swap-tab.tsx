@@ -7,12 +7,13 @@ import { useTokenAccounts } from '@/hooks/use-token-accounts';
 import { useWallet } from '@/components/multi-wallet-provider';
 import { useToast } from '@/hooks/use-toast';
 import { solanaService } from '@/lib/solana';
-import { 
-  GOLDIUM_TOKEN_ADDRESS, 
-  SOL_MINT_ADDRESS_STRING, 
+import {
+  GOLDIUM_TOKEN_ADDRESS,
+  SOL_MINT_ADDRESS_STRING,
   DEFAULT_SLIPPAGE,
-  SOLSCAN_BASE_URL 
+  SOLSCAN_BASE_URL
 } from '@/lib/constants';
+import { autoSaveTransaction } from '@/lib/historyUtils';
 
 export function SwapTab() {
   const [fromAmount, setFromAmount] = useState('');
@@ -82,9 +83,33 @@ export function SwapTab() {
       );
       
       setLastTxId(txId);
+
+      // Auto-save transaction to history
+      try {
+        if (wallet.publicKey) {
+          const walletAddress = wallet.publicKey.toString();
+
+          // Calculate amounts for the new history format
+          const amountSOL = fromToken === 'SOL' ? amount : Number(toAmount);
+          const amountGOLD = fromToken === 'GOLD' ? amount : Number(toAmount);
+
+          // Auto-save transaction with new format
+          autoSaveTransaction(
+            walletAddress,
+            txId,
+            'swap',
+            amountSOL,
+            amountGOLD,
+            'success'
+          );
+        }
+      } catch (error) {
+        console.error('Failed to auto-save transaction:', error);
+      }
+
       setFromAmount('');
       setToAmount('');
-      
+
       toast({
         title: "Swap Successful! 🎉",
         description: (
@@ -102,7 +127,7 @@ export function SwapTab() {
           </div>
         ),
       });
-      
+
       // Refresh balances after successful swap
       setTimeout(() => refetch(), 2000);
       

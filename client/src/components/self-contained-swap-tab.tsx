@@ -4,18 +4,19 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { ArrowUpDown, ExternalLink } from 'lucide-react';
 import { solscanTracker } from '@/lib/solscan-tracker';
-import { useSelfContainedWallet } from './self-contained-wallet-provider';
+import { useSolanaWallet } from './solana-wallet-provider';
 import { useSelfContainedBalances } from '@/hooks/use-self-contained-balances';
 import { useExternalWallets } from '@/hooks/use-external-wallets';
 import { useInstantBalance } from '@/hooks/use-instant-balance';
 import { useToast } from '@/hooks/use-toast';
 import { TransactionSuccessModal } from './transaction-success-modal';
 import { SOL_TO_GOLD_RATE, GOLD_TO_SOL_RATE, SOLSCAN_BASE_URL } from '@/lib/constants';
+import { autoSaveTransaction } from '@/lib/historyUtils';
 import logoImage from '@assets/k1xiYLna_400x400-removebg-preview_1754275575442.png';
 
 export function SelfContainedSwapTab() {
-  const walletContext = useSelfContainedWallet();
-  const { connected, swapService } = walletContext;
+  const walletContext = useSolanaWallet();
+  const { connected, swapService, refreshTransactionHistory } = walletContext;
   const { balances, refetch } = useSelfContainedBalances();
   const externalWallet = useExternalWallets();
   const instantBalance = useInstantBalance();
@@ -192,14 +193,40 @@ export function SelfContainedSwapTab() {
         });
         setShowSuccessModal(true);
 
-        // Update GOLD balance in transaction history immediately
+        // Auto-save transaction to new history system
+        try {
+          const walletAddress = externalWallet.connected ? externalWallet.address : (connected ? balances.address : null);
+
+          if (walletAddress) {
+            // Calculate amounts for the new history format
+            const amountSOL = fromToken === 'SOL' ? Number(fromAmount) : Number(toAmount);
+            const amountGOLD = fromToken === 'GOLD' ? Number(fromAmount) : Number(toAmount);
+
+            // Auto-save transaction with new format
+            autoSaveTransaction(
+              walletAddress,
+              result.signature,
+              'swap',
+              amountSOL,
+              amountGOLD,
+              'success'
+            );
+
+            // Refresh transaction history in wallet provider
+            refreshTransactionHistory();
+          }
+        } catch (error) {
+          console.error('Failed to auto-save transaction:', error);
+        }
+
+        // Update GOLD balance in old transaction history system for compatibility
         try {
           const { transactionHistory } = await import('../lib/transaction-history');
           const walletAddress = externalWallet.connected ? externalWallet.address : (connected ? balances.address : null);
-          
+
           if (walletAddress) {
             transactionHistory.setCurrentWallet(walletAddress);
-            
+
             if (fromToken === 'SOL') {
               // User swapped SOL to GOLD - add GOLD to their balance
               const goldReceived = Number(toAmount);
@@ -246,41 +273,44 @@ export function SelfContainedSwapTab() {
   return (
     <div className="max-w-md mx-auto space-y-6">
       {/* From Token */}
-      <div className="space-y-3">
-        <label className="text-sm font-medium text-galaxy-bright">From</label>
-        <Card className="bg-galaxy-card border-galaxy-purple/30 hover:border-galaxy-blue/50 transition-all duration-300">
-          <CardContent className="p-4">
-            <div className="flex justify-between items-center mb-3">
+      <div className="space-y-4">
+        <label className="text-lg font-bold bg-gradient-to-r from-yellow-400 to-amber-300 bg-clip-text text-transparent tracking-tight">From</label>
+        <Card className="group bg-gradient-to-br from-slate-900/95 to-slate-800/95 backdrop-blur-xl border border-yellow-500/30 hover:border-yellow-400/50 transition-all duration-500 hover:shadow-xl hover:shadow-yellow-500/10">
+          <CardContent className="p-6">
+            <div className="flex justify-between items-center mb-4">
               <Button
                 variant="outline"
-                className="bg-galaxy-button border-galaxy-purple/30 hover:border-galaxy-blue/50 text-white"
+                className="bg-gradient-to-r from-yellow-600/20 to-amber-600/20 border-yellow-400/40 hover:border-yellow-400/70 text-white font-semibold px-4 py-2 rounded-xl transition-all duration-300 hover:scale-105"
                 onClick={handleSwapDirection}
               >
                 {fromToken === 'SOL' ? (
-                  <span className="text-galaxy-blue">◎</span>
+                  <span className="text-yellow-400 text-lg">◎</span>
                 ) : (
                   <img 
                     src={logoImage} 
                     alt="GOLD" 
-                    className="w-6 h-6"
+                    className="w-6 h-6 drop-shadow-lg"
                   />
                 )}
-                <span className="ml-2">{fromToken}</span>
+                <span className="ml-2 font-bold">{fromToken}</span>
                 <ArrowUpDown className="ml-2 h-4 w-4" />
               </Button>
-              <span className="text-sm text-galaxy-accent">
-                Balance: {externalWallet.connected ? 
-                  (fromToken === 'SOL' ? externalWallet.balance.toFixed(6) : balances.gold.toFixed(6)) : 
-                  fromBalance.toFixed(6)
-                }
-              </span>
+              <div className="text-right">
+                <p className="text-xs font-medium text-yellow-300/70 uppercase tracking-wider">Available Balance</p>
+                <p className="text-sm font-bold text-white font-mono">
+                  {externalWallet.connected ? 
+                    (fromToken === 'SOL' ? externalWallet.balance.toFixed(4) : balances.gold.toFixed(2)) : 
+                    fromBalance.toFixed(fromToken === 'SOL' ? 4 : 2)
+                  } {fromToken}
+                </p>
+              </div>
             </div>
             <Input
               type="number"
               placeholder="0.0"
               value={fromAmount}
               onChange={(e) => handleFromAmountChange(e.target.value)}
-              className="bg-white text-black text-2xl font-semibold border-none p-2 h-auto placeholder:text-gray-500"
+              className="bg-gradient-to-r from-white to-gray-50 text-black text-3xl font-black border-none p-4 h-auto placeholder:text-gray-400 rounded-xl font-mono tracking-tight"
             />
           </CardContent>
         </Card>
@@ -291,84 +321,95 @@ export function SelfContainedSwapTab() {
         <Button
           variant="outline"
           size="sm"
-          className="rounded-full bg-galaxy-card border-galaxy-purple/30 hover:border-galaxy-blue/50"
+          className="rounded-full bg-black/70 border-yellow-400/40 hover:border-yellow-400/70"
           onClick={handleSwapDirection}
         >
-          <ArrowUpDown className="h-4 w-4 text-galaxy-accent" />
+          <ArrowUpDown className="h-4 w-4 text-yellow-400" />
         </Button>
       </div>
 
       {/* To Token */}
-      <div className="space-y-3">
-        <label className="text-sm font-medium text-galaxy-bright">To</label>
-        <Card className="bg-galaxy-card border-galaxy-purple/30 hover:border-gold-primary/50 transition-all duration-300">
-          <CardContent className="p-4">
-            <div className="flex justify-between items-center mb-3">
+      <div className="space-y-4">
+        <label className="text-lg font-bold bg-gradient-to-r from-emerald-400 to-green-300 bg-clip-text text-transparent tracking-tight">To</label>
+        <Card className="group bg-gradient-to-br from-slate-900/95 to-slate-800/95 backdrop-blur-xl border border-emerald-500/30 hover:border-emerald-400/50 transition-all duration-500 hover:shadow-xl hover:shadow-emerald-500/10">
+          <CardContent className="p-6">
+            <div className="flex justify-between items-center mb-4">
               <Button
                 variant="outline"
-                className="bg-galaxy-button/60 border-galaxy-purple/30 hover:border-gold-primary/50 text-white opacity-80"
+                className="bg-gradient-to-r from-emerald-600/20 to-green-600/20 border-emerald-400/40 text-white font-semibold px-4 py-2 rounded-xl opacity-80 cursor-not-allowed"
                 disabled
               >
                 {fromToken === 'GOLD' ? (
-                  <span className="text-galaxy-blue">◎</span>
+                  <span className="text-emerald-400 text-lg">◎</span>
                 ) : (
                   <img 
                     src={logoImage} 
                     alt="GOLD" 
-                    className="w-6 h-6"
+                    className="w-6 h-6 drop-shadow-lg"
                   />
                 )}
-                <span className="ml-2">{fromToken === 'GOLD' ? 'SOL' : 'GOLD'}</span>
+                <span className="ml-2 font-bold">{fromToken === 'GOLD' ? 'SOL' : 'GOLD'}</span>
               </Button>
-              <span className="text-sm text-galaxy-accent">
-                Balance: {fromToken === 'GOLD' ? balances.sol.toFixed(6) : balances.gold.toFixed(6)}
-              </span>
+              <div className="text-right">
+                <p className="text-xs font-medium text-emerald-300/70 uppercase tracking-wider">Current Balance</p>
+                <p className="text-sm font-bold text-white font-mono">
+                  {fromToken === 'GOLD' ? balances.sol.toFixed(4) : balances.gold.toFixed(2)} {fromToken === 'GOLD' ? 'SOL' : 'GOLD'}
+                </p>
+              </div>
             </div>
             <Input
               type="number"
               placeholder="0.0"
               value={toAmount}
               readOnly
-              className="bg-white text-black text-2xl font-semibold border-none p-2 h-auto placeholder:text-gray-500"
+              className="bg-gradient-to-r from-emerald-50 to-green-50 text-black text-3xl font-black border-none p-4 h-auto placeholder:text-gray-400 rounded-xl font-mono tracking-tight cursor-not-allowed"
             />
           </CardContent>
         </Card>
       </div>
 
       {/* Swap Details */}
-      <Card className="bg-galaxy-card/60 border-galaxy-purple/20">
-        <CardContent className="p-4 space-y-2">
-          <div className="flex justify-between text-sm">
-            <span className="text-galaxy-accent">Rate</span>
-            <span className="text-galaxy-bright">
+      <Card className="bg-gradient-to-br from-slate-900/80 to-slate-800/80 backdrop-blur-xl border border-blue-500/20 hover:border-blue-400/30 transition-all duration-300">
+        <CardContent className="p-6 space-y-4">
+          <h3 className="text-lg font-bold bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent tracking-tight mb-4">Swap Details</h3>
+          <div className="flex justify-between items-center">
+            <span className="text-sm font-medium text-slate-300 uppercase tracking-wider">Exchange Rate</span>
+            <span className="text-sm font-bold text-white font-mono">
               {fromToken === 'SOL' 
                 ? `1 SOL = ${exchangeRate.toLocaleString()} GOLD`
                 : `1 GOLD = ${exchangeRate.toFixed(8)} SOL`
               }
             </span>
           </div>
-          <div className="flex justify-between text-sm">
-            <span className="text-galaxy-accent">Slippage</span>
-            <span className="text-galaxy-bright">{slippage}%</span>
+          <div className="flex justify-between items-center">
+            <span className="text-sm font-medium text-slate-300 uppercase tracking-wider">Slippage Tolerance</span>
+            <span className="text-sm font-bold text-emerald-400">{slippage}%</span>
           </div>
-          <div className="flex justify-between text-sm">
-            <span className="text-galaxy-accent">Network Fee</span>
-            <span className="text-galaxy-bright">~0.000005 SOL</span>
+          <div className="flex justify-between items-center">
+            <span className="text-sm font-medium text-slate-300 uppercase tracking-wider">Network Fee</span>
+            <span className="text-sm font-bold text-blue-400 font-mono">~0.000005 SOL</span>
           </div>
-          <div className="flex justify-between text-sm">
-            <span className="text-galaxy-accent">Treasury</span>
-            <span className="text-galaxy-bright">APkB...pump</span>
+          <div className="flex justify-between items-center">
+            <span className="text-sm font-medium text-slate-300 uppercase tracking-wider">Treasury</span>
+            <span className="text-sm font-bold text-yellow-400 font-mono">APkB...pump</span>
           </div>
         </CardContent>
       </Card>
 
       {/* Swap Button */}
       <Button
-        className="w-full bg-galaxy-button hover:bg-galaxy-button py-4 font-semibold text-white transition-all duration-200 transform hover:scale-105 shadow-lg"
+        className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 py-6 font-black text-lg text-white transition-all duration-300 transform hover:scale-[1.02] shadow-2xl hover:shadow-blue-500/25 rounded-xl border border-blue-400/30 hover:border-blue-300/50 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
         onClick={handleSwap}
         disabled={!connected || !isValidAmount || isSwapping}
       >
-        {isSwapping ? 'Swapping...' : `Swap ${fromToken} → ${fromToken === 'SOL' ? 'GOLD' : 'SOL'}`}
+        {isSwapping ? (
+          <div className="flex items-center justify-center space-x-2">
+            <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
+            <span>Processing Swap...</span>
+          </div>
+        ) : (
+          <span className="tracking-wide">Swap {fromToken} → {fromToken === 'SOL' ? 'GOLD' : 'SOL'}</span>
+        )}
       </Button>
 
       {/* Last Transaction */}

@@ -83,14 +83,14 @@ export function MultiWalletProvider({ children }: { children: ReactNode }) {
     }
   }, [wallet]);
 
-  // Auto-refresh balance every 5 seconds
+  // Auto-refresh balance every 15 seconds to reduce load
   useEffect(() => {
     if (!publicKey || !connected) return;
 
     fetchBalance(publicKey);
     const interval = setInterval(() => {
       fetchBalance(publicKey);
-    }, 5000);
+    }, 15000);
 
     return () => clearInterval(interval);
   }, [publicKey, connected, fetchBalance]);
@@ -127,7 +127,7 @@ export function MultiWalletProvider({ children }: { children: ReactNode }) {
     };
 
     if (connected) {
-      const interval = setInterval(detectWalletChanges, 2000);
+      const interval = setInterval(detectWalletChanges, 10000);
       return () => clearInterval(interval);
     }
   }, [connected, wallet, publicKey]);

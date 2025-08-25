@@ -359,4 +359,5 @@ class SwapService {
   }
 }
 
+export { SwapService };
 export const swapService = new SwapService();
