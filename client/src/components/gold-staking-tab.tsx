@@ -238,7 +238,7 @@ export function GoldStakingTab() {
                   placeholder="0.0000"
                   value={stakeAmount}
                   onChange={(e) => setStakeAmount(e.target.value)}
-                  className="bg-white border-galaxy-purple/30 text-black placeholder:text-gray-500 pr-16"
+                  className="bg-gradient-to-r from-gray-900/80 to-gray-800/80 border border-yellow-400/30 text-white placeholder:text-gray-400 pr-16 backdrop-blur-sm"
                   step="0.0001"
                   min={goldBalance.stakingInfo.minStake}
                   max={goldBalance.balance}
@@ -303,7 +303,7 @@ export function GoldStakingTab() {
                   placeholder="0.0000"
                   value={unstakeAmount}
                   onChange={(e) => setUnstakeAmount(e.target.value)}
-                  className="bg-white border-galaxy-purple/30 text-black placeholder:text-gray-500 pr-16"
+                  className="bg-gradient-to-r from-gray-900/80 to-gray-800/80 border border-yellow-400/30 text-white placeholder:text-gray-400 pr-16 backdrop-blur-sm"
                   step="0.0001"
                   min="0"
                   max={goldBalance.stakedBalance}

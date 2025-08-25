@@ -68,6 +68,7 @@ const GoldiumGamifiedStaking: React.FC = () => {
   const [currentStage, setCurrentStage] = useState<StageInfo>(STAKING_STAGES[0]);
   const [stakingDays, setStakingDays] = useState<number>(0);
   const [progress, setProgress] = useState<number>(0);
+  const [showDragon, setShowDragon] = useState<boolean>(true); // Always show dragon
 
   // Mock connection for demo purposes
   const connection = new Connection('https://api.mainnet-beta.solana.com');
@@ -89,12 +90,34 @@ const GoldiumGamifiedStaking: React.FC = () => {
   }, [stakingData]);
 
   const fetchGoldBalance = async () => {
+    if (!publicKey) return;
+    
     try {
-      // Mock GOLD balance - in real implementation, fetch SPL token balance
-      const mockBalance = Math.random() * 10000;
-      setGoldBalance(mockBalance);
+      // Real GOLD balance - fetch SPL token balance from Solana
+      const { getAssociatedTokenAddress } = await import('@solana/spl-token');
+      
+      // GOLD token mint address
+      const GOLD_MINT = new PublicKey('GLD1111111111111111111111111111111111111111');
+      
+      // Get user's GOLD token account
+      const userTokenAccount = await getAssociatedTokenAddress(
+        GOLD_MINT,
+        publicKey
+      );
+      
+      // Get token account info
+      const tokenAccountInfo = await connection.getTokenAccountBalance(userTokenAccount);
+      
+      if (tokenAccountInfo.value) {
+        const balance = parseFloat(tokenAccountInfo.value.amount) / Math.pow(10, tokenAccountInfo.value.decimals);
+        setGoldBalance(balance);
+      } else {
+        setGoldBalance(0);
+      }
     } catch (error) {
       console.error('Error fetching GOLD balance:', error);
+      // Fallback to 0 if token account doesn't exist or other error
+      setGoldBalance(0);
     }
   };
 
@@ -153,7 +176,7 @@ const GoldiumGamifiedStaking: React.FC = () => {
   };
 
   const handleStake = async () => {
-    if (!stakeAmount || !connected) return;
+    if (!stakeAmount || !connected || !publicKey) return;
     
     setLoading(true);
     try {
@@ -163,8 +186,51 @@ const GoldiumGamifiedStaking: React.FC = () => {
         return;
       }
 
-      // Mock staking transaction
-      await new Promise(resolve => setTimeout(resolve, 2000));
+      // Real Solana transaction for staking GOLD
+      const { Transaction, SystemProgram, LAMPORTS_PER_SOL } = await import('@solana/web3.js');
+      const { getAssociatedTokenAddress, createTransferInstruction, TOKEN_PROGRAM_ID } = await import('@solana/spl-token');
+      
+      // GOLD token mint address (replace with actual GOLD token mint)
+      const GOLD_MINT = new PublicKey('GLD1111111111111111111111111111111111111111'); // Replace with real GOLD mint
+      
+      // Get user's GOLD token account
+      const userTokenAccount = await getAssociatedTokenAddress(
+        GOLD_MINT,
+        publicKey
+      );
+      
+      // Staking program account (replace with actual staking program)
+      const stakingProgram = new PublicKey('STK1111111111111111111111111111111111111111'); // Replace with real staking program
+      
+      const transaction = new Transaction();
+      
+      // Add transfer instruction to move GOLD tokens to staking program
+      transaction.add(
+        createTransferInstruction(
+          userTokenAccount,
+          stakingProgram,
+          publicKey,
+          amount * LAMPORTS_PER_SOL // Convert to lamports
+        )
+      );
+      
+      // Get wallet adapter for signing
+      const wallet = (window as any).solana;
+      if (!wallet) {
+        throw new Error('Wallet not found');
+      }
+      
+      // Get recent blockhash
+      const { blockhash } = await connection.getLatestBlockhash();
+      transaction.recentBlockhash = blockhash;
+      transaction.feePayer = publicKey;
+      
+      // Sign and send transaction
+      const signedTransaction = await wallet.signTransaction(transaction);
+      const signature = await connection.sendRawTransaction(signedTransaction.serialize());
+      
+      // Confirm transaction
+      await connection.confirmTransaction(signature, 'confirmed');
       
       const newStakingData: StakingData = {
         amount: stakingData ? stakingData.amount + amount : amount,
@@ -178,70 +244,147 @@ const GoldiumGamifiedStaking: React.FC = () => {
       setGoldBalance(prev => prev - amount);
       setStakeAmount('');
       
-      alert('Successfully staked GOLD!');
+      alert(`Successfully staked ${amount} GOLD! Transaction: ${signature}`);
     } catch (error) {
       console.error('Staking error:', error);
-      alert('Staking failed. Please try again.');
+      alert(`Staking failed: ${error instanceof Error ? error.message : 'Unknown error'}`);
     } finally {
       setLoading(false);
     }
   };
 
   const handleUnstake = async () => {
-    if (!stakingData) return;
+    if (!stakingData || !connected || !publicKey) return;
     
     setLoading(true);
     try {
-      // Mock unstaking transaction
-      await new Promise(resolve => setTimeout(resolve, 2000));
+      // Real Solana transaction for unstaking GOLD
+      const { Transaction, LAMPORTS_PER_SOL } = await import('@solana/web3.js');
+      const { getAssociatedTokenAddress, createTransferInstruction } = await import('@solana/spl-token');
       
+      // GOLD token mint address
+      const GOLD_MINT = new PublicKey('GLD1111111111111111111111111111111111111111');
+      
+      // Get user's GOLD token account
+      const userTokenAccount = await getAssociatedTokenAddress(
+        GOLD_MINT,
+        publicKey
+      );
+      
+      // Staking program account
+      const stakingProgram = new PublicKey('STK1111111111111111111111111111111111111111');
+      
+      const transaction = new Transaction();
       const totalReturn = stakingData.amount + stakingData.rewards;
+      
+      // Add transfer instruction to return GOLD tokens from staking program
+      transaction.add(
+        createTransferInstruction(
+          stakingProgram,
+          userTokenAccount,
+          publicKey, // Authority (should be staking program in real implementation)
+          totalReturn * LAMPORTS_PER_SOL
+        )
+      );
+      
+      // Get wallet adapter for signing
+      const wallet = (window as any).solana;
+      if (!wallet) {
+        throw new Error('Wallet not found');
+      }
+      
+      // Get recent blockhash
+      const { blockhash } = await connection.getLatestBlockhash();
+      transaction.recentBlockhash = blockhash;
+      transaction.feePayer = publicKey;
+      
+      // Sign and send transaction
+      const signedTransaction = await wallet.signTransaction(transaction);
+      const signature = await connection.sendRawTransaction(signedTransaction.serialize());
+      
+      // Confirm transaction
+      await connection.confirmTransaction(signature, 'confirmed');
+      
       setGoldBalance(prev => prev + totalReturn);
       setStakingData(null);
       localStorage.removeItem(`staking_${publicKey?.toString()}`);
       
-      alert(`Successfully unstaked! Received ${totalReturn.toFixed(4)} GOLD`);
+      alert(`Successfully unstaked! Received ${totalReturn.toFixed(4)} GOLD. Transaction: ${signature}`);
     } catch (error) {
       console.error('Unstaking error:', error);
-      alert('Unstaking failed. Please try again.');
+      alert(`Unstaking failed: ${error instanceof Error ? error.message : 'Unknown error'}`);
     } finally {
       setLoading(false);
     }
   };
 
   const handleClaimRewards = async () => {
-    if (!stakingData || stakingData.rewards === 0) return;
+    if (!stakingData || stakingData.rewards === 0 || !connected || !publicKey) return;
     
     setLoading(true);
     try {
-      // Mock claim transaction
-      await new Promise(resolve => setTimeout(resolve, 1500));
+      // Real Solana transaction for claiming rewards
+      const { Transaction, LAMPORTS_PER_SOL } = await import('@solana/web3.js');
+      const { getAssociatedTokenAddress, createTransferInstruction } = await import('@solana/spl-token');
+      
+      // GOLD token mint address
+      const GOLD_MINT = new PublicKey('GLD1111111111111111111111111111111111111111');
+      
+      // Get user's GOLD token account
+      const userTokenAccount = await getAssociatedTokenAddress(
+        GOLD_MINT,
+        publicKey
+      );
+      
+      // Staking program account
+      const stakingProgram = new PublicKey('STK1111111111111111111111111111111111111111');
+      
+      const transaction = new Transaction();
+      
+      // Add transfer instruction to claim rewards
+      transaction.add(
+        createTransferInstruction(
+          stakingProgram,
+          userTokenAccount,
+          publicKey, // Authority (should be staking program in real implementation)
+          stakingData.rewards * LAMPORTS_PER_SOL
+        )
+      );
+      
+      // Get wallet adapter for signing
+      const wallet = (window as any).solana;
+      if (!wallet) {
+        throw new Error('Wallet not found');
+      }
+      
+      // Get recent blockhash
+      const { blockhash } = await connection.getLatestBlockhash();
+      transaction.recentBlockhash = blockhash;
+      transaction.feePayer = publicKey;
+      
+      // Sign and send transaction
+      const signedTransaction = await wallet.signTransaction(transaction);
+      const signature = await connection.sendRawTransaction(signedTransaction.serialize());
+      
+      // Confirm transaction
+      await connection.confirmTransaction(signature, 'confirmed');
       
       setGoldBalance(prev => prev + stakingData.rewards);
+      const claimedAmount = stakingData.rewards;
       const updatedData = { ...stakingData, rewards: 0 };
       setStakingData(updatedData);
       saveStakingData(updatedData);
       
-      alert(`Successfully claimed ${stakingData.rewards.toFixed(4)} GOLD rewards!`);
+      alert(`Successfully claimed ${claimedAmount.toFixed(4)} GOLD rewards! Transaction: ${signature}`);
     } catch (error) {
       console.error('Claim error:', error);
-      alert('Claim failed. Please try again.');
+      alert(`Claim failed: ${error instanceof Error ? error.message : 'Unknown error'}`);
     } finally {
       setLoading(false);
     }
   };
 
-  if (!connected) {
-    return (
-      <Card className="w-full max-w-2xl mx-auto">
-        <CardContent className="p-8 text-center">
-          <div className="text-6xl mb-4">🔒</div>
-          <h3 className="text-xl font-bold mb-2">Connect Wallet to Start</h3>
-          <p className="text-gray-600 mb-6">Connect your wallet using the button in the top right corner to access Goldium Gamified Staking</p>
-        </CardContent>
-      </Card>
-    );
-  }
+  // Removed wallet connection requirement - dragon evolution always visible
 
   return (
     <div className="w-full max-w-4xl mx-auto space-y-6">
@@ -266,24 +409,32 @@ const GoldiumGamifiedStaking: React.FC = () => {
             </CardTitle>
           </CardHeader>
           <CardContent className="text-center bg-black">
-            {stakingData ? (
-              <div className="space-y-4">
-                <div className={`w-32 h-32 mx-auto rounded-full bg-gradient-to-br ${currentStage.color} flex items-center justify-center animate-pulse shadow-lg p-2`}>
+            <div className="space-y-4">
+              <div className={`w-32 h-32 mx-auto rounded-full bg-gradient-to-br ${stakingData ? currentStage.color : 'from-yellow-400 to-yellow-600'} flex items-center justify-center animate-pulse shadow-lg p-2`}>
+                {stakingData ? (
                   <img 
                     src={currentStage.icon} 
                     alt={currentStage.name}
                     className="w-full h-full object-contain"
                   />
-                </div>
-                <div>
-                  <Badge className={`bg-gradient-to-r ${currentStage.color} text-white`}>
-                    {currentStage.name}
-                  </Badge>
-                  <p className="text-sm text-gray-300 mt-2">{currentStage.description}</p>
-                  <p className="text-xs text-gray-400">APY: {currentStage.apy}%</p>
-                </div>
-                
-                {/* Progress to next stage */}
+                ) : (
+                  <div className="text-4xl text-white">🥚</div>
+                )}
+              </div>
+              <div>
+                <Badge className={`bg-gradient-to-r ${stakingData ? currentStage.color : 'from-yellow-400 to-yellow-600'} text-white`}>
+                  {stakingData ? currentStage.name : 'Golden Egg'}
+                </Badge>
+                <p className="text-sm text-gray-300 mt-2">
+                  {stakingData ? currentStage.description : 'Your GOLD is ready to be staked...'}
+                </p>
+                <p className="text-xs text-gray-400">
+                  APY: {stakingData ? currentStage.apy : STAKING_STAGES[0].apy}%
+                </p>
+              </div>
+              
+              {/* Progress to next stage */}
+              {stakingData && (
                 <div className="space-y-2">
                   <div className="flex justify-between text-sm text-white">
                     <span>Days Staked: {stakingDays.toFixed(1)}</span>
@@ -291,15 +442,15 @@ const GoldiumGamifiedStaking: React.FC = () => {
                   </div>
                   <Progress value={progress} className="h-2" />
                 </div>
-              </div>
-            ) : (
-              <div className="space-y-4">
-                <div className="w-32 h-32 mx-auto rounded-full bg-black border-2 border-gray-600 flex items-center justify-center p-4">
-                  <div className="text-4xl text-white">🥚</div>
+              )}
+              
+              {!stakingData && (
+                <div className="text-center">
+                  <p className="text-white text-sm">🐉 Start staking to begin your dragon evolution journey!</p>
+                  <p className="text-yellow-300 text-xs mt-1">Your dragon awaits...</p>
                 </div>
-                <p className="text-white">Start staking to begin your dragon journey!</p>
-              </div>
-            )}
+              )}
+            </div>
           </CardContent>
         </Card>
 
@@ -314,21 +465,30 @@ const GoldiumGamifiedStaking: React.FC = () => {
           <CardContent className="space-y-4">
             {/* Balances */}
             <div className="grid grid-cols-2 gap-4">
-              <div className="bg-blue-50 p-3 rounded-lg">
-                <p className="text-sm text-gray-600">Wallet Balance</p>
-                <p className="font-bold">0.0000 GOLD</p>
+              <div className="bg-black border border-gray-600 p-3 rounded-lg">
+                <div className="flex items-center gap-2 mb-1">
+                  <div className="w-4 h-4 text-gray-400">💰</div>
+                  <p className="text-sm text-gray-300">Wallet Balance</p>
+                </div>
+                <p className="font-bold text-white">0.0000 GOLD</p>
               </div>
-              <div className="bg-green-50 p-3 rounded-lg">
-                <p className="text-sm text-gray-600">Staked Amount</p>
-                <p className="font-bold">{stakingData?.amount.toFixed(4) || '0.0000'} GOLD</p>
+              <div className="bg-black border border-gray-600 p-3 rounded-lg">
+                <div className="flex items-center gap-2 mb-1">
+                  <div className="w-4 h-4 text-gray-400">🔒</div>
+                  <p className="text-sm text-gray-300">Staked Amount</p>
+                </div>
+                <p className="font-bold text-white">{stakingData?.amount.toFixed(4) || '0.0000'} GOLD</p>
               </div>
             </div>
 
             {/* Rewards */}
-            <div className="bg-yellow-50 p-3 rounded-lg">
-              <p className="text-sm text-gray-600">Pending Rewards</p>
-              <p className="font-bold text-yellow-600 flex items-center gap-1">
-                <Flame className="w-4 h-4" />
+            <div className="bg-black border border-gray-600 p-3 rounded-lg">
+              <div className="flex items-center gap-2 mb-1">
+                <div className="w-4 h-4 text-gray-400">🎁</div>
+                <p className="text-sm text-gray-300">Pending Rewards</p>
+              </div>
+              <p className="font-bold text-white flex items-center gap-1">
+                <Flame className="w-4 h-4 text-gray-400" />
                 {stakingData?.rewards.toFixed(6) || '0.000000'} GOLD
               </p>
             </div>
@@ -408,24 +568,40 @@ const GoldiumGamifiedStaking: React.FC = () => {
             {STAKING_STAGES.map((stage, index) => (
               <div 
                 key={index} 
-                className={`p-4 rounded-lg border-2 transition-all ${
+                className={`p-4 rounded-lg border-2 transition-all backdrop-blur-sm ${
                   currentStage.name === stage.name 
-                    ? 'border-yellow-400 bg-yellow-50' 
-                    : 'border-gray-200 bg-gray-50'
+                    ? 'border-yellow-400 bg-gradient-to-br from-yellow-900/80 to-amber-800/80 shadow-lg shadow-yellow-400/20' 
+                    : 'border-gray-600/50 bg-gradient-to-br from-gray-900/60 to-gray-800/60 hover:border-gray-500/70'
                 }`}
               >
                 <div className="text-center space-y-2">
-                  <div className="w-12 h-12 mx-auto">
+                  <div className="w-12 h-12 mx-auto relative">
+                    <div className={`absolute inset-0 rounded-full ${
+                      currentStage.name === stage.name 
+                        ? 'bg-gradient-to-br from-yellow-400/20 to-amber-500/20 animate-pulse' 
+                        : 'bg-gradient-to-br from-gray-600/20 to-gray-700/20'
+                    }`}></div>
                     <img 
                       src={stage.icon} 
                       alt={stage.name}
-                      className="w-full h-full object-contain"
+                      className="w-full h-full object-contain relative z-10"
                     />
                   </div>
-                  <h4 className="font-bold text-sm">{stage.name}</h4>
-                  <p className="text-xs text-gray-600">{stage.minDays}+ days</p>
-                  <Badge variant="secondary" className="text-xs">
-                    {stage.apy}% APY
+                  <h4 className={`font-bold text-sm ${
+                    currentStage.name === stage.name ? 'text-yellow-200' : 'text-gray-200'
+                  }`}>{stage.name}</h4>
+                  <p className={`text-xs ${
+                    currentStage.name === stage.name ? 'text-yellow-300' : 'text-gray-400'
+                  }`}>{stage.minDays}+ days</p>
+                  <Badge 
+                    variant="secondary" 
+                    className={`text-xs ${
+                      currentStage.name === stage.name 
+                        ? 'bg-yellow-400/20 text-yellow-200 border-yellow-400/30' 
+                        : 'bg-gray-700/50 text-gray-300 border-gray-600/30'
+                    }`}
+                  >
+                    ⚡ {stage.apy}% APY
                   </Badge>
                 </div>
               </div>

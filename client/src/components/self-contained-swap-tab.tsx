@@ -362,7 +362,7 @@ export function SelfContainedSwapTab() {
               placeholder="0.0"
               value={toAmount}
               readOnly
-              className="bg-gradient-to-r from-emerald-50 to-green-50 text-black text-3xl font-black border-none p-4 h-auto placeholder:text-gray-400 rounded-xl font-mono tracking-tight cursor-not-allowed"
+              className="bg-gradient-to-r from-emerald-900/80 to-green-900/80 border border-emerald-400/30 text-white text-3xl font-black p-4 h-auto placeholder:text-emerald-300/50 rounded-xl font-mono tracking-tight cursor-not-allowed backdrop-blur-sm"
             />
           </CardContent>
         </Card>
