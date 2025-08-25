@@ -27,7 +27,7 @@ export default function HomeSimple() {
   const [tokenData, setTokenData] = useState<RealTimeTokenData | null>(null);
   const [loading, setLoading] = useState(true);
   const [buyingToken, setBuyingToken] = useState(false);
-  const [buyAmount, setBuyAmount] = useState('1'); // Default 1 SOL
+  const [buyAmount, setBuyAmount] = useState('0.000047'); // Default amount for 1 GOLD
   
   const externalWallet = useExternalWallets();
   const { toast } = useToast();
@@ -144,7 +144,7 @@ export default function HomeSimple() {
       });
 
       // Reset buy amount
-      setBuyAmount('1');
+      setBuyAmount('0.000047');
       
       // Refresh balances after real transaction
       setTimeout(() => {
@@ -256,8 +256,8 @@ export default function HomeSimple() {
                     value={buyAmount}
                     onChange={(e) => setBuyAmount(e.target.value)}
                     placeholder="Enter SOL amount"
-                    min="0.01"
-                    step="0.01"
+                    min="0.000047"
+                    step="0.000047"
                     className="bg-gray-800 border border-yellow-400 text-white px-4 py-2 rounded-lg w-36 focus:outline-none focus:ring-2 focus:ring-yellow-400"
                     disabled={buyingToken}
                   />

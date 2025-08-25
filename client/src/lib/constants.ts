@@ -34,8 +34,8 @@ export const SOL_DECIMALS = 9;
 export const GOLD_DECIMALS = 9;
 
 // Minimum amounts for transactions
-export const MIN_SOL_AMOUNT = 0.001;
-export const MIN_GOLD_AMOUNT = 0.1;
+export const MIN_SOL_AMOUNT = 0.000047; // Minimum SOL for 1 GOLD
+export const MIN_GOLD_AMOUNT = 1; // Minimum 1 GOLD
 
 // Program IDs for real transactions
 export const JUPITER_PROGRAM_ID = 'JUP6LkbZbjS1jKKwapdHNy74zcZ3tLUZoi5QNyVTaV4'; // Jupiter V6 for swaps
