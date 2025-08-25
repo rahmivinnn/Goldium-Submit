@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useSolanaWallet, WalletMultiButton } from '@/components/solana-wallet-provider';
+import { useSolanaWallet } from '@/components/solana-wallet-provider';
 import { Connection, PublicKey, LAMPORTS_PER_SOL } from '@solana/web3.js';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -237,8 +237,7 @@ const GoldiumGamifiedStaking: React.FC = () => {
         <CardContent className="p-8 text-center">
           <div className="text-6xl mb-4">🔒</div>
           <h3 className="text-xl font-bold mb-2">Connect Wallet to Start</h3>
-          <p className="text-gray-600 mb-6">Connect your wallet to access Goldium Gamified Staking</p>
-          <WalletMultiButton className="bg-gradient-to-r from-yellow-400 to-yellow-600 hover:from-yellow-500 hover:to-yellow-700 text-black font-bold px-8 py-3 rounded-xl" />
+          <p className="text-gray-600 mb-6">Connect your wallet using the button in the top right corner to access Goldium Gamified Staking</p>
         </CardContent>
       </Card>
     );
