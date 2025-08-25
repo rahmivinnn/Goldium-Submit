@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useWallet } from '@solana/wallet-adapter-react';
+import { useSolanaWallet, WalletMultiButton } from '@/components/solana-wallet-provider';
 import { Connection, PublicKey, LAMPORTS_PER_SOL } from '@solana/web3.js';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -60,7 +60,7 @@ const STAKING_STAGES: StageInfo[] = [
 ];
 
 const GoldiumGamifiedStaking: React.FC = () => {
-  const { connected, publicKey } = useWallet();
+  const { connected, publicKey } = useSolanaWallet();
   const [stakingData, setStakingData] = useState<StakingData | null>(null);
   const [goldBalance, setGoldBalance] = useState<number>(0);
   const [stakeAmount, setStakeAmount] = useState<string>('');
@@ -237,7 +237,8 @@ const GoldiumGamifiedStaking: React.FC = () => {
         <CardContent className="p-8 text-center">
           <div className="text-6xl mb-4">🔒</div>
           <h3 className="text-xl font-bold mb-2">Connect Wallet to Start</h3>
-          <p className="text-gray-600">Connect your Phantom wallet to access Goldium Gamified Staking</p>
+          <p className="text-gray-600 mb-6">Connect your wallet to access Goldium Gamified Staking</p>
+          <WalletMultiButton className="bg-gradient-to-r from-yellow-400 to-yellow-600 hover:from-yellow-500 hover:to-yellow-700 text-black font-bold px-8 py-3 rounded-xl" />
         </CardContent>
       </Card>
     );
@@ -258,14 +259,14 @@ const GoldiumGamifiedStaking: React.FC = () => {
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Dragon Evolution Display */}
-        <Card className="relative overflow-hidden">
+        <Card className="relative overflow-hidden bg-black border-gray-700">
           <CardHeader>
-            <CardTitle className="flex items-center gap-2">
+            <CardTitle className="flex items-center gap-2 text-white">
               <Star className="w-5 h-5" />
               Dragon Evolution
             </CardTitle>
           </CardHeader>
-          <CardContent className="text-center">
+          <CardContent className="text-center bg-black">
             {stakingData ? (
               <div className="space-y-4">
                 <div className={`w-32 h-32 mx-auto rounded-full bg-gradient-to-br ${currentStage.color} flex items-center justify-center animate-pulse shadow-lg p-2`}>
@@ -279,13 +280,13 @@ const GoldiumGamifiedStaking: React.FC = () => {
                   <Badge className={`bg-gradient-to-r ${currentStage.color} text-white`}>
                     {currentStage.name}
                   </Badge>
-                  <p className="text-sm text-gray-600 mt-2">{currentStage.description}</p>
-                  <p className="text-xs text-gray-500">APY: {currentStage.apy}%</p>
+                  <p className="text-sm text-gray-300 mt-2">{currentStage.description}</p>
+                  <p className="text-xs text-gray-400">APY: {currentStage.apy}%</p>
                 </div>
                 
                 {/* Progress to next stage */}
                 <div className="space-y-2">
-                  <div className="flex justify-between text-sm">
+                  <div className="flex justify-between text-sm text-white">
                     <span>Days Staked: {stakingDays.toFixed(1)}</span>
                     <span>Next Stage: {STAKING_STAGES.find(s => s.minDays > stakingDays)?.name || 'Max Level'}</span>
                   </div>
@@ -294,10 +295,10 @@ const GoldiumGamifiedStaking: React.FC = () => {
               </div>
             ) : (
               <div className="space-y-4">
-                <div className="w-32 h-32 mx-auto rounded-full bg-gray-200 flex items-center justify-center p-4">
-                  <div className="text-4xl text-gray-400">?</div>
+                <div className="w-32 h-32 mx-auto rounded-full bg-black border-2 border-gray-600 flex items-center justify-center p-4">
+                  <div className="text-4xl text-white">🥚</div>
                 </div>
-                <p className="text-gray-500">Start staking to begin your dragon journey!</p>
+                <p className="text-white">Start staking to begin your dragon journey!</p>
               </div>
             )}
           </CardContent>
@@ -316,7 +317,7 @@ const GoldiumGamifiedStaking: React.FC = () => {
             <div className="grid grid-cols-2 gap-4">
               <div className="bg-blue-50 p-3 rounded-lg">
                 <p className="text-sm text-gray-600">Wallet Balance</p>
-                <p className="font-bold">{goldBalance.toFixed(4)} GOLD</p>
+                <p className="font-bold">0.0000 GOLD</p>
               </div>
               <div className="bg-green-50 p-3 rounded-lg">
                 <p className="text-sm text-gray-600">Staked Amount</p>

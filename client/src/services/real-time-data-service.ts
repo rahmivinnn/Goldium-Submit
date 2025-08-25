@@ -146,7 +146,7 @@ class RealTimeDataService {
     } catch (error) {
       console.error('Failed to fetch total supply:', error);
       // Realistic supply for GOLD token (APkBg8kzMBpVKxvgrw67vkd5KuGWqSu2GVb19eK4pump)
-      const fallbackSupply = 100000000; // 100 million tokens (realistic for new SPL token)
+      const fallbackSupply = 1000000000; // 1 billion tokens (updated tokenomics)
       console.log(`⚠️ Using realistic supply for GOLD token: ${fallbackSupply}`);
       return fallbackSupply;
     }

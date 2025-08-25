@@ -384,27 +384,27 @@ export default function HomeSimple() {
                   </div>
                   <div className="flex justify-between items-center">
                     <span className="text-yellow-200">Circulating Supply</span>
-                    <span className="text-white font-bold">750,000,000 GOLD</span>
+                    <span className="text-white font-bold">600,000,000 GOLD</span>
                   </div>
                   <div className="flex justify-between items-center">
                     <span className="text-yellow-200">Liquidity Pool</span>
-                    <span className="text-white font-bold">30%</span>
+                    <span className="text-white font-bold">300,000,000 (30%)</span>
                   </div>
                   <div className="flex justify-between items-center">
                     <span className="text-yellow-200">Community Rewards</span>
-                    <span className="text-white font-bold">25%</span>
+                    <span className="text-white font-bold">250,000,000 (25%)</span>
                   </div>
                   <div className="flex justify-between items-center">
                     <span className="text-yellow-200">Development</span>
-                    <span className="text-white font-bold">20%</span>
+                    <span className="text-white font-bold">200,000,000 (20%)</span>
                   </div>
                   <div className="flex justify-between items-center">
                     <span className="text-yellow-200">Marketing</span>
-                    <span className="text-white font-bold">15%</span>
+                    <span className="text-white font-bold">150,000,000 (15%)</span>
                   </div>
                   <div className="flex justify-between items-center">
                     <span className="text-yellow-200">Team (Locked)</span>
-                    <span className="text-white font-bold">10%</span>
+                    <span className="text-white font-bold">100,000,000 (10%)</span>
                   </div>
                 </div>
               </div>
