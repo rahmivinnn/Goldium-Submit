@@ -171,21 +171,21 @@ export default function HomeSimple() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 sm:py-4">
           <div className="flex justify-between items-center">
             <div className="flex items-center gap-2 sm:gap-3">
-              <div className="w-8 h-8 sm:w-12 sm:h-12 rounded-full border-2 border-cyan-400 bg-cyan-400/10 overflow-hidden animate-bounce-gentle">
+              <div className="w-8 h-8 sm:w-12 sm:h-12 rounded-full border-2 border-yellow-400 bg-yellow-400/10 overflow-hidden animate-bounce-gentle">
                 <img 
                   src={goldiumLogo} 
                   alt="Goldium Logo" 
                   className="w-full h-full object-contain p-1"
                 />
               </div>
-              <div className="text-xl sm:text-2xl md:text-3xl font-black text-cyan-400 animate-bounce-gentle">$GOLDIUM</div>
+              <div className="text-xl sm:text-2xl md:text-3xl font-black text-yellow-400 animate-bounce-gentle">$GOLDIUM</div>
             </div>
             <div className="hidden md:flex items-center space-x-8">
-              <a href="#brand" className="text-purple-300 hover:text-cyan-400 transition-all duration-300 font-medium hover:scale-105 animate-fade-in-up animation-delay-200">Brand</a>
-                <a href="#defi" className="text-purple-300 hover:text-cyan-400 transition-all duration-300 font-medium hover:scale-105 animate-fade-in-up animation-delay-300">DeFi</a>
-                <a href="#tokenomics" className="text-purple-300 hover:text-cyan-400 transition-all duration-300 font-medium hover:scale-105 animate-fade-in-up animation-delay-400">Tokenomics</a>
+              <a href="#brand" className="text-purple-300 hover:text-yellow-400 transition-all duration-300 font-medium hover:scale-105 animate-fade-in-up animation-delay-200">Brand</a>
+          <a href="#defi" className="text-purple-300 hover:text-yellow-400 transition-all duration-300 font-medium hover:scale-105 animate-fade-in-up animation-delay-300">DeFi</a>
+          <a href="#tokenomics" className="text-purple-300 hover:text-yellow-400 transition-all duration-300 font-medium hover:scale-105 animate-fade-in-up animation-delay-400">Tokenomics</a>
               {externalWallet.connected && (
-                 <div className="hidden sm:flex items-center gap-2 sm:gap-4 bg-gray-800 px-2 sm:px-4 py-1 sm:py-2 rounded-lg border border-cyan-400 animate-fade-in-up animation-delay-450">
+                 <div className="hidden sm:flex items-center gap-2 sm:gap-4 bg-gray-800 px-2 sm:px-4 py-1 sm:py-2 rounded-lg border border-yellow-400 animate-fade-in-up animation-delay-450">
                    <div className="flex items-center gap-1 sm:gap-2">
                      <div className="w-3 h-3 sm:w-4 sm:h-4 bg-yellow-400 rounded-sm relative">
                        <div className="absolute top-0.5 left-0.5 right-0.5 bottom-1 bg-black rounded-sm"></div>
@@ -201,13 +201,13 @@ export default function HomeSimple() {
                          <div className="absolute inset-0.5 rounded-full bg-yellow-200"></div>
                        </div>
                      </div>
-                     <span className="text-xs sm:text-sm font-semibold text-cyan-400">
+                     <span className="text-xs sm:text-sm font-semibold text-yellow-400">
                        {externalWallet.balance.toFixed(4)} SOL
                      </span>
                    </div>
                    <div className="flex items-center gap-1 sm:gap-2">
                      <DollarSign className="w-3 h-3 sm:w-4 sm:h-4 text-yellow-400" />
-                     <span className="text-xs sm:text-sm font-semibold text-cyan-400">
+                     <span className="text-xs sm:text-sm font-semibold text-yellow-400">
                        {goldBalance.balance.toFixed(2)} GOLD
                      </span>
                    </div>
@@ -221,13 +221,13 @@ export default function HomeSimple() {
             {/* Mobile Menu Button */}
             <div className="md:hidden flex items-center gap-2">
               {externalWallet.connected && (
-                <div className="flex items-center gap-1 bg-gray-800 px-2 py-1 rounded border border-cyan-400/50">
-                  <span className="text-xs text-cyan-400 font-semibold">
+                <div className="flex items-center gap-1 bg-gray-800 px-2 py-1 rounded border border-yellow-400/50">
+            <span className="text-xs text-yellow-400 font-semibold">
                     {externalWallet.balance.toFixed(2)} SOL
                   </span>
                 </div>
               )}
-              <button className="text-cyan-400 p-1">
+              <button className="text-yellow-400 p-1">
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
                 </svg>
@@ -257,10 +257,10 @@ export default function HomeSimple() {
                     alt="Goldium Logo" 
                     className="w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 animate-float drop-shadow-2xl"
                   />
-                  <div className="absolute inset-0 bg-cyan-400/20 rounded-full blur-xl animate-pulse" />
+                  <div className="absolute inset-0 bg-yellow-400/20 rounded-full blur-xl animate-pulse" />
                 </div>
               </div>
-              <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-black text-cyan-400 mb-6 sm:mb-8 tracking-tight animate-fade-in-up">
+              <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-black text-yellow-400 mb-6 sm:mb-8 tracking-tight animate-fade-in-up">
                 <span className="inline-block animate-bounce-gentle drop-shadow-lg">$</span>
                 <span className="inline-block animate-slide-in-left drop-shadow-lg">G</span>
                 <span className="inline-block animate-slide-in-left animation-delay-100 drop-shadow-lg">O</span>
@@ -272,7 +272,7 @@ export default function HomeSimple() {
               </h1>
               <div className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-white mb-4 sm:mb-6 animate-fade-in-up animation-delay-700">
                 <span className="bg-gradient-to-r from-purple-200 to-cyan-400 bg-clip-text text-transparent">DIGITAL GOLD</span>
-                <span className="block text-cyan-400 mt-1 sm:mt-2 animate-fade-in-up animation-delay-900 drop-shadow-lg">REVOLUTION</span>
+                <span className="block text-yellow-400 mt-1 sm:mt-2 animate-fade-in-up animation-delay-900 drop-shadow-lg">REVOLUTION</span>
               </div>
               <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-purple-200 max-w-4xl mx-auto leading-relaxed font-medium animate-fade-in-up animation-delay-1100 drop-shadow-md px-4">
                 The Ultimate Store of Value on Solana Blockchain
@@ -280,20 +280,20 @@ export default function HomeSimple() {
             </div>
             
             <div className="flex flex-col lg:flex-row justify-center gap-6 sm:gap-8 mt-8 sm:mt-12 animate-fade-in-up animation-delay-1300">
-              <div className="flex flex-col gap-4 items-center bg-black/40 backdrop-blur-sm border border-cyan-400/30 rounded-2xl p-4 sm:p-6 lg:p-8 shadow-2xl mx-4 sm:mx-0">
+              <div className="flex flex-col gap-4 items-center bg-black/40 backdrop-blur-sm border border-yellow-400/30 rounded-2xl p-4 sm:p-6 lg:p-8 shadow-2xl mx-4 sm:mx-0">
                 <div className="text-center mb-4">
                   <div className="flex items-center justify-center gap-2 mb-2">
-                    <div className="w-8 h-8 rounded-full overflow-hidden shadow-lg border-2 border-cyan-400/40">
+                    <div className="w-8 h-8 rounded-full overflow-hidden shadow-lg border-2 border-yellow-400/40">
                       <img 
                         src={goldiumLogo} 
                         alt="Goldium Logo" 
                         className="w-full h-full object-contain bg-gradient-to-br from-cyan-400/20 to-blue-600/20 p-1"
                       />
                     </div>
-                    <p className="text-cyan-300 font-bold text-xl">BUY GOLDIUM WITH SOL</p>
+                    <p className="text-yellow-300 font-bold text-xl">BUY GOLDIUM WITH SOL</p>
                   </div>
-                  <div className="bg-cyan-400/10 border border-cyan-400/30 rounded-lg p-3">
-                    <p className="text-purple-200 text-sm font-medium">Exchange Rate: <span className="text-cyan-400 font-bold">1 SOL = 21,486.893 GOLD</span></p>
+                  <div className="bg-yellow-400/10 border border-yellow-400/30 rounded-lg p-3">
+            <p className="text-purple-200 text-sm font-medium">Exchange Rate: <span className="text-yellow-400 font-bold">1 SOL = 21,486.893 GOLD</span></p>
                   </div>
                 </div>
                 <div className="flex flex-col gap-3 items-center w-full max-w-sm sm:max-w-md">
@@ -306,15 +306,15 @@ export default function HomeSimple() {
                         placeholder="Enter SOL amount"
                         min="0.000047"
                         step="0.000047"
-                        className="bg-gray-900/80 border-2 border-cyan-400/50 text-white px-3 sm:px-4 py-2 sm:py-3 rounded-xl w-full focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-cyan-400 transition-all text-center font-semibold text-sm sm:text-base"
+                        className="bg-gray-900/80 border-2 border-yellow-400/50 text-white px-3 sm:px-4 py-2 sm:py-3 rounded-xl w-full focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400 transition-all text-center font-semibold text-sm sm:text-base"
                         disabled={buyingToken}
                       />
-                      <span className="absolute right-2 sm:right-3 top-1/2 transform -translate-y-1/2 text-cyan-400 font-bold text-xs sm:text-sm">SOL</span>
+                      <span className="absolute right-2 sm:right-3 top-1/2 transform -translate-y-1/2 text-yellow-400 font-bold text-xs sm:text-sm">SOL</span>
                     </div>
                   </div>
                   <div className="flex items-center gap-2 text-base sm:text-lg">
                     <span className="text-purple-200/70">↓</span>
-                    <span className="text-cyan-300 font-bold text-sm sm:text-lg">{buyAmount ? (parseFloat(buyAmount) * 21486.893).toLocaleString() : '0'} GOLD</span>
+                    <span className="text-yellow-300 font-bold text-sm sm:text-lg">{buyAmount ? (parseFloat(buyAmount) * 21486.893).toLocaleString() : '0'} GOLD</span>
                   </div>
                 </div>
                 <Button

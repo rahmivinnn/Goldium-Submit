@@ -200,12 +200,12 @@ export default function Dashboard() {
                     <Badge className="bg-yellow-600 text-white">Neutral</Badge>
                   </div>
                   
-                  <div className="flex items-center justify-between p-3 bg-blue-900/20 border border-blue-500/30 rounded-lg">
+                  <div className="flex items-center justify-between p-3 bg-yellow-900/20 border border-yellow-500/30 rounded-lg">
                     <div>
                       <div className="text-sm font-medium text-white">DeFi TVL Rising</div>
                       <div className="text-xs text-gray-400">Increased liquidity inflow</div>
                     </div>
-                    <Badge className="bg-blue-600 text-white">Positive</Badge>
+                    <Badge className="bg-yellow-600 text-white">Positive</Badge>
                   </div>
                 </div>
               </CardContent>

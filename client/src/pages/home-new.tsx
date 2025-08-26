@@ -39,10 +39,10 @@ export default function Home() {
 
             {/* Navigation Links */}
             <div className="hidden md:flex items-center space-x-8">
-              <a href="#home" className="text-white hover:text-blue-400 transition-colors font-medium">Home</a>
-              <a href="#defi" className="text-gray-300 hover:text-blue-400 transition-colors">DeFi</a>
-              <a href="#analytics" className="text-gray-300 hover:text-blue-400 transition-colors">Analytics</a>
-              <a href="#about" className="text-gray-300 hover:text-blue-400 transition-colors">About</a>
+              <a href="#home" className="text-white hover:text-yellow-400 transition-colors font-medium">Home</a>
+        <a href="#defi" className="text-gray-300 hover:text-yellow-400 transition-colors">DeFi</a>
+        <a href="#analytics" className="text-gray-300 hover:text-yellow-400 transition-colors">Analytics</a>
+        <a href="#about" className="text-gray-300 hover:text-yellow-400 transition-colors">About</a>
             </div>
 
             {/* Right side */}
@@ -95,8 +95,8 @@ export default function Home() {
             {/* Stats Cards */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
               <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6">
-                <div className="flex items-center justify-center w-12 h-12 bg-blue-500/20 rounded-lg mx-auto mb-4">
-                  <TrendingUp className="w-6 h-6 text-blue-400" />
+                <div className="flex items-center justify-center w-12 h-12 bg-yellow-500/20 rounded-lg mx-auto mb-4">
+          <TrendingUp className="w-6 h-6 text-yellow-400" />
                 </div>
                 <h3 className="text-xl font-semibold text-white mb-2">Fast Swaps</h3>
                 <p className="text-gray-400">Lightning-fast token swaps on Solana</p>

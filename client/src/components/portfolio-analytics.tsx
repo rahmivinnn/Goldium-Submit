@@ -237,7 +237,7 @@ export function PortfolioAnalytics({
   return (
     <div className={cn('space-y-6', className)}>
       {/* Portfolio Overview */}
-      <Card className="p-6 bg-gradient-to-r from-gray-900 to-gray-800 border-gray-700">
+      <Card className="p-6 bg-gradient-to-r from-yellow-900 to-amber-800 border-gray-700">
         <CardHeader className="pb-4">
           <div className="flex items-center justify-between">
             <CardTitle className="text-2xl font-bold text-white flex items-center gap-2">

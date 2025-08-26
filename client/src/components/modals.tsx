@@ -42,7 +42,7 @@ export function SuccessModal({
         <div className="space-y-3 mt-6">
           {solscanUrl && (
             <Button
-              className="w-full bg-blue-gradient py-3 font-medium"
+              className="w-full bg-yellow-600 hover:bg-yellow-700 py-3 font-medium"
               onClick={() => window.open(solscanUrl, '_blank')}
             >
               View on Solscan

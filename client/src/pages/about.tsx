@@ -133,7 +133,7 @@ export function About() {
             </Button>
             <Button 
               variant="outline" 
-              className="border-blue-500 text-blue-400 hover:bg-blue-500 hover:text-white px-8 py-3"
+              className="border-yellow-500 text-yellow-400 hover:bg-yellow-500 hover:text-white px-8 py-3"
               onClick={() => window.open('https://t.me/goldiumofficial', '_blank')}
             >
               Join Telegram
@@ -154,7 +154,7 @@ export function About() {
               </CardContent>
             </Card>
 
-            <Card className="bg-galaxy-card border-galaxy-purple/30 hover:border-blue-500/50 transition-all duration-300">
+            <Card className="bg-galaxy-card border-galaxy-purple/30 hover:border-yellow-500/50 transition-all duration-300">
               <CardContent className="p-6">
                 <h3 className="text-xl font-bold text-galaxy-bright mb-3">Web3 Gaming</h3>
                 <ul className="space-y-2 text-galaxy-accent">
@@ -174,7 +174,7 @@ export function About() {
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                 <Button 
                   variant="outline" 
-                  className="border-blue-500 text-blue-400 hover:bg-blue-500 hover:text-white"
+                  className="border-yellow-500 text-yellow-400 hover:bg-yellow-500 hover:text-white"
                   onClick={() => window.open('https://t.me/goldiumofficial', '_blank')}
                 >
                   <ExternalLink className="w-4 h-4 mr-2" />

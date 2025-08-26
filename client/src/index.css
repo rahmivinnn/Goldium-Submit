@@ -4,25 +4,25 @@
 
 :root {
   /* Elegant Dark Theme - Soft and Eye-Friendly like eeeeecoin.com */
-  --background: hsl(220, 15%, 8%);           /* Soft dark blue-gray background */
-  --foreground: hsl(210, 20%, 92%);          /* Soft white text */
+  --background: hsl(220, 15%, 8%);           /* Soft dark background */
+  --foreground: hsl(45, 20%, 92%);          /* Soft white text */
   --muted: hsl(220, 15%, 12%);               /* Muted dark background */
-  --muted-foreground: hsl(210, 15%, 70%);    /* Soft muted text */
+  --muted-foreground: hsl(45, 15%, 70%);    /* Soft muted text */
   --popover: hsl(220, 15%, 10%);             /* Popover background */
-  --popover-foreground: hsl(210, 20%, 92%);  /* Soft white text */
+  --popover-foreground: hsl(45, 20%, 92%);  /* Soft white text */
   --card: hsl(220, 15%, 10%);                /* Card background */
-  --card-foreground: hsl(210, 20%, 92%);     /* Soft white text */
-  --border: hsl(210, 25%, 25%);              /* Soft borders */
-  --input: hsl(210, 20%, 92%);               /* Light input backgrounds */
-  --primary: hsl(210, 100%, 65%);            /* Soft blue primary */
+  --card-foreground: hsl(45, 20%, 92%);     /* Soft white text */
+  --border: hsl(45, 25%, 25%);              /* Soft borders */
+  --input: hsl(45, 20%, 92%);               /* Light input backgrounds */
+  --primary: hsl(45, 100%, 65%);            /* Soft gold primary */
   --primary-foreground: hsl(0, 0%, 100%);    /* White text on primary */
   --secondary: hsl(220, 15%, 15%);           /* Secondary background */
-  --secondary-foreground: hsl(210, 20%, 92%); /* Soft white text */
-  --accent: hsl(210, 80%, 45%);              /* Soft blue accent */
-  --accent-foreground: hsl(210, 20%, 92%);   /* Soft white text */
+  --secondary-foreground: hsl(45, 20%, 92%); /* Soft white text */
+  --accent: hsl(45, 80%, 45%);              /* Soft gold accent */
+  --accent-foreground: hsl(45, 20%, 92%);   /* Soft white text */
   --destructive: hsl(0, 65%, 55%);           /* Soft red for errors */
   --destructive-foreground: hsl(0, 0%, 100%); /* White text */
-  --ring: hsl(210, 100%, 65%);               /* Soft blue focus ring */
+  --ring: hsl(45, 100%, 65%);               /* Soft gold focus ring */
   --radius: 0.5rem;
 
   /* Enhanced Metaverse DeFi Colors */
@@ -30,13 +30,13 @@
   --defi-secondary: rgba(26, 26, 46, 0.9);   /* Metaverse secondary */
   --defi-accent: rgba(139, 92, 246, 0.8);    /* Purple accent */
   --metaverse-primary: hsl(270, 75%, 65%);   /* Vibrant purple */
-  --metaverse-secondary: hsl(240, 80%, 70%); /* Electric blue */
-  --blue-primary: hsl(210, 100%, 60%);       /* Bright blue */
-  --blue-secondary: hsl(200, 90%, 65%);      /* Cyan blue */
+  --metaverse-secondary: hsl(45, 80%, 70%); /* Electric gold */
+  --gold-primary: hsl(45, 100%, 60%);       /* Bright gold */
+  --gold-secondary: hsl(43, 90%, 65%);      /* Light gold */
   --purple-primary: hsl(270, 75%, 65%);      /* Metaverse purple */
   --green-primary: hsl(150, 60%, 65%);       /* Soft green */
   --cyan-primary: hsl(180, 100%, 50%);       /* Neon cyan */
-  --galaxy-blue: hsl(210, 100%, 60%);        /* Galaxy blue */
+  --galaxy-gold: hsl(45, 100%, 60%);        /* Galaxy gold */
   --galaxy-purple: hsl(270, 75%, 65%);       /* Galaxy purple */
   --galaxy-cyan: hsl(180, 100%, 50%);        /* Galaxy cyan */
 }
@@ -79,25 +79,25 @@
 
 .dark {
   /* Elegant Dark Theme - Enhanced Soft Colors for Dark Mode */
-  --background: hsl(220, 20%, 5%);            /* Ultra soft dark blue */
-  --foreground: hsl(210, 25%, 95%);           /* Ultra soft white text */
-  --muted: hsl(220, 20%, 8%);                 /* Deep muted blue */
-  --muted-foreground: hsl(210, 20%, 75%);     /* Bright muted text */
+  --background: hsl(220, 20%, 5%);            /* Ultra soft dark */
+  --foreground: hsl(45, 25%, 95%);           /* Ultra soft white text */
+  --muted: hsl(220, 20%, 8%);                 /* Deep muted */
+  --muted-foreground: hsl(45, 20%, 75%);     /* Bright muted text */
   --popover: hsl(220, 20%, 6%);               /* Deep popover */
-  --popover-foreground: hsl(210, 25%, 95%);   /* Ultra soft white text */
+  --popover-foreground: hsl(45, 25%, 95%);   /* Ultra soft white text */
   --card: hsl(220, 20%, 7%);                  /* Deep card */
-  --card-foreground: hsl(210, 25%, 95%);      /* Ultra soft white text */
-  --border: hsl(210, 30%, 30%);               /* Soft blue borders */
-  --input: hsl(210, 25%, 95%);                /* Light input */
-  --primary: hsl(210, 100%, 70%);             /* Ultra soft blue */
+  --card-foreground: hsl(45, 25%, 95%);      /* Ultra soft white text */
+  --border: hsl(45, 30%, 30%);               /* Soft gold borders */
+  --input: hsl(45, 25%, 95%);                /* Light input */
+  --primary: hsl(45, 100%, 70%);             /* Ultra soft gold */
   --primary-foreground: hsl(0, 0%, 100%);     /* White text */
   --secondary: hsl(220, 20%, 12%);            /* Deep secondary */
-  --secondary-foreground: hsl(210, 25%, 95%); /* Ultra soft white text */
-  --accent: hsl(210, 85%, 50%);               /* Soft blue accent */
-  --accent-foreground: hsl(210, 25%, 95%);    /* Ultra soft white text */
+  --secondary-foreground: hsl(45, 25%, 95%); /* Ultra soft white text */
+  --accent: hsl(45, 85%, 50%);               /* Soft gold accent */
+  --accent-foreground: hsl(45, 25%, 95%);    /* Ultra soft white text */
   --destructive: hsl(0, 75%, 60%);            /* Soft red */
   --destructive-foreground: hsl(0, 0%, 100%); /* White text */
-  --ring: hsl(210, 100%, 70%);                /* Ultra soft blue focus */
+  --ring: hsl(45, 100%, 70%);                /* Ultra soft gold focus */
   --radius: 0.5rem;
 }
 

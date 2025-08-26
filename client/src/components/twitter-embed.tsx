@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { TrendingUp, Users, MessageCircle, ExternalLink, Globe, Zap, Shield, Coins } from 'lucide-react';
+import { TrendingUp, Users, MessageCircle, ExternalLink, Globe, Zap, Shield, Coins, DollarSign, Percent, MessageSquare } from 'lucide-react';
 import { SolanaIcon } from '@/components/solana-icon';
 import { realTimeDataService, RealTimeTokenData } from '@/services/real-time-data-service';
 
@@ -60,126 +60,126 @@ export function TwitterEmbed() {
     <div className="w-full max-w-7xl mx-auto space-y-12">
       {/* Community Stats - Real Data */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12">
-        <Card className="bg-gradient-to-br from-purple-900/30 to-blue-800/20 border-2 border-cyan-400/40 rounded-2xl p-6 text-center hover:border-cyan-400 transition-all">
-        <div className="w-12 h-12 bg-gradient-to-r from-cyan-400 to-purple-500 rounded-xl flex items-center justify-center mx-auto mb-4">
+        <Card className="bg-gradient-to-br from-yellow-900/30 to-amber-800/20 border-2 border-yellow-400/40 rounded-2xl p-6 text-center hover:border-yellow-400 transition-all">
+        <div className="w-12 h-12 bg-gradient-to-r from-yellow-400 to-yellow-500 rounded-xl flex items-center justify-center mx-auto mb-4">
           <Users className="w-6 h-6 text-black" />
         </div>
-        <div className="text-2xl font-bold text-cyan-300 mb-1">
+        <div className="text-2xl font-bold text-yellow-300 mb-1">
           {tokenData ? formatNumber(tokenData.holders) : 'Loading...'}
         </div>
-        <div className="text-purple-200 text-sm">Token Holders</div>
+        <div className="text-yellow-200 text-sm">Token Holders</div>
         </Card>
         
-        <Card className="bg-gradient-to-br from-purple-900/30 to-blue-800/20 border-2 border-cyan-400/40 rounded-2xl p-6 text-center hover:border-cyan-400 transition-all">
-        <div className="w-12 h-12 bg-gradient-to-r from-cyan-400 to-purple-500 rounded-xl flex items-center justify-center mx-auto mb-4">
+        <Card className="bg-gradient-to-br from-yellow-900/30 to-amber-800/20 border-2 border-yellow-400/40 rounded-2xl p-6 text-center hover:border-yellow-400 transition-all">
+        <div className="w-12 h-12 bg-gradient-to-r from-yellow-400 to-yellow-500 rounded-xl flex items-center justify-center mx-auto mb-4">
           <TrendingUp className="w-6 h-6 text-black" />
         </div>
-        <div className="text-2xl font-bold text-cyan-300 mb-1">
+        <div className="text-2xl font-bold text-yellow-300 mb-1">
           {tokenData ? formatCurrency(tokenData.volume24h) : 'Loading...'}
         </div>
-        <div className="text-purple-200 text-sm">24h Volume</div>
+        <div className="text-yellow-200 text-sm">24h Volume</div>
         </Card>
         
-        <Card className="bg-gradient-to-br from-purple-900/30 to-blue-800/20 border-2 border-cyan-400/40 rounded-2xl p-6 text-center hover:border-cyan-400 transition-all">
-           <div className="w-12 h-12 bg-gradient-to-r from-cyan-400 to-purple-500 rounded-xl flex items-center justify-center mx-auto mb-4">
+        <Card className="bg-gradient-to-br from-yellow-900/30 to-amber-800/20 border-2 border-yellow-400/40 rounded-2xl p-6 text-center hover:border-yellow-400 transition-all">
+           <div className="w-12 h-12 bg-gradient-to-r from-yellow-400 to-yellow-500 rounded-xl flex items-center justify-center mx-auto mb-4">
              <DollarSign className="w-6 h-6 text-black" />
            </div>
-           <div className="text-2xl font-bold text-cyan-300 mb-1">
+           <div className="text-2xl font-bold text-yellow-300 mb-1">
              {tokenData ? formatCurrency(tokenData.marketCap) : 'Loading...'}
            </div>
-           <div className="text-purple-200 text-sm">Market Cap</div>
+           <div className="text-yellow-200 text-sm">Market Cap</div>
         </Card>
         
-        <Card className="bg-gradient-to-br from-purple-900/30 to-blue-800/20 border-2 border-cyan-400/40 rounded-2xl p-6 text-center hover:border-cyan-400 transition-all">
-           <div className="w-12 h-12 bg-gradient-to-r from-cyan-400 to-purple-500 rounded-xl flex items-center justify-center mx-auto mb-4">
+        <Card className="bg-gradient-to-br from-yellow-900/30 to-amber-800/20 border-2 border-yellow-400/40 rounded-2xl p-6 text-center hover:border-yellow-400 transition-all">
+           <div className="w-12 h-12 bg-gradient-to-r from-yellow-400 to-yellow-500 rounded-xl flex items-center justify-center mx-auto mb-4">
              <Percent className="w-6 h-6 text-black" />
            </div>
-           <div className="text-2xl font-bold text-cyan-300 mb-1">
+           <div className="text-2xl font-bold text-yellow-300 mb-1">
              {tokenData ? `${tokenData.stakingApy}%` : 'Loading...'}
            </div>
-           <div className="text-purple-200 text-sm">Staking APY</div>
+           <div className="text-yellow-200 text-sm">Staking APY</div>
         </Card>
       </div>
       
       {/* Latest Updates */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
         {/* Goldium Updates */}
-        <Card className="bg-gradient-to-br from-purple-900/30 to-blue-800/20 border-2 border-cyan-400/40 rounded-2xl overflow-hidden backdrop-blur-sm hover:border-cyan-400 hover:shadow-2xl hover:shadow-cyan-400/20 transition-all">
+        <Card className="bg-gradient-to-br from-yellow-900/30 to-amber-800/20 border-2 border-yellow-400/40 rounded-2xl overflow-hidden backdrop-blur-sm hover:border-yellow-400 hover:shadow-2xl hover:shadow-yellow-400/20 transition-all">
           <div className="p-6">
             <div className="flex items-center gap-3 mb-6">
-              <div className="w-10 h-10 bg-gradient-to-r from-cyan-400 to-purple-500 rounded-xl flex items-center justify-center">
+              <div className="w-10 h-10 bg-gradient-to-r from-yellow-400 to-yellow-500 rounded-xl flex items-center justify-center">
                 <MessageSquare className="w-5 h-5 text-black" />
               </div>
-              <h4 className="text-2xl font-bold text-cyan-300">Goldium Updates</h4>
+              <h4 className="text-2xl font-bold text-yellow-300">Goldium Updates</h4>
             </div>
             
             <div className="space-y-6">
-              <div className="border-l-4 border-cyan-400 pl-4">
+              <div className="border-l-4 border-yellow-400 pl-4">
                 <div className="flex items-center gap-2 mb-2">
-                  <Badge className="bg-cyan-400/20 text-cyan-300 border-cyan-400/40">New</Badge>
-                  <span className="text-purple-200 text-sm">2 hours ago</span>
+                  <Badge className="bg-yellow-400/20 text-yellow-300 border-yellow-400/40">New</Badge>
+                  <span className="text-yellow-200 text-sm">2 hours ago</span>
                 </div>
-                <h5 className="text-lg font-semibold text-cyan-100 mb-2">Enhanced Security Features</h5>
-                <p className="text-purple-200/80 text-sm leading-relaxed">Implemented advanced multi-signature wallet support and enhanced transaction verification protocols for maximum security.</p>
+                <h5 className="text-lg font-semibold text-yellow-100 mb-2">Enhanced Security Features</h5>
+                <p className="text-yellow-200/80 text-sm leading-relaxed">Implemented advanced multi-signature wallet support and enhanced transaction verification protocols for maximum security.</p>
               </div>
               
-              <div className="border-l-4 border-cyan-400/60 pl-4">
+              <div className="border-l-4 border-yellow-400/60 pl-4">
                  <div className="flex items-center gap-2 mb-2">
-                   <Badge className="bg-cyan-400/10 text-cyan-300/80 border-cyan-400/20">Update</Badge>
-                   <span className="text-purple-200/70 text-sm">1 day ago</span>
+                   <Badge className="bg-yellow-400/10 text-yellow-300/80 border-yellow-400/20">Update</Badge>
+                   <span className="text-yellow-200/70 text-sm">1 day ago</span>
                  </div>
-                 <h5 className="text-lg font-semibold text-cyan-100/90 mb-2">Improved Swap Performance</h5>
-                 <p className="text-purple-200/70 text-sm leading-relaxed">Optimized swap algorithms resulting in 40% faster transaction processing and reduced gas fees.</p>
+                 <h5 className="text-lg font-semibold text-yellow-100/90 mb-2">Improved Swap Performance</h5>
+                 <p className="text-yellow-200/70 text-sm leading-relaxed">Optimized swap algorithms resulting in 40% faster transaction processing and reduced gas fees.</p>
               </div>
               
-              <div className="border-l-4 border-cyan-400/40 pl-4">
+              <div className="border-l-4 border-yellow-400/40 pl-4">
                  <div className="flex items-center gap-2 mb-2">
-                   <Badge className="bg-cyan-400/10 text-cyan-300/60 border-cyan-400/20">Feature</Badge>
-                   <span className="text-purple-200/60 text-sm">3 days ago</span>
+                   <Badge className="bg-yellow-400/10 text-yellow-300/60 border-yellow-400/20">Feature</Badge>
+                   <span className="text-yellow-200/60 text-sm">3 days ago</span>
                  </div>
-                 <h5 className="text-lg font-semibold text-cyan-100/80 mb-2">Mobile App Beta Launch</h5>
-                 <p className="text-purple-200/60 text-sm leading-relaxed">Beta version of Goldium mobile app now available for iOS and Android with full DeFi functionality.</p>
+                 <h5 className="text-lg font-semibold text-yellow-100/80 mb-2">Mobile App Beta Launch</h5>
+                 <p className="text-yellow-200/60 text-sm leading-relaxed">Beta version of Goldium mobile app now available for iOS and Android with full DeFi functionality.</p>
               </div>
             </div>
           </div>
         </Card>
         
         {/* Ecosystem News */}
-        <Card className="bg-gradient-to-br from-purple-900/30 to-blue-800/20 border-2 border-cyan-400/40 rounded-2xl overflow-hidden backdrop-blur-sm hover:border-cyan-400 hover:shadow-2xl hover:shadow-cyan-400/20 transition-all">
+        <Card className="bg-gradient-to-br from-yellow-900/30 to-amber-800/20 border-2 border-yellow-400/40 rounded-2xl overflow-hidden backdrop-blur-sm hover:border-yellow-400 hover:shadow-2xl hover:shadow-yellow-400/20 transition-all">
           <div className="p-8">
             <div className="flex items-center gap-3 mb-6">
               <div className="w-10 h-10 flex items-center justify-center">
-                <SolanaIcon size={40} className="text-cyan-400" />
+                <SolanaIcon size={40} className="text-yellow-400" />
               </div>
-              <h4 className="text-2xl font-bold text-cyan-300">Solana Ecosystem</h4>
+              <h4 className="text-2xl font-bold text-yellow-300">Solana Ecosystem</h4>
             </div>
             
             <div className="space-y-6">
-              <div className="border-l-4 border-cyan-400 pl-4">
+              <div className="border-l-4 border-yellow-400 pl-4">
                 <div className="flex items-center gap-2 mb-2">
-                  <Badge className="bg-cyan-400/20 text-cyan-300 border-cyan-400/40">Trending</Badge>
-                  <span className="text-purple-200 text-sm">4 hours ago</span>
+                  <Badge className="bg-yellow-400/20 text-yellow-300 border-yellow-400/40">Trending</Badge>
+                  <span className="text-yellow-200 text-sm">4 hours ago</span>
                 </div>
-                <h5 className="text-lg font-semibold text-cyan-100 mb-2">Solana Network Upgrade</h5>
-                <p className="text-purple-200/80 text-sm leading-relaxed">Latest network upgrade brings improved throughput and reduced latency, benefiting all Solana-based applications.</p>
+                <h5 className="text-lg font-semibold text-yellow-100 mb-2">Solana Network Upgrade</h5>
+                <p className="text-yellow-200/80 text-sm leading-relaxed">Latest network upgrade brings improved throughput and reduced latency, benefiting all Solana-based applications.</p>
               </div>
               
-              <div className="border-l-4 border-cyan-400/60 pl-4">
+              <div className="border-l-4 border-yellow-400/60 pl-4">
                 <div className="flex items-center gap-2 mb-2">
-                  <Badge className="bg-cyan-400/10 text-cyan-300/80 border-cyan-400/20">DeFi</Badge>
-                  <span className="text-purple-200/70 text-sm">1 day ago</span>
+                  <Badge className="bg-yellow-400/10 text-yellow-300/80 border-yellow-400/20">DeFi</Badge>
+                  <span className="text-yellow-200/70 text-sm">1 day ago</span>
                 </div>
-                <h5 className="text-lg font-semibold text-cyan-100/90 mb-2">TVL Reaches New High</h5>
-                <p className="text-purple-200/70 text-sm leading-relaxed">Solana DeFi ecosystem total value locked surpasses $3 billion, showing strong growth and adoption.</p>
+                <h5 className="text-lg font-semibold text-yellow-100/90 mb-2">TVL Reaches New High</h5>
+                <p className="text-yellow-200/70 text-sm leading-relaxed">Solana DeFi ecosystem total value locked surpasses $3 billion, showing strong growth and adoption.</p>
               </div>
               
-              <div className="border-l-4 border-cyan-400/40 pl-4">
+              <div className="border-l-4 border-yellow-400/40 pl-4">
                 <div className="flex items-center gap-2 mb-2">
-                  <Badge className="bg-cyan-400/10 text-cyan-300/60 border-cyan-400/20">Partnership</Badge>
-                  <span className="text-purple-200/60 text-sm">2 days ago</span>
+                  <Badge className="bg-yellow-400/10 text-yellow-300/60 border-yellow-400/20">Partnership</Badge>
+                  <span className="text-yellow-200/60 text-sm">2 days ago</span>
                 </div>
-                <h5 className="text-lg font-semibold text-cyan-100/80 mb-2">Major Exchange Integration</h5>
-                <p className="text-purple-200/60 text-sm leading-relaxed">Leading cryptocurrency exchanges announce native Solana integration, improving accessibility and liquidity.</p>
+                <h5 className="text-lg font-semibold text-yellow-100/80 mb-2">Major Exchange Integration</h5>
+                <p className="text-yellow-200/60 text-sm leading-relaxed">Leading cryptocurrency exchanges announce native Solana integration, improving accessibility and liquidity.</p>
               </div>
             </div>
           </div>

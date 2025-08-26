@@ -72,7 +72,7 @@ export function BalanceCards() {
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
       {/* SOL Balance */}
-      <Card className="group bg-gradient-to-br from-slate-900/90 to-slate-800/90 backdrop-blur-xl border border-blue-500/20 hover:border-blue-400/40 transition-all duration-500 transform hover:scale-[1.02] hover:shadow-2xl hover:shadow-blue-500/10">
+      <Card className="group bg-gradient-to-br from-slate-900/90 to-slate-800/90 backdrop-blur-xl border border-yellow-500/20 hover:border-yellow-400/40 transition-all duration-500 transform hover:scale-[1.02] hover:shadow-2xl hover:shadow-yellow-500/10">
         <CardContent className="p-8">
           <div className="flex items-center justify-between mb-6">
             <div>
@@ -80,20 +80,20 @@ export function BalanceCards() {
                 SOL Balance
               </h3>
               {walletInfo && (
-                <p className="text-xs font-medium text-blue-300/70 mt-1 tracking-wider uppercase">
+                <p className="text-xs font-medium text-yellow-300/70 mt-1 tracking-wider uppercase">
                   {walletInfo.replace(/[()]/g, '')}
                 </p>
               )}
             </div>
             <div className="relative">
-              <SolanaIcon size={32} className="text-blue-400 group-hover:scale-110 transition-transform duration-300" />
-              <div className="absolute inset-0 bg-blue-400/20 rounded-full blur-xl group-hover:bg-blue-400/30 transition-all duration-300"></div>
+              <SolanaIcon size={32} className="text-yellow-400 group-hover:scale-110 transition-transform duration-300" />
+            <div className="absolute inset-0 bg-yellow-400/20 rounded-full blur-xl group-hover:bg-yellow-400/30 transition-all duration-300"></div>
             </div>
           </div>
           <div className="space-y-3">
             <p className="text-4xl font-black text-white tracking-tight font-mono">
               {currentBalance.toFixed(4)}
-              <span className="text-lg font-normal text-blue-300/80 ml-2">SOL</span>
+              <span className="text-lg font-normal text-yellow-300/80 ml-2">SOL</span>
             </p>
             <div className="flex items-center justify-between">
               <p className="text-sm font-semibold text-slate-300">

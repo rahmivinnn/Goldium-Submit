@@ -35,9 +35,9 @@ export default function Home() {
 
             {/* Navigation Links */}
             <div className="hidden md:flex items-center space-x-8">
-              <a href="#home" className="text-white hover:text-blue-400 transition-colors font-medium">Home</a>
-              <a href="#defi" className="text-gray-300 hover:text-blue-400 transition-colors">DeFi</a>
-              <a href="#about" className="text-gray-300 hover:text-blue-400 transition-colors">About</a>
+              <a href="#home" className="text-white hover:text-yellow-400 transition-colors font-medium">Home</a>
+        <a href="#defi" className="text-gray-300 hover:text-yellow-400 transition-colors">DeFi</a>
+        <a href="#about" className="text-gray-300 hover:text-yellow-400 transition-colors">About</a>
             </div>
 
             {/* Right side */}

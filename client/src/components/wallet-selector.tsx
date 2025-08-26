@@ -112,7 +112,7 @@ export function WalletSelector({ onConnect, connecting, connected, currentWallet
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
         <Button 
-          className="bg-blue-gradient hover:from-blue-600 hover:to-blue-700 text-white font-medium px-6 py-2 rounded-lg transition-all duration-200 transform hover:scale-105 shadow-lg"
+          className="bg-gradient-to-r from-yellow-600 to-amber-600 hover:from-yellow-700 hover:to-amber-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
           disabled={connecting}
         >
           {connecting ? 'Connecting...' : 'Connect Wallet'}
@@ -129,8 +129,8 @@ export function WalletSelector({ onConnect, connecting, connected, currentWallet
           {wallets.map((wallet) => (
             <Card 
               key={wallet.name}
-              className={`bg-defi-accent/50 border-defi-accent hover:border-blue-primary/60 transition-all duration-200 cursor-pointer ${
-                selectedWallet === wallet.name ? 'border-blue-primary' : ''
+              className={`bg-defi-accent/50 border-defi-accent hover:border-yellow-primary/60 transition-all duration-200 cursor-pointer ${
+                selectedWallet === wallet.name ? 'border-yellow-primary' : ''
               }`}
               onClick={() => setSelectedWallet(wallet.name)}
             >
@@ -167,7 +167,7 @@ export function WalletSelector({ onConnect, connecting, connected, currentWallet
               href="https://docs.solana.com/wallet-guide" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="text-blue-primary hover:underline"
+              className="text-yellow-primary hover:underline"
             >
               Learn more
             </a>

@@ -153,7 +153,7 @@ export function TransactionSuccessModal({
 
                 <Button
                   variant="outline"
-                  className="w-full border-blue-500/30 text-blue-400 hover:bg-blue-500/10"
+                  className="w-full border-yellow-500/30 text-yellow-400 hover:bg-yellow-500/10"
                   onClick={() => window.open(solscanUrl, '_blank')}
                 >
                   <ExternalLink className="w-4 h-4 mr-2" />

@@ -136,7 +136,7 @@ export function ExternalWalletSelector() {
           <Button 
             variant="outline"
             disabled={wallet.connecting}
-            className="bg-galaxy-button border-galaxy-purple/30 text-white hover:border-galaxy-blue/50"
+            className="bg-yellow-600/20 border-yellow-400/30 text-white hover:border-yellow-400/50"
           >
             <Wallet className="w-4 h-4 mr-2" />
             {wallet.connecting ? 'Connecting...' : 'Connect Wallet'}
@@ -145,9 +145,9 @@ export function ExternalWalletSelector() {
         
         <DropdownMenuContent 
           align="end" 
-          className="w-80 bg-galaxy-card border-galaxy-purple/30 z-50"
+          className="w-80 bg-black/80 border-yellow-400/30 z-50"
         >
-          <DropdownMenuLabel className="text-galaxy-bright px-4">Connect Your Wallet</DropdownMenuLabel>
+          <DropdownMenuLabel className="text-yellow-100 px-4">Connect Your Wallet</DropdownMenuLabel>
           
           <div className="p-2 space-y-1">
             {walletOptions.map((walletOption) => {
@@ -158,8 +158,8 @@ export function ExternalWalletSelector() {
                   key={walletOption.type}
                   onClick={() => isAvailable && handleWalletSelect(walletOption.type)}
                   className={`
-                    text-galaxy-bright hover:bg-galaxy-purple/20 cursor-pointer p-3 rounded-md
-                    ${!isAvailable ? 'opacity-50 cursor-not-allowed' : 'hover:bg-galaxy-blue/20'}
+                    text-yellow-100 hover:bg-yellow-500/20 cursor-pointer p-3 rounded-md
+                    ${!isAvailable ? 'opacity-50 cursor-not-allowed' : 'hover:bg-yellow-400/20'}
                   `}
                   disabled={!isAvailable}
                 >
@@ -290,18 +290,18 @@ export function ExternalWalletSelector() {
             </div>
             
             <div className="flex items-center justify-between">
-              <span className="text-xs text-galaxy-accent">Balance:</span>
-              <span className="text-xs font-medium text-galaxy-bright">
+              <span className="text-xs text-yellow-200/70">Balance:</span>
+              <span className="text-xs font-medium text-yellow-100">
                 {wallet.balance.toFixed(4)} SOL
               </span>
             </div>
           </div>
         </div>
 
-        <DropdownMenuSeparator className="bg-galaxy-purple/30" />
+        <DropdownMenuSeparator className="bg-yellow-400/30" />
 
         {/* Switch Wallet */}
-        <DropdownMenuLabel className="text-galaxy-bright px-4">Switch Wallet</DropdownMenuLabel>
+        <DropdownMenuLabel className="text-yellow-100 px-4">Switch Wallet</DropdownMenuLabel>
         
         <div className="p-2 space-y-1">
           {walletOptions.map((walletOption) => {
@@ -313,8 +313,8 @@ export function ExternalWalletSelector() {
                 key={walletOption.type}
                 onClick={() => isAvailable && !isSelected && handleWalletSelect(walletOption.type)}
                 className={`
-                  text-galaxy-bright hover:bg-galaxy-purple/20 cursor-pointer p-3 rounded-md
-                  ${isSelected ? 'bg-galaxy-purple/30' : ''}
+                  text-yellow-100 hover:bg-yellow-500/20 cursor-pointer p-3 rounded-md
+                  ${isSelected ? 'bg-yellow-500/30' : ''}
                   ${!isAvailable ? 'opacity-50' : ''}
                 `}
                 disabled={!isAvailable || isSelected}
@@ -333,11 +333,11 @@ export function ExternalWalletSelector() {
                         <span className="font-medium">{walletOption.name}</span>
                         {isSelected && <Check className="w-4 h-4 text-green-400" />}
                       </div>
-                      <span className="text-xs text-galaxy-accent">{walletOption.description}</span>
+                      <span className="text-xs text-yellow-200/70">{walletOption.description}</span>
                     </div>
                   </div>
                   {!isAvailable && (
-                    <span className="text-xs text-galaxy-accent">Not Detected</span>
+                    <span className="text-xs text-yellow-200/70">Not Detected</span>
                   )}
                 </div>
               </DropdownMenuItem>
@@ -345,13 +345,13 @@ export function ExternalWalletSelector() {
           })}
         </div>
 
-        <DropdownMenuSeparator className="bg-galaxy-purple/30" />
+        <DropdownMenuSeparator className="bg-yellow-400/30" />
 
         {/* Wallet Actions */}
         <div className="p-2">
           <DropdownMenuItem 
             onClick={copyAddress}
-            className="text-galaxy-bright hover:bg-galaxy-purple/20 cursor-pointer"
+            className="text-yellow-100 hover:bg-yellow-500/20 cursor-pointer"
           >
             <Copy className="w-4 h-4 mr-2" />
             Copy Address
@@ -359,7 +359,7 @@ export function ExternalWalletSelector() {
           
           <DropdownMenuItem 
             onClick={viewOnSolscan}
-            className="text-galaxy-bright hover:bg-galaxy-purple/20 cursor-pointer"
+            className="text-yellow-100 hover:bg-yellow-500/20 cursor-pointer"
           >
             <ExternalLink className="w-4 h-4 mr-2" />
             View on Solscan
@@ -375,7 +375,7 @@ export function ExternalWalletSelector() {
         </div>
 
         {/* Network Info */}
-        <DropdownMenuSeparator className="bg-galaxy-purple/30" />
+        <DropdownMenuSeparator className="bg-yellow-400/30" />
         <div className="p-4">
           <div className="text-center">
             <div className="inline-flex items-center px-3 py-1 bg-green-500/20 rounded-full border border-green-500/30">
