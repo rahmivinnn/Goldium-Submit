@@ -11,7 +11,7 @@ import { useSolanaWallet } from '@/components/solana-wallet-provider';
 import { ExternalWalletSelector } from '@/components/external-wallet-selector';
 import { RealTimePriceTicker } from '@/components/real-time-price-ticker';
 import { RealTimeNotifications } from '@/components/real-time-notifications';
-import { TrendingUp, Users, Coins, ExternalLink, BarChart3, Shield, Zap, Activity, DollarSign, Wallet } from 'lucide-react';
+import { ExternalLink } from 'lucide-react';
 import { AnimatedTokenomicsCharts } from '@/components/animated-tokenomics-charts';
 import { realTimeDataService, RealTimeTokenData } from '@/services/real-time-data-service';
 import { useExternalWallets } from '@/hooks/use-external-wallets';
@@ -187,13 +187,20 @@ export default function HomeSimple() {
               {externalWallet.connected && (
                  <div className="flex items-center gap-4 bg-gray-800 px-4 py-2 rounded-lg border border-yellow-400 animate-fade-in-up animation-delay-450">
                    <div className="flex items-center gap-2">
-                     <Wallet className="w-4 h-4 text-yellow-400" />
+                     <div className="w-4 h-4 bg-yellow-400 rounded-sm relative">
+                       <div className="absolute top-0.5 left-0.5 right-0.5 bottom-1 bg-black rounded-sm"></div>
+                       <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-2 h-1 bg-yellow-400 rounded-b"></div>
+                     </div>
                      <span className="text-sm text-gray-300">
                        {externalWallet.address?.slice(0, 4)}...{externalWallet.address?.slice(-4)}
                      </span>
                    </div>
                    <div className="flex items-center gap-2">
-                     <Coins className="w-4 h-4 text-yellow-400" />
+                     <div className="w-4 h-4 flex items-center justify-center">
+                       <div className="w-3 h-3 rounded-full bg-yellow-400 relative">
+                         <div className="absolute inset-0.5 rounded-full bg-yellow-200"></div>
+                       </div>
+                     </div>
                      <span className="text-sm font-semibold text-yellow-400">
                        {externalWallet.balance.toFixed(4)} SOL
                      </span>
@@ -260,7 +267,9 @@ export default function HomeSimple() {
               <div className="flex flex-col gap-4 items-center bg-black/40 backdrop-blur-sm border border-yellow-400/30 rounded-2xl p-8 shadow-2xl">
                 <div className="text-center mb-4">
                   <div className="flex items-center justify-center gap-2 mb-2">
-                    <span className="text-3xl">💰</span>
+                    <div className="w-8 h-8 rounded-full bg-gradient-to-br from-yellow-400 to-yellow-600 flex items-center justify-center shadow-lg">
+                      <div className="w-4 h-4 rounded-full bg-yellow-200 animate-pulse"></div>
+                    </div>
                     <p className="text-yellow-300 font-bold text-xl">BUY GOLDIUM WITH SOL</p>
                   </div>
                   <div className="bg-yellow-400/10 border border-yellow-400/30 rounded-lg p-3">
@@ -309,7 +318,9 @@ export default function HomeSimple() {
               <div className="flex flex-col gap-4 items-center bg-black/40 backdrop-blur-sm border border-blue-400/30 rounded-2xl p-8 shadow-2xl">
                 <div className="text-center mb-4">
                   <div className="flex items-center justify-center gap-2 mb-2">
-                    <span className="text-3xl">🐦</span>
+                    <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center shadow-lg transform rotate-12">
+                      <div className="w-4 h-2 bg-white rounded-full"></div>
+                    </div>
                     <p className="text-blue-300 font-bold text-xl">FOLLOW US ON TWITTER</p>
                   </div>
                   <div className="bg-blue-400/10 border border-blue-400/30 rounded-lg p-3">
@@ -339,34 +350,66 @@ export default function HomeSimple() {
       <section className="py-20 px-6 bg-gradient-to-b from-black via-gray-900/10 to-black border-t border-yellow-400/20">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16 animate-fade-in-up animation-delay-300">
-            <h2 className="text-6xl font-black bg-gradient-to-r from-yellow-400 via-yellow-300 to-yellow-500 bg-clip-text text-transparent mb-6 animate-pulse-gentle">📊 LIVE MARKET DATA</h2>
+            <h2 className="text-6xl font-black bg-gradient-to-r from-yellow-400 via-yellow-300 to-yellow-500 bg-clip-text text-transparent mb-6 animate-pulse-gentle flex items-center justify-center gap-4">
+              <div className="w-12 h-12 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-lg flex items-center justify-center shadow-xl">
+                <div className="grid grid-cols-2 gap-1">
+                  <div className="w-2 h-2 bg-yellow-100 rounded-sm"></div>
+                  <div className="w-2 h-3 bg-yellow-100 rounded-sm"></div>
+                  <div className="w-2 h-1 bg-yellow-100 rounded-sm"></div>
+                  <div className="w-2 h-4 bg-yellow-100 rounded-sm"></div>
+                </div>
+              </div>
+              LIVE MARKET DATA
+            </h2>
             <p className="text-2xl text-yellow-200 animate-fade-in-up animation-delay-500 max-w-4xl mx-auto font-medium">Real-time market statistics and performance metrics</p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
             <div className="bg-gradient-to-br from-yellow-900/20 to-yellow-800/10 border-2 border-yellow-400/40 rounded-2xl p-8 text-center hover:border-yellow-400 hover:shadow-2xl hover:shadow-yellow-400/20 transition-all transform hover:scale-105 backdrop-blur-sm animate-fade-in-up animation-delay-600">
-              <div className="text-4xl mb-4 animate-bounce">💰</div>
+              <div className="w-12 h-12 mx-auto mb-4 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-full flex items-center justify-center shadow-lg animate-bounce">
+                <div className="w-6 h-6 rounded-full bg-yellow-200 relative">
+                  <div className="absolute inset-1 rounded-full bg-yellow-100"></div>
+                </div>
+              </div>
               <div className="text-yellow-300 font-bold text-xl mb-2">GOLD Price</div>
               <div className="text-white text-3xl font-bold mb-2">${tokenData ? tokenData.currentPrice.toFixed(6) : '0.000000'}</div>
               <div className="bg-green-500/20 text-green-400 text-sm font-semibold px-3 py-1 rounded-full">{tokenData ? `+${tokenData.priceChange24h.toFixed(2)}%` : '+0.00%'} ↗</div>
             </div>
             
             <div className="bg-gradient-to-br from-blue-900/20 to-blue-800/10 border-2 border-blue-400/40 rounded-2xl p-8 text-center hover:border-blue-400 hover:shadow-2xl hover:shadow-blue-400/20 transition-all transform hover:scale-105 backdrop-blur-sm animate-fade-in-up animation-delay-700">
-              <div className="text-4xl mb-4 animate-pulse">📈</div>
+              <div className="w-12 h-12 mx-auto mb-4 bg-gradient-to-br from-blue-400 to-blue-600 rounded-lg flex items-center justify-center shadow-lg animate-pulse">
+                <div className="flex items-end gap-1">
+                  <div className="w-1 h-3 bg-blue-100 rounded-sm"></div>
+                  <div className="w-1 h-5 bg-blue-100 rounded-sm"></div>
+                  <div className="w-1 h-4 bg-blue-100 rounded-sm"></div>
+                  <div className="w-1 h-6 bg-blue-100 rounded-sm"></div>
+                </div>
+              </div>
               <div className="text-blue-300 font-bold text-xl mb-2">Market Cap</div>
               <div className="text-white text-3xl font-bold mb-2">${tokenData ? (tokenData.marketCap / 1000000).toFixed(1) : '0.0'}M</div>
               <div className="bg-green-500/20 text-green-400 text-sm font-semibold px-3 py-1 rounded-full">+5.67% ↗</div>
             </div>
             
             <div className="bg-gradient-to-br from-purple-900/20 to-purple-800/10 border-2 border-purple-400/40 rounded-2xl p-8 text-center hover:border-purple-400 hover:shadow-2xl hover:shadow-purple-400/20 transition-all transform hover:scale-105 backdrop-blur-sm animate-fade-in-up animation-delay-800">
-              <div className="text-4xl mb-4 animate-bounce">🔥</div>
+              <div className="w-12 h-12 mx-auto mb-4 bg-gradient-to-br from-purple-400 to-purple-600 rounded-lg flex items-center justify-center shadow-lg animate-bounce">
+                <div className="relative">
+                  <div className="w-4 h-6 bg-purple-100 rounded-t-full"></div>
+                  <div className="absolute -top-1 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-purple-200 rounded-full animate-pulse"></div>
+                </div>
+              </div>
               <div className="text-purple-300 font-bold text-xl mb-2">24h Volume</div>
               <div className="text-white text-3xl font-bold mb-2">${tokenData ? (tokenData.volume24h / 1000).toFixed(0) : '0'}K</div>
               <div className="bg-green-500/20 text-green-400 text-sm font-semibold px-3 py-1 rounded-full">+12.45% ↗</div>
             </div>
             
             <div className="bg-gradient-to-br from-green-900/20 to-green-800/10 border-2 border-green-400/40 rounded-2xl p-8 text-center hover:border-green-400 hover:shadow-2xl hover:shadow-green-400/20 transition-all transform hover:scale-105 backdrop-blur-sm animate-fade-in-up animation-delay-900">
-              <div className="text-4xl mb-4 animate-pulse">👥</div>
+              <div className="w-12 h-12 mx-auto mb-4 bg-gradient-to-br from-green-400 to-green-600 rounded-lg flex items-center justify-center shadow-lg animate-pulse">
+                <div className="flex gap-1">
+                  <div className="w-2 h-4 bg-green-100 rounded-full"></div>
+                  <div className="w-2 h-5 bg-green-100 rounded-full"></div>
+                  <div className="w-2 h-4 bg-green-100 rounded-full"></div>
+                </div>
+              </div>
               <div className="text-green-300 font-bold text-xl mb-2">Holders</div>
               <div className="text-white text-3xl font-bold mb-2">{tokenData ? tokenData.holders.toLocaleString() : '0'}</div>
               <div className="bg-green-500/20 text-green-400 text-sm font-semibold px-3 py-1 rounded-full">+8.23% ↗</div>
@@ -450,7 +493,17 @@ export default function HomeSimple() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-8">
               <div className="bg-gradient-to-br from-yellow-900/20 to-black border border-yellow-400/30 rounded-2xl p-6">
-                <h3 className="text-2xl font-bold text-yellow-400 mb-4">📊 Token Distribution</h3>
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-8 h-8 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-lg flex items-center justify-center shadow-lg">
+                    <div className="grid grid-cols-2 gap-0.5">
+                      <div className="w-1.5 h-1.5 bg-yellow-100 rounded-sm"></div>
+                      <div className="w-1.5 h-1.5 bg-yellow-100 rounded-sm"></div>
+                      <div className="w-1.5 h-1.5 bg-yellow-100 rounded-sm"></div>
+                      <div className="w-1.5 h-1.5 bg-yellow-100 rounded-sm"></div>
+                    </div>
+                  </div>
+                  <h3 className="text-2xl font-bold text-yellow-400">Token Distribution</h3>
+                </div>
                 <div className="space-y-4">
                   <div className="flex justify-between items-center">
                     <span className="text-yellow-200">Total Supply</span>
@@ -495,7 +548,16 @@ export default function HomeSimple() {
       <section className="py-20 px-6 bg-gradient-to-b from-black via-blue-900/5 to-black border-t border-blue-400/20">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-5xl font-bold mb-4 bg-gradient-to-r from-blue-400 via-blue-300 to-blue-500 bg-clip-text text-transparent">🐦 COMMUNITY UPDATES</h2>
+            <div className="flex items-center justify-center gap-4 mb-4">
+              <div className="w-12 h-12 bg-gradient-to-br from-blue-400 to-blue-600 rounded-full flex items-center justify-center shadow-lg">
+                <div className="relative">
+                  <div className="w-6 h-4 bg-blue-100 rounded-full"></div>
+                  <div className="absolute -top-1 -right-1 w-3 h-3 bg-blue-200 rounded-full"></div>
+                  <div className="absolute bottom-0 left-1 w-2 h-2 bg-blue-200 rounded-full"></div>
+                </div>
+              </div>
+              <h2 className="text-5xl font-bold bg-gradient-to-r from-blue-400 via-blue-300 to-blue-500 bg-clip-text text-transparent">COMMUNITY UPDATES</h2>
+            </div>
             <p className="text-gray-300 text-lg">Stay connected with the latest news from Goldium and Solana ecosystem</p>
           </div>
           
@@ -519,10 +581,14 @@ export default function HomeSimple() {
                   <span className="text-yellow-300 text-sm">X</span>
                 </div>
                 <div className="w-10 h-10 bg-black/80 border border-yellow-400/40 rounded-full flex items-center justify-center hover:bg-yellow-400/20 hover:border-yellow-400/60 transition-all duration-300 cursor-pointer">
-                  <span className="text-yellow-300 text-sm">📱</span>
+                  <div className="w-4 h-6 bg-yellow-300 rounded-sm relative">
+                    <div className="absolute top-0.5 left-0.5 right-0.5 bottom-2 bg-black rounded-sm"></div>
+                  </div>
                 </div>
                 <div className="w-10 h-10 bg-black/80 border border-yellow-400/40 rounded-full flex items-center justify-center hover:bg-yellow-400/20 hover:border-yellow-400/60 transition-all duration-300 cursor-pointer">
-                  <span className="text-yellow-300 text-sm">💬</span>
+                  <div className="w-5 h-4 bg-yellow-300 rounded-lg relative">
+                    <div className="absolute bottom-0 left-1 w-1 h-1 bg-yellow-300 transform rotate-45"></div>
+                  </div>
                 </div>
               </div>
             </div>
