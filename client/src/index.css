@@ -25,20 +25,20 @@
   --ring: hsl(210, 100%, 65%);               /* Soft blue focus ring */
   --radius: 0.5rem;
 
-  /* Enhanced Elegant DeFi Colors */
-  --defi-dark: rgba(15, 20, 30, 0.95);       /* Soft dark blue space */
-  --defi-secondary: rgba(25, 30, 40, 0.9);   /* Soft blue-gray space */
-  --defi-accent: rgba(35, 45, 60, 0.8);      /* Soft blue accent */
-  --gold-primary: hsl(45, 80%, 65%);         /* Soft gold */
-  --gold-secondary: hsl(39, 75%, 60%);       /* Soft orange gold */
-  --blue-primary: hsl(210, 85%, 65%);        /* Soft blue */
-  --blue-secondary: hsl(220, 80%, 70%);      /* Light blue */
-  --purple-primary: hsl(250, 60%, 70%);      /* Soft purple */
+  /* Enhanced Metaverse DeFi Colors */
+  --defi-dark: rgba(10, 10, 15, 0.95);       /* Deep space dark */
+  --defi-secondary: rgba(26, 26, 46, 0.9);   /* Metaverse secondary */
+  --defi-accent: rgba(139, 92, 246, 0.8);    /* Purple accent */
+  --metaverse-primary: hsl(270, 75%, 65%);   /* Vibrant purple */
+  --metaverse-secondary: hsl(240, 80%, 70%); /* Electric blue */
+  --blue-primary: hsl(210, 100%, 60%);       /* Bright blue */
+  --blue-secondary: hsl(200, 90%, 65%);      /* Cyan blue */
+  --purple-primary: hsl(270, 75%, 65%);      /* Metaverse purple */
   --green-primary: hsl(150, 60%, 65%);       /* Soft green */
-  --cyan-primary: hsl(190, 70%, 65%);        /* Soft cyan */
-  --galaxy-blue: hsl(210, 85%, 65%);         /* Galaxy blue */
-  --galaxy-purple: hsl(250, 60%, 70%);       /* Galaxy purple */
-  --galaxy-cyan: hsl(190, 70%, 65%);         /* Galaxy cyan */
+  --cyan-primary: hsl(180, 100%, 50%);       /* Neon cyan */
+  --galaxy-blue: hsl(210, 100%, 60%);        /* Galaxy blue */
+  --galaxy-purple: hsl(270, 75%, 65%);       /* Galaxy purple */
+  --galaxy-cyan: hsl(180, 100%, 50%);        /* Galaxy cyan */
 }
 
 /* Clean Text Effects */
@@ -101,23 +101,23 @@
   --radius: 0.5rem;
 }
 
-/* eeeeecoin.com inspired black and yellow theme */
+/* Metaverse inspired theme - futuristic purple-blue-cyan */
 :root {
-  --neon-yellow: #ffff00;
-  --bright-yellow: #ffd700;
-  --electric-yellow: #ffed4e;
-  --dark-yellow: #b8860b;
-  --yellow-glow: #ffff0080;
-  --dark-bg: #0f172a;
-  --card-bg: #1e293b;
-  --border-color: #334155;
+  --neon-cyan: #00ffff;
+  --bright-purple: #8b5cf6;
+  --electric-blue: #3b82f6;
+  --dark-purple: #4c1d95;
+  --metaverse-glow: #8b5cf680;
+  --dark-bg: #0a0a0f;
+  --card-bg: #1a1a2e;
+  --border-color: #16213e;
 }
 
-/* Animated Background Grid */
+/* Animated Background Grid - Metaverse Style */
 .grid-background {
   background-image: 
-    linear-gradient(rgba(255, 255, 0, 0.1) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 0, 0.1) 1px, transparent 1px);
+    linear-gradient(rgba(139, 92, 246, 0.15) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 255, 0.1) 1px, transparent 1px);
   background-size: 50px 50px;
   animation: grid-move 20s linear infinite;
 }
@@ -127,35 +127,35 @@
   100% { background-position: 50px 50px; }
 }
 
-/* Clean Yellow Effects */
-.yellow-accent {
-  box-shadow: 0 2px 4px rgba(255, 255, 0, 0.1);
+/* Clean Metaverse Effects */
+.cyan-accent {
+  box-shadow: 0 2px 4px rgba(0, 255, 255, 0.2);
 }
 
-.yellow-subtle {
-  box-shadow: 0 1px 3px rgba(255, 255, 0, 0.1);
+.cyan-subtle {
+  box-shadow: 0 1px 3px rgba(0, 255, 255, 0.15);
 }
 
-.gold-accent {
-  box-shadow: 0 2px 4px rgba(255, 215, 0, 0.1);
+.purple-accent {
+  box-shadow: 0 2px 4px rgba(139, 92, 246, 0.2);
 }
 
-.gold-subtle {
-  box-shadow: 0 1px 3px rgba(255, 215, 0, 0.1);
+.purple-subtle {
+  box-shadow: 0 1px 3px rgba(139, 92, 246, 0.15);
 }
 
-/* Clean Card Effects */
+/* Clean Card Effects - Metaverse Style */
 .clean-card {
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  border: 1px solid rgba(255, 255, 0, 0.1);
-  background: rgba(30, 41, 59, 0.5);
-  backdrop-filter: blur(10px);
+  border: 1px solid rgba(139, 92, 246, 0.2);
+  background: rgba(26, 26, 46, 0.6);
+  backdrop-filter: blur(15px);
 }
 
 .clean-card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-  border-color: rgba(255, 255, 0, 0.2);
+  box-shadow: 0 8px 20px rgba(139, 92, 246, 0.15);
+  border-color: rgba(0, 255, 255, 0.3);
 }
 
 .card-hover {
@@ -191,16 +191,20 @@
   50% { transform: translateY(-20px); }
 }
 
-/* Clean Text Effects */
-.clean-yellow-text {
-  color: var(--neon-yellow);
+/* Clean Text Effects - Metaverse */
+.clean-cyan-text {
+  color: var(--neon-cyan);
 }
 
 .accent-text {
-  color: var(--bright-yellow);
+  color: var(--bright-purple);
 }
 
-/* Neon Shimmer Effect */
+.metaverse-text {
+  color: var(--metaverse-primary);
+}
+
+/* Metaverse Shimmer Effect */
 .shimmer {
   position: relative;
   overflow: hidden;
@@ -213,7 +217,7 @@
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 0, 0.2), transparent);
+  background: linear-gradient(90deg, transparent, rgba(139, 92, 246, 0.3), rgba(0, 255, 255, 0.2), transparent);
   animation: shimmer 4s infinite;
 }
 
@@ -235,12 +239,16 @@
   background-color: var(--defi-accent);
 }
 
-.text-gold-primary {
-  color: var(--gold-primary);
+.text-metaverse-primary {
+  color: var(--metaverse-primary);
 }
 
-.text-gold-secondary {
-  color: var(--gold-secondary);
+.text-metaverse-secondary {
+  color: var(--metaverse-secondary);
+}
+
+.text-cyber-cyan {
+  color: var(--cyan-primary);
 }
 
 .text-blue-primary {
@@ -251,16 +259,16 @@
   color: var(--blue-secondary);
 }
 
-.bg-gold-gradient {
-  background: linear-gradient(135deg, var(--gold-primary) 0%, var(--gold-secondary) 100%);
+.bg-metaverse-gradient {
+  background: linear-gradient(135deg, var(--metaverse-primary) 0%, var(--metaverse-secondary) 100%);
 }
 
-.bg-yellow-gradient {
-  background: linear-gradient(135deg, var(--yellow-primary) 0%, var(--yellow-secondary) 100%);
+.bg-cyber-gradient {
+  background: linear-gradient(135deg, var(--purple-primary) 0%, var(--cyan-primary) 100%);
 }
 
-.bg-amber-gradient {
-  background: linear-gradient(135deg, var(--amber-primary) 0%, var(--orange-primary) 100%);
+.bg-galaxy-gradient {
+  background: linear-gradient(135deg, var(--galaxy-purple) 0%, var(--galaxy-cyan) 100%);
 }
 
 .bg-bronze-gradient {

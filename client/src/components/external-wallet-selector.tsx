@@ -220,18 +220,20 @@ export function ExternalWalletSelector() {
           className="bg-black/70 border-yellow-400/40 hover:border-yellow-400/70 text-yellow-100"
         >
           <div className="mr-2 flex items-center justify-center w-5 h-5">
-            {currentWallet && (
+            {currentWallet ? (
                 <img 
                   src={WalletImages[currentWallet.icon as keyof typeof WalletImages]} 
                   alt={currentWallet.name} 
                   className="w-5 h-5 rounded-full"
                 />
+              ) : (
+                <Wallet className="w-4 h-4" />
               )}
           </div>
           <span className="hidden sm:inline">
             {wallet.address ? `${wallet.address.slice(0, 4)}...${wallet.address.slice(-4)}` : 'Wallet'}
           </span>
-          <span className="sm:hidden">{currentWallet?.name}</span>
+          <span className="sm:hidden">{currentWallet?.name || 'Connected'}</span>
           <ChevronDown className="w-4 h-4 ml-2" />
         </Button>
       </DropdownMenuTrigger>
@@ -255,15 +257,17 @@ export function ExternalWalletSelector() {
               <span className="text-xs text-yellow-200/70">Wallet:</span>
               <div className="flex items-center space-x-2">
                 <div className="flex items-center justify-center w-4 h-4">
-                  {currentWallet && (
+                  {currentWallet ? (
                   <img 
                     src={WalletImages[currentWallet.icon as keyof typeof WalletImages]} 
                     alt={currentWallet.name} 
                     className="w-5 h-5 rounded-full"
                   />
+                ) : (
+                  <Wallet className="w-3 h-3" />
                 )}
                 </div>
-                <span className="text-xs text-yellow-100">{currentWallet?.name}</span>
+                <span className="text-xs text-yellow-100">{currentWallet?.name || 'Unknown Wallet'}</span>
               </div>
             </div>
             

@@ -242,7 +242,7 @@ export function SwapTab() {
 
       {/* Swap Button */}
       <Button
-        className="w-full bg-galaxy-button hover:bg-galaxy-button py-4 font-semibold text-white transition-all duration-200 transform hover:scale-105 shadow-lg"
+        className="w-full bg-gradient-to-r from-yellow-400 to-yellow-500 hover:from-yellow-300 hover:to-yellow-400 py-4 font-semibold text-black transition-all duration-200 transform hover:scale-105 shadow-lg"
         onClick={handleSwap}
         disabled={!connected || !isValidAmount || isSwapping}
       >

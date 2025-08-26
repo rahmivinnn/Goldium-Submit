@@ -219,19 +219,19 @@ export default function Home() {
               <h3 className="text-2xl font-semibold text-white mb-4">Why Choose Goldium?</h3>
               <ul className="space-y-3 text-gray-300">
                 <li className="flex items-center space-x-3">
-                  <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
+                  <div className="w-2 h-2 bg-yellow-400 rounded-full"></div>
                   <span>Built on Solana for lightning-fast transactions</span>
                 </li>
                 <li className="flex items-center space-x-3">
-                  <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
+                  <div className="w-2 h-2 bg-yellow-400 rounded-full"></div>
                   <span>Auto-save transaction history to localStorage</span>
                 </li>
                 <li className="flex items-center space-x-3">
-                  <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
+                  <div className="w-2 h-2 bg-yellow-400 rounded-full"></div>
                   <span>Secure wallet integration</span>
                 </li>
                 <li className="flex items-center space-x-3">
-                  <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
+                  <div className="w-2 h-2 bg-yellow-400 rounded-full"></div>
                   <span>Comprehensive DeFi operations</span>
                 </li>
               </ul>

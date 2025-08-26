@@ -512,13 +512,13 @@ export function SelfContainedSwapTab() {
 
       {/* Swap Button */}
       <Button
-        className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 py-6 font-black text-lg text-white transition-all duration-300 transform hover:scale-[1.02] shadow-2xl hover:shadow-blue-500/25 rounded-xl border border-blue-400/30 hover:border-blue-300/50 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
+        className="w-full bg-gradient-to-r from-yellow-400 to-yellow-500 hover:from-yellow-300 hover:to-yellow-400 py-6 font-black text-lg text-black transition-all duration-300 transform hover:scale-[1.02] shadow-2xl hover:shadow-yellow-500/25 rounded-xl border border-yellow-400/30 hover:border-yellow-300/50 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
         onClick={handleSwap}
         disabled={!connected || !isValidAmount || isSwapping}
       >
         {isSwapping ? (
           <div className="flex items-center justify-center space-x-2">
-            <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
+            <div className="w-5 h-5 border-2 border-black/30 border-t-black rounded-full animate-spin"></div>
             <span>Processing Swap...</span>
           </div>
         ) : (
