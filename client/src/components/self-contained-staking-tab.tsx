@@ -11,7 +11,7 @@ import { STAKING_APY, SOLSCAN_BASE_URL } from '@/lib/constants';
 import { autoSaveTransaction } from '@/lib/historyUtils';
 
 export function SelfContainedStakingTab() {
-  const { connected, stakingService, refreshTransactionHistory } = useSolanaWallet();
+  const { connected, stakingService, refreshTransactionHistory, publicKey } = useSolanaWallet();
   const { balances, refetch } = useSelfContainedBalances();
   const externalWallet = useExternalWallets();
   const { toast } = useToast();
@@ -57,7 +57,7 @@ export function SelfContainedStakingTab() {
 
         // Auto-save stake transaction to history
         try {
-          const walletAddress = externalWallet.connected ? externalWallet.address : balances.address;
+          const walletAddress = externalWallet.connected ? externalWallet.address : publicKey?.toBase58();
 
           if (walletAddress) {
             // For stake: amountSOL = 0, amountGOLD = staked amount
@@ -149,7 +149,7 @@ export function SelfContainedStakingTab() {
 
         // Auto-save unstake transaction to history
         try {
-          const walletAddress = externalWallet.connected ? externalWallet.address : balances.address;
+          const walletAddress = externalWallet.connected ? externalWallet.address : publicKey?.toBase58();
 
           if (walletAddress) {
             // For unstake: amountSOL = 0, amountGOLD = unstaked amount

@@ -30,48 +30,58 @@ export function ShopifyProductGrid({ onAddToCart }: ShopifyProductGridProps) {
   // Mock Shopify products for demo
   const mockProducts: Product[] = [
     {
-      id: 'light-1',
-      title: 'Modern Pendant Light',
-      description: 'Sleek pendant light perfect for dining areas',
-      price: '$149.99',
-      image: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iIzMzMzMzMyIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmaWxsPSIjZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iLjNlbSI+💡</dGV4dD48L3N2Zz4=',
+      id: 'nft-1',
+      title: 'CryptoPunk #7804',
+      description: 'Rare alien CryptoPunk with cap and pipe - Digital collectible',
+      price: '420.69 ETH',
+      image: 'https://www.larvalabs.com/public/images/cryptopunks/punk7804.png',
       variants: [
-        { id: 'var-1', title: 'Black', price: '$149.99' },
-        { id: 'var-2', title: 'White', price: '$149.99' },
-        { id: 'var-3', title: 'Brass', price: '$169.99' }
+        { id: 'var-1', title: 'Original', price: '420.69 ETH' },
+        { id: 'var-2', title: 'Fractionalized', price: '0.042 ETH' }
       ]
     },
     {
-      id: 'light-2',
-      title: 'Crystal Chandelier',
-      description: 'Elegant crystal chandelier for luxury spaces',
-      price: '$599.99',
-      image: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iIzMzMzMzMyIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmaWxsPSIjZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iLjNlbSI+✨</text></svg>',
+      id: 'nft-2',
+      title: 'Bored Ape #8817',
+      description: 'Golden fur Bored Ape with laser eyes - BAYC collection',
+      price: '152.7 ETH',
+      image: 'https://img.seadn.io/files/0c2d8d8e0b8b4c4b4b4b4b4b4b4b4b4b.png?fit=max&w=600',
       variants: [
-        { id: 'var-4', title: 'Small', price: '$599.99' },
-        { id: 'var-5', title: 'Large', price: '$799.99' }
+        { id: 'var-3', title: 'Original', price: '152.7 ETH' },
+        { id: 'var-4', title: 'Commercial Rights', price: '200.0 ETH' }
       ]
     },
     {
-      id: 'light-3',
-      title: 'LED Strip Lights',
-      description: 'Smart RGB LED strips with app control',
-      price: '$79.99',
-      image: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iIzMzMzMzMyIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmaWxsPSIjZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iLjNlbSI+🌈</text></svg>',
+      id: 'nft-3',
+      title: 'Azuki #9605',
+      description: 'Anime-style avatar with rare traits - The Garden access',
+      price: '11.5 ETH',
+      image: 'https://ikzttp.mypinata.cloud/ipfs/QmQFkLSQysj94s5GvTHPyzTxrawwtjgiiYS2TBLgrvw8CW/9605.png',
       variants: [
-        { id: 'var-6', title: '5m', price: '$79.99' },
-        { id: 'var-7', title: '10m', price: '$129.99' }
+        { id: 'var-5', title: 'Standard', price: '11.5 ETH' },
+        { id: 'var-6', title: 'With Utilities', price: '15.0 ETH' }
       ]
     },
     {
-      id: 'light-4',
-      title: 'Industrial Floor Lamp',
-      description: 'Vintage industrial style floor lamp',
-      price: '$229.99',
-      image: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iIzMzMzMzMyIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmaWxsPSIjZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iLjNlbSI+🏭</text></svg>',
+      id: 'nft-4',
+      title: 'Moonbird #2642',
+      description: 'Pixelated owl NFT with nesting rewards - PROOF Collective',
+      price: '25.8 ETH',
+      image: 'https://live---metadata-5covpqijaa-uc.a.run.app/images/2642',
       variants: [
-        { id: 'var-8', title: 'Black Iron', price: '$229.99' },
-        { id: 'var-9', title: 'Copper', price: '$249.99' }
+        { id: 'var-7', title: 'Nested', price: '25.8 ETH' },
+        { id: 'var-8', title: 'Unnested', price: '22.5 ETH' }
+      ]
+    },
+    {
+      id: 'nft-5',
+      title: 'Doodle #6914',
+      description: 'Hand-drawn pastel character with vibrant accessories',
+      price: '8.2 ETH',
+      image: 'https://ipfs.io/ipfs/QmPMc4tcBsMqLRuCQtPmPe84bpSjrC3Ky7t3JWuHXYB4aS/6914',
+      variants: [
+        { id: 'var-9', title: 'Original', price: '8.2 ETH' },
+        { id: 'var-10', title: 'Animated', price: '12.0 ETH' }
       ]
     }
   ];

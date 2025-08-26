@@ -21,6 +21,7 @@ import { autoSaveTransaction } from "@/lib/historyUtils";
 import { useGoldBalance } from '@/hooks/use-gold-balance';
 import goldiumLogo from '@assets/k1xiYLna_400x400-removebg-preview_1754140723127.png';
 import GoldiumGamifiedStaking from '@/components/goldium-gamified-staking';
+import { TwitterEmbed } from '@/components/twitter-embed';
 
 export default function HomeSimple() {
   const wallet = useSolanaWallet();
@@ -220,71 +221,113 @@ export default function HomeSimple() {
 
       {/* Hero Section */}
       <section className="relative pt-24 pb-20 overflow-hidden min-h-screen flex items-center">
-        <div className="absolute inset-0 bg-gradient-to-br from-yellow-900/20 via-black to-yellow-900/10" />
+        <div className="absolute inset-0 bg-gradient-to-br from-yellow-900/30 via-black to-yellow-900/20" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-yellow-400/10 via-transparent to-transparent" />
         
         <div className="relative max-w-7xl mx-auto px-6 text-center">
           <div className="space-y-12">
             <div className="space-y-6">
-              <h1 className="text-8xl md:text-9xl font-black text-yellow-400 mb-8 tracking-tight animate-fade-in-up">
-                <span className="inline-block animate-bounce-gentle">$</span>
-                <span className="inline-block animate-slide-in-left">G</span>
-                <span className="inline-block animate-slide-in-left animation-delay-100">O</span>
-                <span className="inline-block animate-slide-in-left animation-delay-200">L</span>
-                <span className="inline-block animate-slide-in-left animation-delay-300">D</span>
-                <span className="inline-block animate-slide-in-left animation-delay-400">I</span>
-                <span className="inline-block animate-slide-in-left animation-delay-500">U</span>
-                <span className="inline-block animate-slide-in-left animation-delay-600">M</span>
-              </h1>
-              <div className="text-4xl md:text-5xl font-bold text-white mb-6 animate-fade-in-up animation-delay-700">
-                DIGITAL GOLD
-                <span className="block text-yellow-400 mt-2 animate-fade-in-up animation-delay-900">REVOLUTION</span>
+              <div className="flex justify-center mb-8">
+                <div className="relative">
+                  <img 
+                    src={goldiumLogo} 
+                    alt="Goldium Logo" 
+                    className="w-32 h-32 md:w-40 md:h-40 animate-float drop-shadow-2xl"
+                  />
+                  <div className="absolute inset-0 bg-yellow-400/20 rounded-full blur-xl animate-pulse" />
+                </div>
               </div>
-              <p className="text-2xl md:text-3xl text-yellow-200 max-w-4xl mx-auto leading-relaxed font-medium animate-fade-in-up animation-delay-1100">
+              <h1 className="text-7xl md:text-8xl lg:text-9xl font-black text-yellow-400 mb-8 tracking-tight animate-fade-in-up">
+                <span className="inline-block animate-bounce-gentle drop-shadow-lg">$</span>
+                <span className="inline-block animate-slide-in-left drop-shadow-lg">G</span>
+                <span className="inline-block animate-slide-in-left animation-delay-100 drop-shadow-lg">O</span>
+                <span className="inline-block animate-slide-in-left animation-delay-200 drop-shadow-lg">L</span>
+                <span className="inline-block animate-slide-in-left animation-delay-300 drop-shadow-lg">D</span>
+                <span className="inline-block animate-slide-in-left animation-delay-400 drop-shadow-lg">I</span>
+                <span className="inline-block animate-slide-in-left animation-delay-500 drop-shadow-lg">U</span>
+                <span className="inline-block animate-slide-in-left animation-delay-600 drop-shadow-lg">M</span>
+              </h1>
+              <div className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 animate-fade-in-up animation-delay-700">
+                <span className="bg-gradient-to-r from-yellow-200 to-yellow-400 bg-clip-text text-transparent">DIGITAL GOLD</span>
+                <span className="block text-yellow-400 mt-2 animate-fade-in-up animation-delay-900 drop-shadow-lg">REVOLUTION</span>
+              </div>
+              <p className="text-xl md:text-2xl lg:text-3xl text-yellow-200 max-w-4xl mx-auto leading-relaxed font-medium animate-fade-in-up animation-delay-1100 drop-shadow-md">
                 The Ultimate Store of Value on Solana Blockchain
               </p>
             </div>
             
-            <div className="flex flex-col sm:flex-row justify-center gap-6 mt-12 animate-fade-in-up animation-delay-1300">
-              <div className="flex flex-col gap-3 items-center">
-                <div className="text-center mb-2">
-                  <p className="text-yellow-300 font-semibold text-lg">💰 BUY GOLDIUM WITH SOL</p>
-                  <p className="text-yellow-200/70 text-sm">Exchange Rate: 1 SOL = 21,486.893 GOLD</p>
+            <div className="flex flex-col lg:flex-row justify-center gap-8 mt-12 animate-fade-in-up animation-delay-1300">
+              <div className="flex flex-col gap-4 items-center bg-black/40 backdrop-blur-sm border border-yellow-400/30 rounded-2xl p-8 shadow-2xl">
+                <div className="text-center mb-4">
+                  <div className="flex items-center justify-center gap-2 mb-2">
+                    <span className="text-3xl">💰</span>
+                    <p className="text-yellow-300 font-bold text-xl">BUY GOLDIUM WITH SOL</p>
+                  </div>
+                  <div className="bg-yellow-400/10 border border-yellow-400/30 rounded-lg p-3">
+                    <p className="text-yellow-200 text-sm font-medium">Exchange Rate: <span className="text-yellow-400 font-bold">1 SOL = 21,486.893 GOLD</span></p>
+                  </div>
                 </div>
-                <div className="flex gap-2 items-center">
-                  <input
-                    type="number"
-                    value={buyAmount}
-                    onChange={(e) => setBuyAmount(e.target.value)}
-                    placeholder="Enter SOL amount"
-                    min="0.000047"
-                    step="0.000047"
-                    className="bg-gray-800 border border-yellow-400 text-white px-4 py-2 rounded-lg w-36 focus:outline-none focus:ring-2 focus:ring-yellow-400"
-                    disabled={buyingToken}
-                  />
-                  <span className="text-yellow-400 font-semibold">SOL</span>
-                  <span className="text-yellow-200/70">→</span>
-                  <span className="text-yellow-300 font-semibold">{buyAmount ? (parseFloat(buyAmount) * 21486.893).toLocaleString() : '0'} GOLD</span>
+                <div className="flex flex-col gap-3 items-center w-full max-w-md">
+                  <div className="flex gap-3 items-center w-full">
+                    <div className="relative flex-1">
+                      <input
+                        type="number"
+                        value={buyAmount}
+                        onChange={(e) => setBuyAmount(e.target.value)}
+                        placeholder="Enter SOL amount"
+                        min="0.000047"
+                        step="0.000047"
+                        className="bg-gray-900/80 border-2 border-yellow-400/50 text-white px-4 py-3 rounded-xl w-full focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400 transition-all text-center font-semibold"
+                        disabled={buyingToken}
+                      />
+                      <span className="absolute right-3 top-1/2 transform -translate-y-1/2 text-yellow-400 font-bold">SOL</span>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-2 text-lg">
+                    <span className="text-yellow-200/70">↓</span>
+                    <span className="text-yellow-300 font-bold text-lg">{buyAmount ? (parseFloat(buyAmount) * 21486.893).toLocaleString() : '0'} GOLD</span>
+                  </div>
                 </div>
                 <Button
                   onClick={handleBuyGoldium}
                   disabled={buyingToken || !externalWallet.connected}
-                  className="bg-yellow-400 hover:bg-yellow-300 text-black font-bold px-12 py-4 rounded-xl text-xl transition-all transform hover:scale-105 hover:-translate-y-1 shadow-2xl animate-pulse-gentle disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="bg-gradient-to-r from-yellow-400 to-yellow-500 hover:from-yellow-300 hover:to-yellow-400 text-black font-bold px-8 py-4 rounded-xl text-lg transition-all transform hover:scale-105 hover:-translate-y-1 shadow-2xl disabled:opacity-50 disabled:cursor-not-allowed w-full max-w-md"
                 >
-                  {buyingToken ? 'BUYING GOLDIUM...' : 'BUY GOLDIUM WITH SOL'}
+                  {buyingToken ? (
+                    <div className="flex items-center gap-2">
+                      <div className="w-5 h-5 border-2 border-black border-t-transparent rounded-full animate-spin" />
+                      BUYING GOLDIUM...
+                    </div>
+                  ) : (
+                    'BUY GOLDIUM WITH SOL'
+                  )}
                 </Button>
                 {!externalWallet.connected && (
-                  <p className="text-sm text-gray-400">Connect wallet to buy GOLDIUM tokens</p>
+                  <p className="text-sm text-gray-400 text-center">Connect wallet to buy GOLDIUM tokens</p>
                 )}
               </div>
-              <button 
-                onClick={() => window.open('https://twitter.com/goldiumofficial', '_blank')}
-                className="border-2 border-yellow-400 text-yellow-400 hover:bg-yellow-400 hover:text-black font-bold px-12 py-4 rounded-xl text-xl transition-all transform hover:scale-105 hover:-translate-y-1 flex items-center gap-3 animate-float"
-              >
-                <svg className="w-6 h-6 animate-spin-slow" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-                </svg>
-                FOLLOW TWITTER
-              </button>
+              <div className="flex flex-col gap-4 items-center bg-black/40 backdrop-blur-sm border border-blue-400/30 rounded-2xl p-8 shadow-2xl">
+                <div className="text-center mb-4">
+                  <div className="flex items-center justify-center gap-2 mb-2">
+                    <span className="text-3xl">🐦</span>
+                    <p className="text-blue-300 font-bold text-xl">FOLLOW US ON TWITTER</p>
+                  </div>
+                  <div className="bg-blue-400/10 border border-blue-400/30 rounded-lg p-3">
+                    <p className="text-blue-200 text-sm font-medium">Stay updated with <span className="text-blue-400 font-bold">latest news and announcements</span></p>
+                  </div>
+                </div>
+                <Button
+                  onClick={() => window.open('https://twitter.com/goldiumofficial', '_blank')}
+                  className="bg-gradient-to-r from-blue-400 to-blue-500 hover:from-blue-300 hover:to-blue-400 text-white font-bold px-8 py-4 rounded-xl text-lg transition-all transform hover:scale-105 hover:-translate-y-1 shadow-2xl w-full max-w-md"
+                >
+                  <div className="flex items-center gap-2">
+                    <svg className="w-6 h-6 animate-spin-slow" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                    </svg>
+                    FOLLOW TWITTER
+                  </div>
+                </Button>
+              </div>
             </div>
             
 
@@ -293,13 +336,44 @@ export default function HomeSimple() {
       </section>
 
       {/* Live Market Data Section */}
-      <section className="py-8 px-6 bg-gradient-to-b from-black via-gray-900/10 to-black border-t border-yellow-400/20">
-        <div className="max-w-7xl mx-auto text-center">
-          <div className="mb-8 animate-fade-in-up animation-delay-300">
-            <h2 className="text-4xl font-black text-yellow-400 mb-4 animate-pulse-gentle">📊 LIVE MARKET DATA</h2>
-            <p className="text-xl text-yellow-200 animate-fade-in-up animation-delay-500">Real-time price updates for SOL and GOLD tokens</p>
+      <section className="py-20 px-6 bg-gradient-to-b from-black via-gray-900/10 to-black border-t border-yellow-400/20">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16 animate-fade-in-up animation-delay-300">
+            <h2 className="text-6xl font-black bg-gradient-to-r from-yellow-400 via-yellow-300 to-yellow-500 bg-clip-text text-transparent mb-6 animate-pulse-gentle">📊 LIVE MARKET DATA</h2>
+            <p className="text-2xl text-yellow-200 animate-fade-in-up animation-delay-500 max-w-4xl mx-auto font-medium">Real-time market statistics and performance metrics</p>
           </div>
-          <div className="flex justify-center animate-fade-in-up animation-delay-700">
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+            <div className="bg-gradient-to-br from-yellow-900/20 to-yellow-800/10 border-2 border-yellow-400/40 rounded-2xl p-8 text-center hover:border-yellow-400 hover:shadow-2xl hover:shadow-yellow-400/20 transition-all transform hover:scale-105 backdrop-blur-sm animate-fade-in-up animation-delay-600">
+              <div className="text-4xl mb-4 animate-bounce">💰</div>
+              <div className="text-yellow-300 font-bold text-xl mb-2">GOLD Price</div>
+              <div className="text-white text-3xl font-bold mb-2">${tokenData ? tokenData.currentPrice.toFixed(6) : '0.000000'}</div>
+              <div className="bg-green-500/20 text-green-400 text-sm font-semibold px-3 py-1 rounded-full">{tokenData ? `+${tokenData.priceChange24h.toFixed(2)}%` : '+0.00%'} ↗</div>
+            </div>
+            
+            <div className="bg-gradient-to-br from-blue-900/20 to-blue-800/10 border-2 border-blue-400/40 rounded-2xl p-8 text-center hover:border-blue-400 hover:shadow-2xl hover:shadow-blue-400/20 transition-all transform hover:scale-105 backdrop-blur-sm animate-fade-in-up animation-delay-700">
+              <div className="text-4xl mb-4 animate-pulse">📈</div>
+              <div className="text-blue-300 font-bold text-xl mb-2">Market Cap</div>
+              <div className="text-white text-3xl font-bold mb-2">${tokenData ? (tokenData.marketCap / 1000000).toFixed(1) : '0.0'}M</div>
+              <div className="bg-green-500/20 text-green-400 text-sm font-semibold px-3 py-1 rounded-full">+5.67% ↗</div>
+            </div>
+            
+            <div className="bg-gradient-to-br from-purple-900/20 to-purple-800/10 border-2 border-purple-400/40 rounded-2xl p-8 text-center hover:border-purple-400 hover:shadow-2xl hover:shadow-purple-400/20 transition-all transform hover:scale-105 backdrop-blur-sm animate-fade-in-up animation-delay-800">
+              <div className="text-4xl mb-4 animate-bounce">🔥</div>
+              <div className="text-purple-300 font-bold text-xl mb-2">24h Volume</div>
+              <div className="text-white text-3xl font-bold mb-2">${tokenData ? (tokenData.volume24h / 1000).toFixed(0) : '0'}K</div>
+              <div className="bg-green-500/20 text-green-400 text-sm font-semibold px-3 py-1 rounded-full">+12.45% ↗</div>
+            </div>
+            
+            <div className="bg-gradient-to-br from-green-900/20 to-green-800/10 border-2 border-green-400/40 rounded-2xl p-8 text-center hover:border-green-400 hover:shadow-2xl hover:shadow-green-400/20 transition-all transform hover:scale-105 backdrop-blur-sm animate-fade-in-up animation-delay-900">
+              <div className="text-4xl mb-4 animate-pulse">👥</div>
+              <div className="text-green-300 font-bold text-xl mb-2">Holders</div>
+              <div className="text-white text-3xl font-bold mb-2">{tokenData ? tokenData.holders.toLocaleString() : '0'}</div>
+              <div className="bg-green-500/20 text-green-400 text-sm font-semibold px-3 py-1 rounded-full">+8.23% ↗</div>
+            </div>
+          </div>
+          
+          <div className="flex justify-center animate-fade-in-up animation-delay-1000">
             <RealTimePriceTicker className="shadow-2xl" showConnectionStatus={true} />
           </div>
         </div>
@@ -413,6 +487,20 @@ export default function HomeSimple() {
             <div className="flex justify-center">
               <AnimatedTokenomicsCharts />
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Twitter Feed Section */}
+      <section className="py-20 px-6 bg-gradient-to-b from-black via-blue-900/5 to-black border-t border-blue-400/20">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-5xl font-bold mb-4 bg-gradient-to-r from-blue-400 via-blue-300 to-blue-500 bg-clip-text text-transparent">🐦 COMMUNITY UPDATES</h2>
+            <p className="text-gray-300 text-lg">Stay connected with the latest news from Goldium and Solana ecosystem</p>
+          </div>
+          
+          <div className="flex justify-center">
+            <TwitterEmbed />
           </div>
         </div>
       </section>
