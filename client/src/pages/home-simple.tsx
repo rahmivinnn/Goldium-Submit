@@ -267,8 +267,12 @@ export default function HomeSimple() {
               <div className="flex flex-col gap-4 items-center bg-black/40 backdrop-blur-sm border border-yellow-400/30 rounded-2xl p-8 shadow-2xl">
                 <div className="text-center mb-4">
                   <div className="flex items-center justify-center gap-2 mb-2">
-                    <div className="w-8 h-8 rounded-full bg-gradient-to-br from-yellow-400 to-yellow-600 flex items-center justify-center shadow-lg">
-                      <div className="w-4 h-4 rounded-full bg-yellow-200 animate-pulse"></div>
+                    <div className="w-8 h-8 rounded-full overflow-hidden shadow-lg border-2 border-yellow-400/40">
+                      <img 
+                        src={goldiumLogo} 
+                        alt="Goldium Logo" 
+                        className="w-full h-full object-contain bg-gradient-to-br from-yellow-400/20 to-yellow-600/20 p-1"
+                      />
                     </div>
                     <p className="text-yellow-300 font-bold text-xl">BUY GOLDIUM WITH SOL</p>
                   </div>
@@ -319,7 +323,9 @@ export default function HomeSimple() {
                 <div className="text-center mb-4">
                   <div className="flex items-center justify-center gap-2 mb-2">
                     <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center shadow-lg transform rotate-12">
-                      <div className="w-4 h-2 bg-white rounded-full"></div>
+                      <svg className="w-4 h-4 text-white" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                      </svg>
                     </div>
                     <p className="text-blue-300 font-bold text-xl">FOLLOW US ON TWITTER</p>
                   </div>
@@ -366,10 +372,12 @@ export default function HomeSimple() {
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
             <div className="bg-gradient-to-br from-yellow-900/20 to-yellow-800/10 border-2 border-yellow-400/40 rounded-2xl p-8 text-center hover:border-yellow-400 hover:shadow-2xl hover:shadow-yellow-400/20 transition-all transform hover:scale-105 backdrop-blur-sm animate-fade-in-up animation-delay-600">
-              <div className="w-12 h-12 mx-auto mb-4 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-full flex items-center justify-center shadow-lg animate-bounce">
-                <div className="w-6 h-6 rounded-full bg-yellow-200 relative">
-                  <div className="absolute inset-1 rounded-full bg-yellow-100"></div>
-                </div>
+              <div className="w-12 h-12 mx-auto mb-4 rounded-lg overflow-hidden shadow-lg border-2 border-yellow-400/40 animate-bounce">
+                <img 
+                  src={goldiumLogo} 
+                  alt="Goldium Logo" 
+                  className="w-full h-full object-contain bg-gradient-to-br from-yellow-400/20 to-yellow-600/20 p-1"
+                />
               </div>
               <div className="text-yellow-300 font-bold text-xl mb-2">GOLD Price</div>
               <div className="text-white text-3xl font-bold mb-2">${tokenData ? tokenData.currentPrice.toFixed(6) : '0.000000'}</div>
@@ -494,13 +502,12 @@ export default function HomeSimple() {
             <div className="space-y-8">
               <div className="bg-gradient-to-br from-yellow-900/20 to-black border border-yellow-400/30 rounded-2xl p-6">
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="w-8 h-8 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-lg flex items-center justify-center shadow-lg">
-                    <div className="grid grid-cols-2 gap-0.5">
-                      <div className="w-1.5 h-1.5 bg-yellow-100 rounded-sm"></div>
-                      <div className="w-1.5 h-1.5 bg-yellow-100 rounded-sm"></div>
-                      <div className="w-1.5 h-1.5 bg-yellow-100 rounded-sm"></div>
-                      <div className="w-1.5 h-1.5 bg-yellow-100 rounded-sm"></div>
-                    </div>
+                  <div className="w-8 h-8 rounded-lg overflow-hidden shadow-lg border-2 border-yellow-400/40">
+                    <img 
+                      src={goldiumLogo} 
+                      alt="Goldium Logo" 
+                      className="w-full h-full object-contain bg-gradient-to-br from-yellow-400/20 to-yellow-600/20 p-1"
+                    />
                   </div>
                   <h3 className="text-2xl font-bold text-yellow-400">Token Distribution</h3>
                 </div>
@@ -550,11 +557,9 @@ export default function HomeSimple() {
           <div className="text-center mb-16">
             <div className="flex items-center justify-center gap-4 mb-4">
               <div className="w-12 h-12 bg-gradient-to-br from-blue-400 to-blue-600 rounded-full flex items-center justify-center shadow-lg">
-                <div className="relative">
-                  <div className="w-6 h-4 bg-blue-100 rounded-full"></div>
-                  <div className="absolute -top-1 -right-1 w-3 h-3 bg-blue-200 rounded-full"></div>
-                  <div className="absolute bottom-0 left-1 w-2 h-2 bg-blue-200 rounded-full"></div>
-                </div>
+                <svg className="w-6 h-6 text-white" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                </svg>
               </div>
               <h2 className="text-5xl font-bold bg-gradient-to-r from-blue-400 via-blue-300 to-blue-500 bg-clip-text text-transparent">COMMUNITY UPDATES</h2>
             </div>
@@ -578,7 +583,9 @@ export default function HomeSimple() {
               </p>
               <div className="flex space-x-4">
                 <div className="w-10 h-10 bg-black/80 border border-yellow-400/40 rounded-full flex items-center justify-center hover:bg-yellow-400/20 hover:border-yellow-400/60 transition-all duration-300 cursor-pointer">
-                  <span className="text-yellow-300 text-sm">X</span>
+                  <svg className="w-4 h-4 text-yellow-300" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                  </svg>
                 </div>
                 <div className="w-10 h-10 bg-black/80 border border-yellow-400/40 rounded-full flex items-center justify-center hover:bg-yellow-400/20 hover:border-yellow-400/60 transition-all duration-300 cursor-pointer">
                   <div className="w-4 h-6 bg-yellow-300 rounded-sm relative">
