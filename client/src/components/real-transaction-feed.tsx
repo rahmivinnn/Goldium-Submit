@@ -68,7 +68,7 @@ export function RealTransactionFeed() {
       case 'SWAP': return 'bg-blue-500/20 text-blue-400 border-blue-500/30';
       case 'SEND':
       case 'TRANSFER': return 'bg-green-500/20 text-green-400 border-green-500/30';
-      case 'STAKE': return 'bg-purple-500/20 text-purple-400 border-purple-500/30';
+      case 'STAKE': return 'bg-yellow-500/20 text-yellow-400 border-yellow-500/30';
       default: return 'bg-gray-500/20 text-gray-400 border-gray-500/30';
     }
   };
@@ -87,7 +87,7 @@ export function RealTransactionFeed() {
   };
 
   return (
-    <Card className="bg-galaxy-card border-galaxy-purple/30">
+    <Card className="bg-galaxy-card border-yellow-500/30">
       <CardHeader className="pb-4">
         <div className="flex items-center justify-between">
           <CardTitle className="text-lg font-semibold text-galaxy-bright flex items-center gap-2">
@@ -130,10 +130,10 @@ export function RealTransactionFeed() {
             {[...Array(5)].map((_, i) => (
               <div key={i} className="animate-pulse">
                 <div className="flex items-center space-x-3">
-                  <div className="w-8 h-8 bg-galaxy-purple/30 rounded-full"></div>
+                  <div className="w-8 h-8 bg-yellow-500/30 rounded-full"></div>
                   <div className="flex-1 space-y-2">
-                    <div className="h-4 bg-galaxy-purple/30 rounded w-3/4"></div>
-                    <div className="h-3 bg-galaxy-purple/20 rounded w-1/2"></div>
+                    <div className="h-4 bg-yellow-500/30 rounded w-3/4"></div>
+                    <div className="h-3 bg-yellow-500/20 rounded w-1/2"></div>
                   </div>
                 </div>
               </div>
@@ -157,10 +157,10 @@ export function RealTransactionFeed() {
             {transactions.map((tx) => (
               <div
                 key={tx.signature}
-                className="flex items-center justify-between p-3 rounded-lg bg-galaxy-purple/10 border border-galaxy-purple/20 hover:border-galaxy-blue/30 transition-colors"
+                className="flex items-center justify-between p-3 rounded-lg bg-yellow-500/10 border border-yellow-500/20 hover:border-yellow-500/30 transition-colors"
               >
                 <div className="flex items-center space-x-3">
-                  <div className="w-8 h-8 rounded-full bg-galaxy-purple/30 flex items-center justify-center">
+                  <div className="w-8 h-8 rounded-full bg-yellow-500/30 flex items-center justify-center">
                     {getTransactionIcon(tx.type)}
                   </div>
                   <div>

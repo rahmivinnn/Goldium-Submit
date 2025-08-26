@@ -52,7 +52,7 @@ export function TransactionHistory() {
       case 'send':
         return 'bg-green-500/20 text-green-300 border-green-500/30';
       case 'stake':
-        return 'bg-purple-500/20 text-purple-300 border-purple-500/30';
+        return 'bg-yellow-500/20 text-yellow-300 border-yellow-500/30';
       case 'unstake':
         return 'bg-cyan-500/20 text-cyan-300 border-cyan-500/30';
       default:

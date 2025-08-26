@@ -167,7 +167,7 @@ export default function HomeSimple() {
   return (
     <div className="min-h-screen bg-black text-white">
       {/* Navigation Bar */}
-      <nav className="fixed top-0 w-full z-50 bg-black/95 backdrop-blur-md border-b border-purple-400/20 animate-fade-in-up">
+      <nav className="fixed top-0 w-full z-50 bg-black/95 backdrop-blur-md border-b border-yellow-400/20 animate-fade-in-up">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 sm:py-4">
           <div className="flex justify-between items-center">
             <div className="flex items-center gap-2 sm:gap-3">
@@ -181,9 +181,9 @@ export default function HomeSimple() {
               <div className="text-xl sm:text-2xl md:text-3xl font-black text-yellow-400 animate-bounce-gentle">$GOLDIUM</div>
             </div>
             <div className="hidden md:flex items-center space-x-8">
-              <a href="#brand" className="text-purple-300 hover:text-yellow-400 transition-all duration-300 font-medium hover:scale-105 animate-fade-in-up animation-delay-200">Brand</a>
-          <a href="#defi" className="text-purple-300 hover:text-yellow-400 transition-all duration-300 font-medium hover:scale-105 animate-fade-in-up animation-delay-300">DeFi</a>
-          <a href="#tokenomics" className="text-purple-300 hover:text-yellow-400 transition-all duration-300 font-medium hover:scale-105 animate-fade-in-up animation-delay-400">Tokenomics</a>
+              <a href="#brand" className="text-yellow-300 hover:text-yellow-400 transition-all duration-300 font-medium hover:scale-105 animate-fade-in-up animation-delay-200">Brand</a>
+            <a href="#defi" className="text-yellow-300 hover:text-yellow-400 transition-all duration-300 font-medium hover:scale-105 animate-fade-in-up animation-delay-300">DeFi</a>
+            <a href="#tokenomics" className="text-yellow-300 hover:text-yellow-400 transition-all duration-300 font-medium hover:scale-105 animate-fade-in-up animation-delay-400">Tokenomics</a>
               {externalWallet.connected && (
                  <div className="hidden sm:flex items-center gap-2 sm:gap-4 bg-gray-800 px-2 sm:px-4 py-1 sm:py-2 rounded-lg border border-yellow-400 animate-fade-in-up animation-delay-450">
                    <div className="flex items-center gap-1 sm:gap-2">
@@ -244,7 +244,7 @@ export default function HomeSimple() {
 
       {/* Hero Section */}
       <section className="relative pt-20 sm:pt-24 pb-12 sm:pb-20 overflow-hidden min-h-screen flex items-center">
-        <div className="absolute inset-0 bg-gradient-to-br from-purple-900/30 via-black to-blue-900/20" />
+        <div className="absolute inset-0 bg-gradient-to-br from-yellow-900/30 via-black to-amber-900/20" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-cyan-400/10 via-transparent to-transparent" />
         
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 text-center">
@@ -271,10 +271,10 @@ export default function HomeSimple() {
                 <span className="inline-block animate-slide-in-left animation-delay-600 drop-shadow-lg">M</span>
               </h1>
               <div className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-white mb-4 sm:mb-6 animate-fade-in-up animation-delay-700">
-                <span className="bg-gradient-to-r from-purple-200 to-cyan-400 bg-clip-text text-transparent">DIGITAL GOLD</span>
+                <span className="bg-gradient-to-r from-yellow-200 to-amber-400 bg-clip-text text-transparent">DIGITAL GOLD</span>
                 <span className="block text-yellow-400 mt-1 sm:mt-2 animate-fade-in-up animation-delay-900 drop-shadow-lg">REVOLUTION</span>
               </div>
-              <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-purple-200 max-w-4xl mx-auto leading-relaxed font-medium animate-fade-in-up animation-delay-1100 drop-shadow-md px-4">
+              <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-yellow-200 max-w-4xl mx-auto leading-relaxed font-medium animate-fade-in-up animation-delay-1100 drop-shadow-md px-4">
                 The Ultimate Store of Value on Solana Blockchain
               </p>
             </div>
@@ -293,7 +293,7 @@ export default function HomeSimple() {
                     <p className="text-yellow-300 font-bold text-xl">BUY GOLDIUM WITH SOL</p>
                   </div>
                   <div className="bg-yellow-400/10 border border-yellow-400/30 rounded-lg p-3">
-            <p className="text-purple-200 text-sm font-medium">Exchange Rate: <span className="text-yellow-400 font-bold">1 SOL = 21,486.893 GOLD</span></p>
+            <p className="text-yellow-200 text-sm font-medium">Exchange Rate: <span className="text-yellow-400 font-bold">1 SOL = 21,486.893 GOLD</span></p>
                   </div>
                 </div>
                 <div className="flex flex-col gap-3 items-center w-full max-w-sm sm:max-w-md">
@@ -313,7 +313,7 @@ export default function HomeSimple() {
                     </div>
                   </div>
                   <div className="flex items-center gap-2 text-base sm:text-lg">
-                    <span className="text-purple-200/70">↓</span>
+                    <span className="text-yellow-200/70">↓</span>
                     <span className="text-yellow-300 font-bold text-sm sm:text-lg">{buyAmount ? (parseFloat(buyAmount) * 21486.893).toLocaleString() : '0'} GOLD</span>
                   </div>
                 </div>

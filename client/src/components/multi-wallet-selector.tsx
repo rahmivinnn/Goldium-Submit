@@ -126,7 +126,7 @@ export function MultiWalletSelector() {
       <Button 
         variant="outline" 
         disabled={multiWallet.connecting}
-        className="bg-galaxy-button border-galaxy-purple/30 text-white"
+        className="bg-galaxy-button border-yellow-500/30 text-white"
       >
         {multiWallet.connecting ? 'Connecting...' : 'Wallet Loading...'}
       </Button>
@@ -138,7 +138,7 @@ export function MultiWalletSelector() {
       <DropdownMenuTrigger asChild>
         <Button 
           variant="outline"
-          className="bg-galaxy-card border-galaxy-purple/30 hover:border-galaxy-blue/50 text-galaxy-bright"
+          className="bg-galaxy-card border-yellow-500/30 hover:border-yellow-500/50 text-galaxy-bright"
         >
           <span className="mr-2">{currentWallet?.icon}</span>
           <span className="hidden sm:inline">
@@ -151,7 +151,7 @@ export function MultiWalletSelector() {
       
       <DropdownMenuContent 
         align="end" 
-        className="w-80 bg-galaxy-card border-galaxy-purple/30"
+        className="w-80 bg-galaxy-card border-yellow-500/30"
       >
         {/* Current Wallet Info */}
         <div className="p-4 space-y-3">
@@ -182,7 +182,7 @@ export function MultiWalletSelector() {
                   variant="ghost"
                   size="sm"
                   onClick={copyAddress}
-                  className="h-6 w-6 p-0 hover:bg-galaxy-purple/20"
+                  className="h-6 w-6 p-0 hover:bg-yellow-500/20"
                   disabled={!multiWallet.address}
                 >
                   <Copy className="w-3 h-3" />
@@ -199,7 +199,7 @@ export function MultiWalletSelector() {
           </div>
         </div>
 
-        <DropdownMenuSeparator className="bg-galaxy-purple/30" />
+        <DropdownMenuSeparator className="bg-yellow-500/30" />
 
         {/* Wallet Selection */}
         <DropdownMenuLabel className="text-galaxy-bright px-4">Select Wallet</DropdownMenuLabel>
@@ -210,8 +210,8 @@ export function MultiWalletSelector() {
               key={wallet.type}
               onClick={() => handleWalletSelect(wallet.type)}
               className={`
-                text-galaxy-bright hover:bg-galaxy-purple/20 cursor-pointer p-3 rounded-md
-                ${selectedWallet === wallet.type ? 'bg-galaxy-purple/30' : ''}
+                text-galaxy-bright hover:bg-yellow-500/20 cursor-pointer p-3 rounded-md
+        ${selectedWallet === wallet.type ? 'bg-yellow-500/30' : ''}
                 ${!availableWallets.includes(wallet.type) ? 'opacity-50' : ''}
               `}
               disabled={!availableWallets.includes(wallet.type)}
@@ -237,13 +237,13 @@ export function MultiWalletSelector() {
           ))}
         </div>
 
-        <DropdownMenuSeparator className="bg-galaxy-purple/30" />
+        <DropdownMenuSeparator className="bg-yellow-500/30" />
 
         {/* Wallet Actions */}
         <div className="p-2">
           <DropdownMenuItem 
             onClick={copyAddress}
-            className="text-galaxy-bright hover:bg-galaxy-purple/20 cursor-pointer"
+            className="text-galaxy-bright hover:bg-yellow-500/20 cursor-pointer"
           >
             <Copy className="w-4 h-4 mr-2" />
             Copy Address
@@ -251,7 +251,7 @@ export function MultiWalletSelector() {
           
           <DropdownMenuItem 
             onClick={viewOnSolscan}
-            className="text-galaxy-bright hover:bg-galaxy-purple/20 cursor-pointer"
+            className="text-galaxy-bright hover:bg-yellow-500/20 cursor-pointer"
           >
             <ExternalLink className="w-4 h-4 mr-2" />
             View on Solscan
@@ -259,7 +259,7 @@ export function MultiWalletSelector() {
         </div>
 
         {/* Network Info */}
-        <DropdownMenuSeparator className="bg-galaxy-purple/30" />
+        <DropdownMenuSeparator className="bg-yellow-500/30" />
         <div className="p-4">
           <div className="text-center">
             <div className="inline-flex items-center px-3 py-1 bg-green-500/20 rounded-full border border-green-500/30">

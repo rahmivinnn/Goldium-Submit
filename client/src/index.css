@@ -28,16 +28,16 @@
   /* Enhanced Metaverse DeFi Colors */
   --defi-dark: rgba(10, 10, 15, 0.95);       /* Deep space dark */
   --defi-secondary: rgba(26, 26, 46, 0.9);   /* Metaverse secondary */
-  --defi-accent: rgba(139, 92, 246, 0.8);    /* Purple accent */
-  --metaverse-primary: hsl(270, 75%, 65%);   /* Vibrant purple */
+  --defi-accent: rgba(251, 191, 36, 0.8);    /* Yellow accent */
+  --metaverse-primary: hsl(45, 93%, 58%);    /* Vibrant yellow */
   --metaverse-secondary: hsl(45, 80%, 70%); /* Electric gold */
   --gold-primary: hsl(45, 100%, 60%);       /* Bright gold */
   --gold-secondary: hsl(43, 90%, 65%);      /* Light gold */
-  --purple-primary: hsl(270, 75%, 65%);      /* Metaverse purple */
+  --purple-primary: hsl(45, 93%, 58%);       /* Yellow instead of purple */
   --green-primary: hsl(150, 60%, 65%);       /* Soft green */
   --cyan-primary: hsl(180, 100%, 50%);       /* Neon cyan */
   --galaxy-gold: hsl(45, 100%, 60%);        /* Galaxy gold */
-  --galaxy-purple: hsl(270, 75%, 65%);       /* Galaxy purple */
+  --galaxy-purple: hsl(45, 93%, 58%);        /* Galaxy yellow */
   --galaxy-cyan: hsl(180, 100%, 50%);        /* Galaxy cyan */
 }
 
@@ -59,8 +59,8 @@
   box-shadow: 0 4px 6px rgba(59, 130, 246, 0.1);
 }
 
-.shadow-purple {
-  box-shadow: 0 4px 6px rgba(147, 51, 234, 0.1);
+.shadow-yellow {
+  box-shadow: 0 4px 6px rgba(251, 191, 36, 0.1);
 }
 
 /* Subtle Pulse Animation */
@@ -101,10 +101,10 @@
   --radius: 0.5rem;
 }
 
-/* Metaverse inspired theme - futuristic purple-blue-cyan */
+/* Metaverse inspired theme - futuristic yellow-gold-amber */
 :root {
   --neon-cyan: #00ffff;
-  --bright-purple: #8b5cf6;
+  --bright-purple: #fbbf24;
   --electric-blue: #3b82f6;
   --dark-purple: #4c1d95;
   --metaverse-glow: #8b5cf680;
@@ -136,26 +136,26 @@
   box-shadow: 0 1px 3px rgba(0, 255, 255, 0.15);
 }
 
-.purple-accent {
-  box-shadow: 0 2px 4px rgba(139, 92, 246, 0.2);
+.yellow-accent {
+  box-shadow: 0 2px 4px rgba(251, 191, 36, 0.2);
 }
 
-.purple-subtle {
-  box-shadow: 0 1px 3px rgba(139, 92, 246, 0.15);
+.yellow-subtle {
+  box-shadow: 0 1px 3px rgba(251, 191, 36, 0.15);
 }
 
 /* Clean Card Effects - Metaverse Style */
 .clean-card {
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  border: 1px solid rgba(139, 92, 246, 0.2);
+  border: 1px solid rgba(251, 191, 36, 0.2);
   background: rgba(26, 26, 46, 0.6);
   backdrop-filter: blur(15px);
 }
 
 .clean-card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(139, 92, 246, 0.15);
-  border-color: rgba(0, 255, 255, 0.3);
+  box-shadow: 0 8px 20px rgba(251, 191, 36, 0.15);
+  border-color: rgba(251, 191, 36, 0.3);
 }
 
 .card-hover {
@@ -197,7 +197,7 @@
 }
 
 .accent-text {
-  color: var(--bright-purple);
+  color: var(--bright-yellow);
 }
 
 .metaverse-text {
@@ -217,7 +217,7 @@
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(139, 92, 246, 0.3), rgba(0, 255, 255, 0.2), transparent);
+  background: linear-gradient(90deg, transparent, rgba(251, 191, 36, 0.3), rgba(251, 191, 36, 0.2), transparent);
   animation: shimmer 4s infinite;
 }
 
@@ -264,11 +264,11 @@
 }
 
 .bg-cyber-gradient {
-  background: linear-gradient(135deg, var(--purple-primary) 0%, var(--cyan-primary) 100%);
+  background: linear-gradient(135deg, var(--yellow-primary) 0%, var(--amber-primary) 100%);
 }
 
 .bg-galaxy-gradient {
-  background: linear-gradient(135deg, var(--galaxy-purple) 0%, var(--galaxy-cyan) 100%);
+  background: linear-gradient(135deg, var(--galaxy-yellow) 0%, var(--galaxy-amber) 100%);
 }
 
 .bg-bronze-gradient {
@@ -305,7 +305,7 @@ body {
 .bg-galaxy-gradient {
   background: linear-gradient(135deg,
     var(--galaxy-blue) 0%,
-    var(--galaxy-purple) 50%,
+    var(--galaxy-yellow) 50%,
     var(--galaxy-cyan) 100%);
 }
 
@@ -476,7 +476,7 @@ body {
 
 /* Wallet Button Styles - Fixed flickering */
 .wallet-adapter-button {
-  background: linear-gradient(135deg, var(--galaxy-blue) 0%, var(--galaxy-purple) 100%);
+  background: linear-gradient(135deg, var(--galaxy-yellow) 0%, var(--galaxy-amber) 100%);
   border: none;
   border-radius: 0.5rem;
   color: white !important;

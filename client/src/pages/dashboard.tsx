@@ -130,7 +130,7 @@ export default function Dashboard() {
                     <div className="text-xs text-gray-400">Active Positions</div>
                   </div>
                   <div className="text-center p-3 bg-gray-800/50 rounded-lg">
-                    <div className="text-2xl font-bold text-purple-400 mb-1">$2.1K</div>
+                    <div className="text-2xl font-bold text-yellow-400 mb-1">$2.1K</div>
                     <div className="text-xs text-gray-400">24h Volume</div>
                   </div>
                   <div className="text-center p-3 bg-gray-800/50 rounded-lg">
@@ -218,7 +218,7 @@ export default function Dashboard() {
           <Card className="p-6 bg-gray-900/95 border-gray-700">
             <CardHeader className="pb-4">
               <CardTitle className="text-xl font-bold text-white flex items-center gap-2">
-                <Wallet className="w-6 h-6 text-purple-400" />
+                <Wallet className="w-6 h-6 text-yellow-400" />
                 Transaction History
               </CardTitle>
             </CardHeader>

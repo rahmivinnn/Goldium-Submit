@@ -41,7 +41,7 @@ export function RealTransactionHistory() {
 
   if (!wallet.connected) {
     return (
-      <Card className="bg-galaxy-card border-galaxy-purple/30">
+      <Card className="bg-galaxy-card border-yellow-500/30">
         <CardHeader>
           <CardTitle className="text-galaxy-text flex items-center gap-2">
             <ExternalLink className="w-5 h-5" />
@@ -58,7 +58,7 @@ export function RealTransactionHistory() {
   }
 
   return (
-    <Card className="bg-galaxy-card border-galaxy-purple/30">
+    <Card className="bg-galaxy-card border-yellow-500/30">
       <CardHeader>
         <div className="flex items-center justify-between">
           <CardTitle className="text-galaxy-text flex items-center gap-2">
@@ -74,7 +74,7 @@ export function RealTransactionHistory() {
               size="sm"
               onClick={refetch}
               disabled={isLoading}
-              className="border-galaxy-purple/50 hover:bg-galaxy-purple/20"
+              className="border-yellow-500/50 hover:bg-yellow-500/20"
             >
               <RefreshCw className={`w-4 h-4 ${isLoading ? 'animate-spin' : ''}`} />
             </Button>
@@ -91,7 +91,7 @@ export function RealTransactionHistory() {
         {isLoading && transactions.length === 0 ? (
           <div className="space-y-3">
             {[...Array(5)].map((_, i) => (
-              <div key={i} className="animate-pulse bg-galaxy-purple/10 rounded-lg h-16" />
+              <div key={i} className="animate-pulse bg-yellow-500/10 rounded-lg h-16" />
             ))}
           </div>
         ) : (
@@ -104,11 +104,11 @@ export function RealTransactionHistory() {
               transactions.map((tx) => (
                 <div
                   key={tx.signature}
-                  className="border border-galaxy-purple/20 rounded-lg p-4 hover:border-galaxy-blue/50 transition-all duration-200"
+                  className="border border-yellow-500/20 rounded-lg p-4 hover:border-yellow-500/50 transition-all duration-200"
                 >
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-3">
-                      <div className="p-2 rounded-lg bg-galaxy-purple/20">
+                      <div className="p-2 rounded-lg bg-yellow-500/20">
                         {getTransactionIcon(tx.type)}
                       </div>
                       <div>
@@ -133,7 +133,7 @@ export function RealTransactionHistory() {
                         variant="ghost"
                         size="sm"
                         onClick={() => window.open(tx.solscanUrl, '_blank')}
-                        className="text-galaxy-accent hover:text-galaxy-bright hover:bg-galaxy-purple/20"
+                        className="text-galaxy-accent hover:text-galaxy-bright hover:bg-yellow-500/20"
                       >
                         <ExternalLink className="w-4 h-4 mr-1" />
                         View on Solscan
@@ -141,7 +141,7 @@ export function RealTransactionHistory() {
                     </div>
                   </div>
 
-                  <div className="mt-3 pt-3 border-t border-galaxy-purple/10">
+                  <div className="mt-3 pt-3 border-t border-yellow-500/10">
                     <div className="text-xs text-galaxy-muted font-mono break-all">
                       <strong>TX ID:</strong> {tx.signature}
                     </div>
@@ -153,7 +153,7 @@ export function RealTransactionHistory() {
         )}
 
         {transactions.length > 0 && (
-          <div className="mt-6 pt-4 border-t border-galaxy-purple/20">
+          <div className="mt-6 pt-4 border-t border-yellow-500/20">
             <div className="flex items-center justify-between text-sm text-galaxy-muted">
               <p>
                 Showing {transactions.length} most recent transactions

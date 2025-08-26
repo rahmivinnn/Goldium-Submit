@@ -49,7 +49,7 @@ export const ParallaxHero: React.FC<ParallaxHeroProps> = ({ children }) => {
         }}
       />
       <div 
-        className="absolute top-40 right-20 w-1 h-1 bg-purple-400/50 rounded-full animate-pulse-custom opacity-40"
+        className="absolute top-40 right-20 w-1 h-1 bg-yellow-400/50 rounded-full animate-pulse-custom opacity-40"
         style={{
           transform: `translate(${mousePosition.x * -15}px, ${mousePosition.y * 15 + scrollY * 0.4}px)`,
           animationDelay: '1s'
@@ -84,7 +84,7 @@ export const ParallaxHero: React.FC<ParallaxHeroProps> = ({ children }) => {
         }}
       />
       <div 
-        className="absolute top-1/2 left-3/4 w-3 h-3 bg-purple-400/30 rotate-12 animate-bounce-slow"
+        className="absolute top-1/2 left-3/4 w-3 h-3 bg-yellow-400/30 rotate-12 animate-bounce-slow"
         style={{
           transform: `translate(${mousePosition.x * 8}px, ${mousePosition.y * 15 + scrollY * 0.45}px) rotate(12deg)`
         }}
@@ -107,13 +107,13 @@ export const ParallaxHero: React.FC<ParallaxHeroProps> = ({ children }) => {
               }}
             >
               <h1 className="text-8xl md:text-9xl lg:text-[12rem] font-black leading-none tracking-tighter">
-                <span className="inline-block animate-letter-float bg-gradient-to-r from-cyan-300 via-cyan-400 to-purple-400 bg-clip-text text-transparent" style={{animationDelay: '0s'}}>G</span>
-                <span className="inline-block animate-letter-float bg-gradient-to-r from-cyan-400 via-purple-400 to-blue-400 bg-clip-text text-transparent" style={{animationDelay: '0.1s'}}>O</span>
-                <span className="inline-block animate-letter-float bg-gradient-to-r from-purple-400 via-cyan-400 to-cyan-300 bg-clip-text text-transparent" style={{animationDelay: '0.2s'}}>L</span>
-                <span className="inline-block animate-letter-float bg-gradient-to-r from-cyan-300 via-cyan-400 to-purple-400 bg-clip-text text-transparent" style={{animationDelay: '0.3s'}}>D</span>
-                <span className="inline-block animate-letter-float bg-gradient-to-r from-cyan-400 via-purple-400 to-blue-400 bg-clip-text text-transparent" style={{animationDelay: '0.4s'}}>I</span>
-                <span className="inline-block animate-letter-float bg-gradient-to-r from-purple-400 via-cyan-400 to-cyan-300 bg-clip-text text-transparent" style={{animationDelay: '0.5s'}}>U</span>
-                <span className="inline-block animate-letter-float bg-gradient-to-r from-cyan-300 via-cyan-400 to-purple-400 bg-clip-text text-transparent" style={{animationDelay: '0.6s'}}>M</span>
+                <span className="inline-block animate-letter-float bg-gradient-to-r from-yellow-300 via-yellow-400 to-amber-400 bg-clip-text text-transparent" style={{animationDelay: '0s'}}>G</span>
+          <span className="inline-block animate-letter-float bg-gradient-to-r from-yellow-400 via-amber-400 to-yellow-400 bg-clip-text text-transparent" style={{animationDelay: '0.1s'}}>O</span>
+          <span className="inline-block animate-letter-float bg-gradient-to-r from-amber-400 via-yellow-400 to-yellow-300 bg-clip-text text-transparent" style={{animationDelay: '0.2s'}}>L</span>
+          <span className="inline-block animate-letter-float bg-gradient-to-r from-yellow-300 via-yellow-400 to-amber-400 bg-clip-text text-transparent" style={{animationDelay: '0.3s'}}>D</span>
+          <span className="inline-block animate-letter-float bg-gradient-to-r from-yellow-400 via-amber-400 to-yellow-400 bg-clip-text text-transparent" style={{animationDelay: '0.4s'}}>I</span>
+          <span className="inline-block animate-letter-float bg-gradient-to-r from-amber-400 via-yellow-400 to-yellow-300 bg-clip-text text-transparent" style={{animationDelay: '0.5s'}}>U</span>
+          <span className="inline-block animate-letter-float bg-gradient-to-r from-yellow-300 via-yellow-400 to-amber-400 bg-clip-text text-transparent" style={{animationDelay: '0.6s'}}>M</span>
               </h1>
             </div>
 
@@ -161,12 +161,12 @@ export const ParallaxHero: React.FC<ParallaxHeroProps> = ({ children }) => {
                 <span className="font-medium">Lightning Fast</span>
               </div>
               <div 
-                className="flex items-center space-x-3 text-gray-300 hover-glow px-4 py-2 rounded-full border border-purple-500/30 backdrop-blur-sm hover:border-purple-400/50 transition-all duration-300 cursor-pointer"
+                className="flex items-center space-x-3 text-gray-300 hover-glow px-4 py-2 rounded-full border border-yellow-500/30 backdrop-blur-sm hover:border-yellow-400/50 transition-all duration-300 cursor-pointer"
                 style={{
                   transform: `translate(${mousePosition.x * -2}px, ${mousePosition.y * 3}px)`
                 }}
               >
-                <Shield className="w-6 h-6 text-purple-400 animate-pulse-custom" />
+                <Shield className="w-6 h-6 text-yellow-400 animate-pulse-custom" />
                 <span className="font-medium">Secure</span>
               </div>
               <div 
@@ -196,7 +196,7 @@ export const ParallaxHero: React.FC<ParallaxHeroProps> = ({ children }) => {
                 }}
               >
                 <span className="relative z-10 font-black">Launch DeFi App</span>
-                <div className="absolute inset-0 bg-gradient-to-r from-cyan-300 to-purple-300 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-yellow-300 to-amber-300 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </button>
               <button
                 onClick={() => document.getElementById('tokenomics')?.scrollIntoView({ behavior: 'smooth' })}

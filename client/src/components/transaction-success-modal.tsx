@@ -81,7 +81,7 @@ export function TransactionSuccessModal({
       case 'stake':
         return {
           icon: '🔒',
-          color: 'bg-purple-500/20 text-purple-400 border-purple-500/30',
+          color: 'bg-yellow-500/20 text-yellow-400 border-yellow-500/30',
           description: `Successfully staked ${amount} GOLD tokens`
         };
       case 'unstake':
