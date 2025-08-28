@@ -4,6 +4,7 @@ import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { SolanaWalletProvider } from "@/components/solana-wallet-provider";
+import { ErrorBoundary } from "@/components/error-boundary";
 import Home from "@/pages/home-simple";
 import { About } from "@/pages/about";
 import Dashboard from "@/pages/dashboard";
@@ -22,14 +23,16 @@ function Router() {
 
 function App() {
   return (
-    <QueryClientProvider client={queryClient}>
-      <SolanaWalletProvider>
-        <TooltipProvider>
-          <Toaster />
-          <Router />
-        </TooltipProvider>
-      </SolanaWalletProvider>
-    </QueryClientProvider>
+    <ErrorBoundary>
+      <QueryClientProvider client={queryClient}>
+        <SolanaWalletProvider>
+          <TooltipProvider>
+            <Toaster />
+            <Router />
+          </TooltipProvider>
+        </SolanaWalletProvider>
+      </QueryClientProvider>
+    </ErrorBoundary>
   );
 }
 

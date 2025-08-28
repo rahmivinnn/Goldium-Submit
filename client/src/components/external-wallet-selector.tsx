@@ -112,7 +112,12 @@ export function ExternalWalletSelector() {
       }
       
       // Direct wallet connection through our hook only - avoid double connection
-      await wallet.connectWallet(walletType);
+      const result = await wallet.connectWallet(walletType);
+      
+      // Check if connection was successful
+      if (result && !result.success) {
+        throw new Error(result.error || 'Connection failed');
+      }
       
       toast({
         title: "Wallet Connected",
