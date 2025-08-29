@@ -171,19 +171,19 @@ export default function HomeSimple() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4">
           <div className="flex justify-between items-center">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-yellow-400 to-amber-500 p-2 shadow-lg">
+              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500 to-indigo-600 p-2 shadow-lg">
                 <img 
                   src={goldiumLogo} 
                   alt="Goldium Logo" 
                   className="w-full h-full object-contain"
                 />
               </div>
-              <div className="text-2xl font-bold bg-gradient-to-r from-yellow-400 to-amber-500 bg-clip-text text-transparent">GOLDIUM</div>
+              <div className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-indigo-500 bg-clip-text text-transparent">GOLDIUM</div>
             </div>
             <div className="hidden md:flex items-center space-x-6">
-              <a href="#brand" className="text-slate-300 hover:text-yellow-400 transition-colors font-medium">Brand</a>
-              <a href="#defi" className="text-slate-300 hover:text-yellow-400 transition-colors font-medium">DeFi</a>
-              <a href="#tokenomics" className="text-slate-300 hover:text-yellow-400 transition-colors font-medium">Tokenomics</a>
+              <a href="#brand" className="text-slate-300 hover:text-blue-400 transition-colors font-medium">Brand</a>
+              <a href="#defi" className="text-slate-300 hover:text-blue-400 transition-colors font-medium">DeFi</a>
+              <a href="#tokenomics" className="text-slate-300 hover:text-blue-400 transition-colors font-medium">Tokenomics</a>
               {externalWallet.connected && (
                  <div className="flex items-center gap-3 bg-slate-800/50 px-4 py-2 rounded-xl border border-slate-700">
                    <div className="flex items-center gap-2">
@@ -194,13 +194,13 @@ export default function HomeSimple() {
                    </div>
                    <div className="h-4 w-px bg-slate-600"></div>
                    <div className="flex items-center gap-2">
-                     <span className="text-sm font-semibold text-yellow-400">
+                     <span className="text-sm font-semibold text-blue-400">
                        {externalWallet.balance.toFixed(3)} SOL
                      </span>
                    </div>
                    <div className="flex items-center gap-2">
-                     <DollarSign className="w-4 h-4 text-yellow-400" />
-                     <span className="text-sm font-semibold text-yellow-400">
+                     <DollarSign className="w-4 h-4 text-blue-400" />
+                     <span className="text-sm font-semibold text-blue-400">
                        {goldBalance.balance.toFixed(0)} GOLD
                      </span>
                    </div>
@@ -212,13 +212,13 @@ export default function HomeSimple() {
             {/* Mobile Menu Button */}
             <div className="md:hidden flex items-center gap-2">
               {externalWallet.connected && (
-                <div className="flex items-center gap-1 bg-gray-800 px-2 py-1 rounded border border-yellow-400/50">
-            <span className="text-xs text-yellow-400 font-semibold">
+                <div className="flex items-center gap-1 bg-slate-800/50 px-2 py-1 rounded border border-slate-600">
+            <span className="text-xs text-blue-400 font-semibold">
                     {externalWallet.balance.toFixed(2)} SOL
                   </span>
                 </div>
               )}
-              <button className="text-yellow-400 p-1">
+              <button className="text-slate-400 p-1">
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
                 </svg>
@@ -236,13 +236,13 @@ export default function HomeSimple() {
       {/* Hero Section */}
       <section className="relative pt-24 pb-20 min-h-screen flex items-center">
         <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-950 to-black" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(251,191,36,0.3),rgba(120,119,198,0.3),rgba(255,255,255,0))]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(59,130,246,0.15),rgba(99,102,241,0.15),rgba(255,255,255,0))]" />
         
         <div className="relative max-w-6xl mx-auto px-4 sm:px-6 text-center">
           <div className="space-y-12">
             <div className="space-y-6">
               <div className="flex justify-center mb-8">
-                <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-yellow-400 to-amber-500 p-4 shadow-2xl">
+                <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-blue-500 to-indigo-600 p-4 shadow-2xl">
                   <img 
                     src={goldiumLogo} 
                     alt="Goldium Logo" 
@@ -251,7 +251,7 @@ export default function HomeSimple() {
                 </div>
               </div>
               <h1 className="text-5xl sm:text-6xl md:text-7xl font-black tracking-tight">
-                <span className="bg-gradient-to-r from-yellow-400 via-amber-500 to-yellow-600 bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-blue-400 via-indigo-500 to-blue-600 bg-clip-text text-transparent">
                   GOLDIUM
                 </span>
               </h1>
@@ -267,17 +267,15 @@ export default function HomeSimple() {
               <div className="bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-2xl p-6 shadow-xl">
                 <div className="text-center mb-6">
                   <div className="flex items-center justify-center gap-3 mb-4">
-                    <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-yellow-400 to-amber-500 p-1.5 shadow-lg">
-                      <img 
-                        src={goldiumLogo} 
-                        alt="Goldium Logo" 
-                        className="w-full h-full object-contain"
-                      />
+                    <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500 to-indigo-600 p-1.5 shadow-lg">
+                      <svg className="w-full h-full text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1" />
+                      </svg>
                     </div>
                     <h3 className="text-xl font-bold text-white">Buy GOLDIUM</h3>
                   </div>
                   <div className="bg-slate-700/50 rounded-lg p-3">
-                    <p className="text-slate-300 text-sm">Exchange Rate: <span className="text-yellow-400 font-semibold">1 SOL = 21,486 GOLD</span></p>
+                    <p className="text-slate-300 text-sm">Exchange Rate: <span className="text-blue-400 font-semibold">1 SOL = 21,486 GOLD</span></p>
                   </div>
                 </div>
                 <div className="space-y-4">
@@ -289,24 +287,24 @@ export default function HomeSimple() {
                       placeholder="0.1"
                       min="0.000047"
                       step="0.000047"
-                      className="bg-slate-700/50 border border-slate-600 text-white px-4 py-3 rounded-xl w-full focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400 transition-colors text-lg font-medium"
+                      className="bg-slate-700/50 border border-slate-600 text-white px-4 py-3 rounded-xl w-full focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition-colors text-lg font-medium"
                       disabled={buyingToken}
                     />
                     <span className="absolute right-4 top-1/2 transform -translate-y-1/2 text-slate-400 font-medium">SOL</span>
                   </div>
                   <div className="flex items-center justify-center gap-2 text-slate-400">
                     <span>≈</span>
-                    <span className="text-yellow-400 font-semibold">{buyAmount ? (parseFloat(buyAmount) * 21486.893).toLocaleString() : '0'} GOLD</span>
+                    <span className="text-blue-400 font-semibold">{buyAmount ? (parseFloat(buyAmount) * 21486.893).toLocaleString() : '0'} GOLD</span>
                   </div>
                 </div>
                 <Button
                   onClick={handleBuyGoldium}
                   disabled={buyingToken || !externalWallet.connected}
-                  className="bg-gradient-to-r from-yellow-400 to-amber-500 hover:from-yellow-500 hover:to-amber-600 text-black font-semibold px-6 py-3 rounded-xl text-base transition-colors disabled:opacity-50 disabled:cursor-not-allowed w-full"
+                  className="bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 text-white font-semibold px-6 py-3 rounded-xl text-base transition-colors disabled:opacity-50 disabled:cursor-not-allowed w-full"
                 >
                   {buyingToken ? (
                     <div className="flex items-center justify-center gap-2">
-                      <div className="w-4 h-4 border-2 border-black border-t-transparent rounded-full animate-spin" />
+                      <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
                       Processing...
                     </div>
                   ) : (
@@ -363,22 +361,20 @@ export default function HomeSimple() {
           </div>
           
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="bg-slate-800/50 border border-slate-700 rounded-xl p-6 text-center hover:border-yellow-400/50 transition-colors">
-              <div className="w-12 h-12 mx-auto mb-4 rounded-lg bg-gradient-to-br from-yellow-400 to-amber-500 p-2">
-                <img 
-                  src={goldiumLogo} 
-                  alt="Goldium Logo" 
-                  className="w-full h-full object-contain"
-                />
+            <div className="bg-slate-800/50 border border-slate-700 rounded-xl p-6 text-center hover:border-blue-400/50 transition-colors">
+              <div className="w-12 h-12 mx-auto mb-4 rounded-lg bg-gradient-to-br from-blue-500 to-indigo-600 p-2.5">
+                <svg className="w-full h-full text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1" />
+                </svg>
               </div>
               <div className="text-slate-400 font-medium text-sm mb-2">GOLDIUM Price</div>
               <div className="text-white text-2xl font-bold mb-2">${tokenData ? tokenData.currentPrice.toFixed(6) : '0.000000'}</div>
               <div className="bg-green-500/20 text-green-400 text-sm font-medium px-3 py-1 rounded-full">{tokenData ? `+${tokenData.priceChange24h.toFixed(1)}%` : '+0.0%'}</div>
             </div>
             
-            <div className="bg-slate-800/50 border border-slate-700 rounded-xl p-6 text-center hover:border-yellow-400/50 transition-colors">
-              <div className="w-12 h-12 mx-auto mb-4 bg-slate-700 rounded-lg flex items-center justify-center">
-                <svg className="w-6 h-6 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="bg-slate-800/50 border border-slate-700 rounded-xl p-6 text-center hover:border-blue-400/50 transition-colors">
+              <div className="w-12 h-12 mx-auto mb-4 bg-gradient-to-br from-emerald-500 to-green-600 rounded-lg flex items-center justify-center">
+                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
                 </svg>
               </div>
@@ -387,9 +383,9 @@ export default function HomeSimple() {
               <div className="bg-green-500/20 text-green-400 text-sm font-medium px-3 py-1 rounded-full">+5.7%</div>
             </div>
             
-            <div className="bg-slate-800/50 border border-slate-700 rounded-xl p-6 text-center hover:border-yellow-400/50 transition-colors">
-              <div className="w-12 h-12 mx-auto mb-4 bg-slate-700 rounded-lg flex items-center justify-center">
-                <svg className="w-6 h-6 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="bg-slate-800/50 border border-slate-700 rounded-xl p-6 text-center hover:border-blue-400/50 transition-colors">
+              <div className="w-12 h-12 mx-auto mb-4 bg-gradient-to-br from-purple-500 to-indigo-600 rounded-lg flex items-center justify-center">
+                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
                 </svg>
               </div>
@@ -398,9 +394,9 @@ export default function HomeSimple() {
               <div className="bg-green-500/20 text-green-400 text-sm font-medium px-3 py-1 rounded-full">+12.4%</div>
             </div>
             
-            <div className="bg-slate-800/50 border border-slate-700 rounded-xl p-6 text-center hover:border-yellow-400/50 transition-colors">
-              <div className="w-12 h-12 mx-auto mb-4 bg-slate-700 rounded-lg flex items-center justify-center">
-                <svg className="w-6 h-6 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="bg-slate-800/50 border border-slate-700 rounded-xl p-6 text-center hover:border-blue-400/50 transition-colors">
+              <div className="w-12 h-12 mx-auto mb-4 bg-gradient-to-br from-orange-500 to-red-600 rounded-lg flex items-center justify-center">
+                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                 </svg>
               </div>
@@ -429,19 +425,19 @@ export default function HomeSimple() {
           <div className="bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-2xl p-8">
             <Tabs defaultValue="swap" className="w-full">
               <TabsList className="grid w-full grid-cols-5 mb-8 bg-slate-900/50 border border-slate-700 rounded-xl">
-                <TabsTrigger value="swap" className="text-slate-300 data-[state=active]:bg-yellow-400 data-[state=active]:text-black font-medium rounded-lg">
+                <TabsTrigger value="swap" className="text-slate-300 data-[state=active]:bg-blue-500 data-[state=active]:text-white font-medium rounded-lg">
                   Swap
                 </TabsTrigger>
-                <TabsTrigger value="stake" className="text-slate-300 data-[state=active]:bg-yellow-400 data-[state=active]:text-black font-medium rounded-lg">
+                <TabsTrigger value="stake" className="text-slate-300 data-[state=active]:bg-blue-500 data-[state=active]:text-white font-medium rounded-lg">
                   Stake
                 </TabsTrigger>
-                <TabsTrigger value="dragon" className="text-slate-300 data-[state=active]:bg-yellow-400 data-[state=active]:text-black font-medium rounded-lg">
+                <TabsTrigger value="dragon" className="text-slate-300 data-[state=active]:bg-blue-500 data-[state=active]:text-white font-medium rounded-lg">
                   Dragon
                 </TabsTrigger>
-                <TabsTrigger value="send" className="text-slate-300 data-[state=active]:bg-yellow-400 data-[state=active]:text-black font-medium rounded-lg">
+                <TabsTrigger value="send" className="text-slate-300 data-[state=active]:bg-blue-500 data-[state=active]:text-white font-medium rounded-lg">
                   Send
                 </TabsTrigger>
-                <TabsTrigger value="history" className="text-slate-300 data-[state=active]:bg-yellow-400 data-[state=active]:text-black font-medium rounded-lg">
+                <TabsTrigger value="history" className="text-slate-300 data-[state=active]:bg-blue-500 data-[state=active]:text-white font-medium rounded-lg">
                   History
                 </TabsTrigger>
               </TabsList>
@@ -471,57 +467,55 @@ export default function HomeSimple() {
       </section>
 
       {/* Tokenomics Section */}
-      <section id="tokenomics" className="py-20 px-6 bg-gradient-to-b from-black via-yellow-900/5 to-black">
+      <section id="tokenomics" className="py-20 px-6 bg-slate-900/50">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-6xl md:text-7xl font-black text-yellow-400 mb-8">
-              TOKENOMICS
+            <h2 className="text-5xl md:text-6xl font-bold text-white mb-8">
+              Tokenomics
             </h2>
-            <p className="text-2xl text-yellow-200 max-w-4xl mx-auto font-medium">
+            <p className="text-xl text-slate-400 max-w-3xl mx-auto">
               Transparent and sustainable token distribution designed for long-term value
             </p>
           </div>
           
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-8">
-              <div className="bg-gradient-to-br from-yellow-900/20 to-black border border-yellow-400/30 rounded-2xl p-6">
+              <div className="bg-slate-800/50 border border-slate-700 rounded-2xl p-6">
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="w-8 h-8 rounded-lg overflow-hidden shadow-lg border-2 border-yellow-400/40">
-                    <img 
-                      src={goldiumLogo} 
-                      alt="Goldium Logo" 
-                      className="w-full h-full object-contain bg-gradient-to-br from-yellow-400/20 to-yellow-600/20 p-1"
-                    />
+                  <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500 to-indigo-600 p-1.5 shadow-lg">
+                    <svg className="w-full h-full text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                    </svg>
                   </div>
-                  <h3 className="text-2xl font-bold text-yellow-400">Token Distribution</h3>
+                  <h3 className="text-2xl font-bold text-white">Token Distribution</h3>
                 </div>
                 <div className="space-y-4">
                   <div className="flex justify-between items-center">
-                    <span className="text-yellow-200">Total Supply</span>
+                    <span className="text-slate-400">Total Supply</span>
                     <span className="text-white font-bold">1,000,000,000 GOLD</span>
                   </div>
                   <div className="flex justify-between items-center">
-                    <span className="text-yellow-200">Circulating Supply</span>
+                    <span className="text-slate-400">Circulating Supply</span>
                     <span className="text-white font-bold">600,000,000 GOLD</span>
                   </div>
                   <div className="flex justify-between items-center">
-                    <span className="text-yellow-200">Liquidity Pool</span>
+                    <span className="text-slate-400">Liquidity Pool</span>
                     <span className="text-white font-bold">300,000,000 (30%)</span>
                   </div>
                   <div className="flex justify-between items-center">
-                    <span className="text-yellow-200">Community Rewards</span>
+                    <span className="text-slate-400">Community Rewards</span>
                     <span className="text-white font-bold">250,000,000 (25%)</span>
                   </div>
                   <div className="flex justify-between items-center">
-                    <span className="text-yellow-200">Development</span>
+                    <span className="text-slate-400">Development</span>
                     <span className="text-white font-bold">200,000,000 (20%)</span>
                   </div>
                   <div className="flex justify-between items-center">
-                    <span className="text-yellow-200">Marketing</span>
+                    <span className="text-slate-400">Marketing</span>
                     <span className="text-white font-bold">150,000,000 (15%)</span>
                   </div>
                   <div className="flex justify-between items-center">
-                    <span className="text-yellow-200">Team (Locked)</span>
+                    <span className="text-slate-400">Team (Locked)</span>
                     <span className="text-white font-bold">100,000,000 (10%)</span>
                   </div>
                 </div>
@@ -536,18 +530,18 @@ export default function HomeSimple() {
       </section>
 
       {/* Twitter Feed Section */}
-      <section className="py-20 px-6 bg-gradient-to-b from-black via-yellow-900/5 to-black border-t border-yellow-400/20">
+      <section className="py-20 px-6 bg-slate-900/30">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="flex items-center justify-center gap-4 mb-4">
-              <div className="w-12 h-12 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-lg flex items-center justify-center shadow-lg">
-                <svg className="w-6 h-6 text-black" viewBox="0 0 24 24" fill="currentColor">
+              <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-lg flex items-center justify-center shadow-lg">
+                <svg className="w-6 h-6 text-white" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
                 </svg>
               </div>
-              <h2 className="text-5xl font-bold bg-gradient-to-r from-yellow-400 via-yellow-300 to-yellow-500 bg-clip-text text-transparent">COMMUNITY UPDATES</h2>
+              <h2 className="text-4xl md:text-5xl font-bold text-white">Community Updates</h2>
             </div>
-            <p className="text-yellow-200 text-lg">Stay connected with the latest news from Goldium and Solana ecosystem</p>
+            <p className="text-slate-400 text-lg">Stay connected with the latest news from Goldium and Solana ecosystem</p>
           </div>
           
           <div className="flex justify-center">
@@ -557,27 +551,27 @@ export default function HomeSimple() {
       </section>
 
       {/* Footer */}
-      <footer className="py-12 sm:py-16 lg:py-20 border-t border-yellow-400/30 bg-black/80">
+      <footer className="py-12 sm:py-16 lg:py-20 border-t border-slate-700 bg-slate-950/80">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 sm:gap-10 lg:gap-12 mb-8 sm:mb-10 lg:mb-12">
             <div className="space-y-3 sm:space-y-4 sm:col-span-2 md:col-span-1">
-              <div className="text-2xl sm:text-3xl font-bold text-yellow-100">GOLDIUM</div>
-              <p className="text-yellow-200/70 leading-relaxed text-sm sm:text-base">
+              <div className="text-2xl sm:text-3xl font-bold text-white">GOLDIUM</div>
+              <p className="text-slate-400 leading-relaxed text-sm sm:text-base">
                 The future of digital gold on Solana blockchain. Secure, fast, and decentralized.
               </p>
               <div className="flex space-x-3 sm:space-x-4">
-                <div className="w-10 h-10 bg-black/80 border border-yellow-400/40 rounded-full flex items-center justify-center hover:bg-yellow-400/20 hover:border-yellow-400/60 transition-all duration-300 cursor-pointer">
-                  <svg className="w-4 h-4 text-yellow-300" viewBox="0 0 24 24" fill="currentColor">
+                <div className="w-10 h-10 bg-slate-800/80 border border-slate-600 rounded-full flex items-center justify-center hover:bg-blue-500/20 hover:border-blue-400/60 transition-all duration-300 cursor-pointer">
+                  <svg className="w-4 h-4 text-slate-300" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
                   </svg>
                 </div>
-                <div className="w-10 h-10 bg-black/80 border border-yellow-400/40 rounded-full flex items-center justify-center hover:bg-yellow-400/20 hover:border-yellow-400/60 transition-all duration-300 cursor-pointer">
-                  <svg className="w-4 h-4 text-yellow-300" viewBox="0 0 24 24" fill="currentColor">
+                <div className="w-10 h-10 bg-slate-800/80 border border-slate-600 rounded-full flex items-center justify-center hover:bg-blue-500/20 hover:border-blue-400/60 transition-all duration-300 cursor-pointer">
+                  <svg className="w-4 h-4 text-slate-300" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
                   </svg>
                 </div>
-                <div className="w-10 h-10 bg-black/80 border border-yellow-400/40 rounded-full flex items-center justify-center hover:bg-yellow-400/20 hover:border-yellow-400/60 transition-all duration-300 cursor-pointer">
-                  <svg className="w-4 h-4 text-yellow-300" viewBox="0 0 24 24" fill="currentColor">
+                <div className="w-10 h-10 bg-slate-800/80 border border-slate-600 rounded-full flex items-center justify-center hover:bg-blue-500/20 hover:border-blue-400/60 transition-all duration-300 cursor-pointer">
+                  <svg className="w-4 h-4 text-slate-300" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/>
                   </svg>
                 </div>
@@ -585,40 +579,40 @@ export default function HomeSimple() {
             </div>
 
             <div className="space-y-3 sm:space-y-4">
-              <h3 className="text-base sm:text-lg font-semibold text-yellow-100">Product</h3>
+              <h3 className="text-base sm:text-lg font-semibold text-white">Product</h3>
               <div className="space-y-1 sm:space-y-2">
-                <a href="#defi" className="block text-yellow-200/70 hover:text-yellow-300 transition-colors text-sm sm:text-base">DeFi App</a>
-                <a href="#tokenomics" className="block text-yellow-200/70 hover:text-yellow-300 transition-colors text-sm sm:text-base">Tokenomics</a>
-                <a href="#" className="block text-yellow-200/70 hover:text-yellow-300 transition-colors text-sm sm:text-base">API</a>
+                <a href="#defi" className="block text-slate-400 hover:text-blue-400 transition-colors text-sm sm:text-base">DeFi App</a>
+                <a href="#tokenomics" className="block text-slate-400 hover:text-blue-400 transition-colors text-sm sm:text-base">Tokenomics</a>
+                <a href="#" className="block text-slate-400 hover:text-blue-400 transition-colors text-sm sm:text-base">API</a>
               </div>
             </div>
 
             <div className="space-y-3 sm:space-y-4">
-              <h3 className="text-base sm:text-lg font-semibold text-yellow-100">Resources</h3>
+              <h3 className="text-base sm:text-lg font-semibold text-white">Resources</h3>
               <div className="space-y-1 sm:space-y-2">
-                <a href="#" className="block text-yellow-200/70 hover:text-yellow-300 transition-colors text-sm sm:text-base">Documentation</a>
-                <a href="#" className="block text-yellow-200/70 hover:text-yellow-300 transition-colors text-sm sm:text-base">Whitepaper</a>
-                <a href="#" className="block text-yellow-200/70 hover:text-yellow-300 transition-colors text-sm sm:text-base">Security Audit</a>
+                <a href="#" className="block text-slate-400 hover:text-blue-400 transition-colors text-sm sm:text-base">Documentation</a>
+                <a href="#" className="block text-slate-400 hover:text-blue-400 transition-colors text-sm sm:text-base">Whitepaper</a>
+                <a href="#" className="block text-slate-400 hover:text-blue-400 transition-colors text-sm sm:text-base">Security Audit</a>
               </div>
             </div>
 
             <div className="space-y-3 sm:space-y-4">
-              <h3 className="text-base sm:text-lg font-semibold text-yellow-100">Support</h3>
+              <h3 className="text-base sm:text-lg font-semibold text-white">Support</h3>
               <div className="space-y-1 sm:space-y-2">
-                <a href="#" className="block text-yellow-200/70 hover:text-yellow-300 transition-colors text-sm sm:text-base">Help Center</a>
-                <a href="#" className="block text-yellow-200/70 hover:text-yellow-300 transition-colors text-sm sm:text-base">Contact Us</a>
-                <a href="#" className="block text-yellow-200/70 hover:text-yellow-300 transition-colors text-sm sm:text-base">Status</a>
+                <a href="#" className="block text-slate-400 hover:text-blue-400 transition-colors text-sm sm:text-base">Help Center</a>
+                <a href="#" className="block text-slate-400 hover:text-blue-400 transition-colors text-sm sm:text-base">Contact Us</a>
+                <a href="#" className="block text-slate-400 hover:text-blue-400 transition-colors text-sm sm:text-base">Status</a>
               </div>
             </div>
           </div>
 
-          <div className="pt-6 sm:pt-8 border-t border-yellow-400/30">
+          <div className="pt-6 sm:pt-8 border-t border-slate-700">
             <div className="flex flex-col md:flex-row justify-between items-center space-y-3 sm:space-y-4 md:space-y-0">
-              <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-6 lg:space-x-8 text-xs sm:text-sm text-yellow-300/60 text-center sm:text-left">
-                <a href="#" className="hover:text-yellow-300 transition-colors">Terms of Service</a>
-                <a href="#" className="hover:text-yellow-300 transition-colors">Privacy Policy</a>
+              <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-6 lg:space-x-8 text-xs sm:text-sm text-slate-300/60 text-center sm:text-left">
+                <a href="#" className="hover:text-blue-400 transition-colors">Terms of Service</a>
+                <a href="#" className="hover:text-blue-400 transition-colors">Privacy Policy</a>
               </div>
-              <div className="text-xs sm:text-sm text-yellow-300/60 text-center">
+              <div className="text-xs sm:text-sm text-slate-300/60 text-center">
                 © 2025 Goldium. All rights reserved.
               </div>
             </div>

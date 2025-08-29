@@ -136,7 +136,7 @@ export function ExternalWalletSelector() {
           <Button 
             variant="outline"
             disabled={wallet.connecting}
-            className="bg-slate-800/50 border-slate-600 text-white hover:border-yellow-400 hover:bg-slate-700/50 transition-colors"
+            className="bg-slate-800/50 border-slate-600 text-white hover:border-blue-400 hover:bg-slate-700/50 transition-colors"
           >
             <Wallet className="w-4 h-4 mr-2" />
             {wallet.connecting ? 'Connecting...' : 'Connect Wallet'}

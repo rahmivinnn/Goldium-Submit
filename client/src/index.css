@@ -474,23 +474,23 @@ body {
 .stagger-children > *:nth-child(4) { animation-delay: 0.4s; }
 .stagger-children > *:nth-child(5) { animation-delay: 0.5s; }
 
-/* Wallet Button Styles - Fixed flickering */
+/* Wallet Button Styles - Professional */
 .wallet-adapter-button {
-  background: linear-gradient(135deg, var(--galaxy-yellow) 0%, var(--galaxy-amber) 100%);
+  background: linear-gradient(135deg, #3b82f6 0%, #6366f1 100%);
   border: none;
   border-radius: 0.5rem;
   color: white !important;
   font-weight: 600;
   padding: 0.5rem 1.5rem;
   transition: all 0.2s ease-out;
-  box-shadow: 0 4px 20px rgba(100, 150, 255, 0.3);
+  box-shadow: 0 4px 20px rgba(59, 130, 246, 0.3);
   outline: none !important;
   will-change: transform, box-shadow;
 }
 
 .wallet-adapter-button:hover {
   transform: translateY(-2px) scale(1.02);
-  box-shadow: 0 8px 30px rgba(100, 150, 255, 0.4);
+  box-shadow: 0 8px 30px rgba(59, 130, 246, 0.4);
 }
 
 .wallet-adapter-button:active {
@@ -500,7 +500,7 @@ body {
 
 .wallet-adapter-button:focus {
   outline: none !important;
-  box-shadow: 0 4px 20px rgba(200, 150, 50, 0.4);
+  box-shadow: 0 4px 20px rgba(59, 130, 246, 0.4);
 }
 
 /* Anti-flickering for all interactive buttons */
@@ -527,8 +527,8 @@ button[aria-expanded] {
 }
 
 .wallet-adapter-modal {
-  background-color: var(--defi-secondary) !important;
-  border: 1px solid var(--defi-accent) !important;
+  background-color: rgba(30, 41, 59, 0.95) !important;
+  border: 1px solid rgba(59, 130, 246, 0.3) !important;
 }
 
 .wallet-adapter-modal-title {
@@ -536,17 +536,17 @@ button[aria-expanded] {
 }
 
 .wallet-adapter-modal-list {
-  background-color: var(--defi-secondary) !important;
+  background-color: rgba(30, 41, 59, 0.95) !important;
 }
 
 .wallet-adapter-modal-list-item {
-  background-color: var(--defi-accent) !important;
+  background-color: rgba(51, 65, 85, 0.8) !important;
   border: 1px solid transparent !important;
   margin-bottom: 0.5rem !important;
 }
 
 .wallet-adapter-modal-list-item:hover {
-  border-color: var(--gold-primary) !important;
+  border-color: rgba(59, 130, 246, 0.5) !important;
 }
 
 @layer base {
@@ -925,17 +925,17 @@ button[aria-expanded] {
 }
 
 .bg-galaxy-card:hover {
-  border-color: rgba(251, 191, 36, 0.4);
+  border-color: rgba(59, 130, 246, 0.4);
 }
 
 /* Modern Button Styles */
 .bg-galaxy-button {
-  background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+  background: linear-gradient(135deg, #3b82f6 0%, #6366f1 100%);
   transition: all 0.2s ease;
 }
 
 .bg-galaxy-button:hover {
-  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+  background: linear-gradient(135deg, #2563eb 0%, #4f46e5 100%);
   transform: translateY(-1px);
 }
 
