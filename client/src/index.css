@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  /* CHAINZOKU DARK THEME - Black + Neon Blue + White */
+  /* ANIME THEME - Black + Golden Yellow + White */
   --background: #000000;                     /* Pure black background */
   --foreground: #FFFFFF;                     /* Pure white text */
   --muted: rgba(0, 0, 0, 0.9);              /* Muted black background */
@@ -12,30 +12,30 @@
   --popover-foreground: #FFFFFF;            /* Pure white text */
   --card: rgba(0, 0, 0, 0.8);               /* Card background */
   --card-foreground: #FFFFFF;               /* Pure white text */
-  --border: rgba(0, 255, 255, 0.3);         /* Neon cyan borders */
+  --border: rgba(255, 215, 0, 0.4);         /* Golden borders */
   --input: rgba(0, 0, 0, 0.9);              /* Dark input backgrounds */
-  --primary: #00FFFF;                       /* Neon cyan primary */
+  --primary: #FFD700;                       /* Golden yellow primary */
   --primary-foreground: #000000;            /* Black text on primary */
   --secondary: rgba(0, 0, 0, 0.8);          /* Secondary background */
   --secondary-foreground: #FFFFFF;          /* Pure white text */
-  --accent: #1E90FF;                        /* Neon blue accent */
-  --accent-foreground: #FFFFFF;             /* Pure white text */
+  --accent: #FFA500;                        /* Orange accent */
+  --accent-foreground: #000000;             /* Black text */
   --destructive: #FF4444;                   /* Red for errors */
   --destructive-foreground: #FFFFFF;        /* White text */
-  --ring: #00FFFF;                          /* Neon cyan focus ring */
-  --radius: 0.75rem;
+  --ring: #FFD700;                          /* Golden focus ring */
+  --radius: 1rem;
 
-  /* CHAINZOKU NEON COLORS */
-  --chainzoku-black: #000000;               /* Pure black */
-  --chainzoku-white: #FFFFFF;               /* Pure white */
-  --chainzoku-cyan: #00FFFF;                /* Neon cyan */
-  --chainzoku-blue: #1E90FF;                /* Neon blue */
-  --chainzoku-electric: #0099FF;            /* Electric blue */
-  --chainzoku-glow: rgba(0, 255, 255, 0.5); /* Cyan glow */
-  --chainzoku-glass: rgba(0, 0, 0, 0.1);    /* Glass effect */
-  --chainzoku-border: rgba(0, 255, 255, 0.2); /* Subtle border */
-  --chainzoku-hover: rgba(0, 255, 255, 0.1); /* Hover effect */
-  --chainzoku-shadow: rgba(0, 255, 255, 0.3); /* Glow shadow */
+  /* ANIME GOLDEN COLORS */
+  --anime-black: #000000;                   /* Pure black */
+  --anime-white: #FFFFFF;                   /* Pure white */
+  --anime-gold: #FFD700;                    /* Bright gold */
+  --anime-orange: #FFA500;                  /* Bright orange */
+  --anime-yellow: #FFFF00;                  /* Bright yellow */
+  --anime-glow: rgba(255, 215, 0, 0.6);     /* Golden glow */
+  --anime-glass: rgba(0, 0, 0, 0.15);       /* Glass effect */
+  --anime-border: rgba(255, 215, 0, 0.3);   /* Subtle border */
+  --anime-hover: rgba(255, 215, 0, 0.15);   /* Hover effect */
+  --anime-shadow: rgba(255, 215, 0, 0.4);   /* Glow shadow */
 }
 
 /* Clean Text Effects */
@@ -108,7 +108,7 @@
 body {
   background: #000000 !important;
   color: #FFFFFF !important;
-  font-family: 'Space Grotesk', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: 'Nunito', 'Poppins', 'Comic Neue', -apple-system, BlinkMacSystemFont, sans-serif;
   font-weight: 400;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
@@ -120,86 +120,173 @@ body {
   min-height: 100vh;
 }
 
-/* CHAINZOKU UTILITIES */
-.chainzoku-bg {
+/* ANIME UTILITIES */
+.anime-bg {
   background: #000000;
 }
 
-.chainzoku-text {
+.anime-text {
   color: #FFFFFF;
 }
 
-.chainzoku-accent {
-  color: #00FFFF;
+.anime-accent {
+  color: #FFD700;
 }
 
-.chainzoku-blue {
-  color: #1E90FF;
+.anime-yellow {
+  color: #FFFF00;
 }
 
-/* CHAINZOKU BUTTON STYLES */
-.chainzoku-btn {
-  background: linear-gradient(135deg, #00FFFF, #1E90FF);
+/* ANIME BUTTON STYLES */
+.anime-btn {
+  background: linear-gradient(135deg, #FFD700, #FFA500);
   color: #000000;
   border: none;
-  padding: 12px 24px;
-  border-radius: 12px;
+  padding: 14px 28px;
+  border-radius: 20px;
   font-weight: 700;
-  font-family: 'Space Grotesk', sans-serif;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  transition: all 0.3s ease;
-  box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+  font-family: 'Nunito', sans-serif;
+  text-transform: none;
+  letter-spacing: 0.3px;
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  box-shadow: 0 0 25px rgba(255, 215, 0, 0.4);
+  position: relative;
+  overflow: hidden;
 }
 
-.chainzoku-btn:hover {
-  transform: translateY(-2px) scale(1.05);
-  box-shadow: 0 0 30px rgba(0, 255, 255, 0.5);
-  background: linear-gradient(135deg, #1E90FF, #00FFFF);
+.anime-btn:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.5s;
 }
 
-/* CHAINZOKU CARD STYLES */
-.chainzoku-card {
-  background: rgba(0, 0, 0, 0.8);
-  border: 1px solid rgba(0, 255, 255, 0.2);
+.anime-btn:hover:before {
+  left: 100%;
+}
+
+.anime-btn:hover {
+  transform: translateY(-3px) scale(1.08);
+  box-shadow: 0 0 35px rgba(255, 215, 0, 0.6);
+  background: linear-gradient(135deg, #FFFF00, #FFD700);
+}
+
+/* ANIME CARD STYLES */
+.anime-card {
+  background: rgba(0, 0, 0, 0.85);
+  border: 2px solid rgba(255, 215, 0, 0.3);
   backdrop-filter: blur(20px);
-  border-radius: 16px;
-  transition: all 0.3s ease;
+  border-radius: 20px;
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+  position: relative;
+  overflow: hidden;
 }
 
-.chainzoku-card:hover {
-  border-color: rgba(0, 255, 255, 0.5);
-  box-shadow: 0 0 25px rgba(0, 255, 255, 0.2);
-  transform: translateY(-4px);
+.anime-card:before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, #FFD700, #FFA500, #FFD700, #FFA500);
+  border-radius: 20px;
+  opacity: 0;
+  z-index: -1;
+  transition: opacity 0.3s;
 }
 
-/* CHAINZOKU ANIMATIONS */
-@keyframes chainzoku-fadeIn {
+.anime-card:hover:before {
+  opacity: 0.7;
+  animation: anime-border-flow 2s linear infinite;
+}
+
+.anime-card:hover {
+  border-color: rgba(255, 215, 0, 0.6);
+  box-shadow: 0 0 30px rgba(255, 215, 0, 0.3);
+  transform: translateY(-6px) scale(1.02);
+}
+
+/* ANIME ANIMATIONS */
+@keyframes anime-fadeIn {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(30px) scale(0.9);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
   }
 }
 
-.chainzoku-fade-in {
-  animation: chainzoku-fadeIn 0.6s ease-out;
+.anime-fade-in {
+  animation: anime-fadeIn 0.8s cubic-bezier(0.23, 1, 0.320, 1);
 }
 
-@keyframes chainzoku-glow {
+@keyframes anime-glow {
   0%, 100% {
-    box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
   }
   50% {
-    box-shadow: 0 0 25px rgba(0, 255, 255, 0.5);
+    box-shadow: 0 0 35px rgba(255, 215, 0, 0.7);
+    text-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
   }
 }
 
-.chainzoku-glow {
-  animation: chainzoku-glow 2s ease-in-out infinite;
+.anime-glow {
+  animation: anime-glow 2s ease-in-out infinite;
+}
+
+@keyframes anime-border-flow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes anime-bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
+.anime-bounce {
+  animation: anime-bounce 2s infinite;
+}
+
+@keyframes anime-float {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  33% {
+    transform: translateY(-10px) rotate(1deg);
+  }
+  66% {
+    transform: translateY(5px) rotate(-1deg);
+  }
+}
+
+.anime-float {
+  animation: anime-float 3s ease-in-out infinite;
+}
+
+@keyframes anime-sparkle {
+  0%, 100% { opacity: 0; transform: scale(0); }
+  50% { opacity: 1; transform: scale(1); }
+}
+
+.anime-sparkle {
+  animation: anime-sparkle 1.5s ease-in-out infinite;
 }
 
 /* CHAINZOKU SCROLL ANIMATIONS */
@@ -248,45 +335,75 @@ body {
   backdrop-filter: blur(25px);
 }
 
-/* CHAINZOKU TYPOGRAPHY */
+/* ANIME TYPOGRAPHY */
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Space Grotesk', sans-serif;
-  font-weight: 700;
+  font-family: 'Nunito', 'Poppins', sans-serif;
+  font-weight: 800;
   color: #FFFFFF;
-  text-transform: uppercase;
-  letter-spacing: 1px;
+  text-transform: none;
+  letter-spacing: 0.5px;
 }
 
 h1 {
-  font-size: 3rem;
+  font-size: 3.5rem;
   line-height: 1.1;
+  font-weight: 900;
 }
 
 h2 {
-  font-size: 2.5rem;
+  font-size: 2.8rem;
   line-height: 1.2;
+  font-weight: 800;
 }
 
 h3 {
-  font-size: 2rem;
+  font-size: 2.2rem;
   line-height: 1.3;
+  font-weight: 700;
 }
 
-/* CHAINZOKU INPUT STYLES */
-.chainzoku-input {
+/* ANIME TEXT EFFECTS */
+.anime-title {
+  background: linear-gradient(45deg, #FFD700, #FFA500, #FFFF00, #FFD700);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: anime-gradient-flow 3s ease-in-out infinite;
+}
+
+@keyframes anime-gradient-flow {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes anime-grid-flow {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(60px, 60px); }
+}
+
+/* ANIME INPUT STYLES */
+.anime-input {
   background: rgba(0, 0, 0, 0.9);
-  border: 1px solid rgba(0, 255, 255, 0.3);
+  border: 2px solid rgba(255, 215, 0, 0.4);
   color: #FFFFFF;
-  padding: 12px 16px;
-  border-radius: 8px;
-  font-family: 'Inter', sans-serif;
-  transition: all 0.3s ease;
+  padding: 14px 18px;
+  border-radius: 15px;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 600;
+  transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
 }
 
-.chainzoku-input:focus {
+.anime-input:focus {
   outline: none;
-  border-color: #00FFFF;
-  box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+  border-color: #FFD700;
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+  transform: scale(1.02);
+}
+
+.anime-input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 500;
 }
 
 .clean-card:hover {
