@@ -17,7 +17,9 @@ export function BalanceCards() {
     const unsubscribe = WalletStateManager.subscribe(() => {
       setWalletState(WalletStateManager.getState());
     });
-    return unsubscribe;
+    return () => {
+      unsubscribe();
+    };
   }, []);
 
   // Show external wallet balance if connected, otherwise use self-contained balance

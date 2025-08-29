@@ -540,7 +540,7 @@ const GoldiumGamifiedStaking: React.FC = () => {
                     value={stakeAmount}
                     onChange={(e) => setStakeAmount(e.target.value)}
                     max={goldBalance}
-                    size="sm"
+                    className="text-sm"
                   />
                   <Button 
                     onClick={handleStake} 

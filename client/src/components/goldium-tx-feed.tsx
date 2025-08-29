@@ -23,13 +23,6 @@ export function GoldiumTxFeed() {
     } catch (error) {
       console.error('Error loading real transactions:', error);
       // Show error but keep existing transactions
-          signature: '7Qw8ErTyUi9OlP3mK5nLcX6vBgFdHsAj2MpGhRqZ4Nk1'
-        }
-      ];
-      
-      setTransactions(recentTxs);
-    } catch (error) {
-      console.log('Transaction feed simulation error');
     } finally {
       setIsLoadingReal(false);
     }
@@ -43,7 +36,7 @@ export function GoldiumTxFeed() {
 
   useEffect(() => {
     // Initial load of transaction feed
-    fetchRealTransactions();
+    loadRealTransactions();
     
     if (!isLive) return;
 
@@ -63,14 +56,17 @@ export function GoldiumTxFeed() {
           amount = selectedType === 'SWAP' ? Math.random() * 50000 + 5000 : Math.random() * 25000 + 1000;
         }
         
-        const newTx: Transaction = {
-          id: `tx_${Date.now()}`,
+        const newTx: RealTransaction = {
+          signature: generateRandomTxId(),
           type: selectedType,
           amount: amount,
-          token: selectedToken,
-          user: generateRandomAddress(),
+          tokenSymbol: selectedToken,
+          fromAddress: generateRandomAddress(),
+          toAddress: generateRandomAddress(),
           timestamp: new Date(),
-          signature: generateRandomTxId()
+          solscanUrl: `https://solscan.io/tx/${generateRandomTxId()}`,
+          success: true,
+          fee: Math.random() * 0.001 + 0.0001
         };
 
         setTransactions(prev => [newTx, ...prev.slice(0, 9)]);
@@ -172,7 +168,7 @@ export function GoldiumTxFeed() {
           ) : (
             transactions.map((tx) => (
             <div
-              key={tx.id}
+              key={tx.signature}
               className="flex items-center justify-between p-3 rounded-lg bg-galaxy-darker/50 hover:bg-galaxy-darker/70 transition-colors"
             >
               <div className="flex items-center space-x-3">
@@ -185,11 +181,11 @@ export function GoldiumTxFeed() {
                       {tx.type}
                     </span>
                     <span className="text-sm text-galaxy-bright">
-                      {tx.amount.toFixed(tx.token === 'SOL' ? 4 : 0)} {tx.token}
+                      {tx.amount.toFixed(tx.tokenSymbol === 'SOL' ? 4 : 0)} {tx.tokenSymbol}
                     </span>
                   </div>
                   <div className="flex items-center space-x-2 mt-1">
-                    <span className="text-xs text-galaxy-accent">{tx.user}</span>
+                    <span className="text-xs text-galaxy-accent">{tx.fromAddress.slice(0, 8)}...</span>
                     <span className="text-xs text-galaxy-accent">•</span>
                     <span className="text-xs text-galaxy-accent">{formatTime(tx.timestamp)}</span>
                   </div>

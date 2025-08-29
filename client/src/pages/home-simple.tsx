@@ -11,7 +11,7 @@ import { useSolanaWallet } from '@/components/solana-wallet-provider';
 import { ExternalWalletSelector } from '@/components/external-wallet-selector';
 
 import { RealTimeNotifications } from '@/components/real-time-notifications';
-import { ExternalLink } from 'lucide-react';
+import { ExternalLink, DollarSign } from 'lucide-react';
 import { AnimatedTokenomicsCharts } from '@/components/animated-tokenomics-charts';
 import { realTimeDataService, RealTimeTokenData } from '@/services/real-time-data-service';
 import { useExternalWallets } from '@/hooks/use-external-wallets';

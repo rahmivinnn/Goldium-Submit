@@ -4,6 +4,7 @@ import { Input } from '@/components/ui/input';
 import { Card, CardContent } from '@/components/ui/card';
 import { useExternalWallets } from '@/hooks/use-external-wallets';
 import { useExternalWalletBalances } from '@/hooks/use-external-wallet-balances';
+import { PublicKey } from '@solana/web3.js';
 
 export function SendTab() {
   const [selectedToken, setSelectedToken] = useState<'SOL' | 'GOLD'>('SOL');
@@ -11,9 +12,33 @@ export function SendTab() {
   const [amount, setAmount] = useState('');
   
   const wallet = useExternalWallets();
-  const { data: balances } = useExternalWalletBalances();
+  const { data: balances, refetch } = useExternalWalletBalances();
+  const { connected } = wallet;
+  const [isLoading, setIsLoading] = useState(false);
 
   const selectedBalance = selectedToken === 'SOL' ? (balances?.sol || 0) : (balances?.gold || 0);
+
+  // Utility functions
+  const validateAddress = (address: string): boolean => {
+    try {
+      new PublicKey(address);
+      return true;
+    } catch {
+      return false;
+    }
+  };
+
+  const sendSol = async (address: string, amount: number) => {
+    // Placeholder implementation
+    console.log(`Sending ${amount} SOL to ${address}`);
+    return { success: true };
+  };
+
+  const sendToken = async (address: string, amount: number) => {
+    // Placeholder implementation  
+    console.log(`Sending ${amount} GOLD to ${address}`);
+    return { success: true };
+  };
 
   const handleMaxClick = () => {
     if (selectedToken === 'SOL') {
@@ -35,17 +60,22 @@ export function SendTab() {
       return;
     }
 
-    let result;
-    if (selectedToken === 'SOL') {
-      result = await sendSol(recipientAddress, sendAmount);
-    } else {
-      result = await sendToken(recipientAddress, sendAmount);
-    }
+    setIsLoading(true);
+    try {
+      let result;
+      if (selectedToken === 'SOL') {
+        result = await sendSol(recipientAddress, sendAmount);
+      } else {
+        result = await sendToken(recipientAddress, sendAmount);
+      }
 
-    if (result.success) {
-      setRecipientAddress('');
-      setAmount('');
-      refetch();
+      if (result.success) {
+        setRecipientAddress('');
+        setAmount('');
+        refetch();
+      }
+    } finally {
+      setIsLoading(false);
     }
   };
 

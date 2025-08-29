@@ -95,7 +95,7 @@ export function TwitterEmbed() {
              <Percent className="w-6 h-6 text-black" />
            </div>
            <div className="text-2xl font-bold text-yellow-300 mb-1">
-             {tokenData ? `${tokenData.stakingApy}%` : 'Loading...'}
+             {tokenData ? `${tokenData.stakingAPY}%` : 'Loading...'}
            </div>
            <div className="text-yellow-200 text-sm">Staking APY</div>
         </Card>

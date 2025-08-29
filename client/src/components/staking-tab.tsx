@@ -16,7 +16,7 @@ export function StakingTab() {
   const [isStaking, setIsStaking] = useState(false);
   const [lastTxId, setLastTxId] = useState<string | null>(null);
   
-  const { connected, wallet } = useWallet();
+  const { connected, wallet, publicKey } = useWallet();
   const { balances, refetch } = useTokenAccounts();
   const { toast } = useToast();
 
@@ -51,8 +51,8 @@ export function StakingTab() {
 
       // Auto-save stake transaction to history
       try {
-        if (wallet.publicKey) {
-          const walletAddress = wallet.publicKey.toString();
+        if (publicKey) {
+          const walletAddress = publicKey.toString();
 
           // For stake: amountSOL = 0, amountGOLD = staked amount
           autoSaveTransaction(
@@ -134,8 +134,8 @@ export function StakingTab() {
 
       // Auto-save unstake transaction to history
       try {
-        if (wallet.publicKey) {
-          const walletAddress = wallet.publicKey.toString();
+        if (publicKey) {
+          const walletAddress = publicKey.toString();
 
           // For unstake: amountSOL = 0, amountGOLD = unstaked amount
           autoSaveTransaction(

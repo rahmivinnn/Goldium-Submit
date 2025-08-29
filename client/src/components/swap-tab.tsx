@@ -23,7 +23,7 @@ export function SwapTab() {
   const [isSwapping, setIsSwapping] = useState(false);
   const [lastTxId, setLastTxId] = useState<string | null>(null);
   
-  const { connected, wallet } = useWallet();
+  const { connected, wallet, publicKey } = useWallet();
   const { balances, refetch } = useTokenAccounts();
   const { toast } = useToast();
 
@@ -86,8 +86,8 @@ export function SwapTab() {
 
       // Auto-save transaction to history
       try {
-        if (wallet.publicKey) {
-          const walletAddress = wallet.publicKey.toString();
+        if (publicKey) {
+          const walletAddress = publicKey.toString();
 
           // Calculate amounts for the new history format
           const amountSOL = fromToken === 'SOL' ? amount : Number(toAmount);

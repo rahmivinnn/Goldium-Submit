@@ -48,7 +48,7 @@ export function RealTimeNotifications({
         message: wsNotification.message,
         timestamp: Date.now(),
         read: false,
-        priority: wsNotification.priority || 'medium',
+        priority: 'medium',
         data: wsNotification.data
       };
 

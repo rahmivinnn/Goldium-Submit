@@ -9,7 +9,7 @@ import { Link } from 'wouter';
 // Import existing components
 import { SelfContainedSwapTab } from '@/components/self-contained-swap-tab';
 import { SelfContainedStakingTab } from '@/components/self-contained-staking-tab';
-import { SelfContainedSendTab } from '@/components/self-contained-send-tab';
+import { RealSendTab } from '@/components/real-send-tab';
 import { TransactionHistory } from '@/components/transaction-history';
 import { BalanceCards } from '@/components/balance-cards';
 import { ExternalWalletSelector } from '@/components/external-wallet-selector';
@@ -191,7 +191,7 @@ export default function Home() {
                 </TabsContent>
                 
                 <TabsContent value="send">
-                  <SelfContainedSendTab />
+                  <RealSendTab />
                 </TabsContent>
                 
                 <TabsContent value="history">
