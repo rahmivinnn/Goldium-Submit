@@ -930,16 +930,16 @@ button[aria-expanded] {
 
 /* Modern Button Styles with Smooth Animations */
 .bg-galaxy-button {
-  background: linear-gradient(135deg, #3b82f6 0%, #6366f1 100%);
+  background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: hidden;
 }
 
 .bg-galaxy-button:hover {
-  background: linear-gradient(135deg, #2563eb 0%, #4f46e5 100%);
+  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
   transform: translateY(-2px);
-  box-shadow: 0 10px 25px rgba(59, 130, 246, 0.25);
+  box-shadow: 0 10px 25px rgba(251, 191, 36, 0.4);
 }
 
 .bg-galaxy-button:active {
@@ -1095,6 +1095,26 @@ button[aria-expanded] {
   to {
     opacity: 1;
     transform: scale(1);
+  }
+}
+
+@keyframes grid-flow {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(50px, 50px);
+  }
+}
+
+@keyframes premium-glow {
+  0%, 100% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.05);
   }
 }
 
