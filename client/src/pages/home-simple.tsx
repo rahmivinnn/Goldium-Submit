@@ -165,57 +165,48 @@ export default function HomeSimple() {
   };
 
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-screen bg-slate-950 text-white">
       {/* Navigation Bar */}
-      <nav className="fixed top-0 w-full z-50 bg-black/95 backdrop-blur-md border-b border-yellow-400/20 animate-fade-in-up">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 sm:py-4">
+      <nav className="fixed top-0 w-full z-50 bg-slate-950/80 backdrop-blur-sm border-b border-slate-800">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4">
           <div className="flex justify-between items-center">
-            <div className="flex items-center gap-2 sm:gap-3">
-              <div className="w-8 h-8 sm:w-12 sm:h-12 rounded-full border-2 border-yellow-400 bg-yellow-400/10 overflow-hidden animate-bounce-gentle">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-yellow-400 to-amber-500 p-2 shadow-lg">
                 <img 
                   src={goldiumLogo} 
                   alt="Goldium Logo" 
-                  className="w-full h-full object-contain p-1"
+                  className="w-full h-full object-contain"
                 />
               </div>
-              <div className="text-xl sm:text-2xl md:text-3xl font-black text-yellow-400 animate-bounce-gentle">$GOLDIUM</div>
+              <div className="text-2xl font-bold bg-gradient-to-r from-yellow-400 to-amber-500 bg-clip-text text-transparent">GOLDIUM</div>
             </div>
-            <div className="hidden md:flex items-center space-x-8">
-              <a href="#brand" className="text-yellow-300 hover:text-yellow-400 transition-all duration-300 font-medium hover:scale-105 animate-fade-in-up animation-delay-200">Brand</a>
-            <a href="#defi" className="text-yellow-300 hover:text-yellow-400 transition-all duration-300 font-medium hover:scale-105 animate-fade-in-up animation-delay-300">DeFi</a>
-            <a href="#tokenomics" className="text-yellow-300 hover:text-yellow-400 transition-all duration-300 font-medium hover:scale-105 animate-fade-in-up animation-delay-400">Tokenomics</a>
+            <div className="hidden md:flex items-center space-x-6">
+              <a href="#brand" className="text-slate-300 hover:text-yellow-400 transition-colors font-medium">Brand</a>
+              <a href="#defi" className="text-slate-300 hover:text-yellow-400 transition-colors font-medium">DeFi</a>
+              <a href="#tokenomics" className="text-slate-300 hover:text-yellow-400 transition-colors font-medium">Tokenomics</a>
               {externalWallet.connected && (
-                 <div className="hidden sm:flex items-center gap-2 sm:gap-4 bg-gray-800 px-2 sm:px-4 py-1 sm:py-2 rounded-lg border border-yellow-400 animate-fade-in-up animation-delay-450">
-                   <div className="flex items-center gap-1 sm:gap-2">
-                     <div className="w-3 h-3 sm:w-4 sm:h-4 bg-yellow-400 rounded-sm relative">
-                       <div className="absolute top-0.5 left-0.5 right-0.5 bottom-1 bg-black rounded-sm"></div>
-                       <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-1 sm:w-2 h-0.5 sm:h-1 bg-yellow-400 rounded-b"></div>
-                     </div>
-                     <span className="text-xs sm:text-sm text-gray-300">
-                       {externalWallet.address?.slice(0, 4)}...{externalWallet.address?.slice(-4)}
+                 <div className="flex items-center gap-3 bg-slate-800/50 px-4 py-2 rounded-xl border border-slate-700">
+                   <div className="flex items-center gap-2">
+                     <div className="w-2 h-2 bg-green-400 rounded-full"></div>
+                     <span className="text-sm text-slate-300">
+                       {externalWallet.address?.slice(0, 6)}...{externalWallet.address?.slice(-4)}
                      </span>
                    </div>
-                   <div className="flex items-center gap-1 sm:gap-2">
-                     <div className="w-3 h-3 sm:w-4 sm:h-4 flex items-center justify-center">
-                       <div className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-yellow-400 relative">
-                         <div className="absolute inset-0.5 rounded-full bg-yellow-200"></div>
-                       </div>
-                     </div>
-                     <span className="text-xs sm:text-sm font-semibold text-yellow-400">
-                       {externalWallet.balance.toFixed(4)} SOL
+                   <div className="h-4 w-px bg-slate-600"></div>
+                   <div className="flex items-center gap-2">
+                     <span className="text-sm font-semibold text-yellow-400">
+                       {externalWallet.balance.toFixed(3)} SOL
                      </span>
                    </div>
-                   <div className="flex items-center gap-1 sm:gap-2">
-                     <DollarSign className="w-3 h-3 sm:w-4 sm:h-4 text-yellow-400" />
-                     <span className="text-xs sm:text-sm font-semibold text-yellow-400">
-                       {goldBalance.balance.toFixed(2)} GOLD
+                   <div className="flex items-center gap-2">
+                     <DollarSign className="w-4 h-4 text-yellow-400" />
+                     <span className="text-sm font-semibold text-yellow-400">
+                       {goldBalance.balance.toFixed(0)} GOLD
                      </span>
                    </div>
                  </div>
                )}
-              <div className="animate-fade-in-up animation-delay-500">
-                <ExternalWalletSelector />
-              </div>
+              <ExternalWalletSelector />
             </div>
             
             {/* Mobile Menu Button */}
@@ -243,121 +234,112 @@ export default function HomeSimple() {
       </div>
 
       {/* Hero Section */}
-      <section className="relative pt-20 sm:pt-24 pb-12 sm:pb-20 overflow-hidden min-h-screen flex items-center">
-        <div className="absolute inset-0 bg-gradient-to-br from-yellow-900/30 via-black to-amber-900/20" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-cyan-400/10 via-transparent to-transparent" />
+      <section className="relative pt-24 pb-20 min-h-screen flex items-center">
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-950 to-black" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(251,191,36,0.3),rgba(120,119,198,0.3),rgba(255,255,255,0))]" />
         
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 text-center">
-          <div className="space-y-8 sm:space-y-12">
-            <div className="space-y-4 sm:space-y-6">
-              <div className="flex justify-center mb-6 sm:mb-8">
-                <div className="relative">
+        <div className="relative max-w-6xl mx-auto px-4 sm:px-6 text-center">
+          <div className="space-y-12">
+            <div className="space-y-6">
+              <div className="flex justify-center mb-8">
+                <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-yellow-400 to-amber-500 p-4 shadow-2xl">
                   <img 
                     src={goldiumLogo} 
                     alt="Goldium Logo" 
-                    className="w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 animate-float drop-shadow-2xl"
+                    className="w-full h-full object-contain"
                   />
-                  <div className="absolute inset-0 bg-yellow-400/20 rounded-full blur-xl animate-pulse" />
                 </div>
               </div>
-              <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-black text-yellow-400 mb-6 sm:mb-8 tracking-tight animate-fade-in-up">
-                <span className="inline-block animate-bounce-gentle drop-shadow-lg">$</span>
-                <span className="inline-block animate-slide-in-left drop-shadow-lg">G</span>
-                <span className="inline-block animate-slide-in-left animation-delay-100 drop-shadow-lg">O</span>
-                <span className="inline-block animate-slide-in-left animation-delay-200 drop-shadow-lg">L</span>
-                <span className="inline-block animate-slide-in-left animation-delay-300 drop-shadow-lg">D</span>
-                <span className="inline-block animate-slide-in-left animation-delay-400 drop-shadow-lg">I</span>
-                <span className="inline-block animate-slide-in-left animation-delay-500 drop-shadow-lg">U</span>
-                <span className="inline-block animate-slide-in-left animation-delay-600 drop-shadow-lg">M</span>
+              <h1 className="text-5xl sm:text-6xl md:text-7xl font-black tracking-tight">
+                <span className="bg-gradient-to-r from-yellow-400 via-amber-500 to-yellow-600 bg-clip-text text-transparent">
+                  GOLDIUM
+                </span>
               </h1>
-              <div className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-white mb-4 sm:mb-6 animate-fade-in-up animation-delay-700">
-                <span className="bg-gradient-to-r from-yellow-200 to-amber-400 bg-clip-text text-transparent">DIGITAL GOLD</span>
-                <span className="block text-yellow-400 mt-1 sm:mt-2 animate-fade-in-up animation-delay-900 drop-shadow-lg">REVOLUTION</span>
+              <div className="text-xl sm:text-2xl md:text-3xl font-semibold text-slate-300 max-w-3xl mx-auto">
+                Digital Gold for the Modern Era
               </div>
-              <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-yellow-200 max-w-4xl mx-auto leading-relaxed font-medium animate-fade-in-up animation-delay-1100 drop-shadow-md px-4">
-                The Ultimate Store of Value on Solana Blockchain
+              <p className="text-lg text-slate-400 max-w-2xl mx-auto leading-relaxed">
+                Secure, transparent, and backed by real gold reserves on the Solana blockchain
               </p>
             </div>
             
-            <div className="flex flex-col lg:flex-row justify-center gap-6 sm:gap-8 mt-8 sm:mt-12 animate-fade-in-up animation-delay-1300">
-              <div className="flex flex-col gap-4 items-center bg-black/40 backdrop-blur-sm border border-yellow-400/30 rounded-2xl p-4 sm:p-6 lg:p-8 shadow-2xl mx-4 sm:mx-0">
-                <div className="text-center mb-4">
-                  <div className="flex items-center justify-center gap-2 mb-2">
-                    <div className="w-8 h-8 rounded-full overflow-hidden shadow-lg border-2 border-yellow-400/40">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-4xl mx-auto">
+              <div className="bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-2xl p-6 shadow-xl">
+                <div className="text-center mb-6">
+                  <div className="flex items-center justify-center gap-3 mb-4">
+                    <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-yellow-400 to-amber-500 p-1.5 shadow-lg">
                       <img 
                         src={goldiumLogo} 
                         alt="Goldium Logo" 
-                        className="w-full h-full object-contain bg-gradient-to-br from-cyan-400/20 to-blue-600/20 p-1"
+                        className="w-full h-full object-contain"
                       />
                     </div>
-                    <p className="text-yellow-300 font-bold text-xl">BUY GOLDIUM WITH SOL</p>
+                    <h3 className="text-xl font-bold text-white">Buy GOLDIUM</h3>
                   </div>
-                  <div className="bg-yellow-400/10 border border-yellow-400/30 rounded-lg p-3">
-            <p className="text-yellow-200 text-sm font-medium">Exchange Rate: <span className="text-yellow-400 font-bold">1 SOL = 21,486.893 GOLD</span></p>
+                  <div className="bg-slate-700/50 rounded-lg p-3">
+                    <p className="text-slate-300 text-sm">Exchange Rate: <span className="text-yellow-400 font-semibold">1 SOL = 21,486 GOLD</span></p>
                   </div>
                 </div>
-                <div className="flex flex-col gap-3 items-center w-full max-w-sm sm:max-w-md">
-                  <div className="flex gap-3 items-center w-full">
-                    <div className="relative flex-1">
-                      <input
-                        type="number"
-                        value={buyAmount}
-                        onChange={(e) => setBuyAmount(e.target.value)}
-                        placeholder="Enter SOL amount"
-                        min="0.000047"
-                        step="0.000047"
-                        className="bg-gray-900/80 border-2 border-yellow-400/50 text-white px-3 sm:px-4 py-2 sm:py-3 rounded-xl w-full focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400 transition-all text-center font-semibold text-sm sm:text-base"
-                        disabled={buyingToken}
-                      />
-                      <span className="absolute right-2 sm:right-3 top-1/2 transform -translate-y-1/2 text-yellow-400 font-bold text-xs sm:text-sm">SOL</span>
-                    </div>
+                <div className="space-y-4">
+                  <div className="relative">
+                    <input
+                      type="number"
+                      value={buyAmount}
+                      onChange={(e) => setBuyAmount(e.target.value)}
+                      placeholder="0.1"
+                      min="0.000047"
+                      step="0.000047"
+                      className="bg-slate-700/50 border border-slate-600 text-white px-4 py-3 rounded-xl w-full focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400 transition-colors text-lg font-medium"
+                      disabled={buyingToken}
+                    />
+                    <span className="absolute right-4 top-1/2 transform -translate-y-1/2 text-slate-400 font-medium">SOL</span>
                   </div>
-                  <div className="flex items-center gap-2 text-base sm:text-lg">
-                    <span className="text-yellow-200/70">↓</span>
-                    <span className="text-yellow-300 font-bold text-sm sm:text-lg">{buyAmount ? (parseFloat(buyAmount) * 21486.893).toLocaleString() : '0'} GOLD</span>
+                  <div className="flex items-center justify-center gap-2 text-slate-400">
+                    <span>≈</span>
+                    <span className="text-yellow-400 font-semibold">{buyAmount ? (parseFloat(buyAmount) * 21486.893).toLocaleString() : '0'} GOLD</span>
                   </div>
                 </div>
                 <Button
                   onClick={handleBuyGoldium}
                   disabled={buyingToken || !externalWallet.connected}
-                  className="bg-gradient-to-r from-yellow-400 to-yellow-500 hover:from-yellow-300 hover:to-yellow-400 text-black font-bold px-6 sm:px-8 py-3 sm:py-4 rounded-xl text-base sm:text-lg transition-all transform hover:scale-105 hover:-translate-y-1 shadow-2xl disabled:opacity-50 disabled:cursor-not-allowed w-full max-w-sm sm:max-w-md"
+                  className="bg-gradient-to-r from-yellow-400 to-amber-500 hover:from-yellow-500 hover:to-amber-600 text-black font-semibold px-6 py-3 rounded-xl text-base transition-colors disabled:opacity-50 disabled:cursor-not-allowed w-full"
                 >
                   {buyingToken ? (
-                    <div className="flex items-center gap-2">
-                      <div className="w-5 h-5 border-2 border-black border-t-transparent rounded-full animate-spin" />
-                      BUYING GOLDIUM...
+                    <div className="flex items-center justify-center gap-2">
+                      <div className="w-4 h-4 border-2 border-black border-t-transparent rounded-full animate-spin" />
+                      Processing...
                     </div>
                   ) : (
-                    'BUY GOLDIUM WITH SOL'
+                    'Buy GOLDIUM'
                   )}
                 </Button>
                 {!externalWallet.connected && (
-                  <p className="text-sm text-gray-400 text-center">Connect wallet to buy GOLDIUM tokens</p>
+                  <p className="text-sm text-slate-400 text-center">Connect your wallet to purchase GOLDIUM</p>
                 )}
               </div>
-              <div className="flex flex-col gap-4 items-center bg-black/40 backdrop-blur-sm border border-yellow-400/30 rounded-2xl p-4 sm:p-6 lg:p-8 shadow-2xl mx-4 sm:mx-0">
-                <div className="text-center mb-4">
-                  <div className="flex items-center justify-center gap-2 mb-2">
-                    <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-yellow-400 to-yellow-600 flex items-center justify-center shadow-lg transform rotate-12">
-                      <svg className="w-4 h-4 text-black" viewBox="0 0 24 24" fill="currentColor">
+              <div className="bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-2xl p-6 shadow-xl">
+                <div className="text-center mb-6">
+                  <div className="flex items-center justify-center gap-3 mb-4">
+                    <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center shadow-lg">
+                      <svg className="w-4 h-4 text-white" viewBox="0 0 24 24" fill="currentColor">
                         <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
                       </svg>
                     </div>
-                    <p className="text-yellow-300 font-bold text-xl">FOLLOW US ON TWITTER</p>
+                    <h3 className="text-xl font-bold text-white">Follow Updates</h3>
                   </div>
-                  <div className="bg-yellow-400/10 border border-yellow-400/30 rounded-lg p-3">
-                    <p className="text-yellow-200 text-sm font-medium">Stay updated with <span className="text-yellow-400 font-bold">latest news and announcements</span></p>
+                  <div className="bg-slate-700/50 rounded-lg p-3">
+                    <p className="text-slate-300 text-sm">Stay updated with latest news and announcements</p>
                   </div>
                 </div>
                 <Button
                   onClick={() => window.open('https://twitter.com/goldiumofficial', '_blank')}
-                  className="bg-gradient-to-r from-yellow-400 to-yellow-500 hover:from-yellow-300 hover:to-yellow-400 text-black font-bold px-6 sm:px-8 py-3 sm:py-4 rounded-xl text-base sm:text-lg transition-all transform hover:scale-105 hover:-translate-y-1 shadow-2xl w-full max-w-sm sm:max-w-md"
+                  className="bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-semibold px-6 py-3 rounded-xl text-base transition-colors w-full"
                 >
-                  <div className="flex items-center gap-2">
-                    <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+                  <div className="flex items-center justify-center gap-2">
+                    <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
                       <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
                     </svg>
-                    FOLLOW TWITTER
+                    Follow on Twitter
                   </div>
                 </Button>
               </div>
@@ -369,74 +351,62 @@ export default function HomeSimple() {
       </section>
 
       {/* Live Market Data Section */}
-      <section className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 bg-gradient-to-b from-black via-gray-900/10 to-black border-t border-yellow-400/20">
+      <section className="py-20 px-4 sm:px-6 bg-slate-900/50">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-8 sm:mb-12 lg:mb-16 animate-fade-in-up animation-delay-300">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black bg-gradient-to-r from-yellow-400 via-yellow-300 to-yellow-500 bg-clip-text text-transparent mb-4 sm:mb-6 animate-pulse-gentle flex items-center justify-center gap-2 sm:gap-4">
-              <div className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-lg flex items-center justify-center shadow-xl">
-                <div className="grid grid-cols-2 gap-0.5 sm:gap-1">
-                  <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-yellow-100 rounded-sm"></div>
-                  <div className="w-1.5 h-2 sm:w-2 sm:h-3 bg-yellow-100 rounded-sm"></div>
-                  <div className="w-1.5 h-0.5 sm:w-2 sm:h-1 bg-yellow-100 rounded-sm"></div>
-                  <div className="w-1.5 h-3 sm:w-2 sm:h-4 bg-yellow-100 rounded-sm"></div>
-                </div>
-              </div>
-              <span className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl">LIVE MARKET DATA</span>
+          <div className="text-center mb-12">
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+              Market Overview
             </h2>
-            <p className="text-lg sm:text-xl lg:text-2xl text-yellow-200 animate-fade-in-up animation-delay-500 max-w-4xl mx-auto font-medium px-4">Real-time market statistics and performance metrics</p>
+            <p className="text-xl text-slate-400 max-w-3xl mx-auto">
+              Real-time performance metrics and market statistics
+            </p>
           </div>
           
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 mb-8 sm:mb-12">
-            <div className="bg-gradient-to-br from-yellow-900/20 to-yellow-800/10 border-2 border-yellow-400/40 rounded-2xl p-4 sm:p-6 lg:p-8 text-center hover:border-yellow-400 hover:shadow-2xl hover:shadow-yellow-400/20 transition-all transform hover:scale-105 backdrop-blur-sm animate-fade-in-up animation-delay-600">
-              <div className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 mx-auto mb-3 sm:mb-4 rounded-lg overflow-hidden shadow-lg border-2 border-yellow-400/40 animate-bounce">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="bg-slate-800/50 border border-slate-700 rounded-xl p-6 text-center hover:border-yellow-400/50 transition-colors">
+              <div className="w-12 h-12 mx-auto mb-4 rounded-lg bg-gradient-to-br from-yellow-400 to-amber-500 p-2">
                 <img 
                   src={goldiumLogo} 
                   alt="Goldium Logo" 
-                  className="w-full h-full object-contain bg-gradient-to-br from-yellow-400/20 to-yellow-600/20 p-1"
+                  className="w-full h-full object-contain"
                 />
               </div>
-              <div className="text-yellow-300 font-bold text-lg sm:text-xl mb-1 sm:mb-2">GOLD Price</div>
-              <div className="text-white text-2xl sm:text-3xl font-bold mb-1 sm:mb-2">${tokenData ? tokenData.currentPrice.toFixed(6) : '0.000000'}</div>
-              <div className="bg-green-500/20 text-green-400 text-xs sm:text-sm font-semibold px-2 sm:px-3 py-1 rounded-full">{tokenData ? `+${tokenData.priceChange24h.toFixed(2)}%` : '+0.00%'} ↗</div>
+              <div className="text-slate-400 font-medium text-sm mb-2">GOLDIUM Price</div>
+              <div className="text-white text-2xl font-bold mb-2">${tokenData ? tokenData.currentPrice.toFixed(6) : '0.000000'}</div>
+              <div className="bg-green-500/20 text-green-400 text-sm font-medium px-3 py-1 rounded-full">{tokenData ? `+${tokenData.priceChange24h.toFixed(1)}%` : '+0.0%'}</div>
             </div>
             
-            <div className="bg-gradient-to-br from-yellow-900/20 to-yellow-800/10 border-2 border-yellow-400/40 rounded-2xl p-4 sm:p-6 lg:p-8 text-center hover:border-yellow-400 hover:shadow-2xl hover:shadow-yellow-400/20 transition-all transform hover:scale-105 backdrop-blur-sm animate-fade-in-up animation-delay-700">
-              <div className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 mx-auto mb-3 sm:mb-4 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-lg flex items-center justify-center shadow-lg animate-pulse">
-                <div className="flex items-end gap-0.5 sm:gap-1">
-                  <div className="w-0.5 sm:w-1 h-2 sm:h-3 bg-yellow-100 rounded-sm"></div>
-                  <div className="w-0.5 sm:w-1 h-3 sm:h-5 bg-yellow-100 rounded-sm"></div>
-                  <div className="w-0.5 sm:w-1 h-2.5 sm:h-4 bg-yellow-100 rounded-sm"></div>
-                  <div className="w-0.5 sm:w-1 h-4 sm:h-6 bg-yellow-100 rounded-sm"></div>
-                </div>
+            <div className="bg-slate-800/50 border border-slate-700 rounded-xl p-6 text-center hover:border-yellow-400/50 transition-colors">
+              <div className="w-12 h-12 mx-auto mb-4 bg-slate-700 rounded-lg flex items-center justify-center">
+                <svg className="w-6 h-6 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                </svg>
               </div>
-              <div className="text-yellow-300 font-bold text-lg sm:text-xl mb-1 sm:mb-2">Market Cap</div>
-              <div className="text-white text-2xl sm:text-3xl font-bold mb-1 sm:mb-2">${tokenData ? (tokenData.marketCap / 1000000).toFixed(1) : '0.0'}M</div>
-              <div className="bg-green-500/20 text-green-400 text-xs sm:text-sm font-semibold px-2 sm:px-3 py-1 rounded-full">+5.67% ↗</div>
+              <div className="text-slate-400 font-medium text-sm mb-2">Market Cap</div>
+              <div className="text-white text-2xl font-bold mb-2">${tokenData ? (tokenData.marketCap / 1000000).toFixed(1) : '0.0'}M</div>
+              <div className="bg-green-500/20 text-green-400 text-sm font-medium px-3 py-1 rounded-full">+5.7%</div>
             </div>
             
-            <div className="bg-gradient-to-br from-yellow-900/20 to-yellow-800/10 border-2 border-yellow-400/40 rounded-2xl p-4 sm:p-6 lg:p-8 text-center hover:border-yellow-400 hover:shadow-2xl hover:shadow-yellow-400/20 transition-all transform hover:scale-105 backdrop-blur-sm animate-fade-in-up animation-delay-800">
-              <div className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 mx-auto mb-3 sm:mb-4 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-lg flex items-center justify-center shadow-lg animate-bounce">
-                <div className="relative">
-                  <div className="w-3 h-4 sm:w-4 sm:h-6 bg-yellow-100 rounded-t-full"></div>
-                  <div className="absolute -top-0.5 sm:-top-1 left-1/2 transform -translate-x-1/2 w-1.5 h-1.5 sm:w-2 sm:h-2 bg-yellow-200 rounded-full animate-pulse"></div>
-                </div>
+            <div className="bg-slate-800/50 border border-slate-700 rounded-xl p-6 text-center hover:border-yellow-400/50 transition-colors">
+              <div className="w-12 h-12 mx-auto mb-4 bg-slate-700 rounded-lg flex items-center justify-center">
+                <svg className="w-6 h-6 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                </svg>
               </div>
-              <div className="text-yellow-300 font-bold text-lg sm:text-xl mb-1 sm:mb-2">24h Volume</div>
-              <div className="text-white text-2xl sm:text-3xl font-bold mb-1 sm:mb-2">${tokenData ? (tokenData.volume24h / 1000).toFixed(0) : '0'}K</div>
-              <div className="bg-green-500/20 text-green-400 text-xs sm:text-sm font-semibold px-2 sm:px-3 py-1 rounded-full">+12.45% ↗</div>
+              <div className="text-slate-400 font-medium text-sm mb-2">24h Volume</div>
+              <div className="text-white text-2xl font-bold mb-2">${tokenData ? (tokenData.volume24h / 1000).toFixed(0) : '0'}K</div>
+              <div className="bg-green-500/20 text-green-400 text-sm font-medium px-3 py-1 rounded-full">+12.4%</div>
             </div>
             
-            <div className="bg-gradient-to-br from-green-900/20 to-green-800/10 border-2 border-green-400/40 rounded-2xl p-4 sm:p-6 lg:p-8 text-center hover:border-green-400 hover:shadow-2xl hover:shadow-green-400/20 transition-all transform hover:scale-105 backdrop-blur-sm animate-fade-in-up animation-delay-900">
-              <div className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 mx-auto mb-3 sm:mb-4 bg-gradient-to-br from-green-400 to-green-600 rounded-lg flex items-center justify-center shadow-lg animate-pulse">
-                <div className="flex gap-0.5 sm:gap-1">
-                  <div className="w-1.5 h-3 sm:w-2 sm:h-4 bg-green-100 rounded-full"></div>
-                  <div className="w-1.5 h-4 sm:w-2 sm:h-5 bg-green-100 rounded-full"></div>
-                  <div className="w-1.5 h-3 sm:w-2 sm:h-4 bg-green-100 rounded-full"></div>
-                </div>
+            <div className="bg-slate-800/50 border border-slate-700 rounded-xl p-6 text-center hover:border-yellow-400/50 transition-colors">
+              <div className="w-12 h-12 mx-auto mb-4 bg-slate-700 rounded-lg flex items-center justify-center">
+                <svg className="w-6 h-6 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                </svg>
               </div>
-              <div className="text-green-300 font-bold text-lg sm:text-xl mb-1 sm:mb-2">Holders</div>
-              <div className="text-white text-2xl sm:text-3xl font-bold mb-1 sm:mb-2">{tokenData ? tokenData.holders.toLocaleString() : '0'}</div>
-              <div className="bg-green-500/20 text-green-400 text-xs sm:text-sm font-semibold px-2 sm:px-3 py-1 rounded-full">+8.23% ↗</div>
+              <div className="text-slate-400 font-medium text-sm mb-2">Holders</div>
+              <div className="text-white text-2xl font-bold mb-2">{tokenData ? tokenData.holders.toLocaleString() : '0'}</div>
+              <div className="bg-green-500/20 text-green-400 text-sm font-medium px-3 py-1 rounded-full">+8.2%</div>
             </div>
           </div>
           
@@ -445,34 +415,34 @@ export default function HomeSimple() {
       </section>
 
       {/* DeFi Section */}
-      <section id="defi" className="py-20 px-6 bg-gradient-to-b from-black via-yellow-900/5 to-black">
+      <section id="defi" className="py-20 px-6 bg-slate-950">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-6xl md:text-7xl font-black text-yellow-400 mb-8">
-              DEFI PLATFORM
+            <h2 className="text-5xl md:text-6xl font-bold text-white mb-6">
+              DeFi Platform
             </h2>
-            <p className="text-2xl text-yellow-200 max-w-4xl mx-auto font-medium">
-              Complete DeFi ecosystem for trading, staking, and managing your digital gold
+            <p className="text-xl text-slate-400 max-w-3xl mx-auto">
+              Complete ecosystem for trading, staking, and managing your digital assets
             </p>
           </div>
           
-          <div className="bg-black/60 backdrop-blur-md border border-yellow-400/30 rounded-3xl p-8">
+          <div className="bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-2xl p-8">
             <Tabs defaultValue="swap" className="w-full">
-              <TabsList className="grid w-full grid-cols-5 mb-8 bg-yellow-900/20 border border-yellow-400/30">
-                <TabsTrigger value="swap" className="text-yellow-300 data-[state=active]:bg-yellow-400 data-[state=active]:text-black font-bold">
-                  🔄 Swap
+              <TabsList className="grid w-full grid-cols-5 mb-8 bg-slate-900/50 border border-slate-700 rounded-xl">
+                <TabsTrigger value="swap" className="text-slate-300 data-[state=active]:bg-yellow-400 data-[state=active]:text-black font-medium rounded-lg">
+                  Swap
                 </TabsTrigger>
-                <TabsTrigger value="stake" className="text-yellow-300 data-[state=active]:bg-yellow-400 data-[state=active]:text-black font-bold">
-                  💎 Stake
+                <TabsTrigger value="stake" className="text-slate-300 data-[state=active]:bg-yellow-400 data-[state=active]:text-black font-medium rounded-lg">
+                  Stake
                 </TabsTrigger>
-                <TabsTrigger value="dragon" className="text-yellow-300 data-[state=active]:bg-yellow-400 data-[state=active]:text-black font-bold">
-                  🐉 Dragon
+                <TabsTrigger value="dragon" className="text-slate-300 data-[state=active]:bg-yellow-400 data-[state=active]:text-black font-medium rounded-lg">
+                  Dragon
                 </TabsTrigger>
-                <TabsTrigger value="send" className="text-yellow-300 data-[state=active]:bg-yellow-400 data-[state=active]:text-black font-bold">
-                  📤 Send
+                <TabsTrigger value="send" className="text-slate-300 data-[state=active]:bg-yellow-400 data-[state=active]:text-black font-medium rounded-lg">
+                  Send
                 </TabsTrigger>
-                <TabsTrigger value="history" className="text-yellow-300 data-[state=active]:bg-yellow-400 data-[state=active]:text-black font-bold">
-                  📊 History
+                <TabsTrigger value="history" className="text-slate-300 data-[state=active]:bg-yellow-400 data-[state=active]:text-black font-medium rounded-lg">
+                  History
                 </TabsTrigger>
               </TabsList>
               

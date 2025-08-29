@@ -136,7 +136,7 @@ export function ExternalWalletSelector() {
           <Button 
             variant="outline"
             disabled={wallet.connecting}
-            className="bg-yellow-600/20 border-yellow-400/30 text-white hover:border-yellow-400/50"
+            className="bg-slate-800/50 border-slate-600 text-white hover:border-yellow-400 hover:bg-slate-700/50 transition-colors"
           >
             <Wallet className="w-4 h-4 mr-2" />
             {wallet.connecting ? 'Connecting...' : 'Connect Wallet'}
@@ -145,9 +145,9 @@ export function ExternalWalletSelector() {
         
         <DropdownMenuContent 
           align="end" 
-          className="w-80 bg-black/80 border-yellow-400/30 z-50"
+          className="w-80 bg-slate-800/95 border-slate-700 backdrop-blur-sm z-50"
         >
-          <DropdownMenuLabel className="text-yellow-100 px-4">Connect Your Wallet</DropdownMenuLabel>
+          <DropdownMenuLabel className="text-white px-4">Connect Your Wallet</DropdownMenuLabel>
           
           <div className="p-2 space-y-1">
             {walletOptions.map((walletOption) => {
@@ -158,8 +158,8 @@ export function ExternalWalletSelector() {
                   key={walletOption.type}
                   onClick={() => isAvailable && handleWalletSelect(walletOption.type)}
                   className={`
-                    text-yellow-100 hover:bg-yellow-500/20 cursor-pointer p-3 rounded-md
-                    ${!isAvailable ? 'opacity-50 cursor-not-allowed' : 'hover:bg-yellow-400/20'}
+                    text-white hover:bg-slate-700/50 cursor-pointer p-3 rounded-lg
+                    ${!isAvailable ? 'opacity-50 cursor-not-allowed' : ''}
                   `}
                   disabled={!isAvailable}
                 >
@@ -174,16 +174,16 @@ export function ExternalWalletSelector() {
                       </div>
                       <div>
                         <div className="font-medium">{walletOption.name}</div>
-                        <div className="text-xs text-yellow-200/70">{walletOption.description}</div>
+                        <div className="text-xs text-slate-400">{walletOption.description}</div>
                       </div>
                     </div>
                     <div className="text-right">
                       {isAvailable ? (
-                        <span className="text-xs text-yellow-400 px-2 py-1 bg-yellow-500/20 rounded">
-                          Detected
+                        <span className="text-xs text-green-400 px-2 py-1 bg-green-500/20 rounded">
+                          Available
                         </span>
                       ) : (
-                        <span className="text-xs text-yellow-200/70 px-2 py-1 bg-yellow-400/20 rounded">
+                        <span className="text-xs text-slate-400 px-2 py-1 bg-slate-700/50 rounded">
                           Not Found
                         </span>
                       )}

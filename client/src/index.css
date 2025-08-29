@@ -561,72 +561,13 @@ button[aria-expanded] {
 
   body {
     @apply font-sans antialiased;
-    background:
-      radial-gradient(ellipse at top, rgba(100, 150, 255, 0.15) 0%, transparent 60%),
-      radial-gradient(ellipse at bottom left, rgba(150, 100, 255, 0.2) 0%, transparent 60%),
-      radial-gradient(ellipse at bottom right, rgba(100, 200, 255, 0.1) 0%, transparent 60%),
-      radial-gradient(ellipse at center, rgba(120, 180, 255, 0.08) 0%, transparent 80%),
-      linear-gradient(135deg, hsl(220, 15%, 6%) 0%, hsl(210, 20%, 8%) 25%, hsl(230, 15%, 7%) 50%, hsl(200, 20%, 9%) 75%, hsl(220, 15%, 6%) 100%);
-    background-attachment: fixed;
-    color: hsl(210, 25%, 95%);
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    color: #f8fafc;
     min-height: 100vh;
-    position: relative;
     overflow-x: hidden;
   }
   
-  body::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background:
-      radial-gradient(3px 3px at 20px 30px, rgba(100, 150, 255, 0.3), transparent),
-      radial-gradient(2px 2px at 40px 70px, rgba(150, 100, 255, 0.25), transparent),
-      radial-gradient(2px 2px at 90px 40px, rgba(100, 200, 255, 0.3), transparent),
-      radial-gradient(1px 1px at 130px 80px, rgba(120, 180, 255, 0.2), transparent),
-      radial-gradient(3px 3px at 160px 30px, rgba(100, 150, 255, 0.25), transparent),
-      radial-gradient(2px 2px at 200px 100px, rgba(180, 120, 255, 0.15), transparent),
-      radial-gradient(1px 1px at 250px 60px, rgba(100, 200, 255, 0.2), transparent);
-    background-repeat: repeat;
-    background-size: 300px 200px;
-    animation: elegant-drift 45s linear infinite;
-    pointer-events: none;
-    z-index: -1;
-  }
-  
-  @keyframes elegant-drift {
-    0% { transform: translateX(0) translateY(0); }
-    25% { transform: translateX(-10px) translateY(-5px); }
-    50% { transform: translateX(10px) translateY(-10px); }
-    75% { transform: translateX(-5px) translateY(5px); }
-    100% { transform: translateX(0) translateY(0); }
-  }
-
-  /* Elegant nebula effect for sophisticated feel */
-  body::after {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background:
-      radial-gradient(circle at 25% 25%, rgba(100, 150, 255, 0.08) 0%, transparent 40%),
-      radial-gradient(circle at 75% 75%, rgba(150, 100, 255, 0.08) 0%, transparent 40%),
-      radial-gradient(circle at 50% 10%, rgba(100, 200, 255, 0.12) 0%, transparent 50%),
-      radial-gradient(circle at 10% 90%, rgba(120, 180, 255, 0.08) 0%, transparent 45%),
-      radial-gradient(circle at 80% 20%, rgba(180, 120, 255, 0.06) 0%, transparent 35%);
-    animation: elegant-nebula-pulse 12s ease-in-out infinite alternate;
-    pointer-events: none;
-    z-index: -2;
-  }
-  
-  @keyframes elegant-nebula-pulse {
-    0% { opacity: 0.1; transform: scale(1); }
-    100% { opacity: 0.3; transform: scale(1.05); }
-  }
+  /* Clean background - no excessive effects */
 
   /* Modern yellow fade - clean effect */
   @keyframes textFade {
@@ -975,66 +916,31 @@ button[aria-expanded] {
   100% { transform: scale(1); opacity: 1; }
 }
 
-/* Enhanced Card Styles with Animations */
+/* Modern Card Styles */
 .bg-galaxy-card {
-  background: linear-gradient(135deg,
-    rgba(20, 15, 5, 0.9) 0%,
-    rgba(30, 20, 8, 0.8) 50%,
-    rgba(25, 18, 6, 0.9) 100%);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(200, 150, 50, 0.3);
-  box-shadow: 0 8px 32px rgba(200, 150, 50, 0.3);
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  position: relative;
-  overflow: hidden;
+  background: rgba(30, 41, 59, 0.5);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  transition: border-color 0.2s ease;
 }
 
-/* Disable shimmer effect that causes content issues */
-.bg-galaxy-card::before {
-  display: none;
-}
-
-/* Stable hover effects for galaxy cards - no transform/animation */
 .bg-galaxy-card:hover {
-  border-color: rgba(255, 200, 50, 0.5);
-  box-shadow: 0 8px 32px rgba(200, 150, 50, 0.4);
-  /* No transform or animation to prevent content disappearing */
+  border-color: rgba(251, 191, 36, 0.4);
 }
 
-/* Enhanced Button Animations */
+/* Modern Button Styles */
 .bg-galaxy-button {
-  background: linear-gradient(135deg,
-    hsl(45, 100%, 50%) 0%,
-    hsl(35, 100%, 55%) 50%,
-    hsl(60, 100%, 60%) 100%);
-  box-shadow: 0 4px 20px rgba(255, 200, 50, 0.4);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  position: relative;
-  overflow: hidden;
-}
-
-.bg-galaxy-button::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-  transition: left 0.3s;
+  background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+  transition: all 0.2s ease;
 }
 
 .bg-galaxy-button:hover {
-  transform: translateY(-3px) scale(1.05);
-  box-shadow: 0 8px 30px rgba(255, 200, 50, 0.6);
-}
-
-.bg-galaxy-button:hover::before {
-  left: 100%;
+  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+  transform: translateY(-1px);
 }
 
 .bg-galaxy-button:active {
-  transform: translateY(-1px) scale(1.02);
+  transform: translateY(0);
 }
 
 /* Tab Animation */
