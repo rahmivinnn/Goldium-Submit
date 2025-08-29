@@ -340,29 +340,35 @@ export default function HomeSimple() {
                   <p className="text-sm text-white/70 text-center font-['Inter'] font-medium mt-4">Connect your wallet to purchase GOLDIUM</p>
                 )}
               </div>
-              <div className="chainzoku-card bg-black/95 backdrop-blur-xl border border-cyan-400/50 rounded-2xl p-8 shadow-2xl shadow-cyan-400/30 hover:shadow-cyan-400/50 hover:border-cyan-400/80 transition-all duration-500 hover:scale-[1.02]">
+              <div className="chainzoku-card p-8">
                 <div className="text-center mb-8">
-                  <div className="flex items-center justify-center gap-4 mb-6">
-                    <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-cyan-400 to-blue-500 flex items-center justify-center shadow-lg shadow-cyan-400/50">
-                      <svg className="w-5 h-5 text-black" viewBox="0 0 24 24" fill="currentColor" strokeWidth={3}>
+                  <div className="flex items-center justify-center gap-6 mb-8">
+                    <div className="w-18 h-18 rounded-3xl bg-gradient-to-br from-yellow-400 via-orange-500 to-red-500 flex items-center justify-center shadow-2xl shadow-yellow-400/70 chainzoku-pulse chainzoku-float">
+                      <svg className="w-8 h-8 text-black" viewBox="0 0 24 24" fill="currentColor" strokeWidth={3}>
                         <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
                       </svg>
                     </div>
-                    <h3 className="text-2xl font-black text-white font-['Space_Grotesk'] uppercase tracking-wide">Follow Updates</h3>
+                    <div>
+                      <h3 className="text-2xl font-bold text-white font-['Orbitron'] tracking-tight uppercase">FOLLOW UPDATES</h3>
+                      <p className="text-yellow-400 font-['Exo_2'] font-semibold text-sm">⚡ STAY CONNECTED</p>
+                    </div>
                   </div>
-                  <div className="bg-black/80 backdrop-blur-lg rounded-xl p-4 border border-cyan-400/30">
-                    <p className="text-white text-sm font-['Inter'] font-medium">Stay updated with latest news and announcements</p>
+                  <div className="bg-gradient-to-r from-black/90 via-yellow-900/20 to-black/90 backdrop-blur-lg rounded-2xl p-6 border border-yellow-400/40 relative overflow-hidden">
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-yellow-400/5 to-transparent animate-pulse"></div>
+                    <p className="text-white/95 text-base font-['Exo_2'] font-bold relative z-10">
+                      🔥 STAY UPDATED WITH LATEST NEWS & ANNOUNCEMENTS 🔥
+                    </p>
                   </div>
                 </div>
                 <Button
                   onClick={() => window.open('https://twitter.com/goldiumofficial', '_blank')}
-                  className="chainzoku-btn bg-gradient-to-r from-cyan-400 to-blue-500 hover:from-cyan-500 hover:to-blue-600 text-black font-black px-8 py-4 rounded-xl text-lg uppercase tracking-wider shadow-lg shadow-cyan-400/40 hover:shadow-cyan-400/60 hover:scale-105 transition-all duration-300 w-full"
+                  className="chainzoku-btn w-full"
                 >
                   <div className="flex items-center justify-center gap-3">
                     <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5-214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
                     </svg>
-                    Follow on Twitter
+                    <span className="font-['Orbitron'] font-black">🚀 FOLLOW ON TWITTER 🚀</span>
                   </div>
                 </Button>
               </div>
@@ -373,75 +379,78 @@ export default function HomeSimple() {
         </div>
       </section>
 
-      {/* Live Market Data Section */}
-      <section className="py-24 px-4 sm:px-6 relative overflow-hidden bg-black">
-        {/* Chainzoku Immersive Market Background */}
-        <div className="absolute inset-0 bg-black"></div>
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_100%_60%_at_50%_100%,rgba(0,255,255,0.05),transparent)]"></div>
-        <div className="absolute top-0 left-1/3 w-96 h-96 bg-gradient-to-r from-cyan-400/5 to-blue-500/5 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-gradient-to-l from-blue-400/8 to-cyan-500/8 rounded-full blur-3xl"></div>
+      {/* ULTRA MODERN Market Data Section */}
+      <section className="py-32 px-4 sm:px-6 relative overflow-hidden bg-black">
+        {/* Ultra Futuristic Market Background */}
+        <div className="absolute inset-0 bg-radial-gradient(ellipse at center, #0a0a0f 0%, #000000 70%)"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_100%_60%_at_50%_100%,rgba(255,255,0,0.08),transparent)]"></div>
+        <div className="absolute top-0 left-1/3 w-96 h-96 bg-gradient-to-r from-yellow-400/8 to-orange-500/8 rounded-full blur-3xl chainzoku-float"></div>
+        <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-gradient-to-l from-orange-400/10 to-yellow-500/10 rounded-full blur-3xl chainzoku-float delay-2000"></div>
+        <div className="absolute top-1/2 left-1/4 w-64 h-64 bg-gradient-to-br from-yellow-300/6 to-red-400/6 rounded-full blur-2xl chainzoku-float delay-1000"></div>
         
-        {/* Chainzoku Grid Overlay */}
-        <div className="absolute inset-0 opacity-[0.03]">
+        {/* Ultra Modern Grid Overlay */}
+        <div className="absolute inset-0 opacity-[0.04]">
           <div className="absolute inset-0" style={{
-            backgroundImage: `linear-gradient(rgba(0,255,255,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(0,255,255,0.3) 1px, transparent 1px)`,
-            backgroundSize: '100px 100px'
+            backgroundImage: `linear-gradient(rgba(255,215,0,0.4) 1px, transparent 1px), linear-gradient(90deg, rgba(255,215,0,0.4) 1px, transparent 1px)`,
+            backgroundSize: '120px 120px'
           }}></div>
         </div>
         
         <div className="max-w-7xl mx-auto relative z-10">
-          <div className="text-center mb-16 chainzoku-fade-in">
-            <h2 className="text-5xl md:text-6xl lg:text-7xl font-black text-white mb-6 font-['Space_Grotesk'] uppercase tracking-wider">
-              Market Overview
+          <div className="text-center mb-20 chainzoku-fade-in">
+            <h2 className="text-6xl md:text-7xl lg:text-8xl font-black text-white mb-8 font-['Orbitron'] uppercase tracking-wider">
+              <span className="chainzoku-title chainzoku-glow" data-text="MARKET OVERVIEW">
+                MARKET OVERVIEW
+              </span>
             </h2>
-            <p className="text-2xl text-white/80 max-w-4xl mx-auto font-['Inter'] font-medium leading-relaxed">
-              Real-time performance metrics and market statistics
+            <p className="text-2xl sm:text-3xl text-white/85 max-w-5xl mx-auto font-['Exo_2'] font-bold leading-relaxed chainzoku-subtitle">
+              🚀 REAL-TIME PERFORMANCE METRICS & MARKET STATISTICS 📊
             </p>
           </div>
           
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="chainzoku-card bg-black/95 backdrop-blur-xl border border-cyan-400/50 rounded-2xl p-8 text-center hover:border-cyan-400/80 hover:shadow-lg hover:shadow-cyan-400/30 transition-all duration-500 hover:scale-105 chainzoku-glow">
-              <div className="w-16 h-16 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-cyan-400 to-blue-500 p-3 shadow-lg shadow-cyan-400/50">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+            <div className="chainzoku-card p-8 text-center">
+              <div className="w-20 h-20 mx-auto mb-8 rounded-3xl bg-gradient-to-br from-yellow-400 via-orange-500 to-red-500 p-4 shadow-2xl shadow-yellow-400/70 chainzoku-pulse chainzoku-float">
                 <svg className="w-full h-full text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={3}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1" />
                 </svg>
               </div>
-              <div className="text-white/70 font-bold text-sm mb-3 font-['Space_Grotesk'] uppercase tracking-wider">GOLDIUM Price</div>
-              <div className="text-white text-3xl font-black mb-4 font-['Space_Grotesk']">${tokenData ? tokenData.currentPrice.toFixed(6) : '0.000000'}</div>
-              <div className="bg-cyan-500/30 text-cyan-400 text-sm font-bold px-4 py-2 rounded-full shadow-lg shadow-cyan-400/20 font-['Space_Grotesk'] uppercase">{tokenData ? `+${tokenData.priceChange24h.toFixed(1)}%` : '+0.0%'}</div>
+              <div className="text-white/80 font-bold text-sm mb-4 font-['Exo_2'] uppercase tracking-wider">💰 GOLDIUM PRICE</div>
+              <div className="text-white text-4xl font-black mb-6 font-['Orbitron']">${tokenData ? tokenData.currentPrice.toFixed(6) : '0.000000'}</div>
+              <div className="bg-gradient-to-r from-yellow-500/40 to-orange-500/40 text-yellow-400 text-sm font-black px-6 py-3 rounded-2xl shadow-lg shadow-yellow-400/30 font-['Orbitron'] uppercase chainzoku-glow">{tokenData ? `+${tokenData.priceChange24h.toFixed(1)}%` : '+0.0%'} 🚀</div>
             </div>
             
-            <div className="chainzoku-card bg-black/95 backdrop-blur-xl border border-cyan-400/50 rounded-2xl p-8 text-center hover:border-cyan-400/80 hover:shadow-lg hover:shadow-cyan-400/30 transition-all duration-500 hover:scale-105 chainzoku-glow">
-              <div className="w-16 h-16 mx-auto mb-6 bg-gradient-to-br from-blue-400 to-cyan-500 rounded-2xl flex items-center justify-center shadow-lg shadow-blue-400/50">
-                <svg className="w-8 h-8 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={3}>
+            <div className="chainzoku-card p-8 text-center">
+              <div className="w-20 h-20 mx-auto mb-8 bg-gradient-to-br from-orange-400 via-yellow-500 to-red-500 rounded-3xl flex items-center justify-center shadow-2xl shadow-orange-400/70 chainzoku-pulse chainzoku-float">
+                <svg className="w-10 h-10 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={3}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
                 </svg>
               </div>
-              <div className="text-white/70 font-bold text-sm mb-3 font-['Space_Grotesk'] uppercase tracking-wider">Market Cap</div>
-              <div className="text-white text-3xl font-black mb-4 font-['Space_Grotesk']">${tokenData ? (tokenData.marketCap / 1000000).toFixed(1) : '0.0'}M</div>
-              <div className="bg-cyan-500/30 text-cyan-400 text-sm font-bold px-4 py-2 rounded-full shadow-lg shadow-cyan-400/20 font-['Space_Grotesk'] uppercase">+5.7%</div>
+              <div className="text-white/80 font-bold text-sm mb-4 font-['Exo_2'] uppercase tracking-wider">📊 MARKET CAP</div>
+              <div className="text-white text-4xl font-black mb-6 font-['Orbitron']">${tokenData ? (tokenData.marketCap / 1000000).toFixed(1) : '0.0'}M</div>
+              <div className="bg-gradient-to-r from-orange-500/40 to-yellow-500/40 text-orange-400 text-sm font-black px-6 py-3 rounded-2xl shadow-lg shadow-orange-400/30 font-['Orbitron'] uppercase chainzoku-glow">+5.7% 📈</div>
             </div>
             
-            <div className="chainzoku-card bg-black/95 backdrop-blur-xl border border-cyan-400/50 rounded-2xl p-8 text-center hover:border-cyan-400/80 hover:shadow-lg hover:shadow-cyan-400/30 transition-all duration-500 hover:scale-105 chainzoku-glow">
-              <div className="w-16 h-16 mx-auto mb-6 bg-gradient-to-br from-purple-400 to-blue-500 rounded-2xl flex items-center justify-center shadow-lg shadow-purple-400/50">
-                <svg className="w-8 h-8 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={3}>
+            <div className="chainzoku-card p-8 text-center">
+              <div className="w-20 h-20 mx-auto mb-8 bg-gradient-to-br from-red-400 via-orange-500 to-yellow-500 rounded-3xl flex items-center justify-center shadow-2xl shadow-red-400/70 chainzoku-pulse chainzoku-float">
+                <svg className="w-10 h-10 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={3}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
                 </svg>
               </div>
-              <div className="text-white/70 font-bold text-sm mb-3 font-['Space_Grotesk'] uppercase tracking-wider">24h Volume</div>
-              <div className="text-white text-3xl font-black mb-4 font-['Space_Grotesk']">${tokenData ? (tokenData.volume24h / 1000).toFixed(0) : '0'}K</div>
-              <div className="bg-cyan-500/30 text-cyan-400 text-sm font-bold px-4 py-2 rounded-full shadow-lg shadow-cyan-400/20 font-['Space_Grotesk'] uppercase">+12.4%</div>
+              <div className="text-white/80 font-bold text-sm mb-4 font-['Exo_2'] uppercase tracking-wider">⚡ 24H VOLUME</div>
+              <div className="text-white text-4xl font-black mb-6 font-['Orbitron']">${tokenData ? (tokenData.volume24h / 1000).toFixed(0) : '0'}K</div>
+              <div className="bg-gradient-to-r from-red-500/40 to-orange-500/40 text-red-400 text-sm font-black px-6 py-3 rounded-2xl shadow-lg shadow-red-400/30 font-['Orbitron'] uppercase chainzoku-glow">+12.4% 💥</div>
             </div>
             
-            <div className="chainzoku-card bg-black/95 backdrop-blur-xl border border-cyan-400/50 rounded-2xl p-8 text-center hover:border-cyan-400/80 hover:shadow-lg hover:shadow-cyan-400/30 transition-all duration-500 hover:scale-105 chainzoku-glow">
-              <div className="w-16 h-16 mx-auto mb-6 bg-gradient-to-br from-indigo-400 to-cyan-500 rounded-2xl flex items-center justify-center shadow-lg shadow-indigo-400/50">
-                <svg className="w-8 h-8 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={3}>
+            <div className="chainzoku-card p-8 text-center">
+              <div className="w-20 h-20 mx-auto mb-8 bg-gradient-to-br from-yellow-500 via-orange-400 to-red-500 rounded-3xl flex items-center justify-center shadow-2xl shadow-yellow-500/70 chainzoku-pulse chainzoku-float">
+                <svg className="w-10 h-10 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={3}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                 </svg>
               </div>
-              <div className="text-white/70 font-bold text-sm mb-3 font-['Space_Grotesk'] uppercase tracking-wider">Holders</div>
-              <div className="text-white text-3xl font-black mb-4 font-['Space_Grotesk']">{tokenData ? tokenData.holders.toLocaleString() : '0'}</div>
-              <div className="bg-cyan-500/30 text-cyan-400 text-sm font-bold px-4 py-2 rounded-full shadow-lg shadow-cyan-400/20 font-['Space_Grotesk'] uppercase">+8.2%</div>
+              <div className="text-white/80 font-bold text-sm mb-4 font-['Exo_2'] uppercase tracking-wider">👥 HOLDERS</div>
+              <div className="text-white text-4xl font-black mb-6 font-['Orbitron']">{tokenData ? tokenData.holders.toLocaleString() : '0'}</div>
+              <div className="bg-gradient-to-r from-yellow-500/40 to-orange-500/40 text-yellow-400 text-sm font-black px-6 py-3 rounded-2xl shadow-lg shadow-yellow-400/30 font-['Orbitron'] uppercase chainzoku-glow">+8.2% 🔥</div>
             </div>
           </div>
           
