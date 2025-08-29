@@ -266,32 +266,39 @@ export default function HomeSimple() {
                   />
                 </div>
               </div>
-              <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tight font-['Space_Grotesk']">
-                <span className="chainzoku-title chainzoku-glow">
+              <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-black tracking-tight font-['Orbitron']">
+                <span className="chainzoku-title chainzoku-glow" data-text="GOLDIUM">
                   GOLDIUM
                 </span>
               </h1>
-              <div className="text-xl sm:text-2xl md:text-3xl chainzoku-subtitle max-w-4xl mx-auto tracking-tight chainzoku-fade-in">
-                Next-Generation Digital Gold Protocol
+              <div className="text-2xl sm:text-3xl md:text-4xl chainzoku-subtitle max-w-5xl mx-auto tracking-tight chainzoku-fade-in">
+                NEXT-GENERATION DIGITAL GOLD PROTOCOL
               </div>
-              <p className="text-base sm:text-lg text-white/70 max-w-3xl mx-auto leading-relaxed font-['Inter'] font-normal chainzoku-fade-in">
-                Secure, transparent, and backed by real gold reserves on the Solana blockchain. Experience the future of digital assets.
+              <p className="text-lg sm:text-xl text-white/80 max-w-4xl mx-auto leading-relaxed font-['Exo_2'] font-medium chainzoku-fade-in">
+                🚀 SECURE • TRANSPARENT • BACKED BY REAL GOLD RESERVES 💎<br/>
+                Experience the future of digital assets on the Solana blockchain
               </p>
             </div>
             
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
-              <div className="chainzoku-card p-6">
-                <div className="space-y-6">
-                  <div className="flex items-center gap-4 mb-6">
-                    <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-yellow-400 to-orange-500 p-3 shadow-lg shadow-yellow-400/60 chainzoku-pulse chainzoku-float">
-                      <svg className="w-full h-full text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}>
+              <div className="chainzoku-card p-8">
+                <div className="space-y-8">
+                  <div className="flex items-center gap-6 mb-8">
+                    <div className="w-18 h-18 rounded-3xl bg-gradient-to-br from-yellow-400 via-orange-500 to-red-500 p-4 shadow-2xl shadow-yellow-400/70 chainzoku-pulse chainzoku-float">
+                      <svg className="w-full h-full text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={3}>
                         <path strokeLinecap="round" strokeLinejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1" />
                       </svg>
                     </div>
-                    <h3 className="text-xl font-bold text-white font-['Space_Grotesk'] tracking-tight">Buy GOLDIUM</h3>
+                    <div>
+                      <h3 className="text-2xl font-bold text-white font-['Orbitron'] tracking-tight uppercase">BUY GOLDIUM</h3>
+                      <p className="text-yellow-400 font-['Exo_2'] font-semibold text-sm">⚡ INSTANT TRANSACTIONS</p>
+                    </div>
                   </div>
-                  <div className="bg-black/85 backdrop-blur-lg rounded-xl p-4 border border-yellow-400/30">
-                    <p className="text-white/90 text-sm font-['Inter'] font-medium">Exchange Rate: <span className="chainzoku-highlight font-semibold">1 SOL = 21,486 GOLD</span></p>
+                  <div className="bg-gradient-to-r from-black/90 via-yellow-900/20 to-black/90 backdrop-blur-lg rounded-2xl p-6 border border-yellow-400/40 relative overflow-hidden">
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-yellow-400/5 to-transparent animate-pulse"></div>
+                    <p className="text-white/95 text-base font-['Exo_2'] font-bold relative z-10">
+                      🔥 EXCHANGE RATE: <span className="chainzoku-highlight font-black text-lg">1 SOL = 21,486 GOLD</span> 🔥
+                    </p>
                   </div>
                 </div>
                 <div className="space-y-6">
@@ -308,25 +315,25 @@ export default function HomeSimple() {
                     />
                     <span className="absolute right-5 top-1/2 transform -translate-y-1/2 chainzoku-highlight font-semibold font-['Inter'] text-sm">SOL</span>
                   </div>
-                  <div className="flex items-center justify-center gap-3 text-white">
-                    <span className="text-lg font-medium">≈</span>
-                    <span className="chainzoku-highlight font-bold text-lg font-['Inter']">
-                      {buyAmount ? (parseFloat(buyAmount) * 21486.893).toLocaleString() : '0'} GOLD
+                  <div className="flex items-center justify-center gap-4 text-white bg-gradient-to-r from-yellow-900/20 to-orange-900/20 rounded-2xl p-4 border border-yellow-400/30">
+                    <span className="text-2xl font-bold text-yellow-400">≈</span>
+                    <span className="chainzoku-highlight font-black text-xl font-['Orbitron'] uppercase">
+                      {buyAmount ? (parseFloat(buyAmount) * 21486.893).toLocaleString() : '0'} GOLD 💰
                     </span>
                   </div>
                 </div>
                 <Button
                   onClick={handleBuyGoldium}
                   disabled={buyingToken || !externalWallet.connected}
-                  className="chainzoku-btn w-full mt-6"
+                  className="chainzoku-btn w-full mt-8"
                 >
                   {buyingToken ? (
-                    <div className="flex items-center justify-center gap-2">
-                      <div className="w-4 h-4 border-2 border-black border-t-transparent rounded-full animate-spin" />
-                      Processing...
+                    <div className="flex items-center justify-center gap-3">
+                      <div className="w-5 h-5 border-3 border-black border-t-transparent rounded-full animate-spin" />
+                      <span className="font-['Orbitron'] font-bold">PROCESSING...</span>
                     </div>
                   ) : (
-                    'Buy GOLDIUM'
+                    <span className="font-['Orbitron'] font-black">🚀 BUY GOLDIUM NOW 🚀</span>
                   )}
                 </Button>
                 {!externalWallet.connected && (
