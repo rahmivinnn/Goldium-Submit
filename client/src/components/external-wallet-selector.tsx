@@ -136,7 +136,7 @@ export function ExternalWalletSelector() {
           <Button 
             variant="outline"
             disabled={wallet.connecting}
-            className="bg-slate-800/50 border-slate-600 text-white hover:border-blue-400 hover:bg-slate-700/50 transition-colors"
+            className="bg-slate-800/30 backdrop-blur-xl border-cyan-500/30 text-white hover:border-cyan-400 hover:bg-slate-700/30 hover:shadow-lg hover:shadow-cyan-400/20 transition-all duration-300"
           >
             <Wallet className="w-4 h-4 mr-2" />
             {wallet.connecting ? 'Connecting...' : 'Connect Wallet'}
@@ -145,7 +145,7 @@ export function ExternalWalletSelector() {
         
         <DropdownMenuContent 
           align="end" 
-          className="w-80 bg-slate-800/95 border-slate-700 backdrop-blur-sm z-50"
+          className="w-80 bg-slate-800/95 border-cyan-500/30 backdrop-blur-xl z-50 shadow-2xl shadow-cyan-500/20"
         >
           <DropdownMenuLabel className="text-white px-4">Connect Your Wallet</DropdownMenuLabel>
           
@@ -158,8 +158,8 @@ export function ExternalWalletSelector() {
                   key={walletOption.type}
                   onClick={() => isAvailable && handleWalletSelect(walletOption.type)}
                   className={`
-                    text-white hover:bg-slate-700/50 cursor-pointer p-3 rounded-lg
-                    ${!isAvailable ? 'opacity-50 cursor-not-allowed' : ''}
+                    text-white hover:bg-slate-700/30 hover:border-cyan-400/30 cursor-pointer p-3 rounded-lg transition-all duration-300
+                    ${!isAvailable ? 'opacity-50 cursor-not-allowed' : 'hover:shadow-lg hover:shadow-cyan-400/10'}
                   `}
                   disabled={!isAvailable}
                 >
@@ -179,7 +179,7 @@ export function ExternalWalletSelector() {
                     </div>
                     <div className="text-right">
                       {isAvailable ? (
-                        <span className="text-xs text-green-400 px-2 py-1 bg-green-500/20 rounded">
+                        <span className="text-xs text-cyan-400 px-2 py-1 bg-cyan-500/20 rounded">
                           Available
                         </span>
                       ) : (
@@ -195,7 +195,7 @@ export function ExternalWalletSelector() {
           </div>
 
           {availableWallets.length === 0 && (
-            <div className="p-4 text-center text-sm text-yellow-200/70 border-t border-yellow-400/30 mt-2">
+            <div className="p-4 text-center text-sm text-slate-300 border-t border-cyan-500/30 mt-2">
               <p className="mb-2">No wallet extensions found.</p>
               <p className="text-xs">Please install and refresh the page:</p>
               <div className="text-xs mt-1 space-y-1">
@@ -217,7 +217,7 @@ export function ExternalWalletSelector() {
       <DropdownMenuTrigger asChild>
         <Button 
           variant="outline"
-          className="bg-black/70 border-yellow-400/40 hover:border-yellow-400/70 text-yellow-100"
+          className="bg-slate-800/30 backdrop-blur-xl border-cyan-500/30 hover:border-cyan-400/70 text-white hover:shadow-lg hover:shadow-cyan-400/20 transition-all duration-300"
         >
           <div className="mr-2 flex items-center justify-center w-5 h-5">
             {currentWallet ? (
