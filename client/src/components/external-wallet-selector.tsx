@@ -136,7 +136,7 @@ export function ExternalWalletSelector() {
           <Button 
             variant="outline"
             disabled={wallet.connecting}
-            className="bg-slate-800/30 backdrop-blur-xl border-cyan-500/30 text-white hover:border-cyan-400 hover:bg-slate-700/30 hover:shadow-lg hover:shadow-cyan-400/20 transition-all duration-300"
+            className="chainzoku-btn bg-gradient-to-r from-cyan-400 to-blue-500 hover:from-cyan-500 hover:to-blue-600 text-black font-black border-none shadow-lg shadow-cyan-400/30 hover:shadow-cyan-400/50 hover:scale-105 transition-all duration-300 font-['Space_Grotesk'] uppercase tracking-wide"
           >
             <Wallet className="w-4 h-4 mr-2" />
             {wallet.connecting ? 'Connecting...' : 'Connect Wallet'}
@@ -145,9 +145,9 @@ export function ExternalWalletSelector() {
         
         <DropdownMenuContent 
           align="end" 
-          className="w-80 bg-slate-800/95 border-cyan-500/30 backdrop-blur-xl z-50 shadow-2xl shadow-cyan-500/20"
+          className="w-80 bg-black/95 border-cyan-400/50 backdrop-blur-xl z-50 shadow-2xl shadow-cyan-400/30 rounded-2xl"
         >
-          <DropdownMenuLabel className="text-white px-4">Connect Your Wallet</DropdownMenuLabel>
+          <DropdownMenuLabel className="text-white px-6 py-4 font-['Space_Grotesk'] font-black text-lg uppercase tracking-wide">Connect Your Wallet</DropdownMenuLabel>
           
           <div className="p-2 space-y-1">
             {walletOptions.map((walletOption) => {
@@ -158,8 +158,8 @@ export function ExternalWalletSelector() {
                   key={walletOption.type}
                   onClick={() => isAvailable && handleWalletSelect(walletOption.type)}
                   className={`
-                    text-white hover:bg-slate-700/30 hover:border-cyan-400/30 cursor-pointer p-3 rounded-lg transition-all duration-300
-                    ${!isAvailable ? 'opacity-50 cursor-not-allowed' : 'hover:shadow-lg hover:shadow-cyan-400/10'}
+                    text-white hover:bg-cyan-400/10 hover:border-cyan-400/40 cursor-pointer p-4 rounded-xl transition-all duration-300 border border-transparent
+                    ${!isAvailable ? 'opacity-50 cursor-not-allowed' : 'hover:shadow-lg hover:shadow-cyan-400/20 hover:scale-[1.02]'}
                   `}
                   disabled={!isAvailable}
                 >

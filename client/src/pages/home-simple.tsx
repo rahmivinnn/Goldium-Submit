@@ -328,29 +328,29 @@ export default function HomeSimple() {
                   )}
                 </Button>
                 {!externalWallet.connected && (
-                  <p className="text-sm text-slate-400 text-center">Connect your wallet to purchase GOLDIUM</p>
+                  <p className="text-sm text-white/70 text-center font-['Inter'] font-medium mt-4">Connect your wallet to purchase GOLDIUM</p>
                 )}
               </div>
-              <div className="bg-slate-800/30 backdrop-blur-xl border border-cyan-500/30 rounded-2xl p-6 shadow-2xl shadow-cyan-500/10 hover:shadow-cyan-500/20 hover:border-cyan-400/50 transition-all duration-500 hover:scale-[1.02]">
-                <div className="text-center mb-6">
-                  <div className="flex items-center justify-center gap-3 mb-4">
-                    <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-cyan-400 to-blue-600 flex items-center justify-center shadow-lg shadow-cyan-400/30">
-                      <svg className="w-4 h-4 text-white" viewBox="0 0 24 24" fill="currentColor">
+              <div className="chainzoku-card bg-black/95 backdrop-blur-xl border border-cyan-400/50 rounded-2xl p-8 shadow-2xl shadow-cyan-400/30 hover:shadow-cyan-400/50 hover:border-cyan-400/80 transition-all duration-500 hover:scale-[1.02]">
+                <div className="text-center mb-8">
+                  <div className="flex items-center justify-center gap-4 mb-6">
+                    <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-cyan-400 to-blue-500 flex items-center justify-center shadow-lg shadow-cyan-400/50">
+                      <svg className="w-5 h-5 text-black" viewBox="0 0 24 24" fill="currentColor" strokeWidth={3}>
                         <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
                       </svg>
                     </div>
-                    <h3 className="text-xl font-bold text-white font-['Space_Grotesk']">Follow Updates</h3>
+                    <h3 className="text-2xl font-black text-white font-['Space_Grotesk'] uppercase tracking-wide">Follow Updates</h3>
                   </div>
-                  <div className="bg-slate-700/30 backdrop-blur-lg rounded-lg p-3 border border-cyan-500/20">
-                    <p className="text-slate-300 text-sm">Stay updated with latest news and announcements</p>
+                  <div className="bg-black/80 backdrop-blur-lg rounded-xl p-4 border border-cyan-400/30">
+                    <p className="text-white text-sm font-['Inter'] font-medium">Stay updated with latest news and announcements</p>
                   </div>
                 </div>
                 <Button
                   onClick={() => window.open('https://twitter.com/goldiumofficial', '_blank')}
-                  className="bg-gradient-to-r from-cyan-400 to-blue-500 hover:from-cyan-500 hover:to-blue-600 text-white font-semibold px-6 py-3 rounded-xl text-base shadow-lg shadow-cyan-400/30 hover:shadow-cyan-400/50 hover:scale-105 transition-all duration-300 w-full"
+                  className="chainzoku-btn bg-gradient-to-r from-cyan-400 to-blue-500 hover:from-cyan-500 hover:to-blue-600 text-black font-black px-8 py-4 rounded-xl text-lg uppercase tracking-wider shadow-lg shadow-cyan-400/40 hover:shadow-cyan-400/60 hover:scale-105 transition-all duration-300 w-full"
                 >
-                  <div className="flex items-center justify-center gap-2">
-                    <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                  <div className="flex items-center justify-center gap-3">
+                    <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
                       <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
                     </svg>
                     Follow on Twitter
@@ -365,64 +365,74 @@ export default function HomeSimple() {
       </section>
 
       {/* Live Market Data Section */}
-      <section className="py-20 px-4 sm:px-6 relative overflow-hidden">
-        {/* Blue Metaverse Market Background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-950 via-blue-950/20 to-indigo-950"></div>
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_100%,rgba(6,182,212,0.1),transparent)]"></div>
-        <div className="absolute top-0 left-1/4 w-64 h-64 bg-gradient-to-r from-cyan-500/10 to-blue-600/10 rounded-full blur-3xl"></div>
+      <section className="py-24 px-4 sm:px-6 relative overflow-hidden bg-black">
+        {/* Chainzoku Immersive Market Background */}
+        <div className="absolute inset-0 bg-black"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_100%_60%_at_50%_100%,rgba(0,255,255,0.05),transparent)]"></div>
+        <div className="absolute top-0 left-1/3 w-96 h-96 bg-gradient-to-r from-cyan-400/5 to-blue-500/5 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-gradient-to-l from-blue-400/8 to-cyan-500/8 rounded-full blur-3xl"></div>
+        
+        {/* Chainzoku Grid Overlay */}
+        <div className="absolute inset-0 opacity-[0.03]">
+          <div className="absolute inset-0" style={{
+            backgroundImage: `linear-gradient(rgba(0,255,255,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(0,255,255,0.3) 1px, transparent 1px)`,
+            backgroundSize: '100px 100px'
+          }}></div>
+        </div>
+        
         <div className="max-w-7xl mx-auto relative z-10">
-          <div className="text-center mb-12 animate-fade-in">
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 font-['Space_Grotesk']">
+          <div className="text-center mb-16 chainzoku-fade-in">
+            <h2 className="text-5xl md:text-6xl lg:text-7xl font-black text-white mb-6 font-['Space_Grotesk'] uppercase tracking-wider">
               Market Overview
             </h2>
-            <p className="text-xl text-slate-400 max-w-3xl mx-auto">
+            <p className="text-2xl text-white/80 max-w-4xl mx-auto font-['Inter'] font-medium leading-relaxed">
               Real-time performance metrics and market statistics
             </p>
           </div>
           
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="bg-slate-800/30 backdrop-blur-xl border border-cyan-500/30 rounded-xl p-6 text-center hover:border-cyan-400/50 hover:shadow-lg hover:shadow-cyan-400/20 transition-all duration-300 hover:scale-105">
-              <div className="w-12 h-12 mx-auto mb-4 rounded-lg bg-gradient-to-br from-cyan-400 to-blue-600 p-2.5 shadow-lg shadow-cyan-400/30">
-                <svg className="w-full h-full text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1" />
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="chainzoku-card bg-black/95 backdrop-blur-xl border border-cyan-400/50 rounded-2xl p-8 text-center hover:border-cyan-400/80 hover:shadow-lg hover:shadow-cyan-400/30 transition-all duration-500 hover:scale-105 chainzoku-glow">
+              <div className="w-16 h-16 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-cyan-400 to-blue-500 p-3 shadow-lg shadow-cyan-400/50">
+                <svg className="w-full h-full text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={3}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1" />
                 </svg>
               </div>
-              <div className="text-slate-400 font-medium text-sm mb-2">GOLDIUM Price</div>
-              <div className="text-white text-2xl font-bold mb-2">${tokenData ? tokenData.currentPrice.toFixed(6) : '0.000000'}</div>
-              <div className="bg-cyan-500/20 text-cyan-400 text-sm font-medium px-3 py-1 rounded-full shadow-lg shadow-cyan-400/10">{tokenData ? `+${tokenData.priceChange24h.toFixed(1)}%` : '+0.0%'}</div>
+              <div className="text-white/70 font-bold text-sm mb-3 font-['Space_Grotesk'] uppercase tracking-wider">GOLDIUM Price</div>
+              <div className="text-white text-3xl font-black mb-4 font-['Space_Grotesk']">${tokenData ? tokenData.currentPrice.toFixed(6) : '0.000000'}</div>
+              <div className="bg-cyan-500/30 text-cyan-400 text-sm font-bold px-4 py-2 rounded-full shadow-lg shadow-cyan-400/20 font-['Space_Grotesk'] uppercase">{tokenData ? `+${tokenData.priceChange24h.toFixed(1)}%` : '+0.0%'}</div>
             </div>
             
-            <div className="bg-slate-800/30 backdrop-blur-xl border border-cyan-500/30 rounded-xl p-6 text-center hover:border-cyan-400/50 hover:shadow-lg hover:shadow-cyan-400/20 transition-all duration-300 hover:scale-105">
-              <div className="w-12 h-12 mx-auto mb-4 bg-gradient-to-br from-blue-400 to-indigo-600 rounded-lg flex items-center justify-center shadow-lg shadow-blue-400/30">
-                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+            <div className="chainzoku-card bg-black/95 backdrop-blur-xl border border-cyan-400/50 rounded-2xl p-8 text-center hover:border-cyan-400/80 hover:shadow-lg hover:shadow-cyan-400/30 transition-all duration-500 hover:scale-105 chainzoku-glow">
+              <div className="w-16 h-16 mx-auto mb-6 bg-gradient-to-br from-blue-400 to-cyan-500 rounded-2xl flex items-center justify-center shadow-lg shadow-blue-400/50">
+                <svg className="w-8 h-8 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={3}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
                 </svg>
               </div>
-              <div className="text-slate-400 font-medium text-sm mb-2">Market Cap</div>
-              <div className="text-white text-2xl font-bold mb-2">${tokenData ? (tokenData.marketCap / 1000000).toFixed(1) : '0.0'}M</div>
-              <div className="bg-cyan-500/20 text-cyan-400 text-sm font-medium px-3 py-1 rounded-full shadow-lg shadow-cyan-400/10">+5.7%</div>
+              <div className="text-white/70 font-bold text-sm mb-3 font-['Space_Grotesk'] uppercase tracking-wider">Market Cap</div>
+              <div className="text-white text-3xl font-black mb-4 font-['Space_Grotesk']">${tokenData ? (tokenData.marketCap / 1000000).toFixed(1) : '0.0'}M</div>
+              <div className="bg-cyan-500/30 text-cyan-400 text-sm font-bold px-4 py-2 rounded-full shadow-lg shadow-cyan-400/20 font-['Space_Grotesk'] uppercase">+5.7%</div>
             </div>
             
-            <div className="bg-slate-800/30 backdrop-blur-xl border border-cyan-500/30 rounded-xl p-6 text-center hover:border-cyan-400/50 hover:shadow-lg hover:shadow-cyan-400/20 transition-all duration-300 hover:scale-105">
-              <div className="w-12 h-12 mx-auto mb-4 bg-gradient-to-br from-purple-400 to-blue-600 rounded-lg flex items-center justify-center shadow-lg shadow-purple-400/30">
-                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+            <div className="chainzoku-card bg-black/95 backdrop-blur-xl border border-cyan-400/50 rounded-2xl p-8 text-center hover:border-cyan-400/80 hover:shadow-lg hover:shadow-cyan-400/30 transition-all duration-500 hover:scale-105 chainzoku-glow">
+              <div className="w-16 h-16 mx-auto mb-6 bg-gradient-to-br from-purple-400 to-blue-500 rounded-2xl flex items-center justify-center shadow-lg shadow-purple-400/50">
+                <svg className="w-8 h-8 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={3}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
                 </svg>
               </div>
-              <div className="text-slate-400 font-medium text-sm mb-2">24h Volume</div>
-              <div className="text-white text-2xl font-bold mb-2">${tokenData ? (tokenData.volume24h / 1000).toFixed(0) : '0'}K</div>
-              <div className="bg-cyan-500/20 text-cyan-400 text-sm font-medium px-3 py-1 rounded-full shadow-lg shadow-cyan-400/10">+12.4%</div>
+              <div className="text-white/70 font-bold text-sm mb-3 font-['Space_Grotesk'] uppercase tracking-wider">24h Volume</div>
+              <div className="text-white text-3xl font-black mb-4 font-['Space_Grotesk']">${tokenData ? (tokenData.volume24h / 1000).toFixed(0) : '0'}K</div>
+              <div className="bg-cyan-500/30 text-cyan-400 text-sm font-bold px-4 py-2 rounded-full shadow-lg shadow-cyan-400/20 font-['Space_Grotesk'] uppercase">+12.4%</div>
             </div>
             
-            <div className="bg-slate-800/30 backdrop-blur-xl border border-cyan-500/30 rounded-xl p-6 text-center hover:border-cyan-400/50 hover:shadow-lg hover:shadow-cyan-400/20 transition-all duration-300 hover:scale-105">
-              <div className="w-12 h-12 mx-auto mb-4 bg-gradient-to-br from-indigo-400 to-cyan-600 rounded-lg flex items-center justify-center shadow-lg shadow-indigo-400/30">
-                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+            <div className="chainzoku-card bg-black/95 backdrop-blur-xl border border-cyan-400/50 rounded-2xl p-8 text-center hover:border-cyan-400/80 hover:shadow-lg hover:shadow-cyan-400/30 transition-all duration-500 hover:scale-105 chainzoku-glow">
+              <div className="w-16 h-16 mx-auto mb-6 bg-gradient-to-br from-indigo-400 to-cyan-500 rounded-2xl flex items-center justify-center shadow-lg shadow-indigo-400/50">
+                <svg className="w-8 h-8 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={3}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                 </svg>
               </div>
-              <div className="text-slate-400 font-medium text-sm mb-2">Holders</div>
-              <div className="text-white text-2xl font-bold mb-2">{tokenData ? tokenData.holders.toLocaleString() : '0'}</div>
-              <div className="bg-cyan-500/20 text-cyan-400 text-sm font-medium px-3 py-1 rounded-full shadow-lg shadow-cyan-400/10">+8.2%</div>
+              <div className="text-white/70 font-bold text-sm mb-3 font-['Space_Grotesk'] uppercase tracking-wider">Holders</div>
+              <div className="text-white text-3xl font-black mb-4 font-['Space_Grotesk']">{tokenData ? tokenData.holders.toLocaleString() : '0'}</div>
+              <div className="bg-cyan-500/30 text-cyan-400 text-sm font-bold px-4 py-2 rounded-full shadow-lg shadow-cyan-400/20 font-['Space_Grotesk'] uppercase">+8.2%</div>
             </div>
           </div>
           
@@ -431,37 +441,47 @@ export default function HomeSimple() {
       </section>
 
       {/* DeFi Section */}
-      <section id="defi" className="py-20 px-6 relative overflow-hidden">
-        {/* Premium DeFi Background */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black via-slate-950 to-amber-950/30"></div>
-        <div className="absolute inset-0 bg-[conic-gradient(from_0deg_at_50%_50%,rgba(251,191,36,0.08),rgba(0,0,0,0.9),rgba(245,158,11,0.05),rgba(0,0,0,0.9))]"></div>
-        <div className="absolute bottom-0 right-0 w-80 h-80 bg-gradient-to-l from-yellow-600/10 to-transparent rounded-full blur-3xl"></div>
+      <section id="defi" className="py-32 px-6 relative overflow-hidden bg-black">
+        {/* Chainzoku Immersive DeFi Background */}
+        <div className="absolute inset-0 bg-black"></div>
+        <div className="absolute inset-0 bg-[conic-gradient(from_0deg_at_50%_50%,rgba(0,255,255,0.03),rgba(0,0,0,0.98),rgba(30,144,255,0.02),rgba(0,0,0,0.98))]"></div>
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-gradient-to-l from-cyan-400/8 to-transparent rounded-full blur-3xl"></div>
+        <div className="absolute top-1/4 left-0 w-80 h-80 bg-gradient-to-r from-blue-500/6 to-transparent rounded-full blur-3xl"></div>
+        
+        {/* Additional Chainzoku Grid */}
+        <div className="absolute inset-0 opacity-[0.02]">
+          <div className="absolute inset-0" style={{
+            backgroundImage: `linear-gradient(rgba(0,255,255,0.2) 1px, transparent 1px), linear-gradient(90deg, rgba(0,255,255,0.2) 1px, transparent 1px)`,
+            backgroundSize: '120px 120px'
+          }}></div>
+        </div>
+        
         <div className="max-w-7xl mx-auto relative z-10">
-          <div className="text-center mb-16 animate-fade-in">
-            <h2 className="text-5xl md:text-6xl font-bold text-white mb-6">
+          <div className="text-center mb-20 chainzoku-fade-in">
+            <h2 className="text-6xl md:text-7xl lg:text-8xl font-black text-white mb-8 font-['Space_Grotesk'] uppercase tracking-wider">
               DeFi Platform
             </h2>
-            <p className="text-xl text-slate-400 max-w-3xl mx-auto">
+            <p className="text-2xl text-white/80 max-w-4xl mx-auto font-['Inter'] font-medium leading-relaxed">
               Complete ecosystem for trading, staking, and managing your digital assets
             </p>
           </div>
           
-          <div className="bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-2xl p-8 animate-scale-in">
+          <div className="chainzoku-card bg-black/95 backdrop-blur-xl border border-cyan-400/50 rounded-3xl p-10 shadow-2xl shadow-cyan-400/20 chainzoku-fade-in">
             <Tabs defaultValue="swap" className="w-full">
-              <TabsList className="grid w-full grid-cols-5 mb-8 bg-slate-900/50 border border-slate-700 rounded-xl">
-                <TabsTrigger value="swap" className="text-slate-300 data-[state=active]:bg-yellow-400 data-[state=active]:text-black font-medium rounded-lg">
+              <TabsList className="grid w-full grid-cols-5 mb-12 bg-black/80 border border-cyan-400/40 rounded-2xl p-2 shadow-lg shadow-cyan-400/10">
+                <TabsTrigger value="swap" className="text-white data-[state=active]:bg-gradient-to-r data-[state=active]:from-cyan-400 data-[state=active]:to-blue-500 data-[state=active]:text-black font-bold rounded-xl py-3 px-6 font-['Space_Grotesk'] uppercase tracking-wide transition-all duration-300 hover:bg-cyan-400/10">
                   Swap
                 </TabsTrigger>
-                <TabsTrigger value="stake" className="text-slate-300 data-[state=active]:bg-yellow-400 data-[state=active]:text-black font-medium rounded-lg">
+                <TabsTrigger value="stake" className="text-white data-[state=active]:bg-gradient-to-r data-[state=active]:from-cyan-400 data-[state=active]:to-blue-500 data-[state=active]:text-black font-bold rounded-xl py-3 px-6 font-['Space_Grotesk'] uppercase tracking-wide transition-all duration-300 hover:bg-cyan-400/10">
                   Stake
                 </TabsTrigger>
-                <TabsTrigger value="dragon" className="text-slate-300 data-[state=active]:bg-yellow-400 data-[state=active]:text-black font-medium rounded-lg">
+                <TabsTrigger value="dragon" className="text-white data-[state=active]:bg-gradient-to-r data-[state=active]:from-cyan-400 data-[state=active]:to-blue-500 data-[state=active]:text-black font-bold rounded-xl py-3 px-6 font-['Space_Grotesk'] uppercase tracking-wide transition-all duration-300 hover:bg-cyan-400/10">
                   Dragon
                 </TabsTrigger>
-                <TabsTrigger value="send" className="text-slate-300 data-[state=active]:bg-yellow-400 data-[state=active]:text-black font-medium rounded-lg">
+                <TabsTrigger value="send" className="text-white data-[state=active]:bg-gradient-to-r data-[state=active]:from-cyan-400 data-[state=active]:to-blue-500 data-[state=active]:text-black font-bold rounded-xl py-3 px-6 font-['Space_Grotesk'] uppercase tracking-wide transition-all duration-300 hover:bg-cyan-400/10">
                   Send
                 </TabsTrigger>
-                <TabsTrigger value="history" className="text-slate-300 data-[state=active]:bg-yellow-400 data-[state=active]:text-black font-medium rounded-lg">
+                <TabsTrigger value="history" className="text-white data-[state=active]:bg-gradient-to-r data-[state=active]:from-cyan-400 data-[state=active]:to-blue-500 data-[state=active]:text-black font-bold rounded-xl py-3 px-6 font-['Space_Grotesk'] uppercase tracking-wide transition-all duration-300 hover:bg-cyan-400/10">
                   History
                 </TabsTrigger>
               </TabsList>
