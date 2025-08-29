@@ -3,42 +3,39 @@
 @tailwind utilities;
 
 :root {
-  /* Elegant Dark Theme - Soft and Eye-Friendly like eeeeecoin.com */
-  --background: hsl(220, 15%, 8%);           /* Soft dark background */
-  --foreground: hsl(45, 20%, 92%);          /* Soft white text */
-  --muted: hsl(220, 15%, 12%);               /* Muted dark background */
-  --muted-foreground: hsl(45, 15%, 70%);    /* Soft muted text */
-  --popover: hsl(220, 15%, 10%);             /* Popover background */
-  --popover-foreground: hsl(45, 20%, 92%);  /* Soft white text */
-  --card: hsl(220, 15%, 10%);                /* Card background */
-  --card-foreground: hsl(45, 20%, 92%);     /* Soft white text */
-  --border: hsl(45, 25%, 25%);              /* Soft borders */
-  --input: hsl(45, 20%, 92%);               /* Light input backgrounds */
-  --primary: hsl(45, 100%, 65%);            /* Soft gold primary */
-  --primary-foreground: hsl(0, 0%, 100%);    /* White text on primary */
-  --secondary: hsl(220, 15%, 15%);           /* Secondary background */
-  --secondary-foreground: hsl(45, 20%, 92%); /* Soft white text */
-  --accent: hsl(45, 80%, 45%);              /* Soft gold accent */
-  --accent-foreground: hsl(45, 20%, 92%);   /* Soft white text */
-  --destructive: hsl(0, 65%, 55%);           /* Soft red for errors */
-  --destructive-foreground: hsl(0, 0%, 100%); /* White text */
-  --ring: hsl(45, 100%, 65%);               /* Soft gold focus ring */
-  --radius: 0.5rem;
+  /* CHAINZOKU DARK THEME - Black + Neon Blue + White */
+  --background: #000000;                     /* Pure black background */
+  --foreground: #FFFFFF;                     /* Pure white text */
+  --muted: rgba(0, 0, 0, 0.9);              /* Muted black background */
+  --muted-foreground: rgba(255, 255, 255, 0.7); /* Muted white text */
+  --popover: rgba(0, 0, 0, 0.95);           /* Popover background */
+  --popover-foreground: #FFFFFF;            /* Pure white text */
+  --card: rgba(0, 0, 0, 0.8);               /* Card background */
+  --card-foreground: #FFFFFF;               /* Pure white text */
+  --border: rgba(0, 255, 255, 0.3);         /* Neon cyan borders */
+  --input: rgba(0, 0, 0, 0.9);              /* Dark input backgrounds */
+  --primary: #00FFFF;                       /* Neon cyan primary */
+  --primary-foreground: #000000;            /* Black text on primary */
+  --secondary: rgba(0, 0, 0, 0.8);          /* Secondary background */
+  --secondary-foreground: #FFFFFF;          /* Pure white text */
+  --accent: #1E90FF;                        /* Neon blue accent */
+  --accent-foreground: #FFFFFF;             /* Pure white text */
+  --destructive: #FF4444;                   /* Red for errors */
+  --destructive-foreground: #FFFFFF;        /* White text */
+  --ring: #00FFFF;                          /* Neon cyan focus ring */
+  --radius: 0.75rem;
 
-  /* Enhanced Metaverse DeFi Colors */
-  --defi-dark: rgba(10, 10, 15, 0.95);       /* Deep space dark */
-  --defi-secondary: rgba(26, 26, 46, 0.9);   /* Metaverse secondary */
-  --defi-accent: rgba(251, 191, 36, 0.8);    /* Yellow accent */
-  --metaverse-primary: hsl(45, 93%, 58%);    /* Vibrant yellow */
-  --metaverse-secondary: hsl(45, 80%, 70%); /* Electric gold */
-  --gold-primary: hsl(45, 100%, 60%);       /* Bright gold */
-  --gold-secondary: hsl(43, 90%, 65%);      /* Light gold */
-  --purple-primary: hsl(45, 93%, 58%);       /* Yellow instead of purple */
-  --green-primary: hsl(150, 60%, 65%);       /* Soft green */
-  --cyan-primary: hsl(180, 100%, 50%);       /* Neon cyan */
-  --galaxy-gold: hsl(45, 100%, 60%);        /* Galaxy gold */
-  --galaxy-purple: hsl(45, 93%, 58%);        /* Galaxy yellow */
-  --galaxy-cyan: hsl(180, 100%, 50%);        /* Galaxy cyan */
+  /* CHAINZOKU NEON COLORS */
+  --chainzoku-black: #000000;               /* Pure black */
+  --chainzoku-white: #FFFFFF;               /* Pure white */
+  --chainzoku-cyan: #00FFFF;                /* Neon cyan */
+  --chainzoku-blue: #1E90FF;                /* Neon blue */
+  --chainzoku-electric: #0099FF;            /* Electric blue */
+  --chainzoku-glow: rgba(0, 255, 255, 0.5); /* Cyan glow */
+  --chainzoku-glass: rgba(0, 0, 0, 0.1);    /* Glass effect */
+  --chainzoku-border: rgba(0, 255, 255, 0.2); /* Subtle border */
+  --chainzoku-hover: rgba(0, 255, 255, 0.1); /* Hover effect */
+  --chainzoku-shadow: rgba(0, 255, 255, 0.3); /* Glow shadow */
 }
 
 /* Clean Text Effects */
@@ -78,78 +75,172 @@
 }
 
 .dark {
-  /* Elegant Dark Theme - Enhanced Soft Colors for Dark Mode */
-  --background: hsl(220, 20%, 5%);            /* Ultra soft dark */
-  --foreground: hsl(45, 25%, 95%);           /* Ultra soft white text */
-  --muted: hsl(220, 20%, 8%);                 /* Deep muted */
-  --muted-foreground: hsl(45, 20%, 75%);     /* Bright muted text */
-  --popover: hsl(220, 20%, 6%);               /* Deep popover */
-  --popover-foreground: hsl(45, 25%, 95%);   /* Ultra soft white text */
-  --card: hsl(220, 20%, 7%);                  /* Deep card */
-  --card-foreground: hsl(45, 25%, 95%);      /* Ultra soft white text */
-  --border: hsl(45, 30%, 30%);               /* Soft gold borders */
-  --input: hsl(45, 25%, 95%);                /* Light input */
-  --primary: hsl(45, 100%, 70%);             /* Ultra soft gold */
-  --primary-foreground: hsl(0, 0%, 100%);     /* White text */
-  --secondary: hsl(220, 20%, 12%);            /* Deep secondary */
-  --secondary-foreground: hsl(45, 25%, 95%); /* Ultra soft white text */
-  --accent: hsl(45, 85%, 50%);               /* Soft gold accent */
-  --accent-foreground: hsl(45, 25%, 95%);    /* Ultra soft white text */
-  --destructive: hsl(0, 75%, 60%);            /* Soft red */
-  --destructive-foreground: hsl(0, 0%, 100%); /* White text */
-  --ring: hsl(45, 100%, 70%);                /* Ultra soft gold focus */
-  --radius: 0.5rem;
+  /* CHAINZOKU DARK THEME - Consistent with :root */
+  --background: #000000;                     /* Pure black */
+  --foreground: #FFFFFF;                     /* Pure white */
+  --muted: rgba(0, 0, 0, 0.9);              /* Muted black */
+  --muted-foreground: rgba(255, 255, 255, 0.7); /* Muted white */
+  --popover: rgba(0, 0, 0, 0.95);           /* Popover black */
+  --popover-foreground: #FFFFFF;            /* Pure white */
+  --card: rgba(0, 0, 0, 0.8);               /* Card black */
+  --card-foreground: #FFFFFF;               /* Pure white */
+  --border: rgba(0, 255, 255, 0.3);         /* Neon cyan borders */
+  --input: rgba(0, 0, 0, 0.9);              /* Dark input */
+  --primary: #00FFFF;                       /* Neon cyan */
+  --primary-foreground: #000000;            /* Black text */
+  --secondary: rgba(0, 0, 0, 0.8);          /* Secondary black */
+  --secondary-foreground: #FFFFFF;          /* Pure white */
+  --accent: #1E90FF;                        /* Neon blue */
+  --accent-foreground: #FFFFFF;             /* Pure white */
+  --destructive: #FF4444;                   /* Red */
+  --destructive-foreground: #FFFFFF;        /* White text */
+  --ring: #00FFFF;                          /* Neon cyan focus */
+  --radius: 0.75rem;
 }
 
-/* Metaverse inspired theme - futuristic yellow-gold-amber */
-:root {
-  --neon-cyan: #00ffff;
-  --bright-purple: #fbbf24;
-  --electric-blue: #3b82f6;
-  --dark-purple: #4c1d95;
-  --metaverse-glow: #8b5cf680;
-  --dark-bg: #0a0a0f;
-  --card-bg: #1a1a2e;
-  --border-color: #16213e;
+/* CHAINZOKU BASE STYLES */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-/* Animated Background Grid - Metaverse Style */
-.grid-background {
-  background-image: 
-    linear-gradient(rgba(139, 92, 246, 0.15) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 255, 255, 0.1) 1px, transparent 1px);
-  background-size: 50px 50px;
-  animation: grid-move 20s linear infinite;
+body {
+  background: #000000 !important;
+  color: #FFFFFF !important;
+  font-family: 'Space Grotesk', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-@keyframes grid-move {
-  0% { background-position: 0 0; }
-  100% { background-position: 50px 50px; }
+#root {
+  background: #000000 !important;
+  min-height: 100vh;
 }
 
-/* Clean Metaverse Effects */
-.cyan-accent {
-  box-shadow: 0 2px 4px rgba(0, 255, 255, 0.2);
+/* CHAINZOKU UTILITIES */
+.chainzoku-bg {
+  background: #000000;
 }
 
-.cyan-subtle {
-  box-shadow: 0 1px 3px rgba(0, 255, 255, 0.15);
+.chainzoku-text {
+  color: #FFFFFF;
 }
 
-.yellow-accent {
-  box-shadow: 0 2px 4px rgba(251, 191, 36, 0.2);
+.chainzoku-accent {
+  color: #00FFFF;
 }
 
-.yellow-subtle {
-  box-shadow: 0 1px 3px rgba(251, 191, 36, 0.15);
+.chainzoku-blue {
+  color: #1E90FF;
 }
 
-/* Clean Card Effects - Metaverse Style */
-.clean-card {
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  border: 1px solid rgba(251, 191, 36, 0.2);
-  background: rgba(26, 26, 46, 0.6);
-  backdrop-filter: blur(15px);
+/* CHAINZOKU BUTTON STYLES */
+.chainzoku-btn {
+  background: linear-gradient(135deg, #00FFFF, #1E90FF);
+  color: #000000;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 12px;
+  font-weight: 700;
+  font-family: 'Space Grotesk', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+}
+
+.chainzoku-btn:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 0 30px rgba(0, 255, 255, 0.5);
+  background: linear-gradient(135deg, #1E90FF, #00FFFF);
+}
+
+/* CHAINZOKU CARD STYLES */
+.chainzoku-card {
+  background: rgba(0, 0, 0, 0.8);
+  border: 1px solid rgba(0, 255, 255, 0.2);
+  backdrop-filter: blur(20px);
+  border-radius: 16px;
+  transition: all 0.3s ease;
+}
+
+.chainzoku-card:hover {
+  border-color: rgba(0, 255, 255, 0.5);
+  box-shadow: 0 0 25px rgba(0, 255, 255, 0.2);
+  transform: translateY(-4px);
+}
+
+/* CHAINZOKU ANIMATIONS */
+@keyframes chainzoku-fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.chainzoku-fade-in {
+  animation: chainzoku-fadeIn 0.6s ease-out;
+}
+
+@keyframes chainzoku-glow {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 25px rgba(0, 255, 255, 0.5);
+  }
+}
+
+.chainzoku-glow {
+  animation: chainzoku-glow 2s ease-in-out infinite;
+}
+
+/* CHAINZOKU TYPOGRAPHY */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  color: #FFFFFF;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+h1 {
+  font-size: 3rem;
+  line-height: 1.1;
+}
+
+h2 {
+  font-size: 2.5rem;
+  line-height: 1.2;
+}
+
+h3 {
+  font-size: 2rem;
+  line-height: 1.3;
+}
+
+/* CHAINZOKU INPUT STYLES */
+.chainzoku-input {
+  background: rgba(0, 0, 0, 0.9);
+  border: 1px solid rgba(0, 255, 255, 0.3);
+  color: #FFFFFF;
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-family: 'Inter', sans-serif;
+  transition: all 0.3s ease;
+}
+
+.chainzoku-input:focus {
+  outline: none;
+  border-color: #00FFFF;
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
 }
 
 .clean-card:hover {

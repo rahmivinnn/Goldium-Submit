@@ -165,42 +165,42 @@ export default function HomeSimple() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900 text-white">
+    <div className="min-h-screen bg-black text-white">
       {/* Navigation Bar */}
-      <nav className="fixed top-0 w-full z-50 bg-slate-900/70 backdrop-blur-xl border-b border-cyan-500/20 shadow-lg shadow-cyan-500/10">
+      <nav className="fixed top-0 w-full z-50 bg-black/90 backdrop-blur-xl border-b border-cyan-400/30 shadow-lg shadow-cyan-400/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4">
           <div className="flex justify-between items-center">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-cyan-400 to-blue-600 p-2 shadow-lg shadow-cyan-400/30 hover:shadow-cyan-400/50 transition-all duration-300">
+              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-400 to-blue-500 p-2 shadow-lg shadow-cyan-400/40 hover:shadow-cyan-400/60 hover:scale-105 transition-all duration-300">
                 <img 
                   src={goldiumLogo} 
                   alt="Goldium Logo" 
                   className="w-full h-full object-contain"
                 />
               </div>
-              <div className="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent font-['Space_Grotesk'] tracking-wide">GOLDIUM</div>
+              <div className="text-3xl font-black bg-gradient-to-r from-white to-cyan-400 bg-clip-text text-transparent font-['Space_Grotesk'] tracking-wider uppercase">GOLDIUM</div>
             </div>
             <div className="hidden md:flex items-center space-x-6">
-              <a href="#brand" className="text-slate-300 hover:text-cyan-400 transition-all duration-300 font-medium hover:glow-text-cyan">Brand</a>
-              <a href="#defi" className="text-slate-300 hover:text-cyan-400 transition-all duration-300 font-medium hover:glow-text-cyan">DeFi</a>
-              <a href="#tokenomics" className="text-slate-300 hover:text-cyan-400 transition-all duration-300 font-medium hover:glow-text-cyan">Tokenomics</a>
+              <a href="#brand" className="text-white hover:text-cyan-400 transition-all duration-300 font-bold font-['Space_Grotesk'] uppercase tracking-wide text-sm">Brand</a>
+              <a href="#defi" className="text-white hover:text-cyan-400 transition-all duration-300 font-bold font-['Space_Grotesk'] uppercase tracking-wide text-sm">DeFi</a>
+              <a href="#tokenomics" className="text-white hover:text-cyan-400 transition-all duration-300 font-bold font-['Space_Grotesk'] uppercase tracking-wide text-sm">Tokenomics</a>
               {externalWallet.connected && (
-                 <div className="flex items-center gap-3 bg-slate-800/30 backdrop-blur-lg px-4 py-2 rounded-xl border border-cyan-500/30 shadow-lg shadow-cyan-500/10">
+                 <div className="flex items-center gap-3 bg-black/80 backdrop-blur-lg px-4 py-2 rounded-xl border border-cyan-400/50 shadow-lg shadow-cyan-400/20">
                    <div className="flex items-center gap-2">
-                     <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse shadow-lg shadow-cyan-400/50"></div>
-                     <span className="text-sm text-slate-300">
+                     <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse shadow-lg shadow-cyan-400/60"></div>
+                     <span className="text-sm text-white font-['Inter'] font-medium">
                        {externalWallet.address?.slice(0, 6)}...{externalWallet.address?.slice(-4)}
                      </span>
                    </div>
-                   <div className="h-4 w-px bg-cyan-500/30"></div>
+                   <div className="h-4 w-px bg-cyan-400/40"></div>
                    <div className="flex items-center gap-2">
-                     <span className="text-sm font-semibold text-cyan-400">
+                     <span className="text-sm font-bold text-cyan-400 font-['Space_Grotesk']">
                        {externalWallet.balance.toFixed(3)} SOL
                      </span>
                    </div>
                    <div className="flex items-center gap-2">
                      <DollarSign className="w-4 h-4 text-cyan-400" />
-                     <span className="text-sm font-semibold text-cyan-400">
+                     <span className="text-sm font-bold text-cyan-400 font-['Space_Grotesk']">
                        {goldBalance.balance.toFixed(0)} GOLD
                      </span>
                    </div>
@@ -212,13 +212,13 @@ export default function HomeSimple() {
             {/* Mobile Menu Button */}
             <div className="md:hidden flex items-center gap-2">
               {externalWallet.connected && (
-                <div className="flex items-center gap-1 bg-slate-800/30 backdrop-blur-lg px-2 py-1 rounded border border-cyan-500/30">
-            <span className="text-xs text-cyan-400 font-semibold">
+                <div className="flex items-center gap-1 bg-black/80 backdrop-blur-lg px-3 py-2 rounded-lg border border-cyan-400/50">
+            <span className="text-xs text-cyan-400 font-bold font-['Space_Grotesk']">
                     {externalWallet.balance.toFixed(2)} SOL
                   </span>
                 </div>
               )}
-              <button className="text-slate-400 p-1 hover:text-cyan-400 transition-colors">
+              <button className="text-white p-2 hover:text-cyan-400 hover:bg-cyan-400/10 rounded-lg transition-all duration-300">
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
                 </svg>
@@ -235,30 +235,30 @@ export default function HomeSimple() {
 
       {/* Hero Section */}
       <section className="relative pt-24 pb-20 min-h-screen flex items-center overflow-hidden">
-        {/* Blue Metaverse Background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-blue-950 to-indigo-950" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_120%_120%_at_50%_0%,rgba(6,182,212,0.15),rgba(59,130,246,0.1),rgba(0,0,0,0.9))]" />
-        <div className="absolute inset-0 bg-[conic-gradient(from_230deg_at_51%_80%,rgba(6,182,212,0.12),rgba(59,130,246,0.08),rgba(0,0,0,0.8),rgba(6,182,212,0.05))]" />
+        {/* Chainzoku Pure Black Background */}
+        <div className="absolute inset-0 bg-black" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_120%_120%_at_50%_0%,rgba(0,255,255,0.08),rgba(30,144,255,0.05),rgba(0,0,0,0.95))]" />
+        <div className="absolute inset-0 bg-[conic-gradient(from_230deg_at_51%_80%,rgba(0,255,255,0.05),rgba(30,144,255,0.03),rgba(0,0,0,0.9),rgba(0,255,255,0.02))]" />
         
-        {/* Dynamic Grid Pattern */}
-        <div className="absolute inset-0 opacity-[0.15]">
+        {/* Chainzoku Neon Grid Pattern */}
+        <div className="absolute inset-0 opacity-[0.08]">
           <div className="absolute inset-0" style={{
-            backgroundImage: `linear-gradient(rgba(6,182,212,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(6,182,212,0.1) 1px, transparent 1px)`,
-            backgroundSize: '50px 50px',
-            animation: 'grid-flow 20s linear infinite'
+            backgroundImage: `linear-gradient(rgba(0,255,255,0.4) 1px, transparent 1px), linear-gradient(90deg, rgba(0,255,255,0.4) 1px, transparent 1px)`,
+            backgroundSize: '80px 80px',
+            animation: 'grid-flow 30s linear infinite'
           }}></div>
         </div>
         
-        {/* Floating Orbs */}
-        <div className="absolute top-20 left-10 w-32 h-32 bg-gradient-to-r from-cyan-400/20 to-blue-500/20 rounded-full blur-xl animate-pulse"></div>
-        <div className="absolute bottom-40 right-20 w-48 h-48 bg-gradient-to-r from-blue-500/15 to-cyan-600/15 rounded-full blur-2xl animate-pulse delay-1000"></div>
-        <div className="absolute top-1/3 right-1/4 w-24 h-24 bg-gradient-to-r from-cyan-300/25 to-blue-400/25 rounded-full blur-lg animate-pulse delay-500"></div>
+        {/* Neon Glow Effects */}
+        <div className="absolute top-20 left-10 w-40 h-40 bg-gradient-to-r from-cyan-400/10 to-blue-500/10 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-40 right-20 w-60 h-60 bg-gradient-to-r from-blue-500/8 to-cyan-600/8 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        <div className="absolute top-1/3 right-1/4 w-32 h-32 bg-gradient-to-r from-cyan-300/12 to-blue-400/12 rounded-full blur-2xl animate-pulse delay-500"></div>
         
         <div className="relative max-w-6xl mx-auto px-4 sm:px-6 text-center">
           <div className="space-y-12 animate-fade-in-up">
             <div className="space-y-6">
-              <div className="flex justify-center mb-8">
-                <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-cyan-400 to-blue-600 p-4 shadow-2xl shadow-cyan-400/30 hover:shadow-cyan-400/50 transition-all duration-500 hover:scale-105">
+              <div className="flex justify-center mb-12">
+                <div className="w-32 h-32 rounded-3xl bg-gradient-to-br from-cyan-400 to-blue-500 p-6 shadow-2xl shadow-cyan-400/50 hover:shadow-cyan-400/70 transition-all duration-500 hover:scale-110 chainzoku-glow">
                   <img 
                     src={goldiumLogo} 
                     alt="Goldium Logo" 
@@ -266,35 +266,35 @@ export default function HomeSimple() {
                   />
                 </div>
               </div>
-              <h1 className="text-5xl sm:text-6xl md:text-7xl font-black tracking-tight font-['Space_Grotesk']">
-                <span className="bg-gradient-to-r from-cyan-400 via-blue-400 to-cyan-600 bg-clip-text text-transparent animate-pulse">
+              <h1 className="text-6xl sm:text-7xl md:text-8xl font-black tracking-wider font-['Space_Grotesk'] uppercase">
+                <span className="bg-gradient-to-r from-white via-cyan-400 to-white bg-clip-text text-transparent">
                   GOLDIUM
                 </span>
               </h1>
-              <div className="text-xl sm:text-2xl md:text-3xl font-semibold text-slate-300 max-w-3xl mx-auto font-['Inter']">
-                Digital Gold for the Metaverse Era
+              <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-white max-w-4xl mx-auto font-['Space_Grotesk'] uppercase tracking-wide">
+                Digital Gold for the Future
               </div>
-              <p className="text-lg text-slate-400 max-w-2xl mx-auto leading-relaxed">
+              <p className="text-xl text-white/80 max-w-3xl mx-auto leading-relaxed font-['Inter'] font-medium">
                 Secure, transparent, and backed by real gold reserves on the Solana blockchain
               </p>
             </div>
             
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-4xl mx-auto">
-              <div className="bg-slate-800/30 backdrop-blur-xl border border-cyan-500/30 rounded-2xl p-6 shadow-2xl shadow-cyan-500/10 hover:shadow-cyan-500/20 hover:border-cyan-400/50 transition-all duration-500 hover:scale-[1.02]">
-                <div className="text-center mb-6">
-                  <div className="flex items-center justify-center gap-3 mb-4">
-                    <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-cyan-400 to-blue-600 p-1.5 shadow-lg shadow-cyan-400/30">
-                      <svg className="w-full h-full text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1" />
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 max-w-5xl mx-auto">
+              <div className="chainzoku-card bg-black/95 backdrop-blur-xl border border-cyan-400/50 rounded-2xl p-8 shadow-2xl shadow-cyan-400/30 hover:shadow-cyan-400/50 hover:border-cyan-400/80 transition-all duration-500 hover:scale-[1.02]">
+                <div className="text-center mb-8">
+                  <div className="flex items-center justify-center gap-4 mb-6">
+                    <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-cyan-400 to-blue-500 p-2 shadow-lg shadow-cyan-400/50">
+                      <svg className="w-full h-full text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={3}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1" />
                       </svg>
                     </div>
-                    <h3 className="text-xl font-bold text-white font-['Space_Grotesk']">Buy GOLDIUM</h3>
+                    <h3 className="text-2xl font-black text-white font-['Space_Grotesk'] uppercase tracking-wide">Buy GOLDIUM</h3>
                   </div>
-                  <div className="bg-slate-700/30 backdrop-blur-lg rounded-lg p-3 border border-cyan-500/20">
-                    <p className="text-slate-300 text-sm">Exchange Rate: <span className="text-cyan-400 font-semibold">1 SOL = 21,486 GOLD</span></p>
+                  <div className="bg-black/80 backdrop-blur-lg rounded-xl p-4 border border-cyan-400/30">
+                    <p className="text-white text-sm font-['Inter'] font-medium">Exchange Rate: <span className="text-cyan-400 font-bold">1 SOL = 21,486 GOLD</span></p>
                   </div>
                 </div>
-                <div className="space-y-4">
+                <div className="space-y-6">
                   <div className="relative">
                     <input
                       type="number"
@@ -303,20 +303,20 @@ export default function HomeSimple() {
                       placeholder="0.1"
                       min="0.000047"
                       step="0.000047"
-                      className="bg-slate-700/30 backdrop-blur-lg border border-cyan-500/30 text-white px-4 py-3 rounded-xl w-full focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-cyan-400 focus:shadow-lg focus:shadow-cyan-400/20 transition-all duration-300 text-lg font-medium"
+                      className="chainzoku-input bg-black/90 backdrop-blur-lg border border-cyan-400/50 text-white px-5 py-4 rounded-xl w-full focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-cyan-400 focus:shadow-lg focus:shadow-cyan-400/30 transition-all duration-300 text-lg font-bold font-['Space_Grotesk']"
                       disabled={buyingToken}
                     />
-                    <span className="absolute right-4 top-1/2 transform -translate-y-1/2 text-slate-400 font-medium">SOL</span>
+                    <span className="absolute right-5 top-1/2 transform -translate-y-1/2 text-cyan-400 font-bold font-['Space_Grotesk'] uppercase text-sm">SOL</span>
                   </div>
-                  <div className="flex items-center justify-center gap-2 text-slate-400">
-                    <span>≈</span>
-                    <span className="text-cyan-400 font-semibold">{buyAmount ? (parseFloat(buyAmount) * 21486.893).toLocaleString() : '0'} GOLD</span>
+                  <div className="flex items-center justify-center gap-3 text-white">
+                    <span className="text-xl font-bold">≈</span>
+                    <span className="text-cyan-400 font-black text-lg font-['Space_Grotesk']">{buyAmount ? (parseFloat(buyAmount) * 21486.893).toLocaleString() : '0'} GOLD</span>
                   </div>
                 </div>
                 <Button
                   onClick={handleBuyGoldium}
                   disabled={buyingToken || !externalWallet.connected}
-                  className="bg-gradient-to-r from-cyan-400 to-blue-500 hover:from-cyan-500 hover:to-blue-600 text-white font-semibold px-6 py-3 rounded-xl text-base shadow-lg shadow-cyan-400/30 hover:shadow-cyan-400/50 hover:scale-105 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed w-full"
+                  className="chainzoku-btn bg-gradient-to-r from-cyan-400 to-blue-500 hover:from-cyan-500 hover:to-blue-600 text-black font-black px-8 py-4 rounded-xl text-lg uppercase tracking-wider shadow-lg shadow-cyan-400/40 hover:shadow-cyan-400/60 hover:scale-105 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed w-full mt-6"
                 >
                   {buyingToken ? (
                     <div className="flex items-center justify-center gap-2">
