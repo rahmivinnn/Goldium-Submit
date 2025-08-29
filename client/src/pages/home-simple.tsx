@@ -166,41 +166,41 @@ export default function HomeSimple() {
 
   return (
     <div className="min-h-screen bg-black text-white">
-      {/* Navigation Bar */}
-      <nav className="fixed top-0 w-full z-50 bg-black/90 backdrop-blur-xl border-b border-yellow-400/40 shadow-lg shadow-yellow-400/30">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4">
+      {/* Navigation Bar - Chainzoku Style */}
+      <nav className="fixed top-0 w-full z-50 bg-black/95 backdrop-blur-2xl border-b border-cyan-400/20">
+        <div className="max-w-7xl mx-auto px-6 py-3">
           <div className="flex justify-between items-center">
-            <div className="flex items-center gap-3">
-              <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-yellow-400 to-orange-500 p-2 shadow-lg shadow-yellow-400/50 hover:shadow-yellow-400/70 hover:scale-110 transition-all duration-300 anime-bounce">
+            <div className="flex items-center gap-4">
+              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-cyan-400 to-blue-500 p-2 shadow-xl shadow-cyan-400/30 hover:shadow-cyan-400/50 hover:scale-105 transition-all duration-300 chainzoku-pulse">
                 <img 
                   src={goldiumLogo} 
                   alt="Goldium Logo" 
-                  className="w-full h-full object-contain anime-float"
+                  className="w-full h-full object-contain"
                 />
               </div>
-              <div className="text-3xl font-black anime-title font-['Nunito'] tracking-wide">GOLDIUM</div>
+              <div className="text-2xl font-bold chainzoku-title font-['Space_Grotesk'] tracking-tight">GOLDIUM</div>
             </div>
-            <div className="hidden md:flex items-center space-x-6">
-              <a href="#brand" className="text-white hover:text-yellow-400 transition-all duration-300 font-bold font-['Nunito'] tracking-wide text-base hover:scale-105">Brand</a>
-              <a href="#defi" className="text-white hover:text-yellow-400 transition-all duration-300 font-bold font-['Nunito'] tracking-wide text-base hover:scale-105">DeFi</a>
-              <a href="#tokenomics" className="text-white hover:text-yellow-400 transition-all duration-300 font-bold font-['Nunito'] tracking-wide text-base hover:scale-105">Tokenomics</a>
+            <div className="hidden lg:flex items-center space-x-8">
+              <a href="#brand" className="text-white/80 hover:text-cyan-400 transition-all duration-300 font-medium font-['Inter'] text-sm uppercase tracking-wide hover:scale-105">Brand</a>
+              <a href="#defi" className="text-white/80 hover:text-cyan-400 transition-all duration-300 font-medium font-['Inter'] text-sm uppercase tracking-wide hover:scale-105">DeFi</a>
+              <a href="#tokenomics" className="text-white/80 hover:text-cyan-400 transition-all duration-300 font-medium font-['Inter'] text-sm uppercase tracking-wide hover:scale-105">Tokenomics</a>
               {externalWallet.connected && (
-                 <div className="anime-card flex items-center gap-3 bg-black/85 backdrop-blur-lg px-4 py-2 rounded-2xl border border-yellow-400/50 shadow-lg shadow-yellow-400/30">
+                 <div className="chainzoku-card flex items-center gap-3 bg-black/90 backdrop-blur-lg px-3 py-2 rounded-xl border border-cyan-400/30 shadow-lg shadow-cyan-400/20">
                    <div className="flex items-center gap-2">
-                     <div className="w-3 h-3 bg-yellow-400 rounded-full anime-sparkle shadow-lg shadow-yellow-400/70"></div>
-                     <span className="text-sm text-white font-['Nunito'] font-semibold">
-                       {externalWallet.address?.slice(0, 6)}...{externalWallet.address?.slice(-4)}
+                     <div className="w-2 h-2 bg-cyan-400 rounded-full chainzoku-pulse shadow-lg shadow-cyan-400/60"></div>
+                     <span className="text-xs text-white/90 font-['Inter'] font-medium">
+                       {externalWallet.address?.slice(0, 4)}...{externalWallet.address?.slice(-4)}
                      </span>
                    </div>
-                   <div className="h-4 w-px bg-yellow-400/50"></div>
-                   <div className="flex items-center gap-2">
-                     <span className="text-sm font-bold text-yellow-400 font-['Nunito']">
-                       {externalWallet.balance.toFixed(3)} SOL
+                   <div className="h-3 w-px bg-cyan-400/40"></div>
+                   <div className="flex items-center gap-1">
+                     <span className="text-xs font-semibold text-cyan-400 font-['Inter']">
+                       {externalWallet.balance.toFixed(2)} SOL
                      </span>
                    </div>
-                   <div className="flex items-center gap-2">
-                     <DollarSign className="w-4 h-4 text-yellow-400" />
-                     <span className="text-sm font-bold text-yellow-400 font-['Nunito']">
+                   <div className="flex items-center gap-1">
+                     <DollarSign className="w-3 h-3 text-cyan-400" />
+                     <span className="text-xs font-semibold text-cyan-400 font-['Inter']">
                        {goldBalance.balance.toFixed(0)} GOLD
                      </span>
                    </div>
@@ -233,70 +233,64 @@ export default function HomeSimple() {
         <RealTimeNotifications className="shadow-2xl" maxNotifications={3} />
       </div>
 
-      {/* Hero Section */}
-      <section className="relative pt-24 pb-20 min-h-screen flex items-center overflow-hidden">
-        {/* Anime Super Immersive Background */}
+      {/* Hero Section - Chainzoku Style */}
+      <section className="relative pt-20 pb-32 min-h-screen flex items-center overflow-hidden">
+        {/* Chainzoku Background */}
         <div className="absolute inset-0 bg-black" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_120%_120%_at_50%_0%,rgba(255,215,0,0.12),rgba(255,165,0,0.08),rgba(0,0,0,0.95))]" />
-        <div className="absolute inset-0 bg-[conic-gradient(from_230deg_at_51%_80%,rgba(255,215,0,0.08),rgba(255,165,0,0.05),rgba(0,0,0,0.9),rgba(255,215,0,0.03))]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_0%,rgba(0,255,255,0.08),rgba(0,191,255,0.05),rgba(0,0,0,0.95))]" />
+        <div className="absolute inset-0 bg-[conic-gradient(from_180deg_at_50%_50%,rgba(0,255,255,0.05),rgba(0,0,0,0.98),rgba(0,191,255,0.03),rgba(0,0,0,0.98))]" />
         
-        {/* Anime Golden Grid Pattern */}
-        <div className="absolute inset-0 opacity-[0.12]">
+        {/* Chainzoku Grid Pattern */}
+        <div className="absolute inset-0 opacity-[0.03]">
           <div className="absolute inset-0" style={{
-            backgroundImage: `linear-gradient(rgba(255,215,0,0.6) 1px, transparent 1px), linear-gradient(90deg, rgba(255,215,0,0.6) 1px, transparent 1px)`,
-            backgroundSize: '60px 60px',
-            animation: 'anime-grid-flow 25s linear infinite'
+            backgroundImage: `linear-gradient(rgba(0,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(0,255,255,0.5) 1px, transparent 1px)`,
+            backgroundSize: '100px 100px'
           }}></div>
         </div>
         
-        {/* Anime Golden Orbs */}
-        <div className="absolute top-20 left-10 w-48 h-48 bg-gradient-to-r from-yellow-400/15 to-orange-500/15 rounded-full blur-3xl anime-float"></div>
-        <div className="absolute bottom-40 right-20 w-72 h-72 bg-gradient-to-r from-orange-500/12 to-yellow-600/12 rounded-full blur-3xl anime-float delay-1000"></div>
-        <div className="absolute top-1/3 right-1/4 w-40 h-40 bg-gradient-to-r from-yellow-300/18 to-orange-400/18 rounded-full blur-2xl anime-float delay-500"></div>
+        {/* Chainzoku Floating Orbs */}
+        <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-gradient-to-r from-cyan-400/8 to-blue-500/8 rounded-full blur-3xl chainzoku-float"></div>
+        <div className="absolute bottom-1/3 right-1/3 w-96 h-96 bg-gradient-to-r from-blue-500/6 to-cyan-600/6 rounded-full blur-3xl chainzoku-float delay-2000"></div>
+        <div className="absolute top-1/2 right-1/4 w-48 h-48 bg-gradient-to-r from-cyan-300/10 to-blue-400/10 rounded-full blur-2xl chainzoku-float delay-1000"></div>
         
-        {/* Anime Sparkle Effects */}
-        <div className="absolute top-1/4 left-1/3 w-2 h-2 bg-yellow-400 rounded-full anime-sparkle"></div>
-        <div className="absolute top-3/4 right-1/3 w-3 h-3 bg-orange-400 rounded-full anime-sparkle delay-700"></div>
-        <div className="absolute bottom-1/4 left-1/4 w-2 h-2 bg-yellow-300 rounded-full anime-sparkle delay-1400"></div>
-        
-        <div className="relative max-w-6xl mx-auto px-4 sm:px-6 text-center">
-          <div className="space-y-12 animate-fade-in-up">
-            <div className="space-y-6">
-              <div className="flex justify-center mb-12">
-                <div className="w-40 h-40 rounded-3xl bg-gradient-to-br from-yellow-400 to-orange-500 p-8 shadow-2xl shadow-yellow-400/60 hover:shadow-yellow-400/80 transition-all duration-500 hover:scale-115 anime-glow anime-bounce">
+        <div className="relative max-w-7xl mx-auto px-6 text-center">
+          <div className="space-y-16 chainzoku-fade-in">
+            <div className="space-y-8">
+              <div className="flex justify-center mb-8">
+                <div className="w-24 h-24 rounded-2xl bg-gradient-to-br from-cyan-400 to-blue-500 p-4 shadow-2xl shadow-cyan-400/50 hover:shadow-cyan-400/70 transition-all duration-500 hover:scale-110 chainzoku-glow chainzoku-float">
                   <img 
                     src={goldiumLogo} 
                     alt="Goldium Logo" 
-                    className="w-full h-full object-contain anime-float"
+                    className="w-full h-full object-contain"
                   />
                 </div>
               </div>
-              <h1 className="text-7xl sm:text-8xl md:text-9xl font-black tracking-wide font-['Nunito']">
-                <span className="anime-title anime-glow">
+              <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-black tracking-tight font-['Space_Grotesk']">
+                <span className="chainzoku-title chainzoku-glow">
                   GOLDIUM
                 </span>
               </h1>
-              <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-white max-w-4xl mx-auto font-['Nunito'] tracking-wide anime-fade-in">
-                Digital Gold for the Anime Future ✨
+              <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl chainzoku-subtitle max-w-5xl mx-auto tracking-tight chainzoku-fade-in">
+                Next-Generation Digital Gold Protocol
               </div>
-              <p className="text-2xl text-white/90 max-w-3xl mx-auto leading-relaxed font-['Nunito'] font-semibold anime-fade-in">
-                Secure, transparent, and backed by real gold reserves on the Solana blockchain 🚀
+              <p className="text-lg sm:text-xl text-white/70 max-w-3xl mx-auto leading-relaxed font-['Inter'] font-normal chainzoku-fade-in">
+                Secure, transparent, and backed by real gold reserves on the Solana blockchain. Experience the future of digital assets.
               </p>
             </div>
             
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-5xl mx-auto">
-              <div className="anime-card bg-black/95 backdrop-blur-xl border border-yellow-400/50 rounded-3xl p-8 shadow-2xl shadow-yellow-400/40 hover:shadow-yellow-400/60 hover:border-yellow-400/80 transition-all duration-500 hover:scale-[1.05] anime-fade-in">
-                <div className="text-center mb-8">
-                  <div className="flex items-center justify-center gap-4 mb-6">
-                    <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-yellow-400 to-orange-500 p-2 shadow-lg shadow-yellow-400/60 anime-bounce">
-                      <svg className="w-full h-full text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={3}>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
+              <div className="chainzoku-card bg-black/90 backdrop-blur-xl border border-cyan-400/30 rounded-2xl p-8 shadow-2xl shadow-cyan-400/20 hover:shadow-cyan-400/40 hover:border-cyan-400/50 transition-all duration-500 hover:scale-[1.02] chainzoku-fade-in">
+                <div className="space-y-6">
+                  <div className="flex items-center gap-4 mb-6">
+                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-400 to-blue-500 p-2.5 shadow-lg shadow-cyan-400/50 chainzoku-pulse">
+                      <svg className="w-full h-full text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}>
                         <path strokeLinecap="round" strokeLinejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1" />
                       </svg>
                     </div>
-                    <h3 className="text-2xl font-black text-white font-['Nunito'] tracking-wide">Buy GOLDIUM 💰</h3>
+                    <h3 className="text-xl font-bold text-white font-['Space_Grotesk'] tracking-tight">Buy GOLDIUM</h3>
                   </div>
-                  <div className="bg-black/85 backdrop-blur-lg rounded-2xl p-4 border border-yellow-400/40">
-                    <p className="text-white text-base font-['Nunito'] font-semibold">Exchange Rate: <span className="text-yellow-400 font-black">1 SOL = 21,486 GOLD ⚡</span></p>
+                  <div className="bg-black/80 backdrop-blur-lg rounded-xl p-4 border border-cyan-400/20">
+                    <p className="text-white/90 text-sm font-['Inter'] font-medium">Exchange Rate: <span className="chainzoku-highlight font-semibold">1 SOL = 21,486 GOLD</span></p>
                   </div>
                 </div>
                 <div className="space-y-6">
@@ -305,31 +299,31 @@ export default function HomeSimple() {
                       type="number"
                       value={buyAmount}
                       onChange={(e) => setBuyAmount(e.target.value)}
-                      placeholder="0.1 ⭐"
+                      placeholder="0.1"
                       min="0.000047"
                       step="0.000047"
-                      className="anime-input bg-black/90 backdrop-blur-lg border border-yellow-400/50 text-white px-6 py-5 rounded-2xl w-full focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400 focus:shadow-lg focus:shadow-yellow-400/40 transition-all duration-300 text-xl font-bold font-['Nunito']"
+                      className="chainzoku-input bg-black/90 backdrop-blur-lg border border-cyan-400/30 text-white px-5 py-4 rounded-xl w-full focus:outline-none focus:ring-2 focus:ring-cyan-400/50 focus:border-cyan-400 transition-all duration-300 text-lg font-medium font-['Inter']"
                       disabled={buyingToken}
                     />
-                    <span className="absolute right-6 top-1/2 transform -translate-y-1/2 text-yellow-400 font-black font-['Nunito'] text-lg">SOL ⚡</span>
+                    <span className="absolute right-5 top-1/2 transform -translate-y-1/2 chainzoku-highlight font-semibold font-['Inter'] text-sm">SOL</span>
                   </div>
                   <div className="flex items-center justify-center gap-3 text-white">
-                    <span className="text-2xl font-bold">≈</span>
-                    <span className="text-yellow-400 font-black text-xl font-['Nunito']">{buyAmount ? (parseFloat(buyAmount) * 21486.893).toLocaleString() : '0'} GOLD ✨</span>
+                    <span className="text-lg font-medium">≈</span>
+                    <span className="chainzoku-highlight font-bold text-lg font-['Inter']">{buyAmount ? (parseFloat(buyAmount) * 21486.893).toLocaleString() : '0'} GOLD</span>
                   </div>
                 </div>
                 <Button
                   onClick={handleBuyGoldium}
                   disabled={buyingToken || !externalWallet.connected}
-                  className="anime-btn bg-gradient-to-r from-yellow-400 to-orange-500 hover:from-yellow-500 hover:to-orange-600 text-black font-black px-10 py-5 rounded-2xl text-xl tracking-wide shadow-lg shadow-yellow-400/50 hover:shadow-yellow-400/70 hover:scale-105 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed w-full mt-8"
+                  className="chainzoku-btn bg-gradient-to-r from-cyan-400 to-blue-500 hover:from-cyan-500 hover:to-blue-600 text-black font-semibold px-8 py-4 rounded-xl text-base tracking-wide shadow-lg shadow-cyan-400/30 hover:shadow-cyan-400/50 hover:scale-[1.02] transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed w-full mt-6"
                 >
                   {buyingToken ? (
-                    <div className="flex items-center justify-center gap-3">
-                      <div className="w-5 h-5 border-2 border-black border-t-transparent rounded-full animate-spin" />
-                      Processing... ⏳
+                    <div className="flex items-center justify-center gap-2">
+                      <div className="w-4 h-4 border-2 border-black border-t-transparent rounded-full animate-spin" />
+                      Processing...
                     </div>
                   ) : (
-                    'Buy GOLDIUM 🚀'
+                    'Buy GOLDIUM'
                   )}
                 </Button>
                 {!externalWallet.connected && (

@@ -136,7 +136,7 @@ export function ExternalWalletSelector() {
           <Button 
             variant="outline"
             disabled={wallet.connecting}
-            className="chainzoku-btn bg-gradient-to-r from-cyan-400 to-blue-500 hover:from-cyan-500 hover:to-blue-600 text-black font-black border-none shadow-lg shadow-cyan-400/30 hover:shadow-cyan-400/50 hover:scale-105 transition-all duration-300 font-['Space_Grotesk'] uppercase tracking-wide"
+            className="chainzoku-btn bg-gradient-to-r from-cyan-400 to-blue-500 hover:from-cyan-500 hover:to-blue-600 text-black font-semibold border-none shadow-lg shadow-cyan-400/30 hover:shadow-cyan-400/50 hover:scale-[1.02] transition-all duration-300 font-['Inter'] tracking-wide"
           >
             <Wallet className="w-4 h-4 mr-2" />
             {wallet.connecting ? 'Connecting...' : 'Connect Wallet'}
@@ -145,9 +145,9 @@ export function ExternalWalletSelector() {
         
         <DropdownMenuContent 
           align="end" 
-          className="w-80 bg-black/95 border-cyan-400/50 backdrop-blur-xl z-50 shadow-2xl shadow-cyan-400/30 rounded-2xl"
+          className="w-80 bg-black/95 border-cyan-400/30 backdrop-blur-xl z-50 shadow-2xl shadow-cyan-400/20 rounded-xl"
         >
-          <DropdownMenuLabel className="text-white px-6 py-4 font-['Space_Grotesk'] font-black text-lg uppercase tracking-wide">Connect Your Wallet</DropdownMenuLabel>
+          <DropdownMenuLabel className="text-white px-4 py-3 font-['Space_Grotesk'] font-bold text-base tracking-tight">Connect Your Wallet</DropdownMenuLabel>
           
           <div className="p-2 space-y-1">
             {walletOptions.map((walletOption) => {

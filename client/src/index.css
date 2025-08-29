@@ -1,9 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  /* ANIME THEME - Black + Golden Yellow + White */
+  /* CHAINZOKU MODERN THEME - Black + Neon Cyan + White */
   --background: #000000;                     /* Pure black background */
   --foreground: #FFFFFF;                     /* Pure white text */
   --muted: rgba(0, 0, 0, 0.9);              /* Muted black background */
@@ -12,30 +14,30 @@
   --popover-foreground: #FFFFFF;            /* Pure white text */
   --card: rgba(0, 0, 0, 0.8);               /* Card background */
   --card-foreground: #FFFFFF;               /* Pure white text */
-  --border: rgba(255, 215, 0, 0.4);         /* Golden borders */
+  --border: rgba(0, 255, 255, 0.3);         /* Cyan borders */
   --input: rgba(0, 0, 0, 0.9);              /* Dark input backgrounds */
-  --primary: #FFD700;                       /* Golden yellow primary */
+  --primary: #00FFFF;                       /* Neon cyan primary */
   --primary-foreground: #000000;            /* Black text on primary */
   --secondary: rgba(0, 0, 0, 0.8);          /* Secondary background */
   --secondary-foreground: #FFFFFF;          /* Pure white text */
-  --accent: #FFA500;                        /* Orange accent */
-  --accent-foreground: #000000;             /* Black text */
+  --accent: #00BFFF;                        /* Electric blue accent */
+  --accent-foreground: #FFFFFF;             /* White text */
   --destructive: #FF4444;                   /* Red for errors */
   --destructive-foreground: #FFFFFF;        /* White text */
-  --ring: #FFD700;                          /* Golden focus ring */
-  --radius: 1rem;
+  --ring: #00FFFF;                          /* Cyan focus ring */
+  --radius: 0.75rem;
 
-  /* ANIME GOLDEN COLORS */
-  --anime-black: #000000;                   /* Pure black */
-  --anime-white: #FFFFFF;                   /* Pure white */
-  --anime-gold: #FFD700;                    /* Bright gold */
-  --anime-orange: #FFA500;                  /* Bright orange */
-  --anime-yellow: #FFFF00;                  /* Bright yellow */
-  --anime-glow: rgba(255, 215, 0, 0.6);     /* Golden glow */
-  --anime-glass: rgba(0, 0, 0, 0.15);       /* Glass effect */
-  --anime-border: rgba(255, 215, 0, 0.3);   /* Subtle border */
-  --anime-hover: rgba(255, 215, 0, 0.15);   /* Hover effect */
-  --anime-shadow: rgba(255, 215, 0, 0.4);   /* Glow shadow */
+  /* CHAINZOKU COLORS */
+  --chainzoku-black: #000000;               /* Pure black */
+  --chainzoku-white: #FFFFFF;               /* Pure white */
+  --chainzoku-cyan: #00FFFF;                /* Neon cyan */
+  --chainzoku-blue: #00BFFF;                /* Electric blue */
+  --chainzoku-electric: #0099FF;            /* Electric accent */
+  --chainzoku-glow: rgba(0, 255, 255, 0.5); /* Cyan glow */
+  --chainzoku-glass: rgba(0, 0, 0, 0.1);    /* Glass effect */
+  --chainzoku-border: rgba(0, 255, 255, 0.2); /* Subtle border */
+  --chainzoku-hover: rgba(0, 255, 255, 0.1); /* Hover effect */
+  --chainzoku-shadow: rgba(0, 255, 255, 0.3); /* Glow shadow */
 }
 
 /* Clean Text Effects */
@@ -108,11 +110,12 @@
 body {
   background: #000000 !important;
   color: #FFFFFF !important;
-  font-family: 'Nunito', 'Poppins', 'Comic Neue', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   font-weight: 400;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
 #root {
@@ -120,173 +123,181 @@ body {
   min-height: 100vh;
 }
 
-/* ANIME UTILITIES */
-.anime-bg {
+/* CHAINZOKU UTILITIES */
+.chainzoku-bg {
   background: #000000;
 }
 
-.anime-text {
+.chainzoku-text {
   color: #FFFFFF;
 }
 
-.anime-accent {
-  color: #FFD700;
+.chainzoku-accent {
+  color: #00FFFF;
 }
 
-.anime-yellow {
-  color: #FFFF00;
+.chainzoku-blue {
+  color: #00BFFF;
 }
 
-/* ANIME BUTTON STYLES */
-.anime-btn {
-  background: linear-gradient(135deg, #FFD700, #FFA500);
+/* CHAINZOKU MODERN BUTTON STYLES */
+.chainzoku-btn {
+  background: linear-gradient(135deg, #00FFFF, #00BFFF);
   color: #000000;
   border: none;
-  padding: 14px 28px;
-  border-radius: 20px;
-  font-weight: 700;
-  font-family: 'Nunito', sans-serif;
+  padding: 12px 32px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-family: 'Inter', sans-serif;
   text-transform: none;
-  letter-spacing: 0.3px;
-  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-  box-shadow: 0 0 25px rgba(255, 215, 0, 0.4);
+  letter-spacing: 0.025em;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 20px rgba(0, 255, 255, 0.25);
   position: relative;
   overflow: hidden;
+  backdrop-filter: blur(10px);
 }
 
-.anime-btn:before {
+.chainzoku-btn:before {
   content: '';
   position: absolute;
   top: 0;
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-  transition: left 0.5s;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.6s ease;
 }
 
-.anime-btn:hover:before {
+.chainzoku-btn:hover:before {
   left: 100%;
 }
 
-.anime-btn:hover {
-  transform: translateY(-3px) scale(1.08);
-  box-shadow: 0 0 35px rgba(255, 215, 0, 0.6);
-  background: linear-gradient(135deg, #FFFF00, #FFD700);
+.chainzoku-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(0, 255, 255, 0.4);
+  background: linear-gradient(135deg, #00BFFF, #0099FF);
 }
 
-/* ANIME CARD STYLES */
-.anime-card {
-  background: rgba(0, 0, 0, 0.85);
-  border: 2px solid rgba(255, 215, 0, 0.3);
+/* CHAINZOKU MODERN CARD STYLES */
+.chainzoku-card {
+  background: rgba(0, 0, 0, 0.8);
+  border: 1px solid rgba(0, 255, 255, 0.2);
   backdrop-filter: blur(20px);
-  border-radius: 20px;
-  transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+  border-radius: 16px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: hidden;
 }
 
-.anime-card:before {
+.chainzoku-card:before {
   content: '';
   position: absolute;
-  top: -2px;
-  left: -2px;
-  right: -2px;
-  bottom: -2px;
-  background: linear-gradient(45deg, #FFD700, #FFA500, #FFD700, #FFA500);
-  border-radius: 20px;
-  opacity: 0;
-  z-index: -1;
-  transition: opacity 0.3s;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.1), transparent);
+  transition: left 0.8s ease;
 }
 
-.anime-card:hover:before {
-  opacity: 0.7;
-  animation: anime-border-flow 2s linear infinite;
+.chainzoku-card:hover:before {
+  left: 100%;
 }
 
-.anime-card:hover {
-  border-color: rgba(255, 215, 0, 0.6);
-  box-shadow: 0 0 30px rgba(255, 215, 0, 0.3);
-  transform: translateY(-6px) scale(1.02);
+.chainzoku-card:hover {
+  border-color: rgba(0, 255, 255, 0.4);
+  box-shadow: 0 10px 40px rgba(0, 255, 255, 0.15);
+  transform: translateY(-4px);
 }
 
-/* ANIME ANIMATIONS */
-@keyframes anime-fadeIn {
+/* CHAINZOKU MODERN ANIMATIONS */
+@keyframes chainzoku-fadeIn {
   from {
     opacity: 0;
-    transform: translateY(30px) scale(0.9);
+    transform: translateY(20px);
   }
   to {
     opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-
-.anime-fade-in {
-  animation: anime-fadeIn 0.8s cubic-bezier(0.23, 1, 0.320, 1);
-}
-
-@keyframes anime-glow {
-  0%, 100% {
-    box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
-    text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
-  }
-  50% {
-    box-shadow: 0 0 35px rgba(255, 215, 0, 0.7);
-    text-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
-  }
-}
-
-.anime-glow {
-  animation: anime-glow 2s ease-in-out infinite;
-}
-
-@keyframes anime-border-flow {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-@keyframes anime-bounce {
-  0%, 20%, 50%, 80%, 100% {
     transform: translateY(0);
   }
-  40% {
+}
+
+.chainzoku-fade-in {
+  animation: chainzoku-fadeIn 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes chainzoku-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+    text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(0, 255, 255, 0.6);
+    text-shadow: 0 0 20px rgba(0, 255, 255, 0.8);
+  }
+}
+
+.chainzoku-glow {
+  animation: chainzoku-glow 3s ease-in-out infinite;
+}
+
+@keyframes chainzoku-pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.8;
+  }
+}
+
+.chainzoku-pulse {
+  animation: chainzoku-pulse 2s ease-in-out infinite;
+}
+
+@keyframes chainzoku-float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
     transform: translateY(-10px);
   }
-  60% {
-    transform: translateY(-5px);
+}
+
+.chainzoku-float {
+  animation: chainzoku-float 6s ease-in-out infinite;
+}
+
+@keyframes chainzoku-slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-.anime-bounce {
-  animation: anime-bounce 2s infinite;
+.chainzoku-slide-up {
+  animation: chainzoku-slideUp 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-@keyframes anime-float {
-  0%, 100% {
-    transform: translateY(0) rotate(0deg);
+@keyframes chainzoku-shimmer {
+  0% {
+    background-position: -200% center;
   }
-  33% {
-    transform: translateY(-10px) rotate(1deg);
-  }
-  66% {
-    transform: translateY(5px) rotate(-1deg);
+  100% {
+    background-position: 200% center;
   }
 }
 
-.anime-float {
-  animation: anime-float 3s ease-in-out infinite;
-}
-
-@keyframes anime-sparkle {
-  0%, 100% { opacity: 0; transform: scale(0); }
-  50% { opacity: 1; transform: scale(1); }
-}
-
-.anime-sparkle {
-  animation: anime-sparkle 1.5s ease-in-out infinite;
+.chainzoku-shimmer {
+  background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.4), transparent);
+  background-size: 200% 100%;
+  animation: chainzoku-shimmer 2s infinite;
 }
 
 /* CHAINZOKU SCROLL ANIMATIONS */
@@ -335,75 +346,85 @@ body {
   backdrop-filter: blur(25px);
 }
 
-/* ANIME TYPOGRAPHY */
+/* CHAINZOKU MODERN TYPOGRAPHY */
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Nunito', 'Poppins', sans-serif;
-  font-weight: 800;
+  font-family: 'Space Grotesk', 'Inter', sans-serif;
+  font-weight: 700;
   color: #FFFFFF;
   text-transform: none;
-  letter-spacing: 0.5px;
+  letter-spacing: -0.025em;
+  line-height: 1.2;
 }
 
 h1 {
-  font-size: 3.5rem;
+  font-size: 3.75rem;
   line-height: 1.1;
-  font-weight: 900;
-}
-
-h2 {
-  font-size: 2.8rem;
-  line-height: 1.2;
   font-weight: 800;
 }
 
-h3 {
-  font-size: 2.2rem;
-  line-height: 1.3;
+h2 {
+  font-size: 3rem;
+  line-height: 1.2;
   font-weight: 700;
 }
 
-/* ANIME TEXT EFFECTS */
-.anime-title {
-  background: linear-gradient(45deg, #FFD700, #FFA500, #FFFF00, #FFD700);
+h3 {
+  font-size: 2.25rem;
+  line-height: 1.3;
+  font-weight: 600;
+}
+
+/* CHAINZOKU TEXT EFFECTS */
+.chainzoku-title {
+  background: linear-gradient(135deg, #FFFFFF, #00FFFF, #FFFFFF);
   background-size: 200% 200%;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: anime-gradient-flow 3s ease-in-out infinite;
+  animation: chainzoku-gradient-flow 4s ease-in-out infinite;
 }
 
-@keyframes anime-gradient-flow {
+.chainzoku-subtitle {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.8);
+  letter-spacing: 0.025em;
+}
+
+.chainzoku-highlight {
+  color: #00FFFF;
+  text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+}
+
+@keyframes chainzoku-gradient-flow {
   0%, 100% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
 }
 
-@keyframes anime-grid-flow {
-  0% { transform: translate(0, 0); }
-  100% { transform: translate(60px, 60px); }
-}
-
-/* ANIME INPUT STYLES */
-.anime-input {
-  background: rgba(0, 0, 0, 0.9);
-  border: 2px solid rgba(255, 215, 0, 0.4);
+/* CHAINZOKU INPUT STYLES */
+.chainzoku-input {
+  background: rgba(0, 0, 0, 0.8);
+  border: 1px solid rgba(0, 255, 255, 0.3);
   color: #FFFFFF;
-  padding: 14px 18px;
-  border-radius: 15px;
-  font-family: 'Nunito', sans-serif;
-  font-weight: 600;
-  transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
-}
-
-.anime-input:focus {
-  outline: none;
-  border-color: #FFD700;
-  box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
-  transform: scale(1.02);
-}
-
-.anime-input::placeholder {
-  color: rgba(255, 255, 255, 0.6);
+  padding: 16px 20px;
+  border-radius: 12px;
+  font-family: 'Inter', sans-serif;
   font-weight: 500;
+  font-size: 16px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(10px);
+}
+
+.chainzoku-input:focus {
+  outline: none;
+  border-color: #00FFFF;
+  box-shadow: 0 0 0 3px rgba(0, 255, 255, 0.1);
+  background: rgba(0, 0, 0, 0.9);
+}
+
+.chainzoku-input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+  font-weight: 400;
 }
 
 .clean-card:hover {
