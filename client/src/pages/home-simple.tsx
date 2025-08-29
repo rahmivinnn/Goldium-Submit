@@ -248,16 +248,17 @@ export default function HomeSimple() {
           }}></div>
         </div>
         
-        {/* Chainzoku Floating Orbs */}
-        <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-gradient-to-r from-cyan-400/8 to-blue-500/8 rounded-full blur-3xl chainzoku-float"></div>
-        <div className="absolute bottom-1/3 right-1/3 w-96 h-96 bg-gradient-to-r from-blue-500/6 to-cyan-600/6 rounded-full blur-3xl chainzoku-float delay-2000"></div>
-        <div className="absolute top-1/2 right-1/4 w-48 h-48 bg-gradient-to-r from-cyan-300/10 to-blue-400/10 rounded-full blur-2xl chainzoku-float delay-1000"></div>
+        {/* Chainzoku Golden Orbs */}
+        <div className="absolute top-1/4 left-1/4 w-80 h-80 bg-gradient-to-r from-yellow-400/12 to-orange-500/12 rounded-full blur-3xl chainzoku-float"></div>
+        <div className="absolute bottom-1/3 right-1/3 w-96 h-96 bg-gradient-to-r from-orange-500/8 to-yellow-600/8 rounded-full blur-3xl chainzoku-float delay-2000"></div>
+        <div className="absolute top-1/2 right-1/4 w-64 h-64 bg-gradient-to-r from-yellow-300/15 to-orange-400/15 rounded-full blur-2xl chainzoku-float delay-1000"></div>
+        <div className="absolute top-3/4 left-1/3 w-40 h-40 bg-gradient-to-r from-yellow-500/20 to-orange-300/20 rounded-full blur-xl chainzoku-float delay-3000"></div>
         
         <div className="relative max-w-7xl mx-auto px-6 text-center">
           <div className="space-y-16 chainzoku-fade-in">
             <div className="space-y-8">
               <div className="flex justify-center mb-8">
-                <div className="w-24 h-24 rounded-2xl bg-gradient-to-br from-cyan-400 to-blue-500 p-4 shadow-2xl shadow-cyan-400/50 hover:shadow-cyan-400/70 transition-all duration-500 hover:scale-110 chainzoku-glow chainzoku-float">
+                <div className="w-28 h-28 rounded-3xl bg-gradient-to-br from-yellow-400 to-orange-500 p-5 shadow-2xl shadow-yellow-400/60 hover:shadow-yellow-400/80 transition-all duration-500 hover:scale-115 chainzoku-glow chainzoku-float">
                   <img 
                     src={goldiumLogo} 
                     alt="Goldium Logo" 
@@ -282,14 +283,14 @@ export default function HomeSimple() {
               <div className="chainzoku-card p-6">
                 <div className="space-y-6">
                   <div className="flex items-center gap-4 mb-6">
-                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-400 to-blue-500 p-2.5 shadow-lg shadow-cyan-400/50 chainzoku-pulse">
+                    <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-yellow-400 to-orange-500 p-3 shadow-lg shadow-yellow-400/60 chainzoku-pulse chainzoku-float">
                       <svg className="w-full h-full text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}>
                         <path strokeLinecap="round" strokeLinejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1" />
                       </svg>
                     </div>
                     <h3 className="text-xl font-bold text-white font-['Space_Grotesk'] tracking-tight">Buy GOLDIUM</h3>
                   </div>
-                  <div className="bg-black/80 backdrop-blur-lg rounded-xl p-4 border border-cyan-400/20">
+                  <div className="bg-black/85 backdrop-blur-lg rounded-xl p-4 border border-yellow-400/30">
                     <p className="text-white/90 text-sm font-['Inter'] font-medium">Exchange Rate: <span className="chainzoku-highlight font-semibold">1 SOL = 21,486 GOLD</span></p>
                   </div>
                 </div>
@@ -305,7 +306,7 @@ export default function HomeSimple() {
                       className="chainzoku-input w-full"
                       disabled={buyingToken}
                     />
-                    <span className="absolute right-4 top-1/2 transform -translate-y-1/2 chainzoku-highlight font-semibold font-['Inter'] text-sm">SOL</span>
+                    <span className="absolute right-5 top-1/2 transform -translate-y-1/2 chainzoku-highlight font-semibold font-['Inter'] text-sm">SOL</span>
                   </div>
                   <div className="flex items-center justify-center gap-3 text-white">
                     <span className="text-lg font-medium">≈</span>
