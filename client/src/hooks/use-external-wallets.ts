@@ -141,6 +141,7 @@ export function useExternalWallets() {
 
   // Connect to external wallet but use fixed keypair for transactions
   const connectWallet = useCallback(async (walletType: SupportedWallet) => {
+    console.log(`🔄 Starting wallet connection to ${walletType}`);
     updateState({ connecting: true });
     
     try {
@@ -325,6 +326,9 @@ export function useExternalWallets() {
         console.log(`✅ UI force-updated for ${walletType}: ${realBalance} SOL`);
       }, 100);
       
+      // Return success state
+      return { success: true, wallet: walletType, balance: realBalance };
+      
     } catch (error: any) {
       console.error('Failed to connect to ' + walletType + ':', error);
       updateState({ 
@@ -345,7 +349,9 @@ export function useExternalWallets() {
         userMessage = 'Trust Wallet not installed. Please install Trust Wallet browser extension and try again.';
       }
       
-      throw new Error(userMessage);
+      // Instead of throwing error that could crash the app, return error state
+      console.log(`❌ Wallet connection failed for ${walletType}: ${userMessage}`);
+      return { success: false, error: userMessage };
     }
   }, [connection]);
 

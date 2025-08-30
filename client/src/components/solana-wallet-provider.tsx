@@ -68,6 +68,7 @@ function InnerWalletProvider({ children }: WalletProviderProps) {
       }
     } catch (error) {
       console.error('Wallet connection error:', error);
+      // Don't re-throw error to prevent app crash
     }
   };
 
@@ -95,6 +96,8 @@ function InnerWalletProvider({ children }: WalletProviderProps) {
       console.log(`Balance: ${solBalance} SOL`);
     } catch (error) {
       console.error('Error refreshing balance:', error);
+      // Set balance to 0 on error instead of crashing
+      setBalance(0);
     }
   };
 
